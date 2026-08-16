@@ -12,19 +12,22 @@ diga `Lee AGENTS.md` te evita mantener dos archivos.
 
 ## Cómo llenarlo sin perder la tarde
 
-Tres reglas, y son las que separan un AGENTS.md que sirve de uno que se ignora:
+Tres reglas separan un AGENTS.md que sirve de uno que el agent ignora.
 
-1. **Escribe solo lo que el agent no puede deducir leyendo el repo.** Que uses React
-   ya lo ve en el `package.json`. Que los componentes nuevos van en `src/features/` y
-   no en `src/components/` no lo ve en ningún lado. Eso segundo es lo que va aquí.
-2. **Cada línea tiene que cambiar algo que el agent haría distinto.** Si la borras y
-   el resultado es el mismo, sobra.
-3. **Empieza corto y agrega cuando te moleste algo.** La forma más rápida de llegar a
-   un buen AGENTS.md es escribir 15 líneas hoy y agregar una regla cada vez que el
-   agent haga algo que te dé rabia.
+La primera: escribe solo lo que no puede deducir leyendo el repo. Que uses React ya lo
+ve en el `package.json`. Que los componentes nuevos van en `src/features/` y no en
+`src/components/` no lo ve en ningún lado, y eso es justamente lo que va aquí.
 
-Un AGENTS.md de 200 líneas que nadie mantiene es peor que uno de 20 que está al día:
-el agent se lo cree completo.
+La segunda: cada línea tiene que cambiar algo que el agent haría distinto. Bórrala
+mentalmente. Si el resultado es el mismo, sobra.
+
+La tercera: empieza corto. Quince líneas hoy, y una regla más cada vez que el agent
+haga algo que te dé rabia. Es más rápido que sentarte a escribirlo completo, y termina
+mejor, porque cada regla nació de un problema real.
+
+Cuidado con el archivo largo y desactualizado. Un AGENTS.md de 200 líneas que nadie
+mantiene hace más daño que uno de 20 que está al día, porque el agent se lo cree
+completo.
 
 ---
 
@@ -45,8 +48,8 @@ tiene que entender de qué va el negocio, no solo la tecnología.]
 # Cómo correr los tests.
 ```
 
-[Si hace falta algo antes — variables de entorno, una base de datos, un servicio
-levantado — dilo aquí. Es lo primero con lo que el agent se va a tropezar.]
+[Si hace falta algo antes (variables de entorno, una base de datos, un servicio
+levantado), dilo aquí. Es lo primero con lo que el agent se va a tropezar.]
 
 ## Estructura
 
@@ -63,7 +66,7 @@ líneas de descripción.]
 
 [Las decisiones que ya tomaron y que no se discuten en cada PR.]
 
-- [Nombres: cómo se llaman los archivos, los tests, las ramas.]
+- [Nombres: cómo se llaman los archivos, los tests, los branches.]
 - [Errores: se lanzan, se devuelven, se loguean. Escoge y dilo.]
 - [Tests: qué se testea de verdad y qué no vale la pena.]
 - [Formato: si hay linter o formatter, nombra el comando en vez de describir el estilo.]
@@ -97,13 +100,10 @@ explicación oral que se repite siempre, aquí es donde deja de ser oral.]
 
 ## Cómo saber si sirve
 
-No lo leas para revisarlo. **Pruébalo:**
+Leerlo no te dice nada. Pruébalo: abre una sesión nueva en frío, pídele una tarea chica
+pero real de tu proyecto, y fíjate si respetó tus convenciones sin que se las repitieras.
 
-1. Sesión nueva, en frío.
-2. Pídele una tarea chica pero real de tu proyecto.
-3. Mira si respetó las convenciones sin que se las repitieras.
+Lo que haya ignorado está mal escrito, o directamente no estaba. Eso es lo que arreglas.
 
-Lo que ignoró está mal escrito, o no estaba. Eso es lo que arreglas.
-
-Y una prueba más honesta todavía: pídele que haga algo que **viole** una de tus
-reglas. Si el archivo sirve, te va a decir que no puede o va a preguntar.
+Hay una prueba todavía más dura. Pídele que haga algo que viole una de tus reglas. Si el
+archivo está bien escrito, te dice que no puede, o al menos pregunta antes.

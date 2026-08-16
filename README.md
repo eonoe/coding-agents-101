@@ -1,7 +1,7 @@
 # Coding Agents 101 — materiales
 
 Los materiales del workshop **Coding Agents 101**: cuatro sesiones en vivo sobre cómo
-trabajar con coding agents de verdad, no como autocomplete.
+sacarle trabajo real a un coding agent en vez de usarlo como autocomplete caro.
 
 **El kit está aquí → <https://eonoe.github.io/coding-agents-101/>**
 

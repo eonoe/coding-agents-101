@@ -1,9 +1,9 @@
 # Cómo revisar lo que escribió un agent
 
 Revisar código de un agent no es lo mismo que revisar código de un compañero. Con un
-compañero asumes intención: si hizo algo raro, por algo fue. Con un agent esa
-suposición te hace daño — **produce código que se ve bien por defecto**, y "se ve
-bien" es exactamente lo que rompe una revisión rápida.
+compañero asumes intención: si hizo algo raro, por algo fue. Esa suposición con un
+agent te sale cara. Produce código que se ve bien por defecto, y "se ve bien" es
+justamente lo que se cuela en una revisión rápida.
 
 Esto es la sesión 3 completa. Hoy te lo llevas para que lo uses desde ya.
 
@@ -16,12 +16,12 @@ git status
 git diff --stat
 ```
 
-**Empieza siempre por aquí, y por la lista de archivos, no por el código.**
+Empieza siempre por la lista de archivos, antes de abrir el código.
 
-La pregunta no es "¿está bien este cambio?" sino **"¿por qué tocó ese archivo?"**.
-Un archivo que no esperabas en la lista es la señal de alarma más barata y más
-confiable que existe. Cuesta cinco segundos y atrapa más problemas que leer el diff
-línea por línea.
+La pregunta que importa aquí no es si el cambio está bien, sino **por qué tocó ese
+archivo**. Un archivo que no esperabas ver en la lista es la señal de alarma más barata
+que existe: cuesta cinco segundos y atrapa más problemas que leerte el diff línea por
+línea.
 
 Si tocó más archivos de los que pediste, para ahí. No sigas revisando: acota la
 tarea y pídesela otra vez más chica.
@@ -97,8 +97,8 @@ Tienes tres salidas y son distintas:
 | El enfoque está mal desde la raíz | `git checkout .` y vuelve a pedirlo con más restricciones. **No lo negocies parche por parche.** |
 | No entiendes por qué hizo algo | Pregúntale antes de aceptarlo. Si la explicación no se sostiene, no se sostiene el código. |
 
-Y una regla que ahorra noches: **si no entiendes un cambio, no lo mergeas.** No importa
-que los tests pasen. El código que no entiendes lo vas a mantener tú igual.
+Y una regla que ahorra noches: si no entiendes un cambio, no lo mergeas. Da igual que
+los tests pasen. El código que no entiendes lo vas a mantener tú igual.
 
 ---
 
@@ -126,8 +126,8 @@ Para sacarle lo que no te dijo:
 
 ## La señal de que estás revisando bien
 
-Que encuentres algo. **Siempre.**
+Que encuentres algo. Siempre.
 
-Si llevas varias revisiones seguidas sin encontrar nada, no es que el agent se volvió
-perfecto: es que dejaste de revisar y empezaste a hojear. Ahí es donde la calidad se
-cae sin que nadie lo note.
+Si llevas varias revisiones seguidas sin encontrar nada, lo más probable no es que el
+agent se haya vuelto perfecto. Es que dejaste de revisar y empezaste a hojear. Así es
+como la calidad se cae sin que nadie lo note, y cuesta meses darse cuenta.

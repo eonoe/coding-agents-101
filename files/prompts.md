@@ -1,17 +1,17 @@
 # Prompts que vale la pena guardar
 
-No es una librería de 200 prompts que nunca vas a volver a abrir. Son los pocos que
-usas todas las semanas.
+Hay listas de doscientos prompts dando vueltas por internet. Nunca volví a abrir
+ninguna. Estos son los pocos que sí uso todas las semanas.
 
-Funcionan igual en Claude Code, Codex CLI, opencode, Antigravity CLI o un GUI. Si un
-prompt solo funciona en una herramienta, es un truco, no un prompt.
+Funcionan igual en Claude Code, Codex CLI, opencode, Antigravity CLI o un GUI. Un
+prompt que solo funciona en una herramienta es un truco de esa herramienta.
 
 ---
 
 ## Los tres de la sesión 1
 
-La razón de que sean tres y no uno: **un prompt grande te devuelve una caja negra.**
-Tres te dejan ver el loop y revisar cada paso por separado.
+¿Por qué tres y no uno? Porque un prompt grande te devuelve una caja negra. Con tres
+ves el loop por dentro y puedes revisar cada paso por separado.
 
 ### 1 · Gather — que lea antes de tocar
 
@@ -28,9 +28,9 @@ No escribas ni modifiques ningún archivo todavía.
 Al final, dime exactamente qué archivos leíste para responder esto.
 ```
 
-> **Por qué la última línea.** Es la mitad del valor del prompt. Te muestra qué entró
-> al context y, más importante, **qué no leyó**. Casi siempre la respuesta te sorprende.
-> Si contestó sin leer los archivos que importan, ya sabes por qué la respuesta es floja.
+> Esa última línea vale tanto como el resto del prompt. Te muestra qué entró al context
+> y, sobre todo, qué se quedó afuera. La lista casi siempre sorprende. Si te contestó
+> sin abrir los archivos que de verdad mandan, ahí tienes explicada la respuesta floja.
 
 ### 2 · Act — que escriba, con la incertidumbre a la vista
 
@@ -48,9 +48,9 @@ Reglas:
 - No modifiques ningún otro archivo.
 ```
 
-> **Por qué `## Sin confirmar`.** Un agent que no sabe algo igual te lo escribe con
-> total seguridad. Esa sección no evita que invente: **hace visible lo que inventó.**
-> Es la diferencia entre un error que encuentras hoy y uno que encuentras en producción.
+> Un agent que no sabe algo te lo escribe igual, y con la misma seguridad con la que
+> escribe lo que sí sabe. La sección `## Sin confirmar` no le quita la maña de inventar.
+> Lo que hace es mover el invento a un lugar donde lo ves hoy y no en producción.
 
 ### 3 · Verify — que se revise como si no fuera suyo
 
@@ -60,15 +60,15 @@ Para cada afirmación, busca en el repo la evidencia que la respalda y cítame
 archivo y línea. Lístame todo lo que NO puedas respaldar con evidencia.
 ```
 
-Y después la parte que de verdad importa, que la haces tú y no él:
+Después viene la parte que te toca a ti:
 
 ```bash
 git status
 git diff --stat
 ```
 
-Lee la sección `## Sin confirmar`. Y **corre un comando del setup que escribió.**
-Si el comando no funciona, acabas de encontrar el primer error.
+Lee la sección `## Sin confirmar`. Después corre uno de los comandos de setup que
+escribió. Si no funciona, ahí está tu primer error.
 
 ---
 
@@ -96,9 +96,9 @@ Haz el número 2. Cuando termines, dime exactamente qué comando tengo que corre
 para verificar que funciona, y qué debería ver si está bien.
 ```
 
-> **El split proponer → escoger es el prompt más importante de esta lista.**
-> El humano decide el alcance, el agent ejecuta. Al revés es como se producen los
-> pull requests de 900 líneas que nadie revisa.
+> Si te llevas un solo prompt de esta lista, llévate este. Partirlo en proponer y
+> escoger deja el alcance en manos del humano y la ejecución en manos del agent.
+> Cuando se hace al revés salen esos pull requests de 900 líneas que nadie revisa.
 
 ---
 
@@ -128,8 +128,8 @@ Empecemos de cero. Solo lee estos archivos: [lista].
 El objetivo es [una frase]. No toques nada más.
 ```
 
-> Una sesión larga y confundida no se arregla explicándole mejor. Se arregla
-> **reseteándola.** Es el remedio más subestimado que hay.
+> A una sesión larga y confundida no la arreglas explicándole mejor. La arreglas
+> reseteándola. Es el remedio que menos se usa y el que más funciona.
 
 ### Reproducir antes de arreglar
 
@@ -140,14 +140,17 @@ para confirmar que falla. Enséñame la salida.
 
 ---
 
-## Lo que hace que un prompt funcione
+## Lo que tienen en común
 
-Después de todo esto, cuatro cosas se repiten:
+Mirando la lista completa, hay cuatro cosas que se repiten.
 
-1. **Dile qué NO tocar.** "No modifiques ningún otro archivo" ahorra más tiempo que
-   cualquier instrucción positiva.
-2. **Pídele el trabajo por pasos, no de un tirón.** Un paso que puedes revisar vale
-   más que cinco que no.
-3. **Pídele evidencia, no confianza.** "Cítame archivo y línea" cambia la respuesta.
-4. **Dale una salida para la duda.** Si no le das dónde poner lo que no sabe, se lo
-   inventa dentro del texto normal.
+Dile qué no tocar. La frase "no modifiques ningún otro archivo" me ha ahorrado más
+tiempo que cualquier instrucción positiva que se me haya ocurrido.
+
+Pídele el trabajo por pasos. Un paso que puedes revisar vale más que cinco que no.
+
+Pide evidencia en lugar de confianza. "Cítame archivo y línea" cambia la respuesta que
+te da, no solo cómo la presenta.
+
+Y dale un lugar donde poner lo que no sabe. Si no se lo das, lo mete en medio del texto
+normal, con el mismo tono seguro que todo lo demás, y ahí ya no lo distingues.

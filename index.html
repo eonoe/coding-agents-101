@@ -129,8 +129,8 @@ pre code{background:none;color:inherit;padding:0;font-size:inherit;}
 
 <div class="marq" aria-hidden="true">
   <div class="marq-track">
-    <span>· sesión 1 · pon un coding agent a trabajar</span><span>· gather → act → verify</span><span>· lunes 17 de agosto · 6:00 pm</span><span>· rama nueva, sin auto-accept</span>
-    <span>· sesión 1 · pon un coding agent a trabajar</span><span>· gather → act → verify</span><span>· lunes 17 de agosto · 6:00 pm</span><span>· rama nueva, sin auto-accept</span>
+    <span>· sesión 1 · pon un coding agent a trabajar</span><span>· gather → act → verify</span><span>· lunes 17 de agosto · 6:00 pm</span><span>· branch nuevo, sin auto-accept</span>
+    <span>· sesión 1 · pon un coding agent a trabajar</span><span>· gather → act → verify</span><span>· lunes 17 de agosto · 6:00 pm</span><span>· branch nuevo, sin auto-accept</span>
   </div>
 </div>
 
@@ -176,11 +176,11 @@ pre code{background:none;color:inherit;padding:0;font-size:inherit;}
         <tr>
           <td><strong>1</strong><br>si pagas Claude</td>
           <td><strong>Claude Code</strong><br><code>claude</code></td>
-          <td>Instalador oficial</td>
-          <td>Sign-in incluido</td>
+          <td><code>curl -fsSL https://claude.ai/install.sh | bash</code></td>
+          <td>Escribe <code>claude</code><br>y entra por el browser</td>
         </tr>
         <tr>
-          <td><strong>2</strong><br>sin tarjeta</td>
+          <td><strong>2</strong><br>no pago</td>
           <td><strong>Antigravity CLI</strong><br><code>agy</code></td>
           <td><code>curl -fsSL https://antigravity.google/cli/install.sh | bash</code></td>
           <td>Cuenta de Google<br>en el browser</td>
@@ -211,7 +211,7 @@ pre code{background:none;color:inherit;padding:0;font-size:inherit;}
 
     <p><strong>Los "modelos gratis" de opencode no funcionan recién instalado.</strong> El instalador dice que incluye modelos gratis y <code>opencode models</code> lista varios con <code>-free</code> en el nombre, pero si intentas usarlos te dice <code>Model ... is not supported</code>. Primero hay que hacer <code>/connect</code> dentro del TUI, y eso pide cuenta y datos de facturación. <strong>Si lo que quieres es no poner tarjeta, ve por el carril 2.</strong></p>
 
-    <h3>La prueba de humo</h3>
+    <h3>La prueba de fuego</h3>
     <p>Abre tu agent dentro de la carpeta de un proyecto y pídele que te explique un archivo. Si te contesta, estás listo.</p>
   </div>
 </section>
@@ -237,7 +237,7 @@ pre code{background:none;color:inherit;padding:0;font-size:inherit;}
       <div class="card">
         <span class="k">03 · verify</span>
         <h3>Verifica</h3>
-        <p>Corre lo que escribió y revisa si funcionó. <strong>Este paso es el que se salta</strong> — el suyo y el tuyo.</p>
+        <p>Corre lo que escribió y revisa si funcionó. Es el paso que se salta él, y el que te saltas tú.</p>
       </div>
     </div>
 
@@ -277,20 +277,20 @@ interface  →   terminal · GUI · IDE</code></pre>
 <section class="sec" id="glosario">
   <div class="wrap">
     <div class="eyebrow">// vocabulario</div>
-    <h2>Siete palabras, y ya.</h2>
+    <h2>Con siete palabras te alcanza.</h2>
     <p class="lead">Son las que cambian lo que escribes. El resto del vocabulario lo vamos agregando cuando haga falta.</p>
 
     <div class="gl">
       <div class="gl-row"><div class="gl-t">agent</div><div class="gl-d">Un programa que corre el loop <strong>gather → act → verify</strong> con herramientas de verdad. No es un chat que escribe código: lee tus archivos y corre comandos.</div></div>
       <div class="gl-row"><div class="gl-t">context</div><div class="gl-d"><strong>Lo que el agent puede ver en este momento.</strong> No es lo que hay en tu repo: es lo que leyó. La distancia entre esas dos cosas explica casi todas las respuestas malas.</div></div>
       <div class="gl-row"><div class="gl-t">model</div><div class="gl-d">El cerebro. Se puede cambiar. Hoy el que viene por defecto está bien; no gastes la sesión escogiendo.</div></div>
-      <div class="gl-row"><div class="gl-t">tools</div><div class="gl-d">Lo que el agent puede hacer además de escribir texto: <strong>Read, Edit, Bash, Search</strong>. Por eso te pide permiso — algunas tocan tu disco.</div></div>
+      <div class="gl-row"><div class="gl-t">tools</div><div class="gl-d">Lo que el agent puede hacer además de escribir texto: <strong>Read, Edit, Bash, Search</strong>. Por eso te pide permiso: algunas tocan tu disco.</div></div>
       <div class="gl-row"><div class="gl-t">permission mode</div><div class="gl-d">Qué puede hacer sin preguntarte. Va desde preguntar todo hasta no preguntar nada. <strong>Hoy: se pregunta todo.</strong></div></div>
       <div class="gl-row"><div class="gl-t">session</div><div class="gl-d">La conversación en curso, con todo lo que lleva acumulado. Cuando se enreda, no discutas con él: <strong>resetea y empieza de nuevo</strong> diciéndole qué leer.</div></div>
       <div class="gl-row"><div class="gl-t">plan mode</div><div class="gl-d">Un modo donde solo lee y propone, sin tocar nada. Si te da nervios soltarlo en un repo que importa, empieza aquí.</div></div>
     </div>
 
-    <div class="note"><strong>Parking lot.</strong> <code>context window</code>, <code>tokens</code>, <code>MCP</code>, <code>subagents</code> y <code>hooks</code> son reales y sirven — pero hoy no cambian nada de lo que vas a escribir. Context window y tokens los vemos <strong>mañana</strong>, cuando ya los hayas sentido. MCP y subagents, en la <strong>sesión 4</strong>.</div>
+    <div class="note"><strong>Parking lot.</strong> <code>context window</code>, <code>tokens</code>, <code>MCP</code>, <code>subagents</code> y <code>hooks</code> son reales y sirven, pero hoy no cambian nada de lo que vas a escribir. Context window y tokens los vemos <strong>mañana</strong>, cuando ya los hayas sentido. MCP y subagents, en la <strong>sesión 4</strong>.</div>
   </div>
 </section>
 
@@ -301,7 +301,7 @@ interface  →   terminal · GUI · IDE</code></pre>
     <h2>Dos reglas, esta noche sin excepción.</h2>
 
     <div class="rule">
-      <h3>1 · Rama nueva</h3>
+      <h3>1 · Branch nuevo</h3>
       <p>Convierte cualquier desastre posible en un no-evento. Si algo sale mal: <code>git checkout .</code> y no perdiste nada.</p>
 <pre><code>git checkout -b agente-sesion-1</code></pre>
     </div>
@@ -318,7 +318,7 @@ interface  →   terminal · GUI · IDE</code></pre>
   <div class="wrap">
     <div class="eyebrow">// hora 2 · copia y pega</div>
     <h2>Tres prompts, no uno.</h2>
-    <p class="lead">Un prompt grande te devuelve una caja negra. Tres te dejan ver el loop y revisar cada paso por separado. Córrelos en orden, en tu repo, en la rama nueva.</p>
+    <p class="lead">Un prompt grande te devuelve una caja negra. Tres te dejan ver el loop y revisar cada paso por separado. Córrelos en orden, en tu repo, en el branch nuevo.</p>
 
     <div class="prompt">
       <div class="prompt-head">
@@ -373,7 +373,7 @@ evidencia.</code></pre>
       <div class="prompt-why"><strong>Y después la parte que te toca a ti.</strong> Corre <code>git status</code> y <code>git diff --stat</code>, lee la sección <code>## Sin confirmar</code>, y <strong>ejecuta un comando del setup que escribió</strong>. Si el comando no corre, ahí está tu primer error.</div>
     </div>
 
-    <div class="warn"><strong>Lo que reportas al final:</strong> una cosa que el agent afirmó y que está mal. Una sola. Todo el mundo encuentra una — y eso es exactamente lo que queremos ver.</div>
+    <div class="warn"><strong>Lo que reportas al final:</strong> una cosa que el agent afirmó y que está mal. Una sola. Todo el mundo encuentra una, y eso es justo lo que queremos ver.</div>
   </div>
 </section>
 
@@ -399,7 +399,7 @@ git checkout -b agente-sesion-1</code></pre>
   <div class="wrap">
     <div class="eyebrow">// te los llevas</div>
     <h2>Los archivos que sí vas a reutilizar.</h2>
-    <p class="lead">No son slides. Son los que abres en el próximo proyecto. Tuyos, vengas o no a las otras tres sesiones.</p>
+    <p class="lead">Los archivos que vas a abrir en el próximo proyecto. Tuyos, vengas o no a las otras tres sesiones.</p>
 
     <div class="dl">
       <a class="dlc" href="files/AGENTS.md">
@@ -414,7 +414,7 @@ git checkout -b agente-sesion-1</code></pre>
       </a>
       <a class="dlc" href="files/prompts.md">
         <h3>Prompts que se guardan</h3>
-        <p>Los pocos que usas todas las semanas, no una librería de doscientos que nunca vuelves a abrir.</p>
+        <p>Los pocos que de verdad terminas usando todas las semanas.</p>
         <span class="go">Abrir →</span>
       </a>
     </div>
@@ -426,7 +426,7 @@ git checkout -b agente-sesion-1</code></pre>
   <div class="wrap">
     <div class="eyebrow">// para mañana</div>
     <h2>Una sola cosa.</h2>
-    <p class="lead">Corre el <strong>P1</strong> en un repo distinto al de hoy — ojalá uno más grande y más feo. Fíjate en la lista de archivos que dice que leyó.</p>
+    <p class="lead">Corre el <strong>P1</strong> en un repo distinto al de hoy, ojalá uno más grande y más feo. Fíjate en la lista de archivos que dice que leyó.</p>
     <p>Llega mañana con esa lista. La sesión 2 es sobre por qué esa lista casi nunca es la que tú esperabas, y qué hacer al respecto.</p>
   </div>
 </section>
@@ -436,7 +436,7 @@ git checkout -b agente-sesion-1</code></pre>
 <footer class="foot">
   <div class="wrap">
     <p><strong>Coding Agents 101</strong> — sesión 1 de 4 · lunes 17 de agosto, 6:00 PM (GMT-4)</p>
-    <p>Meet: <a href="https://meet.google.com/qxk-zffm-ojo">meet.google.com/qxk-zffm-ojo</a> — el mismo link sirve para las cuatro. Conéctate 5 minutos antes.</p>
+    <p>Meet: <a href="https://meet.google.com/qxk-zffm-ojo">meet.google.com/qxk-zffm-ojo</a>, el mismo link sirve para las cuatro. Conéctate 5 minutos antes.</p>
     <p style="margin-top:14px;">Grabamos todo. Si te pierdes una, te llega igual. · <a href="https://eonoe.github.io/">Volver al workshop</a></p>
   </div>
 </footer>
