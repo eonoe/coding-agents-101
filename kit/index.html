@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El kit — Coding Agents 101</title>
+<meta name="description" content="Instalación, glosario y descargas del workshop Coding Agents 101.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23ffd400'/%3E%3Ctext x='16' y='21' font-family='monospace' font-size='14' font-weight='700' text-anchor='middle' fill='%230b0b10'%3ETL%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/kit.css">
+</head>
+<body>
+<div class="marq" aria-hidden="true">
+  <div class="marq-track">
+    <span>· el kit · instalación · glosario · descargas · esto no cambia entre sesiones </span><span>· el kit · instalación · glosario · descargas · esto no cambia entre sesiones </span>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="tag">// coding agents 101 · referencia</div>
+    <h1>El kit.</h1>
+    <p>Lo que no cambia de una sesión a otra: cómo instalar, qué significa cada palabra, y los archivos que te llevas. Cada noche tiene su propia página; esta es la que vale para las cuatro.</p>
+    <div class="meta">
+      <a class="chip b" href="../">Ver los cuatro días →</a>
+      <a class="chip" href="https://meet.google.com/qxk-zffm-ojo">Entrar por Meet</a>
+    </div>
+  </div>
+</header>
+
+<nav class="toc">
+  <div class="wrap toc-in">
+    <a href="#instalar">Instalar</a>
+    <a href="#sin-terminal">Sin terminal</a>
+    <a href="#glosario">Glosario</a>
+    <a href="#repo">Repo de ejemplo</a>
+    <a href="#descargas">Descargas</a>
+    <a href="../">Los días</a>
+  </div>
+</nav>
+
+<main>
+<!-- INSTALAR -->
+<section class="sec" id="instalar">
+  <div class="wrap">
+    <div class="eyebrow">// paso cero</div>
+    <h2>Instala uno solo.</h2>
+    <p class="lead">Esta noche vemos varias herramientas por dentro, pero tú trabajas con una. Escoge por lo que ya tienes. El loop que aprendes hoy funciona igual en todas.</p>
+
+    <div class="scroll">
+    <table class="tbl">
+      <thead><tr><th>Carril</th><th>Herramienta</th><th>Instalar</th><th>Entrar</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>1</strong><br>si pagas Claude</td>
+          <td><strong>Claude Code</strong><br><code>claude</code></td>
+          <td><code>curl -fsSL https://claude.ai/install.sh | bash</code></td>
+          <td>Escribe <code>claude</code><br>y entra por el browser</td>
+        </tr>
+        <tr>
+          <td><strong>2</strong><br>no pago</td>
+          <td><strong>Antigravity CLI</strong><br><code>agy</code></td>
+          <td><code>curl -fsSL https://antigravity.google/cli/install.sh | bash</code></td>
+          <td>Cuenta de Google<br>en el browser</td>
+        </tr>
+        <tr>
+          <td><strong>3</strong><br>si pagas ChatGPT</td>
+          <td><strong>Codex CLI</strong><br><code>codex</code></td>
+          <td><code>npm i -g @openai/codex</code></td>
+          <td>Sign in with ChatGPT</td>
+        </tr>
+        <tr class="l4">
+          <td rowspan="2"><strong>4</strong><br>si ya tienes API keys<br><span style="color:var(--muted);">escoge cualquiera<br>de las dos</span></td>
+          <td><strong>opencode</strong><br><code>opencode</code></td>
+          <td><code>curl -fsSL https://opencode.ai/install | bash</code></td>
+          <td><code>/connect</code> <strong>dentro</strong> del TUI</td>
+        </tr>
+        <tr class="l4">
+          <td><strong>Pi</strong><br><code>pi</code></td>
+          <td><code>npm i -g @earendil-works/pi-coding-agent</code></td>
+          <td><code>/login</code> <strong>dentro</strong> del TUI</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="warn"><strong>Si tenías Gemini CLI:</strong> Google lo apagó el 18 de junio de 2026. Lo reemplazó Antigravity CLI, que es otro binario (<code>agy</code>), otro instalador y otra configuración. El comando viejo ya no responde.</div>
+
+    <h3>¿No te llevas bien con el terminal?</h3>
+
+    <p>Casi todos estos agents tienen una versión con ventanas y mouse. <strong>Es el mismo agent y el mismo loop, con otra piel.</strong> No es un carril aparte: es tu mismo carril, entrando por otra puerta.</p>
+
+    <div class="scroll">
+    <table class="tbl">
+      <thead><tr><th>Tu carril</th><th>Con mouse</th><th>Dónde</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>1</strong> Claude Code</td>
+          <td>Claude Code, app de escritorio</td>
+          <td><a href="https://claude.com/download">claude.com/download</a><br>macOS, Windows y Linux</td>
+        </tr>
+        <tr>
+          <td><strong>2</strong> Antigravity</td>
+          <td>Antigravity IDE</td>
+          <td><a href="https://antigravity.google/download">antigravity.google/download</a><br>gratis, y aquí también es el carril sin pagar</td>
+        </tr>
+        <tr>
+          <td><strong>3</strong> Codex</td>
+          <td>La app de escritorio de ChatGPT, o la extensión de Codex para VS Code y JetBrains</td>
+          <td>No hay descarga suelta de "Codex": entra por ChatGPT o por tu editor</td>
+        </tr>
+        <tr>
+          <td><strong>4</strong> opencode</td>
+          <td>Interfaz web, servida por el mismo binario</td>
+          <td><code>opencode web</code></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3 id="sin-terminal">Si el terminal no es lo tuyo, lee esto</h3>
+
+    <p>Se puede hacer la sesión completa sin escribir un solo comando. No es una versión recortada: haces la misma tarea, con los mismos prompts, y sales con lo mismo. Cambia por dónde entras.</p>
+
+    <p><strong>El camino es Antigravity IDE.</strong> Se instala con doble clic como cualquier programa, es gratis y no pide tarjeta. Los otros carriles se instalan pegando comandos en una terminal, que es justo lo que quieres evitar.</p>
+
+    <ol>
+      <li><strong>Descarga el IDE</strong> desde <a href="https://antigravity.google/download">antigravity.google/download</a> y ábrelo. Entras con tu cuenta de Google.</li>
+      <li><strong>Baja el proyecto de práctica sin usar git:</strong> <a href="https://github.com/eonoe/coding-agents-101/archive/refs/heads/main.zip">descarga el ZIP</a>, descomprímelo, y en el IDE abre la carpeta <code>coding-agents-101/example</code>.</li>
+      <li><strong>Pégale los tres prompts</strong> igual que todo el mundo. Son los mismos.</li>
+    </ol>
+
+    <p>Si prefieres trabajar en un proyecto tuyo y ya lo tienes en la computadora, ábrelo directamente y sáltate el paso 2.</p>
+
+    <h3>Y los comandos de git, ¿qué?</h3>
+
+    <p>En la hora 2 hay tres momentos de git: crear el branch, ver qué archivos cambiaron, y ver el diff. <strong>No los escribes tú. Se los pides al agent.</strong></p>
+
+    <div class="prompt">
+      <div class="prompt-head">
+        <span class="prompt-n">git</span>
+        <span class="prompt-t">Sin tocar el terminal</span>
+        <button class="copy" type="button">Copiar</button>
+      </div>
+<pre><code>Antes de tocar nada, crea un branch nuevo llamado agente-sesion-1.
+Cuando termines el trabajo, enséñame qué archivos cambiaste y el diff
+de cada uno.</code></pre>
+      <div class="prompt-why">Te va a pedir permiso para correr los comandos. <strong>Dale que sí y míralo hacerlo.</strong> Eso que estás aprobando es la tool de Bash, y verla trabajar es literalmente el tema de la noche. Terminas entendiendo el loop mejor que quien lo escribió a mano.</div>
+    </div>
+
+    <p>Si abriste el proyecto de práctica desde el ZIP, ni el branch hace falta: es una copia tuya, desechable. Bórrala y bájala otra vez si algo sale mal.</p>
+
+    <h3>Dos cosas que confunden a todo el mundo</h3>
+
+    <p><strong>El instalador de <code>agy</code> imprime líneas que dicen <code>ERROR</code> y no son errores.</strong> Vas a ver algo así:</p>
+<pre><code>ERROR: logging before google.Init: I0815 ... Appending PATH export to profile ...</code></pre>
+    <p>Son mensajes informativos con la etiqueta mal puesta. Si al final ves <code>✅ Antigravity CLI installed successfully</code>, quedó bien. Si después escribes <code>agy</code> y no aparece, cierra la terminal y ábrela de nuevo: el instalador cambió tu PATH.</p>
+
+    <p><strong>Los "modelos gratis" de opencode no funcionan recién instalado.</strong> El instalador dice que incluye modelos gratis y <code>opencode models</code> lista varios con <code>-free</code> en el nombre, pero si intentas usarlos te dice <code>Model ... is not supported</code>. Primero hay que hacer <code>/connect</code> dentro del TUI, y eso pide cuenta y datos de facturación.</p>
+
+    <p>Lo mismo aplica para Pi: es <em>bring your own key</em> por diseño, así que sin una key de algún proveedor no arranca. <strong>El carril 4 completo asume que ya tienes con qué pagarle a un modelo. Si no, ve por el carril 2.</strong></p>
+
+    <h3>La prueba de fuego</h3>
+    <p>Abre tu agent dentro de la carpeta de un proyecto y pídele que te explique un archivo. Si te contesta, estás listo.</p>
+  </div>
+</section>
+
+<!-- GLOSARIO -->
+<section class="sec" id="glosario">
+  <div class="wrap">
+    <div class="eyebrow">// vocabulario</div>
+    <h2>Con siete palabras te alcanza.</h2>
+    <p class="lead">Son las que cambian lo que escribes. El resto del vocabulario lo vamos agregando cuando haga falta.</p>
+
+    <div class="gl">
+      <div class="gl-row"><div class="gl-t">agent</div><div class="gl-d">Un programa que corre el loop <strong>gather → act → verify</strong> con herramientas de verdad. No es un chat que escribe código: lee tus archivos y corre comandos.</div></div>
+      <div class="gl-row"><div class="gl-t">context</div><div class="gl-d"><strong>Lo que el agent puede ver en este momento.</strong> No es lo que hay en tu repo: es lo que leyó. La distancia entre esas dos cosas explica casi todas las respuestas malas.</div></div>
+      <div class="gl-row"><div class="gl-t">model</div><div class="gl-d">El cerebro. Se puede cambiar. Hoy el que viene por defecto está bien; no gastes la sesión escogiendo.</div></div>
+      <div class="gl-row"><div class="gl-t">tools</div><div class="gl-d">Lo que el agent puede hacer además de escribir texto: <strong>Read, Edit, Bash, Search</strong>. Por eso te pide permiso: algunas tocan tu disco.</div></div>
+      <div class="gl-row"><div class="gl-t">permission mode</div><div class="gl-d">Qué puede hacer sin preguntarte. Va desde preguntar todo hasta no preguntar nada. <strong>Hoy: se pregunta todo.</strong></div></div>
+      <div class="gl-row"><div class="gl-t">session</div><div class="gl-d">La conversación en curso, con todo lo que lleva acumulado. Cuando se enreda, no discutas con él: <strong>resetea y empieza de nuevo</strong> diciéndole qué leer.</div></div>
+      <div class="gl-row"><div class="gl-t">plan mode</div><div class="gl-d">Un modo donde solo lee y propone, sin tocar nada. Si te da nervios soltarlo en un repo que importa, empieza aquí.</div></div>
+    </div>
+
+    <div class="note"><strong>Parking lot.</strong> <code>context window</code>, <code>tokens</code>, <code>MCP</code>, <code>subagents</code> y <code>hooks</code> son reales y sirven, pero hoy no cambian nada de lo que vas a escribir. Context window y tokens los vemos <strong>mañana</strong>, cuando ya los hayas sentido. MCP y subagents, en la <strong>sesión 4</strong>.</div>
+  </div>
+</section>
+
+<!-- REPO -->
+<section class="sec" id="repo">
+  <div class="wrap">
+    <div class="eyebrow">// si no traes repo</div>
+    <h2>Usa este.</h2>
+    <p class="lead">Si tu código es de tu empresa y no quieres mandarlo a un tercero, o no quieres compartir pantalla con él, trabaja aquí. Es una decisión profesional correcta, no una excusa.</p>
+
+    <p><strong>Con terminal:</strong></p>
+<pre><code>git clone https://github.com/eonoe/coding-agents-101
+cd coding-agents-101/example
+git checkout -b agente-sesion-1</code></pre>
+
+    <p><strong>Sin terminal:</strong> <a href="https://github.com/eonoe/coding-agents-101/archive/refs/heads/main.zip">descarga el ZIP</a>, descomprímelo, y abre la carpeta <code>coding-agents-101/example</code> en tu IDE. No necesitas git ni branch: es una copia tuya. Si algo sale mal, la borras y la bajas otra vez.</p>
+
+    <div class="warn"><strong>Abre el agent dentro de <code>example/</code>, no en la raíz del repo.</strong> Si lo abres afuera va a leer los materiales del workshop en vez del proyecto, y el ejercicio pierde la gracia.</div>
+
+    <p>Es un CLI chiquito que divide los gastos de un viaje entre varias personas. Corre con <code>node index.js</code>, no necesita instalar nada, y tiene los problemas que tiene cualquier proyecto real al que nadie le ha dado cariño en un tiempo.</p>
+  </div>
+</section>
+
+<!-- DESCARGAS -->
+<section class="sec" id="descargas">
+  <div class="wrap">
+    <div class="eyebrow">// te los llevas</div>
+    <h2>Los archivos que sí vas a reutilizar.</h2>
+    <p class="lead">Los archivos que vas a abrir en el próximo proyecto. Tuyos, vengas o no a las otras tres sesiones.</p>
+
+    <div class="dl">
+      <a class="dlc" href="../files/AGENTS.md">
+        <h3>AGENTS.md — plantilla</h3>
+        <p>La llenas para tu proyecto y el agent empieza cada sesión sabiendo tus reglas. La trabajamos a fondo mañana.</p>
+        <span class="go">Abrir →</span>
+      </a>
+      <a class="dlc" href="../files/revision.md">
+        <h3>Checklist de revisión</h3>
+        <p>Qué buscar cuando lees lo que escribió un agent. Seis pases, en orden, y los tres primeros atrapan casi todo.</p>
+        <span class="go">Abrir →</span>
+      </a>
+      <a class="dlc" href="../files/prompts.md">
+        <h3>Prompts que se guardan</h3>
+        <p>Los pocos que de verdad terminas usando todas las semanas.</p>
+        <span class="go">Abrir →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p><strong>Coding Agents 101</strong> — cuatro sesiones en vivo · 17 al 20 de agosto, 6:00 PM (GMT-4)</p>
+    <p>Meet: <a href="https://meet.google.com/qxk-zffm-ojo">meet.google.com/qxk-zffm-ojo</a>, el mismo link sirve para las cuatro. Conéctate 5 minutos antes.</p>
+    <p style="margin-top:14px;">Grabamos todo. Si te pierdes una, te llega igual. · <a href="../">Todos los días</a> · <a href="../kit/">El kit</a> · <a href="https://eonoe.github.io/">El workshop</a></p>
+  </div>
+</footer>
+<script>
+document.querySelectorAll('.copy').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    var pre = btn.closest('.prompt').querySelector('pre');
+    function ok(){
+      btn.textContent = 'Copiado';
+      btn.classList.add('ok');
+      setTimeout(function(){ btn.textContent = 'Copiar'; btn.classList.remove('ok'); }, 1600);
+    }
+    // Safari y navegadores sin permiso de portapapeles: seleccionamos el texto
+    // para que un Cmd-C manual funcione igual.
+    function fallback(){
+      var rango = document.createRange();
+      rango.selectNodeContents(pre);
+      var sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(rango);
+      btn.textContent = 'Cmd-C';
+      setTimeout(function(){ btn.textContent = 'Copiar'; }, 2400);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(pre.innerText).then(ok, fallback);
+    } else {
+      fallback();
+    }
+  });
+});
+</script>
+</body>
+</html>

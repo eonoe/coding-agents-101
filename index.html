@@ -3,544 +3,107 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kit — Coding Agents 101 · Sesión 1</title>
-<meta name="description" content="Comandos, prompts y glosario de la sesión 1 del workshop Coding Agents 101.">
+<title>Coding Agents 101 — las cuatro sesiones</title>
+<meta name="description" content="Los cuatro días del workshop Coding Agents 101: prompts, comandos y glosario.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23ffd400'/%3E%3Ctext x='16' y='21' font-family='monospace' font-size='14' font-weight='700' text-anchor='middle' fill='%230b0b10'%3ETL%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-<style>
-:root{
-  --bg:#ffffff;--ink:#0b0b10;--ink2:#41444d;--muted:#6b7280;
-  --line:#e7e8ec;--line2:#d4d6dc;
-  --blue:#3531ff;--blue-ink:#1f1ce0;--blue-soft:#edecff;
-  --pop:#ffd400;--dark:#0b0b10;
-  --maxw:920px;
-}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-html{scroll-behavior:smooth;}
-body{background:var(--bg);color:var(--ink);font-family:'Inter',system-ui,sans-serif;font-size:16px;line-height:1.62;-webkit-font-smoothing:antialiased;}
-a{color:var(--blue-ink);text-decoration:none;border-bottom:2px solid var(--blue-soft);}
-a:hover{border-bottom-color:var(--blue);}
-h1,h2,h3{font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spacing:-.03em;line-height:1.05;}
-.mono{font-family:'JetBrains Mono',ui-monospace,monospace;}
-:focus-visible{outline:3px solid var(--blue);outline-offset:3px;}
-@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important;}}
-.wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px;}
-
-/* MARQUEE */
-.marq{background:var(--pop);border-bottom:3px solid var(--ink);overflow:hidden;white-space:nowrap;}
-.marq-track{display:inline-block;padding:9px 0;animation:scroll 30s linear infinite;}
-.marq-track span{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:12.5px;letter-spacing:.02em;text-transform:uppercase;padding:0 14px;}
-@keyframes scroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
-
-/* HERO */
-.hero{padding:44px 0 38px;border-bottom:3px solid var(--ink);}
-.tag{display:inline-flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;background:var(--blue-soft);color:var(--blue-ink);padding:6px 12px;border-radius:30px;margin-bottom:18px;}
-.hero h1{font-size:clamp(34px,6vw,54px);margin-bottom:16px;}
-.hero p{font-size:17.5px;color:var(--ink2);max-width:60ch;}
-.meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px;}
-.chip{font-family:'JetBrains Mono',monospace;font-size:12.5px;font-weight:700;border:2px solid var(--ink);border-radius:8px;padding:7px 12px;background:#fff;box-shadow:3px 3px 0 var(--ink);}
-.chip.b{background:var(--blue);color:#fff;border-color:var(--blue);}
-
-/* NAV */
-.toc{border-bottom:3px solid var(--ink);background:#fafafb;padding:16px 0;position:sticky;top:0;z-index:40;}
-.toc-in{display:flex;flex-wrap:wrap;gap:8px;}
-.toc a{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;border:2px solid var(--ink);border-radius:7px;padding:5px 10px;background:#fff;color:var(--ink);}
-.toc a:hover{background:var(--pop);}
-
-/* SECTIONS */
-.sec{padding:52px 0;border-bottom:1px solid var(--line);}
-.sec:last-of-type{border-bottom:none;}
-.eyebrow{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:10px;}
-.sec h2{font-size:clamp(26px,4vw,36px);margin-bottom:12px;}
-.lead{font-size:17px;color:var(--ink2);max-width:64ch;margin-bottom:26px;}
-.sec h3{font-size:19px;margin:30px 0 10px;}
-.sec p{margin-bottom:14px;max-width:68ch;}
-.sec ul,.sec ol{margin:0 0 16px 22px;max-width:68ch;}
-.sec li{margin-bottom:7px;}
-
-/* CODE */
-pre{background:var(--dark);color:#f4f4f6;border:2px solid var(--ink);border-radius:10px;padding:16px 18px;overflow-x:auto;font-family:'JetBrains Mono',monospace;font-size:13.5px;line-height:1.65;margin-bottom:16px;}
-code{font-family:'JetBrains Mono',monospace;font-size:.92em;background:var(--blue-soft);color:var(--blue-ink);padding:1px 6px;border-radius:5px;}
-pre code{background:none;color:inherit;padding:0;font-size:inherit;}
-
-/* PROMPT BLOCK */
-.prompt{border:3px solid var(--ink);border-radius:12px;box-shadow:5px 5px 0 var(--ink);margin-bottom:26px;overflow:hidden;background:#fff;}
-.prompt-head{display:flex;align-items:center;gap:12px;padding:13px 16px;border-bottom:3px solid var(--ink);background:var(--pop);}
-.prompt-n{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.06em;background:var(--ink);color:var(--pop);padding:4px 9px;border-radius:6px;}
-.prompt-t{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;margin-right:auto;}
-.copy{font-family:'JetBrains Mono',monospace;font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;border:2px solid var(--ink);background:#fff;color:var(--ink);padding:5px 11px;border-radius:7px;cursor:pointer;transition:background .15s;}
-.copy:hover{background:var(--ink);color:#fff;}
-.copy.ok{background:var(--blue);color:#fff;border-color:var(--blue);}
-.prompt pre{border:none;border-radius:0;margin:0;box-shadow:none;}
-.prompt-why{padding:14px 16px;border-top:2px dashed var(--line2);background:#fafafb;font-size:14.5px;color:var(--ink2);}
-.prompt-why strong{color:var(--ink);}
-
-/* TABLE */
-.tbl{width:100%;border-collapse:collapse;margin-bottom:18px;font-size:14.5px;border:2px solid var(--ink);}
-.tbl th{background:var(--ink);color:#fff;font-family:'Space Grotesk',sans-serif;font-size:13px;text-transform:uppercase;letter-spacing:.04em;text-align:left;padding:10px 12px;}
-.tbl td{border-top:1px solid var(--line);padding:11px 12px;vertical-align:top;}
-.tbl tr:nth-child(even) td{background:#fafafb;}
-/* El carril 4 son dos filas con una sola celda de carril. Si las raya el patrón
-   alterno, la pareja se parte justo donde el rowspan la está uniendo. */
-.tbl tr.l4 td{background:#fafafb;}
-.scroll{overflow-x:auto;margin-bottom:18px;}
-
-/* CARDS */
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin-bottom:20px;}
-.card{border:3px solid var(--ink);border-radius:12px;padding:18px;box-shadow:5px 5px 0 var(--ink);background:#fff;}
-.card h3{margin:0 0 8px;font-size:17px;}
-.card p{font-size:14.5px;color:var(--ink2);margin:0;}
-.card .k{font-family:'JetBrains Mono',monospace;font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--blue-ink);display:block;margin-bottom:6px;}
-
-/* GLOSSARY */
-.gl{border:3px solid var(--ink);border-radius:12px;overflow:hidden;box-shadow:5px 5px 0 var(--ink);margin-bottom:20px;}
-.gl-row{display:grid;grid-template-columns:190px 1fr;gap:0;border-bottom:1px solid var(--line);}
-.gl-row:last-child{border-bottom:none;}
-.gl-t{padding:14px 16px;background:var(--blue-soft);font-family:'JetBrains Mono',monospace;font-weight:700;font-size:13.5px;color:var(--blue-ink);border-right:2px solid var(--ink);}
-.gl-d{padding:14px 16px;font-size:14.5px;color:var(--ink2);}
-.gl-d strong{color:var(--ink);}
-@media(max-width:640px){.gl-row{grid-template-columns:1fr;}.gl-t{border-right:none;border-bottom:1px solid var(--line);}}
-
-/* RULE */
-.rule{border:3px solid var(--ink);border-left-width:12px;border-radius:10px;padding:18px 20px;margin-bottom:16px;background:#fff;box-shadow:5px 5px 0 var(--ink);}
-.rule h3{margin:0 0 8px;font-size:18px;}
-.rule p{margin:0;font-size:15px;color:var(--ink2);}
-.rule pre{margin:12px 0 0;}
-
-/* CALLOUT */
-.note{border-left:5px solid var(--blue);background:var(--blue-soft);padding:14px 18px;border-radius:0 10px 10px 0;margin-bottom:18px;font-size:15px;}
-.note strong{color:var(--blue-ink);}
-.warn{border-left:5px solid var(--ink);background:var(--pop);padding:14px 18px;border-radius:0 10px 10px 0;margin-bottom:18px;font-size:15px;}
-
-/* DOWNLOADS */
-.dl{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;}
-.dlc{border:3px solid var(--ink);border-radius:12px;padding:20px;box-shadow:5px 5px 0 var(--ink);background:#fff;display:flex;flex-direction:column;transition:transform .12s,box-shadow .12s;border-bottom:3px solid var(--ink);}
-.dlc:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--ink);border-bottom-color:var(--ink);}
-.dlc h3{margin:0 0 8px;font-size:17px;}
-.dlc p{font-size:14.5px;color:var(--ink2);margin:0 0 16px;flex-grow:1;}
-.dlc .go{font-family:'JetBrains Mono',monospace;font-size:12.5px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--blue-ink);}
-
-/* FOOTER */
-.foot{border-top:3px solid var(--ink);background:var(--dark);color:#c9cbd3;padding:34px 0;font-size:14.5px;}
-.foot a{color:var(--pop);border-bottom-color:rgba(255,212,0,.35);}
-.foot strong{color:#fff;}
-</style>
+<link rel="stylesheet" href="assets/kit.css">
 </head>
 <body>
 
 <div class="marq" aria-hidden="true">
   <div class="marq-track">
-    <span>· sesión 1 · pon un coding agent a trabajar</span><span>· gather → act → verify</span><span>· lunes 17 de agosto · 6:00 pm</span><span>· branch nuevo, sin auto-accept</span>
-    <span>· sesión 1 · pon un coding agent a trabajar</span><span>· gather → act → verify</span><span>· lunes 17 de agosto · 6:00 pm</span><span>· branch nuevo, sin auto-accept</span>
+    <span>· coding agents 101 · cuatro días · 17 al 20 de agosto · 6:00 pm </span><span>· coding agents 101 · cuatro días · 17 al 20 de agosto · 6:00 pm </span>
   </div>
 </div>
 
 <header class="hero">
   <div class="wrap">
-    <div class="tag">// coding agents 101 · sesión 1 de 4</div>
-    <h1>Pon un coding agent<br>a trabajar.</h1>
-    <p>Todo lo de esta noche en una página: los comandos, los prompts para copiar, y el glosario. Déjala abierta en otra pestaña.</p>
+    <div class="tag">// coding agents 101</div>
+    <h1>Cuatro días.</h1>
+    <p>Cada sesión tiene su página con los prompts de ese día. El kit tiene lo que no cambia: cómo instalar, el glosario y los archivos que te llevas.</p>
     <div class="meta">
-      <span class="chip">Lun 17 ago · 6:00 PM (GMT-4)</span>
-      <span class="chip">2 horas</span>
       <a class="chip b" href="https://meet.google.com/qxk-zffm-ojo">Entrar por Meet →</a>
+      <a class="chip" href="kit/">El kit</a>
+      <span class="chip">6:00 PM (GMT-4) · 2 horas cada una</span>
     </div>
   </div>
 </header>
 
-<nav class="toc">
-  <div class="wrap toc-in">
-    <a href="#instalar">Instalar</a>
-    <a href="#sin-terminal">Sin terminal</a>
-    <a href="#loop">El loop</a>
-    <a href="#capas">Las capas</a>
-    <a href="#glosario">Glosario</a>
-    <a href="#reglas">Las 2 reglas</a>
-    <a href="#prompts">Los prompts</a>
-    <a href="#repo">Repo de ejemplo</a>
-    <a href="#descargas">Descargas</a>
-  </div>
-</nav>
-
 <main>
 
-<!-- INSTALAR -->
-<section class="sec" id="instalar">
+<section class="sec" id="dias">
   <div class="wrap">
-    <div class="eyebrow">// paso cero</div>
-    <h2>Instala uno solo.</h2>
-    <p class="lead">Esta noche vemos varias herramientas por dentro, pero tú trabajas con una. Escoge por lo que ya tienes. El loop que aprendes hoy funciona igual en todas.</p>
+    <div class="eyebrow">// las sesiones</div>
+    <h2>Los cuatro días.</h2>
+    <p class="lead">Cada una se abre el día que toca. Si te pierdes una, la grabación te llega igual y la página se queda aquí.</p>
 
-    <div class="scroll">
-    <table class="tbl">
-      <thead><tr><th>Carril</th><th>Herramienta</th><th>Instalar</th><th>Entrar</th></tr></thead>
-      <tbody>
-        <tr>
-          <td><strong>1</strong><br>si pagas Claude</td>
-          <td><strong>Claude Code</strong><br><code>claude</code></td>
-          <td><code>curl -fsSL https://claude.ai/install.sh | bash</code></td>
-          <td>Escribe <code>claude</code><br>y entra por el browser</td>
-        </tr>
-        <tr>
-          <td><strong>2</strong><br>no pago</td>
-          <td><strong>Antigravity CLI</strong><br><code>agy</code></td>
-          <td><code>curl -fsSL https://antigravity.google/cli/install.sh | bash</code></td>
-          <td>Cuenta de Google<br>en el browser</td>
-        </tr>
-        <tr>
-          <td><strong>3</strong><br>si pagas ChatGPT</td>
-          <td><strong>Codex CLI</strong><br><code>codex</code></td>
-          <td><code>npm i -g @openai/codex</code></td>
-          <td>Sign in with ChatGPT</td>
-        </tr>
-        <tr class="l4">
-          <td rowspan="2"><strong>4</strong><br>si ya tienes API keys<br><span style="color:var(--muted);">escoge cualquiera<br>de las dos</span></td>
-          <td><strong>opencode</strong><br><code>opencode</code></td>
-          <td><code>curl -fsSL https://opencode.ai/install | bash</code></td>
-          <td><code>/connect</code> <strong>dentro</strong> del TUI</td>
-        </tr>
-        <tr class="l4">
-          <td><strong>Pi</strong><br><code>pi</code></td>
-          <td><code>npm i -g @earendil-works/pi-coding-agent</code></td>
-          <td><code>/login</code> <strong>dentro</strong> del TUI</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="days">
+      <a class="day" href="dia-1/" data-fecha="2026-08-17">
+        <div class="n"><span>Día 1 · lun 17 ago</span></div>
+        <h3>Pon un coding agent a trabajar</h3>
+        <p>El loop que corren todos: gather, act, verify. Lo instalamos y lo ponemos a hacer algo real en tu propio repo.</p>
+        <div class="out">Sales con: un agent corriendo en tu repo, haciendo algo útil.</div>
+      </a>
+
+      <a class="day" href="dia-2/" data-fecha="2026-08-18">
+        <div class="n"><span>Día 2 · mar 18 ago</span></div>
+        <h3>Context</h3>
+        <p>Por qué no leyó los archivos que tú creías. Escribes tu primer AGENTS.md y el agent deja de adivinar tus convenciones.</p>
+        <div class="out">Sales con: un AGENTS.md que el agent obedece a la vista.</div>
+      </a>
+
+      <a class="day" href="dia-3/" data-fecha="2026-08-19">
+        <div class="n"><span>Día 3 · mié 19 ago</span></div>
+        <h3>Revisar de verdad</h3>
+        <p>La habilidad no es escribir el prompt, es leer lo que te devolvió y empujarlo de vuelta. Revisamos un cambio en vivo y mergeamos la parte buena.</p>
+        <div class="out">Sales con: tu primer cambio hecho por un agent, revisado y mergeado.</div>
+      </a>
+
+      <a class="day" href="dia-4/" data-fecha="2026-08-20">
+        <div class="n"><span>Día 4 · jue 20 ago</span></div>
+        <h3>Que quede</h3>
+        <p>Conviertes lo de esta semana en algo reutilizable, y ves dónde un agent es la herramienta equivocada. Después, preguntas abiertas.</p>
+        <div class="out">Sales con: un workflow tuyo, y una idea clara de los límites.</div>
+      </a>
     </div>
 
-    <div class="warn"><strong>Si tenías Gemini CLI:</strong> Google lo apagó el 18 de junio de 2026. Lo reemplazó Antigravity CLI, que es otro binario (<code>agy</code>), otro instalador y otra configuración. El comando viejo ya no responde.</div>
-
-    <h3>¿No te llevas bien con el terminal?</h3>
-
-    <p>Casi todos estos agents tienen una versión con ventanas y mouse. <strong>Es el mismo agent y el mismo loop, con otra piel.</strong> No es un carril aparte: es tu mismo carril, entrando por otra puerta.</p>
-
-    <div class="scroll">
-    <table class="tbl">
-      <thead><tr><th>Tu carril</th><th>Con mouse</th><th>Dónde</th></tr></thead>
-      <tbody>
-        <tr>
-          <td><strong>1</strong> Claude Code</td>
-          <td>Claude Code, app de escritorio</td>
-          <td><a href="https://claude.com/download">claude.com/download</a><br>macOS, Windows y Linux</td>
-        </tr>
-        <tr>
-          <td><strong>2</strong> Antigravity</td>
-          <td>Antigravity IDE</td>
-          <td><a href="https://antigravity.google/download">antigravity.google/download</a><br>gratis, y aquí también es el carril sin pagar</td>
-        </tr>
-        <tr>
-          <td><strong>3</strong> Codex</td>
-          <td>La app de escritorio de ChatGPT, o la extensión de Codex para VS Code y JetBrains</td>
-          <td>No hay descarga suelta de "Codex": entra por ChatGPT o por tu editor</td>
-        </tr>
-        <tr>
-          <td><strong>4</strong> opencode</td>
-          <td>Interfaz web, servida por el mismo binario</td>
-          <td><code>opencode web</code></td>
-        </tr>
-      </tbody>
-    </table>
-    </div>
-
-    <h3 id="sin-terminal">Si el terminal no es lo tuyo, lee esto</h3>
-
-    <p>Se puede hacer la sesión completa sin escribir un solo comando. No es una versión recortada: haces la misma tarea, con los mismos prompts, y sales con lo mismo. Cambia por dónde entras.</p>
-
-    <p><strong>El camino es Antigravity IDE.</strong> Se instala con doble clic como cualquier programa, es gratis y no pide tarjeta. Los otros carriles se instalan pegando comandos en una terminal, que es justo lo que quieres evitar.</p>
-
-    <ol>
-      <li><strong>Descarga el IDE</strong> desde <a href="https://antigravity.google/download">antigravity.google/download</a> y ábrelo. Entras con tu cuenta de Google.</li>
-      <li><strong>Baja el proyecto de práctica sin usar git:</strong> <a href="https://github.com/eonoe/coding-agents-101/archive/refs/heads/main.zip">descarga el ZIP</a>, descomprímelo, y en el IDE abre la carpeta <code>coding-agents-101/example</code>.</li>
-      <li><strong>Pégale los tres prompts</strong> igual que todo el mundo. Son los mismos.</li>
-    </ol>
-
-    <p>Si prefieres trabajar en un proyecto tuyo y ya lo tienes en la computadora, ábrelo directamente y sáltate el paso 2.</p>
-
-    <h3>Y los comandos de git, ¿qué?</h3>
-
-    <p>En la hora 2 hay tres momentos de git: crear el branch, ver qué archivos cambiaron, y ver el diff. <strong>No los escribes tú. Se los pides al agent.</strong></p>
-
-    <div class="prompt">
-      <div class="prompt-head">
-        <span class="prompt-n">git</span>
-        <span class="prompt-t">Sin tocar el terminal</span>
-        <button class="copy" type="button">Copiar</button>
-      </div>
-<pre><code>Antes de tocar nada, crea un branch nuevo llamado agente-sesion-1.
-Cuando termines el trabajo, enséñame qué archivos cambiaste y el diff
-de cada uno.</code></pre>
-      <div class="prompt-why">Te va a pedir permiso para correr los comandos. <strong>Dale que sí y míralo hacerlo.</strong> Eso que estás aprobando es la tool de Bash, y verla trabajar es literalmente el tema de la noche. Terminas entendiendo el loop mejor que quien lo escribió a mano.</div>
-    </div>
-
-    <p>Si abriste el proyecto de práctica desde el ZIP, ni el branch hace falta: es una copia tuya, desechable. Bórrala y bájala otra vez si algo sale mal.</p>
-
-    <h3>Dos cosas que confunden a todo el mundo</h3>
-
-    <p><strong>El instalador de <code>agy</code> imprime líneas que dicen <code>ERROR</code> y no son errores.</strong> Vas a ver algo así:</p>
-<pre><code>ERROR: logging before google.Init: I0815 ... Appending PATH export to profile ...</code></pre>
-    <p>Son mensajes informativos con la etiqueta mal puesta. Si al final ves <code>✅ Antigravity CLI installed successfully</code>, quedó bien. Si después escribes <code>agy</code> y no aparece, cierra la terminal y ábrela de nuevo: el instalador cambió tu PATH.</p>
-
-    <p><strong>Los "modelos gratis" de opencode no funcionan recién instalado.</strong> El instalador dice que incluye modelos gratis y <code>opencode models</code> lista varios con <code>-free</code> en el nombre, pero si intentas usarlos te dice <code>Model ... is not supported</code>. Primero hay que hacer <code>/connect</code> dentro del TUI, y eso pide cuenta y datos de facturación.</p>
-
-    <p>Lo mismo aplica para Pi: es <em>bring your own key</em> por diseño, así que sin una key de algún proveedor no arranca. <strong>El carril 4 completo asume que ya tienes con qué pagarle a un modelo. Si no, ve por el carril 2.</strong></p>
-
-    <h3>La prueba de fuego</h3>
-    <p>Abre tu agent dentro de la carpeta de un proyecto y pídele que te explique un archivo. Si te contesta, estás listo.</p>
+    <div class="note"><strong>¿Primera vez aquí?</strong> Empieza por <a href="kit/">el kit</a>: ahí está cómo instalar tu agent, qué significa cada palabra, y el camino sin terminal si la línea de comandos no es lo tuyo.</div>
   </div>
 </section>
 
-<!-- LOOP -->
-<section class="sec" id="loop">
+<section class="sec" id="kit">
   <div class="wrap">
-    <div class="eyebrow">// la idea de la noche</div>
-    <h2>Autocomplete predice. Un agent corre un loop.</h2>
-    <p class="lead">Esa es la diferencia completa, y es la razón de que se trabaje distinto. Todo lo demás de estas cuatro sesiones cuelga de aquí.</p>
+    <div class="eyebrow">// lo que no cambia</div>
+    <h2>El kit.</h2>
+    <p class="lead">Una sola página para los cuatro días. Si algo no depende de la sesión de hoy, vive aquí.</p>
 
     <div class="grid">
       <div class="card">
-        <span class="k">01 · gather</span>
-        <h3>Junta contexto</h3>
-        <p>Lee archivos, busca, corre comandos para entender dónde está parado. Lo que <em>no</em> lee es lo que después te va a costar caro.</p>
+        <span class="k">instalar</span>
+        <h3>Los carriles</h3>
+        <p>Claude Code, Antigravity, Codex, opencode o Pi. Escoges uno según lo que ya pagues, con el comando exacto de cada uno.</p>
       </div>
       <div class="card">
-        <span class="k">02 · act</span>
-        <h3>Actúa</h3>
-        <p>Escribe, edita, ejecuta. Aquí es donde te pide permiso, y donde tú decides qué tanto lo dejas hacer solo.</p>
+        <span class="k">sin terminal</span>
+        <h3>El camino con mouse</h3>
+        <p>La sesión completa sin escribir un comando. Mismo ejercicio, mismos prompts, mismo resultado.</p>
       </div>
       <div class="card">
-        <span class="k">03 · verify</span>
-        <h3>Verifica</h3>
-        <p>Corre lo que escribió y revisa si funcionó. Es el paso que se salta él, y el que te saltas tú.</p>
+        <span class="k">glosario</span>
+        <h3>Las palabras</h3>
+        <p>Context, tools, session, permission mode, plan mode. Solo las que cambian lo que escribes.</p>
+      </div>
+      <div class="card">
+        <span class="k">descargas</span>
+        <h3>Lo que te llevas</h3>
+        <p>La plantilla de AGENTS.md, el checklist de revisión y los prompts que vale la pena guardar.</p>
       </div>
     </div>
 
-    <div class="note"><strong>Cuando algo sale mal, el diagnóstico empieza aquí:</strong> ¿falló el gather (no leyó lo que necesitaba), el act (leyó bien pero hizo mal), o el verify (hizo mal y no se dio cuenta)? Casi siempre es el gather. Eso es la sesión 2.</div>
-  </div>
-</section>
-
-<!-- CAPAS -->
-<section class="sec" id="capas">
-  <div class="wrap">
-    <div class="eyebrow">// por qué hay tantas herramientas</div>
-    <h2>Cuatro capas que se pueden mezclar.</h2>
-    <p class="lead">La confusión con los nombres se acaba cuando ves que son capas distintas, no competidores. Casi todo lo que parece una decisión enorme es solo escoger en una capa.</p>
-
-<pre><code>lab        →   Anthropic · OpenAI · Google
-model      →   Opus · GPT · Gemini
-agent      →   el loop + las tools
-interface  →   terminal · GUI · IDE</code></pre>
-
-    <p>Un mismo <strong>model</strong> corre dentro de <strong>agents</strong> distintos. Un mismo <strong>agent</strong> se usa desde <strong>interfaces</strong> distintas. <code>opencode</code> es el ejemplo más claro: es un agent que corre models de varios labs, así que cambiar de model no te obliga a cambiar de herramienta.</p>
-
-    <p><strong>Lo que aprendes hoy vive en la capa del agent</strong>, que es la que no cambia cuando cambias de proveedor. Por eso vale la pena aprenderla bien una vez.</p>
-
-    <h3>Las cinco preguntas para cualquier herramienta nueva</h3>
-    <p>Cuando te sientes frente a un agent que no conoces, esto te ubica en dos minutos:</p>
-    <ol>
-      <li>¿Dónde escribo?</li>
-      <li>¿Dónde veo lo que está haciendo?</li>
-      <li>¿Dónde me pide permiso?</li>
-      <li>¿Dónde veo el diff?</li>
-      <li>¿Cómo lo reseteo?</li>
-    </ol>
-  </div>
-</section>
-
-<!-- GLOSARIO -->
-<section class="sec" id="glosario">
-  <div class="wrap">
-    <div class="eyebrow">// vocabulario</div>
-    <h2>Con siete palabras te alcanza.</h2>
-    <p class="lead">Son las que cambian lo que escribes. El resto del vocabulario lo vamos agregando cuando haga falta.</p>
-
-    <div class="gl">
-      <div class="gl-row"><div class="gl-t">agent</div><div class="gl-d">Un programa que corre el loop <strong>gather → act → verify</strong> con herramientas de verdad. No es un chat que escribe código: lee tus archivos y corre comandos.</div></div>
-      <div class="gl-row"><div class="gl-t">context</div><div class="gl-d"><strong>Lo que el agent puede ver en este momento.</strong> No es lo que hay en tu repo: es lo que leyó. La distancia entre esas dos cosas explica casi todas las respuestas malas.</div></div>
-      <div class="gl-row"><div class="gl-t">model</div><div class="gl-d">El cerebro. Se puede cambiar. Hoy el que viene por defecto está bien; no gastes la sesión escogiendo.</div></div>
-      <div class="gl-row"><div class="gl-t">tools</div><div class="gl-d">Lo que el agent puede hacer además de escribir texto: <strong>Read, Edit, Bash, Search</strong>. Por eso te pide permiso: algunas tocan tu disco.</div></div>
-      <div class="gl-row"><div class="gl-t">permission mode</div><div class="gl-d">Qué puede hacer sin preguntarte. Va desde preguntar todo hasta no preguntar nada. <strong>Hoy: se pregunta todo.</strong></div></div>
-      <div class="gl-row"><div class="gl-t">session</div><div class="gl-d">La conversación en curso, con todo lo que lleva acumulado. Cuando se enreda, no discutas con él: <strong>resetea y empieza de nuevo</strong> diciéndole qué leer.</div></div>
-      <div class="gl-row"><div class="gl-t">plan mode</div><div class="gl-d">Un modo donde solo lee y propone, sin tocar nada. Si te da nervios soltarlo en un repo que importa, empieza aquí.</div></div>
-    </div>
-
-    <div class="note"><strong>Parking lot.</strong> <code>context window</code>, <code>tokens</code>, <code>MCP</code>, <code>subagents</code> y <code>hooks</code> son reales y sirven, pero hoy no cambian nada de lo que vas a escribir. Context window y tokens los vemos <strong>mañana</strong>, cuando ya los hayas sentido. MCP y subagents, en la <strong>sesión 4</strong>.</div>
-  </div>
-</section>
-
-<!-- REGLAS -->
-<section class="sec" id="reglas">
-  <div class="wrap">
-    <div class="eyebrow">// antes de tocar tu repo</div>
-    <h2>Dos reglas, esta noche sin excepción.</h2>
-
-    <div class="rule">
-      <h3>1 · Branch nuevo</h3>
-      <p>Convierte cualquier desastre posible en un no-evento. Si algo sale mal: <code>git checkout .</code> y no perdiste nada.</p>
-<pre><code>git checkout -b agente-sesion-1</code></pre>
-      <p style="margin-top:12px;font-size:14.5px;">¿No usas terminal? Pídeselo al agent con la frase de <a href="#sin-terminal">esta sección</a>, o trabaja sobre el ZIP del proyecto de práctica, que ya es una copia desechable.</p>
-    </div>
-
-    <div class="rule">
-      <h3>2 · Nada de auto-accept</h3>
-      <p>Lee cada permission prompt antes de aprobarlo, aunque te dé lentitud. El punto de hoy es <em>ver</em> el loop, y auto-accept es exactamente lo que lo esconde. A partir de mañana decides tú.</p>
-    </div>
-  </div>
-</section>
-
-<!-- PROMPTS -->
-<section class="sec" id="prompts">
-  <div class="wrap">
-    <div class="eyebrow">// hora 2 · copia y pega</div>
-    <h2>Tres prompts, no uno.</h2>
-    <p class="lead">Un prompt grande te devuelve una caja negra. Tres te dejan ver el loop y revisar cada paso por separado. Córrelos en orden, en tu repo, en el branch nuevo.</p>
-
-    <div class="prompt">
-      <div class="prompt-head">
-        <span class="prompt-n">P1</span>
-        <span class="prompt-t">Gather — que lea antes de tocar</span>
-        <button class="copy" type="button">Copiar</button>
-      </div>
-<pre><code>Explora este repositorio sin modificar nada.
-
-Explícame:
-1. Qué hace este proyecto, en 3 frases.
-2. Cuál es el punto de entrada y cómo se ejecuta localmente.
-3. Los 5 archivos o carpetas más importantes, y para qué sirve cada uno.
-4. Una cosa que te parezca confusa, inconsistente o mal documentada.
-
-No escribas ni modifiques ningún archivo todavía.
-Al final, dime exactamente qué archivos leíste para responder esto.</code></pre>
-      <div class="prompt-why"><strong>La última línea es la mitad del valor.</strong> Te muestra qué entró al context y, sobre todo, qué <em>no</em> leyó. Si contestó sin abrir los archivos que importan, ya sabes por qué la respuesta suena genérica.</div>
-    </div>
-
-    <div class="prompt">
-      <div class="prompt-head">
-        <span class="prompt-n">P2</span>
-        <span class="prompt-t">Act — que escriba, con la duda a la vista</span>
-        <button class="copy" type="button">Copiar</button>
-      </div>
-<pre><code>Ahora escribe un archivo nuevo llamado ONBOARDING.md en la raíz del repo.
-
-Audiencia: una persona senior que entra al equipo el lunes y nunca vio
-este código.
-Incluye: qué hace el proyecto, cómo levantarlo paso a paso, la estructura
-de carpetas, y las 3 cosas que más confunden a alguien nuevo aquí.
-
-Reglas:
-- Solo afirma cosas que puedas verificar leyendo el repo.
-- Si no estás seguro de algo, ponlo bajo una sección "## Sin confirmar"
-  en vez de inventarlo.
-- No modifiques ningún otro archivo.</code></pre>
-      <div class="prompt-why"><strong>La sección <code>## Sin confirmar</code> no evita que invente: hace visible lo que inventó.</strong> Es la diferencia entre un error que encuentras hoy y uno que encuentras en producción.</div>
-    </div>
-
-    <div class="prompt">
-      <div class="prompt-head">
-        <span class="prompt-n">P3</span>
-        <span class="prompt-t">Verify — que se revise como si no fuera suyo</span>
-        <button class="copy" type="button">Copiar</button>
-      </div>
-<pre><code>Revisa el ONBOARDING.md que acabas de escribir como si fueras un reviewer
-hostil. Para cada afirmación, busca en el repo la evidencia que la respalda
-y cítame archivo y línea. Lístame todo lo que NO puedas respaldar con
-evidencia.</code></pre>
-      <div class="prompt-why"><strong>Y después la parte que te toca a ti.</strong> Corre <code>git status</code> y <code>git diff --stat</code>, lee la sección <code>## Sin confirmar</code>, y <strong>ejecuta un comando del setup que escribió</strong>. Si el comando no corre, ahí está tu primer error.<br><br>Sin terminal: pídele <em>"enséñame qué archivos cambiaste y el diff de cada uno, y corre el primer comando del setup que escribiste"</em>. Apruébale los permisos y lee la salida. Llegas al mismo sitio.</div>
-    </div>
-
-    <div class="warn"><strong>Lo que reportas al final:</strong> una cosa que el agent afirmó y que está mal. Una sola. Todo el mundo encuentra una, y eso es justo lo que queremos ver.</div>
-
-    <h3 id="mas-fondo">¿Ya llevas rato usando agents?</h3>
-
-    <p>Si los tres de arriba se te hacen cortos, haz este en vez del P2. Mismo loop, más filo: en vez de escribir un documento, el agent cambia código de verdad, y <strong>tú decides el alcance antes de que toque nada</strong>.</p>
-
-    <div class="prompt">
-      <div class="prompt-head">
-        <span class="prompt-n">B1</span>
-        <span class="prompt-t">Que proponga — tú escoges</span>
-        <button class="copy" type="button">Copiar</button>
-      </div>
-<pre><code>Sin escribir código todavía: lístame 3 cambios chicos y concretos que
-mejorarían este repo. Cada uno tiene que cumplir:
-(a) tocar como máximo 2 archivos,
-(b) que yo pueda verificar que funciona corriendo un comando,
-(c) que no cambie el comportamiento público.
-
-Para cada uno dime qué archivos tocarías y qué comando correría yo
-para verificar.</code></pre>
-      <div class="prompt-why">Las tres restricciones son el prompt. Sin ellas, "mejora este repo" te devuelve un refactor de 900 líneas que no vas a revisar y vas a mergear igual.</div>
-    </div>
-
-    <div class="prompt">
-      <div class="prompt-head">
-        <span class="prompt-n">B2</span>
-        <span class="prompt-t">Que ejecute el que tú escogiste</span>
-        <button class="copy" type="button">Copiar</button>
-      </div>
-<pre><code>Haz el número 2. Cuando termines, dime exactamente qué comando tengo
-que correr para verificar que funciona, y qué debería ver si está bien.</code></pre>
-      <div class="prompt-why">Después le corres el <strong>P3</strong> igual que todo el mundo, y lees el diff línea por línea. Aquí sí importa: es código que se ejecuta, no prosa.</div>
-    </div>
-
-    <p>Reportas lo mismo que los demás: una cosa que hizo mal. En este camino suele estar escondida en un caso borde que el agent no probó.</p>
-  </div>
-</section>
-
-<!-- REPO -->
-<section class="sec" id="repo">
-  <div class="wrap">
-    <div class="eyebrow">// si no traes repo</div>
-    <h2>Usa este.</h2>
-    <p class="lead">Si tu código es de tu empresa y no quieres mandarlo a un tercero, o no quieres compartir pantalla con él, trabaja aquí. Es una decisión profesional correcta, no una excusa.</p>
-
-    <p><strong>Con terminal:</strong></p>
-<pre><code>git clone https://github.com/eonoe/coding-agents-101
-cd coding-agents-101/example
-git checkout -b agente-sesion-1</code></pre>
-
-    <p><strong>Sin terminal:</strong> <a href="https://github.com/eonoe/coding-agents-101/archive/refs/heads/main.zip">descarga el ZIP</a>, descomprímelo, y abre la carpeta <code>coding-agents-101/example</code> en tu IDE. No necesitas git ni branch: es una copia tuya. Si algo sale mal, la borras y la bajas otra vez.</p>
-
-    <div class="warn"><strong>Abre el agent dentro de <code>example/</code>, no en la raíz del repo.</strong> Si lo abres afuera va a leer los materiales del workshop en vez del proyecto, y el ejercicio pierde la gracia.</div>
-
-    <p>Es un CLI chiquito que divide los gastos de un viaje entre varias personas. Corre con <code>node index.js</code>, no necesita instalar nada, y tiene los problemas que tiene cualquier proyecto real al que nadie le ha dado cariño en un tiempo.</p>
-  </div>
-</section>
-
-<!-- DESCARGAS -->
-<section class="sec" id="descargas">
-  <div class="wrap">
-    <div class="eyebrow">// te los llevas</div>
-    <h2>Los archivos que sí vas a reutilizar.</h2>
-    <p class="lead">Los archivos que vas a abrir en el próximo proyecto. Tuyos, vengas o no a las otras tres sesiones.</p>
-
-    <div class="dl">
-      <a class="dlc" href="files/AGENTS.md">
-        <h3>AGENTS.md — plantilla</h3>
-        <p>La llenas para tu proyecto y el agent empieza cada sesión sabiendo tus reglas. La trabajamos a fondo mañana.</p>
-        <span class="go">Abrir →</span>
-      </a>
-      <a class="dlc" href="files/revision.md">
-        <h3>Checklist de revisión</h3>
-        <p>Qué buscar cuando lees lo que escribió un agent. Seis pases, en orden, y los tres primeros atrapan casi todo.</p>
-        <span class="go">Abrir →</span>
-      </a>
-      <a class="dlc" href="files/prompts.md">
-        <h3>Prompts que se guardan</h3>
-        <p>Los pocos que de verdad terminas usando todas las semanas.</p>
-        <span class="go">Abrir →</span>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- TAREA -->
-<section class="sec" id="tarea">
-  <div class="wrap">
-    <div class="eyebrow">// para mañana</div>
-    <h2>Una sola cosa.</h2>
-    <p class="lead">Corre el <strong>P1</strong> en un repo distinto al de hoy, ojalá uno más grande y más feo. Fíjate en la lista de archivos que dice que leyó.</p>
-    <p>Llega mañana con esa lista. La sesión 2 es sobre por qué esa lista casi nunca es la que tú esperabas, y qué hacer al respecto.</p>
+    <p><a class="btn btn-pop btn-sm" href="kit/">Abrir el kit →</a></p>
   </div>
 </section>
 
@@ -548,40 +111,35 @@ git checkout -b agente-sesion-1</code></pre>
 
 <footer class="foot">
   <div class="wrap">
-    <p><strong>Coding Agents 101</strong> — sesión 1 de 4 · lunes 17 de agosto, 6:00 PM (GMT-4)</p>
+    <p><strong>Coding Agents 101</strong> — cuatro sesiones en vivo · 17 al 20 de agosto, 6:00 PM (GMT-4)</p>
     <p>Meet: <a href="https://meet.google.com/qxk-zffm-ojo">meet.google.com/qxk-zffm-ojo</a>, el mismo link sirve para las cuatro. Conéctate 5 minutos antes.</p>
-    <p style="margin-top:14px;">Grabamos todo. Si te pierdes una, te llega igual. · <a href="https://eonoe.github.io/">Volver al workshop</a></p>
+    <p style="margin-top:14px;">Grabamos todo. Si te pierdes una, te llega igual. · <a href="https://eonoe.github.io/">El workshop</a></p>
   </div>
 </footer>
 
 <script>
-document.querySelectorAll('.copy').forEach(function(btn){
-  btn.addEventListener('click', function(){
-    var pre = btn.closest('.prompt').querySelector('pre');
-    var texto = pre.innerText;
-    function ok(){
-      btn.textContent = 'Copiado';
-      btn.classList.add('ok');
-      setTimeout(function(){ btn.textContent = 'Copiar'; btn.classList.remove('ok'); }, 1600);
-    }
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(texto).then(ok, fallback);
+// Marca el día de hoy y apaga las que ya pasaron. Comparamos por fecha local
+// en texto (no por timestamp) para no pelear con la zona horaria de cada quien:
+// lo que importa es qué día es donde está la persona, no el offset exacto.
+(function(){
+  var hoy = new Date();
+  var hoyStr = hoy.getFullYear() + '-' +
+    String(hoy.getMonth() + 1).padStart(2, '0') + '-' +
+    String(hoy.getDate()).padStart(2, '0');
+
+  document.querySelectorAll('.day').forEach(function(card){
+    var fecha = card.dataset.fecha;
+    var n = card.querySelector('.n');
+    if (fecha === hoyStr) {
+      card.classList.add('hoy');
+      n.insertAdjacentHTML('beforeend', '<span class="badge-hoy">hoy</span>');
+    } else if (fecha < hoyStr) {
+      card.classList.add('pasado');
     } else {
-      fallback();
-    }
-    // Safari y navegadores sin permiso de portapapeles: seleccionamos el texto
-    // para que un Cmd-C manual funcione igual.
-    function fallback(){
-      var rango = document.createRange();
-      rango.selectNodeContents(pre);
-      var sel = window.getSelection();
-      sel.removeAllRanges();
-      sel.addRange(rango);
-      btn.textContent = 'Cmd-C';
-      setTimeout(function(){ btn.textContent = 'Copiar'; }, 2400);
+      n.insertAdjacentHTML('beforeend', '<span class="badge-pronto">pronto</span>');
     }
   });
-});
+})();
 </script>
 
 </body>

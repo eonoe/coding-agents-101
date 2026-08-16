@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Día 1 — Pon un coding agent a trabajar</title>
+<meta name="description" content="Sesión 1 de Coding Agents 101: el loop, las reglas y los prompts de la noche.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23ffd400'/%3E%3Ctext x='16' y='21' font-family='monospace' font-size='14' font-weight='700' text-anchor='middle' fill='%230b0b10'%3ETL%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/kit.css">
+</head>
+<body>
+<div class="marq" aria-hidden="true">
+  <div class="marq-track">
+    <span>· día 1 · pon un coding agent a trabajar · gather → act → verify · branch nuevo, sin auto-accept </span><span>· día 1 · pon un coding agent a trabajar · gather → act → verify · branch nuevo, sin auto-accept </span>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="tag">// día 1 de 4 · lunes 17 de agosto</div>
+    <h1>Pon un coding agent<br>a trabajar.</h1>
+    <p>Lo de esta noche en una página: el loop, las dos reglas y los prompts para copiar. Déjala abierta en otra pestaña.</p>
+    <div class="meta">
+      <span class="chip">6:00 PM (GMT-4) · 2 horas</span>
+      <a class="chip b" href="https://meet.google.com/qxk-zffm-ojo">Entrar por Meet →</a>
+      <a class="chip" href="../kit/">¿Todavía no instalas? → El kit</a>
+    </div>
+  </div>
+</header>
+
+<nav class="toc">
+  <div class="wrap toc-in">
+    <a href="#loop">El loop</a>
+    <a href="#capas">Las capas</a>
+    <a href="#reglas">Las 2 reglas</a>
+    <a href="#prompts">Los prompts</a>
+    <a href="#tarea">Para mañana</a>
+    <a href="../kit/">El kit</a>
+  </div>
+</nav>
+
+<main>
+<!-- LOOP -->
+<section class="sec" id="loop">
+  <div class="wrap">
+    <div class="eyebrow">// la idea de la noche</div>
+    <h2>Autocomplete predice. Un agent corre un loop.</h2>
+    <p class="lead">Esa es la diferencia completa, y es la razón de que se trabaje distinto. Todo lo demás de estas cuatro sesiones cuelga de aquí.</p>
+
+    <div class="grid">
+      <div class="card">
+        <span class="k">01 · gather</span>
+        <h3>Junta contexto</h3>
+        <p>Lee archivos, busca, corre comandos para entender dónde está parado. Lo que <em>no</em> lee es lo que después te va a costar caro.</p>
+      </div>
+      <div class="card">
+        <span class="k">02 · act</span>
+        <h3>Actúa</h3>
+        <p>Escribe, edita, ejecuta. Aquí es donde te pide permiso, y donde tú decides qué tanto lo dejas hacer solo.</p>
+      </div>
+      <div class="card">
+        <span class="k">03 · verify</span>
+        <h3>Verifica</h3>
+        <p>Corre lo que escribió y revisa si funcionó. Es el paso que se salta él, y el que te saltas tú.</p>
+      </div>
+    </div>
+
+    <div class="note"><strong>Cuando algo sale mal, el diagnóstico empieza aquí:</strong> ¿falló el gather (no leyó lo que necesitaba), el act (leyó bien pero hizo mal), o el verify (hizo mal y no se dio cuenta)? Casi siempre es el gather. Eso es la sesión 2.</div>
+  </div>
+</section>
+
+<!-- CAPAS -->
+<section class="sec" id="capas">
+  <div class="wrap">
+    <div class="eyebrow">// por qué hay tantas herramientas</div>
+    <h2>Cuatro capas que se pueden mezclar.</h2>
+    <p class="lead">La confusión con los nombres se acaba cuando ves que son capas distintas, no competidores. Casi todo lo que parece una decisión enorme es solo escoger en una capa.</p>
+
+<pre><code>lab        →   Anthropic · OpenAI · Google
+model      →   Opus · GPT · Gemini
+agent      →   el loop + las tools
+interface  →   terminal · GUI · IDE</code></pre>
+
+    <p>Un mismo <strong>model</strong> corre dentro de <strong>agents</strong> distintos. Un mismo <strong>agent</strong> se usa desde <strong>interfaces</strong> distintas. <code>opencode</code> es el ejemplo más claro: es un agent que corre models de varios labs, así que cambiar de model no te obliga a cambiar de herramienta.</p>
+
+    <p><strong>Lo que aprendes hoy vive en la capa del agent</strong>, que es la que no cambia cuando cambias de proveedor. Por eso vale la pena aprenderla bien una vez.</p>
+
+    <h3>Las cinco preguntas para cualquier herramienta nueva</h3>
+    <p>Cuando te sientes frente a un agent que no conoces, esto te ubica en dos minutos:</p>
+    <ol>
+      <li>¿Dónde escribo?</li>
+      <li>¿Dónde veo lo que está haciendo?</li>
+      <li>¿Dónde me pide permiso?</li>
+      <li>¿Dónde veo el diff?</li>
+      <li>¿Cómo lo reseteo?</li>
+    </ol>
+  </div>
+</section>
+
+<!-- REGLAS -->
+<section class="sec" id="reglas">
+  <div class="wrap">
+    <div class="eyebrow">// antes de tocar tu repo</div>
+    <h2>Dos reglas, esta noche sin excepción.</h2>
+
+    <div class="rule">
+      <h3>1 · Branch nuevo</h3>
+      <p>Convierte cualquier desastre posible en un no-evento. Si algo sale mal: <code>git checkout .</code> y no perdiste nada.</p>
+<pre><code>git checkout -b agente-sesion-1</code></pre>
+      <p style="margin-top:12px;font-size:14.5px;">¿No usas terminal? Pídeselo al agent con la frase de <a href="../kit/#sin-terminal">esta sección</a>, o trabaja sobre el ZIP del proyecto de práctica, que ya es una copia desechable.</p>
+    </div>
+
+    <div class="rule">
+      <h3>2 · Nada de auto-accept</h3>
+      <p>Lee cada permission prompt antes de aprobarlo, aunque te dé lentitud. El punto de hoy es <em>ver</em> el loop, y auto-accept es exactamente lo que lo esconde. A partir de mañana decides tú.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROMPTS -->
+<section class="sec" id="prompts">
+  <div class="wrap">
+    <div class="eyebrow">// hora 2 · copia y pega</div>
+    <h2>Tres prompts, no uno.</h2>
+    <p class="lead">Un prompt grande te devuelve una caja negra. Tres te dejan ver el loop y revisar cada paso por separado. Córrelos en orden, en tu repo, en el branch nuevo.</p>
+
+    <div class="prompt">
+      <div class="prompt-head">
+        <span class="prompt-n">P1</span>
+        <span class="prompt-t">Gather — que lea antes de tocar</span>
+        <button class="copy" type="button">Copiar</button>
+      </div>
+<pre><code>Explora este repositorio sin modificar nada.
+
+Explícame:
+1. Qué hace este proyecto, en 3 frases.
+2. Cuál es el punto de entrada y cómo se ejecuta localmente.
+3. Los 5 archivos o carpetas más importantes, y para qué sirve cada uno.
+4. Una cosa que te parezca confusa, inconsistente o mal documentada.
+
+No escribas ni modifiques ningún archivo todavía.
+Al final, dime exactamente qué archivos leíste para responder esto.</code></pre>
+      <div class="prompt-why"><strong>La última línea es la mitad del valor.</strong> Te muestra qué entró al context y, sobre todo, qué <em>no</em> leyó. Si contestó sin abrir los archivos que importan, ya sabes por qué la respuesta suena genérica.</div>
+    </div>
+
+    <div class="prompt">
+      <div class="prompt-head">
+        <span class="prompt-n">P2</span>
+        <span class="prompt-t">Act — que escriba, con la duda a la vista</span>
+        <button class="copy" type="button">Copiar</button>
+      </div>
+<pre><code>Ahora escribe un archivo nuevo llamado ONBOARDING.md en la raíz del repo.
+
+Audiencia: una persona senior que entra al equipo el lunes y nunca vio
+este código.
+Incluye: qué hace el proyecto, cómo levantarlo paso a paso, la estructura
+de carpetas, y las 3 cosas que más confunden a alguien nuevo aquí.
+
+Reglas:
+- Solo afirma cosas que puedas verificar leyendo el repo.
+- Si no estás seguro de algo, ponlo bajo una sección "## Sin confirmar"
+  en vez de inventarlo.
+- No modifiques ningún otro archivo.</code></pre>
+      <div class="prompt-why"><strong>La sección <code>## Sin confirmar</code> no evita que invente: hace visible lo que inventó.</strong> Es la diferencia entre un error que encuentras hoy y uno que encuentras en producción.</div>
+    </div>
+
+    <div class="prompt">
+      <div class="prompt-head">
+        <span class="prompt-n">P3</span>
+        <span class="prompt-t">Verify — que se revise como si no fuera suyo</span>
+        <button class="copy" type="button">Copiar</button>
+      </div>
+<pre><code>Revisa el ONBOARDING.md que acabas de escribir como si fueras un reviewer
+hostil. Para cada afirmación, busca en el repo la evidencia que la respalda
+y cítame archivo y línea. Lístame todo lo que NO puedas respaldar con
+evidencia.</code></pre>
+      <div class="prompt-why"><strong>Y después la parte que te toca a ti.</strong> Corre <code>git status</code> y <code>git diff --stat</code>, lee la sección <code>## Sin confirmar</code>, y <strong>ejecuta un comando del setup que escribió</strong>. Si el comando no corre, ahí está tu primer error.<br><br>Sin terminal: pídele <em>"enséñame qué archivos cambiaste y el diff de cada uno, y corre el primer comando del setup que escribiste"</em>. Apruébale los permisos y lee la salida. Llegas al mismo sitio.</div>
+    </div>
+
+    <div class="warn"><strong>Lo que reportas al final:</strong> una cosa que el agent afirmó y que está mal. Una sola. Todo el mundo encuentra una, y eso es justo lo que queremos ver.</div>
+
+    <h3 id="mas-fondo">¿Ya llevas rato usando agents?</h3>
+
+    <p>Si los tres de arriba se te hacen cortos, haz este en vez del P2. Mismo loop, más filo: en vez de escribir un documento, el agent cambia código de verdad, y <strong>tú decides el alcance antes de que toque nada</strong>.</p>
+
+    <div class="prompt">
+      <div class="prompt-head">
+        <span class="prompt-n">B1</span>
+        <span class="prompt-t">Que proponga — tú escoges</span>
+        <button class="copy" type="button">Copiar</button>
+      </div>
+<pre><code>Sin escribir código todavía: lístame 3 cambios chicos y concretos que
+mejorarían este repo. Cada uno tiene que cumplir:
+(a) tocar como máximo 2 archivos,
+(b) que yo pueda verificar que funciona corriendo un comando,
+(c) que no cambie el comportamiento público.
+
+Para cada uno dime qué archivos tocarías y qué comando correría yo
+para verificar.</code></pre>
+      <div class="prompt-why">Las tres restricciones son el prompt. Sin ellas, "mejora este repo" te devuelve un refactor de 900 líneas que no vas a revisar y vas a mergear igual.</div>
+    </div>
+
+    <div class="prompt">
+      <div class="prompt-head">
+        <span class="prompt-n">B2</span>
+        <span class="prompt-t">Que ejecute el que tú escogiste</span>
+        <button class="copy" type="button">Copiar</button>
+      </div>
+<pre><code>Haz el número 2. Cuando termines, dime exactamente qué comando tengo
+que correr para verificar que funciona, y qué debería ver si está bien.</code></pre>
+      <div class="prompt-why">Después le corres el <strong>P3</strong> igual que todo el mundo, y lees el diff línea por línea. Aquí sí importa: es código que se ejecuta, no prosa.</div>
+    </div>
+
+    <p>Reportas lo mismo que los demás: una cosa que hizo mal. En este camino suele estar escondida en un caso borde que el agent no probó.</p>
+  </div>
+</section>
+
+<!-- TAREA -->
+<section class="sec" id="tarea">
+  <div class="wrap">
+    <div class="eyebrow">// para mañana</div>
+    <h2>Una sola cosa.</h2>
+    <p class="lead">Corre el <strong>P1</strong> en un repo distinto al de hoy, ojalá uno más grande y más feo. Fíjate en la lista de archivos que dice que leyó.</p>
+    <p>Llega mañana con esa lista. La sesión 2 es sobre por qué esa lista casi nunca es la que tú esperabas, y qué hacer al respecto.</p>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="daynav">
+      <a href="../kit/">← El kit</a>
+      <a href="../">Todos los días</a>
+      <span class="sep"></span>
+      <a href="../dia-2/">Día 2: Context →</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p><strong>Coding Agents 101</strong> — cuatro sesiones en vivo · 17 al 20 de agosto, 6:00 PM (GMT-4)</p>
+    <p>Meet: <a href="https://meet.google.com/qxk-zffm-ojo">meet.google.com/qxk-zffm-ojo</a>, el mismo link sirve para las cuatro. Conéctate 5 minutos antes.</p>
+    <p style="margin-top:14px;">Grabamos todo. Si te pierdes una, te llega igual. · <a href="../">Todos los días</a> · <a href="../kit/">El kit</a> · <a href="https://eonoe.github.io/">El workshop</a></p>
+  </div>
+</footer>
+</body>
+</html>
+<script>
+document.querySelectorAll('.copy').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    var pre = btn.closest('.prompt').querySelector('pre');
+    function ok(){
+      btn.textContent = 'Copiado';
+      btn.classList.add('ok');
+      setTimeout(function(){ btn.textContent = 'Copiar'; btn.classList.remove('ok'); }, 1600);
+    }
+    // Safari y navegadores sin permiso de portapapeles: seleccionamos el texto
+    // para que un Cmd-C manual funcione igual.
+    function fallback(){
+      var rango = document.createRange();
+      rango.selectNodeContents(pre);
+      var sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(rango);
+      btn.textContent = 'Cmd-C';
+      setTimeout(function(){ btn.textContent = 'Copiar'; }, 2400);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(pre.innerText).then(ok, fallback);
+    } else {
+      fallback();
+    }
+  });
+});
+</script>

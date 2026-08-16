@@ -3,22 +3,39 @@
 Los materiales del workshop **Coding Agents 101**: cuatro sesiones en vivo sobre cómo
 sacarle trabajo real a un coding agent en vez de usarlo como autocomplete caro.
 
-**El kit está aquí → <https://eonoe.github.io/coding-agents-101/>**
+**Empieza aquí → <https://eonoe.github.io/coding-agents-101/>**
 
-Ahí vive todo lo que se usa en vivo: los comandos de instalación por carril, los
-prompts para copiar, el glosario y las descargas. Es la página que conviene dejar
-abierta durante la sesión.
+| Página | Para qué |
+|---|---|
+| `/` | Los cuatro días. Marca cuál es hoy. |
+| `/dia-1/` … `/dia-4/` | Lo de esa sesión: los prompts, la tarea y el homework |
+| `/kit/` | Lo que no cambia: instalación, glosario, camino sin terminal, descargas |
+
+Los atajos `/1/`, `/2/`, `/3/` y `/4/` llevan al día que toca. Son más fáciles de
+decir en voz alta durante una llamada que `/dia-2/`.
 
 ## Qué hay en este repo
 
 | Ruta | Qué es |
 |---|---|
-| [`index.html`](index.html) | El kit de la sesión 1 |
+| [`index.html`](index.html) | El hub de los cuatro días |
+| [`kit/`](kit/) | La referencia que sirve para las cuatro sesiones |
+| [`dia-1/`](dia-1/) … `dia-4/` | Una página por sesión |
+| [`assets/kit.css`](assets/kit.css) | Los estilos, compartidos por todas las páginas |
 | [`slides.html`](slides.html) | Las láminas de los segmentos de concepto |
 | [`files/AGENTS.md`](files/AGENTS.md) | Plantilla de `AGENTS.md` para tu proyecto |
 | [`files/revision.md`](files/revision.md) | Checklist para revisar lo que escribió un agent |
 | [`files/prompts.md`](files/prompts.md) | Los prompts que vale la pena guardar |
 | [`example/`](example/) | Un proyecto de práctica, por si no traes repo propio |
+
+## Publicar el día siguiente
+
+Cada `dia-N/index.html` arranca como una página de "todavía no". El día que toca,
+le pones el contenido de esa sesión y la subes. La estructura de `dia-1/` sirve de
+molde: hero, secciones, y la barra `daynav` al final.
+
+Los estilos viven en `assets/kit.css`, así que **no se copian estilos entre páginas**.
+Si tocas el CSS, cambia en las cinco a la vez.
 
 ## El proyecto de práctica
 
