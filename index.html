@@ -82,6 +82,9 @@ pre code{background:none;color:inherit;padding:0;font-size:inherit;}
 .tbl th{background:var(--ink);color:#fff;font-family:'Space Grotesk',sans-serif;font-size:13px;text-transform:uppercase;letter-spacing:.04em;text-align:left;padding:10px 12px;}
 .tbl td{border-top:1px solid var(--line);padding:11px 12px;vertical-align:top;}
 .tbl tr:nth-child(even) td{background:#fafafb;}
+/* El carril 4 son dos filas con una sola celda de carril. Si las raya el patrón
+   alterno, la pareja se parte justo donde el rowspan la está uniendo. */
+.tbl tr.l4 td{background:#fafafb;}
 .scroll{overflow-x:auto;margin-bottom:18px;}
 
 /* CARDS */
@@ -167,7 +170,7 @@ pre code{background:none;color:inherit;padding:0;font-size:inherit;}
   <div class="wrap">
     <div class="eyebrow">// paso cero</div>
     <h2>Instala uno solo.</h2>
-    <p class="lead">Esta noche vemos cinco herramientas por dentro, pero tú trabajas con una. Escoge por lo que ya tienes. El loop que aprendes hoy funciona igual en todas.</p>
+    <p class="lead">Esta noche vemos varias herramientas por dentro, pero tú trabajas con una. Escoge por lo que ya tienes. El loop que aprendes hoy funciona igual en todas.</p>
 
     <div class="scroll">
     <table class="tbl">
@@ -191,11 +194,16 @@ pre code{background:none;color:inherit;padding:0;font-size:inherit;}
           <td><code>npm i -g @openai/codex</code></td>
           <td>Sign in with ChatGPT</td>
         </tr>
-        <tr>
-          <td><strong>4</strong><br>si ya tienes API keys</td>
+        <tr class="l4">
+          <td rowspan="2"><strong>4</strong><br>si ya tienes API keys<br><span style="color:var(--muted);">escoge cualquiera<br>de las dos</span></td>
           <td><strong>opencode</strong><br><code>opencode</code></td>
           <td><code>curl -fsSL https://opencode.ai/install | bash</code></td>
           <td><code>/connect</code> <strong>dentro</strong> del TUI</td>
+        </tr>
+        <tr class="l4">
+          <td><strong>Pi</strong><br><code>pi</code></td>
+          <td><code>npm i -g @earendil-works/pi-coding-agent</code></td>
+          <td><code>/login</code> <strong>dentro</strong> del TUI</td>
         </tr>
       </tbody>
     </table>
@@ -209,7 +217,9 @@ pre code{background:none;color:inherit;padding:0;font-size:inherit;}
 <pre><code>ERROR: logging before google.Init: I0815 ... Appending PATH export to profile ...</code></pre>
     <p>Son mensajes informativos con la etiqueta mal puesta. Si al final ves <code>✅ Antigravity CLI installed successfully</code>, quedó bien. Si después escribes <code>agy</code> y no aparece, cierra la terminal y ábrela de nuevo: el instalador cambió tu PATH.</p>
 
-    <p><strong>Los "modelos gratis" de opencode no funcionan recién instalado.</strong> El instalador dice que incluye modelos gratis y <code>opencode models</code> lista varios con <code>-free</code> en el nombre, pero si intentas usarlos te dice <code>Model ... is not supported</code>. Primero hay que hacer <code>/connect</code> dentro del TUI, y eso pide cuenta y datos de facturación. <strong>Si lo que quieres es no poner tarjeta, ve por el carril 2.</strong></p>
+    <p><strong>Los "modelos gratis" de opencode no funcionan recién instalado.</strong> El instalador dice que incluye modelos gratis y <code>opencode models</code> lista varios con <code>-free</code> en el nombre, pero si intentas usarlos te dice <code>Model ... is not supported</code>. Primero hay que hacer <code>/connect</code> dentro del TUI, y eso pide cuenta y datos de facturación.</p>
+
+    <p>Lo mismo aplica para Pi: es <em>bring your own key</em> por diseño, así que sin una key de algún proveedor no arranca. <strong>El carril 4 completo asume que ya tienes con qué pagarle a un modelo. Si no, ve por el carril 2.</strong></p>
 
     <h3>La prueba de fuego</h3>
     <p>Abre tu agent dentro de la carpeta de un proyecto y pídele que te explique un archivo. Si te contesta, estás listo.</p>
