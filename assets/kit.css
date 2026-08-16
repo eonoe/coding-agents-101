@@ -129,9 +129,11 @@ pre code{background:none;color:inherit;padding:0;font-size:inherit;}
 .day.hoy .n{color:var(--ink);}
 .day.pasado{opacity:.62;}
 .badge-hoy{background:var(--ink);color:var(--pop);padding:2px 8px;border-radius:20px;font-size:10.5px;}
+.badge-listo{background:var(--blue-soft);color:var(--blue-ink);padding:2px 8px;border-radius:20px;font-size:10.5px;}
 .badge-pronto{background:var(--line);color:var(--muted);padding:2px 8px;border-radius:20px;font-size:10.5px;}
-.day.soon{pointer-events:none;}
-.day.soon h3,.day.soon p{opacity:.55;}
+/* "Pronto" = la página todavía no tiene el contenido de esa sesión. Se atenúa, pero
+   sigue siendo clickable: la página existe, dice cuándo se llena y lleva al kit. */
+.day.soon h3,.day.soon p{opacity:.6;}
 
 /* ── Barra de navegación entre días ── */
 .daynav{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:28px;padding-top:22px;border-top:1px solid var(--line);}
