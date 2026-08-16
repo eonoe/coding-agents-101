@@ -156,7 +156,7 @@ pre code{background:none;color:inherit;padding:0;font-size:inherit;}
 .day.hoy::after{color:var(--ink);} /* el azul sobre amarillo pierde fuerza */
 .day.pasado{opacity:.62;}
 .badge-hoy{background:var(--ink);color:var(--pop);padding:2px 8px;border-radius:20px;font-size:10.5px;}
-.badge-listo{background:var(--blue-soft);color:var(--blue-ink);padding:2px 8px;border-radius:20px;font-size:10.5px;}
+.badge-ready{background:var(--blue-soft);color:var(--blue-ink);padding:2px 8px;border-radius:20px;font-size:10.5px;}
 .badge-pronto{background:var(--line);color:var(--muted);padding:2px 8px;border-radius:20px;font-size:10.5px;}
 /* "Pronto" = la página todavía no tiene el contenido de esa sesión. Se atenúa, pero
    sigue siendo clickable: la página existe, dice cuándo se llena y lleva al kit. */

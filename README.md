@@ -34,12 +34,12 @@ Cada `dia-N/index.html` arranca como una página de "todavía no". El día que t
 
 1. Le pones el contenido de esa sesión. La estructura de `dia-1/` sirve de molde:
    hero, secciones, y la barra `daynav` al final.
-2. **En `index.html`, le agregas `data-lista="si"` a la tarjeta de ese día.**
+2. **En `index.html`, le agregas `data-ready="si"` a la tarjeta de ese día.**
 
 El segundo paso es fácil de olvidar y es el que cambia el badge en el hub:
 
 ```html
-<a class="day" href="dia-2/" data-fecha="2026-08-18" data-lista="si">
+<a class="day" href="dia-2/" data-fecha="2026-08-18" data-ready="si">
 ```
 
 Las tarjetas señalan dos cosas distintas y por eso hacen falta los dos atributos:
@@ -47,7 +47,7 @@ Las tarjetas señalan dos cosas distintas y por eso hacen falta los dos atributo
 | Atributo | Qué dice | Badge |
 |---|---|---|
 | `data-fecha` | cuándo es la sesión | `hoy` si es hoy, atenuada si ya pasó |
-| `data-lista` | si la página ya tiene contenido | `lista` con contenido, `pronto` sin él |
+| `data-ready` | si la página ya tiene contenido | `ready` con contenido, `pronto` sin él |
 
 Sin separarlos, el día 1 diría "pronto" el domingo aunque su página ya esté escrita.
 
