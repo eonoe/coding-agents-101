@@ -203,6 +203,14 @@ pre code{background:none;color:inherit;padding:0;font-size:inherit;}
 
     <div class="warn"><strong>Si tenías Gemini CLI:</strong> Google lo apagó el 18 de junio de 2026. Lo reemplazó Antigravity CLI, que es otro binario (<code>agy</code>), otro instalador y otra configuración. El comando viejo ya no responde.</div>
 
+    <h3>Dos cosas que confunden a todo el mundo</h3>
+
+    <p><strong>El instalador de <code>agy</code> imprime líneas que dicen <code>ERROR</code> y no son errores.</strong> Vas a ver algo así:</p>
+<pre><code>ERROR: logging before google.Init: I0815 ... Appending PATH export to profile ...</code></pre>
+    <p>Son mensajes informativos con la etiqueta mal puesta. Si al final ves <code>✅ Antigravity CLI installed successfully</code>, quedó bien. Si después escribes <code>agy</code> y no aparece, cierra la terminal y ábrela de nuevo: el instalador cambió tu PATH.</p>
+
+    <p><strong>Los "modelos gratis" de opencode no funcionan recién instalado.</strong> El instalador dice que incluye modelos gratis y <code>opencode models</code> lista varios con <code>-free</code> en el nombre, pero si intentas usarlos te dice <code>Model ... is not supported</code>. Primero hay que hacer <code>/connect</code> dentro del TUI, y eso pide cuenta y datos de facturación. <strong>Si lo que quieres es no poner tarjeta, ve por el carril 2.</strong></p>
+
     <h3>La prueba de humo</h3>
     <p>Abre tu agent dentro de la carpeta de un proyecto y pídele que te explique un archivo. Si te contesta, estás listo.</p>
   </div>
