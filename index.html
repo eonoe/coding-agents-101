@@ -450,6 +450,40 @@ evidencia.</code></pre>
     </div>
 
     <div class="warn"><strong>Lo que reportas al final:</strong> una cosa que el agent afirmó y que está mal. Una sola. Todo el mundo encuentra una, y eso es justo lo que queremos ver.</div>
+
+    <h3 id="mas-fondo">¿Ya llevas rato usando agents?</h3>
+
+    <p>Si los tres de arriba se te hacen cortos, haz este en vez del P2. Mismo loop, más filo: en vez de escribir un documento, el agent cambia código de verdad, y <strong>tú decides el alcance antes de que toque nada</strong>.</p>
+
+    <div class="prompt">
+      <div class="prompt-head">
+        <span class="prompt-n">B1</span>
+        <span class="prompt-t">Que proponga — tú escoges</span>
+        <button class="copy" type="button">Copiar</button>
+      </div>
+<pre><code>Sin escribir código todavía: lístame 3 cambios chicos y concretos que
+mejorarían este repo. Cada uno tiene que cumplir:
+(a) tocar como máximo 2 archivos,
+(b) que yo pueda verificar que funciona corriendo un comando,
+(c) que no cambie el comportamiento público.
+
+Para cada uno dime qué archivos tocarías y qué comando correría yo
+para verificar.</code></pre>
+      <div class="prompt-why">Las tres restricciones son el prompt. Sin ellas, "mejora este repo" te devuelve un refactor de 900 líneas que no vas a revisar y vas a mergear igual.</div>
+    </div>
+
+    <div class="prompt">
+      <div class="prompt-head">
+        <span class="prompt-n">B2</span>
+        <span class="prompt-t">Que ejecute el que tú escogiste</span>
+        <button class="copy" type="button">Copiar</button>
+      </div>
+<pre><code>Haz el número 2. Cuando termines, dime exactamente qué comando tengo
+que correr para verificar que funciona, y qué debería ver si está bien.</code></pre>
+      <div class="prompt-why">Después le corres el <strong>P3</strong> igual que todo el mundo, y lees el diff línea por línea. Aquí sí importa: es código que se ejecuta, no prosa.</div>
+    </div>
+
+    <p>Reportas lo mismo que los demás: una cosa que hizo mal. En este camino suele estar escondida en un caso borde que el agent no probó.</p>
   </div>
 </section>
 
