@@ -1,4 +1,4 @@
-# AGENTS.md — plantilla
+# AGENTS.md - plantilla
 
 Copia este archivo a la raíz de tu proyecto como `AGENTS.md` y llénalo.
 
@@ -56,8 +56,8 @@ levantado), dilo aquí. Es lo primero con lo que el agent se va a tropezar.]
 [Solo las carpetas donde el agent va a tener que trabajar de verdad. No pegues el
 árbol completo: eso ya lo puede ver.]
 
-- `ruta/` — qué vive aquí y qué NO
-- `ruta/` — qué vive aquí y qué NO
+- `ruta/` - qué vive aquí y qué NO
+- `ruta/` - qué vive aquí y qué NO
 
 [Si alguna carpeta tiene un nombre que engaña, dilo explícito. Eso vale por diez
 líneas de descripción.]
@@ -76,7 +76,7 @@ líneas de descripción.]
 [La sección más valiosa del archivo. Lo que se rompe si alguien lo mueve
 sin saber.]
 
-- `archivo/carpeta` — por qué no se toca
+- `archivo/carpeta` - por qué no se toca
 - [Migraciones, código generado, cualquier cosa con un contrato hacia afuera.]
 
 ## Antes de dar algo por terminado

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>El kit — Coding Agents 101</title>
+<title>El kit - Coding Agents 101</title>
 <meta name="description" content="Instalación, glosario y descargas del workshop Coding Agents 101.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23ffd400'/%3E%3Ctext x='16' y='21' font-family='monospace' font-size='14' font-weight='700' text-anchor='middle' fill='%230b0b10'%3ETL%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -55,30 +55,30 @@
       <tbody>
         <tr>
           <td><strong>1</strong><br>si pagas Claude</td>
-          <td><strong>Claude Code</strong><br><code>claude</code></td>
+          <td><strong><a href="https://claude.com/product/claude-code">Claude Code</a></strong><br><code>claude</code></td>
           <td><code>curl -fsSL https://claude.ai/install.sh | bash</code></td>
           <td>Escribe <code>claude</code><br>y entra por el browser</td>
         </tr>
         <tr>
           <td><strong>2</strong><br>no pago</td>
-          <td><strong>Antigravity CLI</strong><br><code>agy</code></td>
+          <td><strong><a href="https://antigravity.google">Antigravity CLI</a></strong><br><code>agy</code></td>
           <td><code>curl -fsSL https://antigravity.google/cli/install.sh | bash</code></td>
           <td>Cuenta de Google<br>en el browser</td>
         </tr>
         <tr>
           <td><strong>3</strong><br>si pagas ChatGPT</td>
-          <td><strong>Codex CLI</strong><br><code>codex</code></td>
+          <td><strong><a href="https://github.com/openai/codex">Codex CLI</a></strong><br><code>codex</code></td>
           <td><code>npm i -g @openai/codex</code></td>
           <td>Sign in with ChatGPT</td>
         </tr>
         <tr class="l4">
           <td rowspan="2"><strong>4</strong><br>si ya tienes API keys<br><span style="color:var(--muted);">escoge cualquiera<br>de las dos</span></td>
-          <td><strong>opencode</strong><br><code>opencode</code></td>
+          <td><strong><a href="https://opencode.ai">opencode</a></strong><br><code>opencode</code></td>
           <td><code>curl -fsSL https://opencode.ai/install | bash</code></td>
           <td><code>/connect</code> <strong>dentro</strong> del TUI</td>
         </tr>
         <tr class="l4">
-          <td><strong>Pi</strong><br><code>pi</code></td>
+          <td><strong><a href="https://github.com/earendil-works/pi">Pi</a></strong><br><code>pi</code></td>
           <td><code>npm i -g @earendil-works/pi-coding-agent</code></td>
           <td><code>/login</code> <strong>dentro</strong> del TUI</td>
         </tr>
@@ -86,7 +86,7 @@
     </table>
     </div>
 
-    <div class="warn"><strong>Si tenías Gemini CLI:</strong> Google lo apagó el 18 de junio de 2026. Lo reemplazó Antigravity CLI, que es otro binario (<code>agy</code>), otro instalador y otra configuración. El comando viejo ya no responde.</div>
+    <div class="warn"><strong>Si tenías Gemini CLI:</strong> Google lo apagó el 18 de junio de 2026. Lo reemplazó <a href="https://antigravity.google">Antigravity CLI</a>, que es otro binario (<code>agy</code>), otro instalador y otra configuración. El comando viejo ya no responde.</div>
 
     <h3>¿No te llevas bien con el terminal?</h3>
 
@@ -124,7 +124,7 @@
 
     <p>Se puede hacer la sesión completa sin escribir un solo comando. No es una versión recortada: haces la misma tarea, con los mismos prompts, y sales con lo mismo. Cambia por dónde entras.</p>
 
-    <p><strong>El camino es Antigravity IDE.</strong> Se instala con doble clic como cualquier programa, es gratis y no pide tarjeta. Los otros setups se instalan pegando comandos en una terminal, que es justo lo que quieres evitar.</p>
+    <p><strong>El camino es <a href="https://antigravity.google/download">Antigravity IDE</a>.</strong> Se instala con doble clic como cualquier programa, es gratis y no pide tarjeta. Los otros setups se instalan pegando comandos en una terminal, que es justo lo que quieres evitar.</p>
 
     <ol>
       <li><strong>Descarga el IDE</strong> desde <a href="https://antigravity.google/download">antigravity.google/download</a> y ábrelo. Entras con tu cuenta de Google.</li>
@@ -158,9 +158,9 @@ de cada uno.</code></pre>
 <pre><code>ERROR: logging before google.Init: I0815 ... Appending PATH export to profile ...</code></pre>
     <p>Son mensajes informativos con la etiqueta mal puesta. Si al final ves <code>✅ Antigravity CLI installed successfully</code>, quedó bien. Si después escribes <code>agy</code> y no aparece, cierra la terminal y ábrela de nuevo: el instalador cambió tu PATH.</p>
 
-    <p><strong>Los "modelos gratis" de opencode no funcionan recién instalado.</strong> El instalador dice que incluye modelos gratis y <code>opencode models</code> lista varios con <code>-free</code> en el nombre, pero si intentas usarlos te dice <code>Model ... is not supported</code>. Primero hay que hacer <code>/connect</code> dentro del TUI, y eso pide cuenta y datos de facturación.</p>
+    <p><strong>Los "modelos gratis" de <a href="https://opencode.ai">opencode</a> no funcionan recién instalado.</strong> El instalador dice que incluye modelos gratis y <code>opencode models</code> lista varios con <code>-free</code> en el nombre, pero si intentas usarlos te dice <code>Model ... is not supported</code>. Primero hay que hacer <code>/connect</code> dentro del TUI, y eso pide cuenta y datos de facturación.</p>
 
-    <p>Lo mismo aplica para Pi: es <em>bring your own key</em> por diseño, así que sin una key de algún proveedor no arranca. <strong>El setup 4 completo asume que ya tienes con qué pagarle a un modelo. Si no, ve por el setup 2.</strong></p>
+    <p>Lo mismo aplica para <a href="https://github.com/earendil-works/pi">Pi</a>: es <em>bring your own key</em> por diseño, así que sin una key de algún proveedor no arranca. <strong>El setup 4 completo asume que ya tienes con qué pagarle a un modelo. Si no, ve por el setup 2.</strong></p>
 
     <h3>La prueba de fuego</h3>
     <p>Abre tu agent dentro de la carpeta de un proyecto y pídele que te explique un archivo. Si te contesta, estás listo.</p>
@@ -217,7 +217,7 @@ git checkout -b agente-sesion-1</code></pre>
 
     <div class="dl">
       <a class="dlc" href="../files/AGENTS.md">
-        <h3>AGENTS.md — plantilla</h3>
+        <h3>AGENTS.md - plantilla</h3>
         <p>La llenas para tu proyecto y el agent empieza cada sesión sabiendo tus reglas. La trabajamos a fondo mañana.</p>
         <span class="go">Abrir →</span>
       </a>
@@ -239,7 +239,7 @@ git checkout -b agente-sesion-1</code></pre>
 
 <footer class="foot">
   <div class="wrap">
-    <p><strong>Coding Agents 101</strong> — cuatro sesiones en vivo · 17 al 20 de agosto, 6:00 PM (GMT-4)</p>
+    <p><strong>Coding Agents 101</strong> - cuatro sesiones en vivo · 17 al 20 de agosto, 6:00 PM (GMT-4)</p>
     <p>Meet: <a href="https://meet.google.com/qxk-zffm-ojo">meet.google.com/qxk-zffm-ojo</a>, el mismo link sirve para las cuatro. Conéctate 5 minutos antes.</p>
     <p style="margin-top:14px;">Grabamos todo. Si te pierdes una, te llega igual. · <a href="../">Todos los días</a> · <a href="../kit/">El kit</a> · <a href="https://eonoe.github.io/">El workshop</a></p>
   </div>

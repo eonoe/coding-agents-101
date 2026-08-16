@@ -13,7 +13,7 @@ prompt que solo funciona en una herramienta es un truco de esa herramienta.
 ¿Por qué tres y no uno? Porque un prompt grande te devuelve una caja negra. Con tres
 ves el loop por dentro y puedes revisar cada paso por separado.
 
-### 1 · Gather — que lea antes de tocar
+### 1 · Gather - que lea antes de tocar
 
 ```
 Explora este repositorio sin modificar nada.
@@ -32,7 +32,7 @@ Al final, dime exactamente qué archivos leíste para responder esto.
 > y, sobre todo, qué se quedó afuera. La lista casi siempre sorprende. Si te contestó
 > sin abrir los archivos que de verdad mandan, ahí tienes explicada la respuesta floja.
 
-### 2 · Act — que escriba, con la incertidumbre a la vista
+### 2 · Act - que escriba, con la incertidumbre a la vista
 
 ```
 Ahora escribe un archivo nuevo llamado ONBOARDING.md en la raíz del repo.
@@ -52,7 +52,7 @@ Reglas:
 > escribe lo que sí sabe. La sección `## Sin confirmar` no le quita la maña de inventar.
 > Lo que hace es mover el invento a un lugar donde lo ves hoy y no en producción.
 
-### 3 · Verify — que se revise como si no fuera suyo
+### 3 · Verify - que se revise como si no fuera suyo
 
 ```
 Revisa el ONBOARDING.md que acabas de escribir como si fueras un reviewer hostil.

@@ -53,11 +53,11 @@ npm test
 
 ## Estructura
 
-- `index.js` — entrada
-- `src/parser.js` — lectura y validacion del archivo de gastos
-- `src/balance.js` — el calculo de balances y la liquidacion
-- `src/format.js` — la salida en consola
-- `tests/` — los tests
+- `index.js` - entrada
+- `src/parser.js` - lectura y validacion del archivo de gastos
+- `src/balance.js` - el calculo de balances y la liquidacion
+- `src/format.js` - la salida en consola
+- `tests/` - los tests
 
 ## Pendiente
 

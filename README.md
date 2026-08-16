@@ -1,4 +1,4 @@
-# Coding Agents 101 — materiales
+# Coding Agents 101 - materiales
 
 Los materiales del workshop **Coding Agents 101**: cuatro sesiones en vivo sobre cómo
 sacarle trabajo real a un coding agent en vez de usarlo como autocomplete caro.
@@ -85,9 +85,9 @@ Pages sirve esto bajo `/coding-agents-101/`, así que no uses rutas que empiecen
 
 ## Las cuatro sesiones
 
-1. **Pon un coding agent a trabajar** — el loop `gather → act → verify`, y ponerlo a hacer algo real
-2. **Context** — por qué no leyó lo que creías, y tu primer `AGENTS.md`
-3. **Revisión** — leer lo que escribió y empujar de vuelta
-4. **Que quede** — workflows reutilizables, los límites, y preguntas abiertas
+1. **Pon un coding agent a trabajar** - el loop `gather → act → verify`, y ponerlo a hacer algo real
+2. **Context** - por qué no leyó lo que creías, y tu primer `AGENTS.md`
+3. **Revisión** - leer lo que escribió y empujar de vuelta
+4. **Que quede** - workflows reutilizables, los límites, y preguntas abiertas
 
 El workshop completo: <https://eonoe.github.io/>
