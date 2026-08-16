@@ -153,6 +153,7 @@ pre code{background:none;color:inherit;padding:0;font-size:inherit;}
 <nav class="toc">
   <div class="wrap toc-in">
     <a href="#instalar">Instalar</a>
+    <a href="#sin-terminal">Sin terminal</a>
     <a href="#loop">El loop</a>
     <a href="#capas">Las capas</a>
     <a href="#glosario">Glosario</a>
@@ -243,7 +244,37 @@ pre code{background:none;color:inherit;padding:0;font-size:inherit;}
     </table>
     </div>
 
-    <div class="warn"><strong>Igual vas a necesitar el terminal esta noche.</strong> En la hora 2 corremos <code>git checkout -b</code>, <code>git status</code> y <code>git diff</code>. Antigravity IDE trae terminal integrado (es un fork de VS Code) y desde un editor lo tienes a mano. Si te vas por la app de escritorio, ten una terminal abierta al lado.</div>
+    <h3 id="sin-terminal">Si el terminal no es lo tuyo, lee esto</h3>
+
+    <p>Se puede hacer la sesión completa sin escribir un solo comando. No es una versión recortada: haces la misma tarea, con los mismos prompts, y sales con lo mismo. Cambia por dónde entras.</p>
+
+    <p><strong>El camino es Antigravity IDE.</strong> Se instala con doble clic como cualquier programa, es gratis y no pide tarjeta. Los otros carriles se instalan pegando comandos en una terminal, que es justo lo que quieres evitar.</p>
+
+    <ol>
+      <li><strong>Descarga el IDE</strong> desde <a href="https://antigravity.google/download">antigravity.google/download</a> y ábrelo. Entras con tu cuenta de Google.</li>
+      <li><strong>Baja el proyecto de práctica sin usar git:</strong> <a href="https://github.com/eonoe/coding-agents-101/archive/refs/heads/main.zip">descarga el ZIP</a>, descomprímelo, y en el IDE abre la carpeta <code>coding-agents-101/example</code>.</li>
+      <li><strong>Pégale los tres prompts</strong> igual que todo el mundo. Son los mismos.</li>
+    </ol>
+
+    <p>Si prefieres trabajar en un proyecto tuyo y ya lo tienes en la computadora, ábrelo directamente y sáltate el paso 2.</p>
+
+    <h3>Y los comandos de git, ¿qué?</h3>
+
+    <p>En la hora 2 hay tres momentos de git: crear el branch, ver qué archivos cambiaron, y ver el diff. <strong>No los escribes tú. Se los pides al agent.</strong></p>
+
+    <div class="prompt">
+      <div class="prompt-head">
+        <span class="prompt-n">git</span>
+        <span class="prompt-t">Sin tocar el terminal</span>
+        <button class="copy" type="button">Copiar</button>
+      </div>
+<pre><code>Antes de tocar nada, crea un branch nuevo llamado agente-sesion-1.
+Cuando termines el trabajo, enséñame qué archivos cambiaste y el diff
+de cada uno.</code></pre>
+      <div class="prompt-why">Te va a pedir permiso para correr los comandos. <strong>Dale que sí y míralo hacerlo.</strong> Eso que estás aprobando es la tool de Bash, y verla trabajar es literalmente el tema de la noche. Terminas entendiendo el loop mejor que quien lo escribió a mano.</div>
+    </div>
+
+    <p>Si abriste el proyecto de práctica desde el ZIP, ni el branch hace falta: es una copia tuya, desechable. Bórrala y bájala otra vez si algo sale mal.</p>
 
     <h3>Dos cosas que confunden a todo el mundo</h3>
 
@@ -348,6 +379,7 @@ interface  →   terminal · GUI · IDE</code></pre>
       <h3>1 · Branch nuevo</h3>
       <p>Convierte cualquier desastre posible en un no-evento. Si algo sale mal: <code>git checkout .</code> y no perdiste nada.</p>
 <pre><code>git checkout -b agente-sesion-1</code></pre>
+      <p style="margin-top:12px;font-size:14.5px;">¿No usas terminal? Pídeselo al agent con la frase de <a href="#sin-terminal">esta sección</a>, o trabaja sobre el ZIP del proyecto de práctica, que ya es una copia desechable.</p>
     </div>
 
     <div class="rule">
@@ -414,7 +446,7 @@ Reglas:
 hostil. Para cada afirmación, busca en el repo la evidencia que la respalda
 y cítame archivo y línea. Lístame todo lo que NO puedas respaldar con
 evidencia.</code></pre>
-      <div class="prompt-why"><strong>Y después la parte que te toca a ti.</strong> Corre <code>git status</code> y <code>git diff --stat</code>, lee la sección <code>## Sin confirmar</code>, y <strong>ejecuta un comando del setup que escribió</strong>. Si el comando no corre, ahí está tu primer error.</div>
+      <div class="prompt-why"><strong>Y después la parte que te toca a ti.</strong> Corre <code>git status</code> y <code>git diff --stat</code>, lee la sección <code>## Sin confirmar</code>, y <strong>ejecuta un comando del setup que escribió</strong>. Si el comando no corre, ahí está tu primer error.<br><br>Sin terminal: pídele <em>"enséñame qué archivos cambiaste y el diff de cada uno, y corre el primer comando del setup que escribiste"</em>. Apruébale los permisos y lee la salida. Llegas al mismo sitio.</div>
     </div>
 
     <div class="warn"><strong>Lo que reportas al final:</strong> una cosa que el agent afirmó y que está mal. Una sola. Todo el mundo encuentra una, y eso es justo lo que queremos ver.</div>
@@ -428,9 +460,12 @@ evidencia.</code></pre>
     <h2>Usa este.</h2>
     <p class="lead">Si tu código es de tu empresa y no quieres mandarlo a un tercero, o no quieres compartir pantalla con él, trabaja aquí. Es una decisión profesional correcta, no una excusa.</p>
 
+    <p><strong>Con terminal:</strong></p>
 <pre><code>git clone https://github.com/eonoe/coding-agents-101
 cd coding-agents-101/example
 git checkout -b agente-sesion-1</code></pre>
+
+    <p><strong>Sin terminal:</strong> <a href="https://github.com/eonoe/coding-agents-101/archive/refs/heads/main.zip">descarga el ZIP</a>, descomprímelo, y abre la carpeta <code>coding-agents-101/example</code> en tu IDE. No necesitas git ni branch: es una copia tuya. Si algo sale mal, la borras y la bajas otra vez.</p>
 
     <div class="warn"><strong>Abre el agent dentro de <code>example/</code>, no en la raíz del repo.</strong> Si lo abres afuera va a leer los materiales del workshop en vez del proyecto, y el ejercicio pierde la gracia.</div>
 
