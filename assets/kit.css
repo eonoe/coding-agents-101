@@ -75,10 +75,34 @@ pre code{background:none;color:inherit;padding:0;font-size:inherit;}
 .tbl tr.l4 td{background:#fafafb;}
 .scroll{overflow-x:auto;margin-bottom:18px;}
 
-/* CARDS */
+/* ── BOTONES ──────────────────────────────────────────────────────────────
+   Vienen del sitio principal. La regla `a{border-bottom}` de arriba les
+   pondría un subrayado, pero `.btn` define el borde completo y gana por
+   especificidad de clase sobre elemento.
+   ─────────────────────────────────────────────────────────────────────── */
+.btn{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:15px;padding:12px 22px;border:2px solid var(--ink);border-radius:10px;cursor:pointer;display:inline-flex;align-items:center;gap:9px;transition:transform .12s,box-shadow .12s,background .15s,color .15s;background:#fff;color:var(--ink);}
+.btn-cta{background:var(--blue);color:#fff;border-color:var(--blue);box-shadow:4px 4px 0 var(--ink);}
+.btn-cta:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink);}
+.btn-pop{background:var(--pop);color:var(--ink);border-color:var(--ink);box-shadow:4px 4px 0 var(--ink);}
+.btn-pop:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink);}
+.btn-sm{padding:9px 16px;font-size:14px;box-shadow:3px 3px 0 var(--ink);}
+.btn:active{transform:translate(0,0);box-shadow:2px 2px 0 var(--ink);}
+
+/* ── TARJETAS: dos estados y solo dos ─────────────────────────────────────
+   Si lleva a algún lado  → borde negro, sombra dura y flecha en la esquina.
+                            La sombra es la señal de "esto responde si lo
+                            empujas", y la flecha la repite sin depender del
+                            hover, que en un teléfono no existe.
+   Si solo informa        → plana, sin sombra, fondo gris y borde claro.
+
+   La regla que importa: **nunca le pongas sombra a algo que no se puede
+   clickear.** Es la señal más fuerte del sistema y gastarla en una tarjeta
+   muerta deja al resto sin sentido.
+   Clickables hoy: .day (hub) y .dlc (descargas). Informativa: .card.
+   ─────────────────────────────────────────────────────────────────────── */
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin-bottom:20px;}
-.card{border:3px solid var(--ink);border-radius:12px;padding:18px;box-shadow:5px 5px 0 var(--ink);background:#fff;}
-.card h3{margin:0 0 8px;font-size:17px;}
+.card{border:3px solid var(--line2);border-radius:12px;padding:18px;background:#fafafb;}
+.card h3{margin:0 0 8px;font-size:17px;color:var(--ink2);}
 .card p{font-size:14.5px;color:var(--ink2);margin:0;}
 .card .k{font-family:'JetBrains Mono',monospace;font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--blue-ink);display:block;margin-bottom:6px;}
 
@@ -104,11 +128,11 @@ pre code{background:none;color:inherit;padding:0;font-size:inherit;}
 
 /* DOWNLOADS */
 .dl{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;}
-.dlc{border:3px solid var(--ink);border-radius:12px;padding:20px;box-shadow:5px 5px 0 var(--ink);background:#fff;display:flex;flex-direction:column;transition:transform .12s,box-shadow .12s;border-bottom:3px solid var(--ink);}
+.dlc{position:relative;border:3px solid var(--ink);border-radius:12px;padding:20px;box-shadow:5px 5px 0 var(--ink);background:#fff;display:flex;flex-direction:column;transition:transform .12s,box-shadow .12s;border-bottom:3px solid var(--ink);}
 .dlc:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--ink);border-bottom-color:var(--ink);}
-.dlc h3{margin:0 0 8px;font-size:17px;}
-.dlc p{font-size:14.5px;color:var(--ink2);margin:0 0 16px;flex-grow:1;}
-.dlc .go{font-family:'JetBrains Mono',monospace;font-size:12.5px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--blue-ink);}
+.dlc::after{content:"→";position:absolute;top:15px;right:17px;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:17px;color:var(--blue-ink);line-height:1;}
+.dlc h3{margin:0 0 8px;font-size:17px;padding-right:26px;}
+.dlc p{font-size:14.5px;color:var(--ink2);margin:0;flex-grow:1;}
 
 /* FOOTER */
 .foot{border-top:3px solid var(--ink);background:var(--dark);color:#c9cbd3;padding:34px 0;font-size:14.5px;}
@@ -118,15 +142,18 @@ pre code{background:none;color:inherit;padding:0;font-size:inherit;}
 /* ── HUB: las tarjetas de los cuatro días ── */
 .days{display:grid;gap:16px;margin-bottom:26px;}
 @media(min-width:760px){.days{grid-template-columns:repeat(2,1fr);}}
-.day{display:block;border:3px solid var(--ink);border-radius:12px;padding:20px;background:#fff;box-shadow:5px 5px 0 var(--ink);color:var(--ink);border-bottom:3px solid var(--ink);transition:transform .12s,box-shadow .12s;}
+.day{position:relative;display:block;border:3px solid var(--ink);border-radius:12px;padding:20px;background:#fff;box-shadow:5px 5px 0 var(--ink);color:var(--ink);border-bottom:3px solid var(--ink);transition:transform .12s,box-shadow .12s;}
 .day:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--ink);border-bottom-color:var(--ink);}
-.day .n{font-family:'JetBrains Mono',monospace;font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--blue-ink);display:flex;align-items:center;gap:8px;margin-bottom:8px;}
+.day::after{content:"→";position:absolute;top:17px;right:18px;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:17px;color:var(--blue-ink);line-height:1;}
+/* El badge vive en .n, en la misma línea que la flecha, así que le dejamos sitio. */
+.day .n{font-family:'JetBrains Mono',monospace;font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--blue-ink);display:flex;align-items:center;gap:8px;margin-bottom:8px;padding-right:28px;}
 .day h3{font-size:19px;margin-bottom:8px;}
 .day p{font-size:14.5px;color:var(--ink2);margin:0 0 12px;}
 .day .out{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted);border-top:1px dashed var(--line2);padding-top:10px;}
 /* Estado. Lo pone el script según la fecha; sin JS todas se ven normales. */
 .day.hoy{background:var(--pop);}
 .day.hoy .n{color:var(--ink);}
+.day.hoy::after{color:var(--ink);} /* el azul sobre amarillo pierde fuerza */
 .day.pasado{opacity:.62;}
 .badge-hoy{background:var(--ink);color:var(--pop);padding:2px 8px;border-radius:20px;font-size:10.5px;}
 .badge-listo{background:var(--blue-soft);color:var(--blue-ink);padding:2px 8px;border-radius:20px;font-size:10.5px;}
