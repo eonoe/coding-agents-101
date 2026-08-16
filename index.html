@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kit — Coding Agents 101 · Sesión 1</title>
+<meta name="description" content="Comandos, prompts y glosario de la sesión 1 del workshop Coding Agents 101.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23ffd400'/%3E%3Ctext x='16' y='21' font-family='monospace' font-size='14' font-weight='700' text-anchor='middle' fill='%230b0b10'%3ETL%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ffffff;--ink:#0b0b10;--ink2:#41444d;--muted:#6b7280;
+  --line:#e7e8ec;--line2:#d4d6dc;
+  --blue:#3531ff;--blue-ink:#1f1ce0;--blue-soft:#edecff;
+  --pop:#ffd400;--dark:#0b0b10;
+  --maxw:920px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:'Inter',system-ui,sans-serif;font-size:16px;line-height:1.62;-webkit-font-smoothing:antialiased;}
+a{color:var(--blue-ink);text-decoration:none;border-bottom:2px solid var(--blue-soft);}
+a:hover{border-bottom-color:var(--blue);}
+h1,h2,h3{font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spacing:-.03em;line-height:1.05;}
+.mono{font-family:'JetBrains Mono',ui-monospace,monospace;}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px;}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important;}}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px;}
+
+/* MARQUEE */
+.marq{background:var(--pop);border-bottom:3px solid var(--ink);overflow:hidden;white-space:nowrap;}
+.marq-track{display:inline-block;padding:9px 0;animation:scroll 30s linear infinite;}
+.marq-track span{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:12.5px;letter-spacing:.02em;text-transform:uppercase;padding:0 14px;}
+@keyframes scroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+/* HERO */
+.hero{padding:44px 0 38px;border-bottom:3px solid var(--ink);}
+.tag{display:inline-flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;background:var(--blue-soft);color:var(--blue-ink);padding:6px 12px;border-radius:30px;margin-bottom:18px;}
+.hero h1{font-size:clamp(34px,6vw,54px);margin-bottom:16px;}
+.hero p{font-size:17.5px;color:var(--ink2);max-width:60ch;}
+.meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px;}
+.chip{font-family:'JetBrains Mono',monospace;font-size:12.5px;font-weight:700;border:2px solid var(--ink);border-radius:8px;padding:7px 12px;background:#fff;box-shadow:3px 3px 0 var(--ink);}
+.chip.b{background:var(--blue);color:#fff;border-color:var(--blue);}
+
+/* NAV */
+.toc{border-bottom:3px solid var(--ink);background:#fafafb;padding:16px 0;position:sticky;top:0;z-index:40;}
+.toc-in{display:flex;flex-wrap:wrap;gap:8px;}
+.toc a{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;border:2px solid var(--ink);border-radius:7px;padding:5px 10px;background:#fff;color:var(--ink);}
+.toc a:hover{background:var(--pop);}
+
+/* SECTIONS */
+.sec{padding:52px 0;border-bottom:1px solid var(--line);}
+.sec:last-of-type{border-bottom:none;}
+.eyebrow{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:10px;}
+.sec h2{font-size:clamp(26px,4vw,36px);margin-bottom:12px;}
+.lead{font-size:17px;color:var(--ink2);max-width:64ch;margin-bottom:26px;}
+.sec h3{font-size:19px;margin:30px 0 10px;}
+.sec p{margin-bottom:14px;max-width:68ch;}
+.sec ul,.sec ol{margin:0 0 16px 22px;max-width:68ch;}
+.sec li{margin-bottom:7px;}
+
+/* CODE */
+pre{background:var(--dark);color:#f4f4f6;border:2px solid var(--ink);border-radius:10px;padding:16px 18px;overflow-x:auto;font-family:'JetBrains Mono',monospace;font-size:13.5px;line-height:1.65;margin-bottom:16px;}
+code{font-family:'JetBrains Mono',monospace;font-size:.92em;background:var(--blue-soft);color:var(--blue-ink);padding:1px 6px;border-radius:5px;}
+pre code{background:none;color:inherit;padding:0;font-size:inherit;}
+
+/* PROMPT BLOCK */
+.prompt{border:3px solid var(--ink);border-radius:12px;box-shadow:5px 5px 0 var(--ink);margin-bottom:26px;overflow:hidden;background:#fff;}
+.prompt-head{display:flex;align-items:center;gap:12px;padding:13px 16px;border-bottom:3px solid var(--ink);background:var(--pop);}
+.prompt-n{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.06em;background:var(--ink);color:var(--pop);padding:4px 9px;border-radius:6px;}
+.prompt-t{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;margin-right:auto;}
+.copy{font-family:'JetBrains Mono',monospace;font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;border:2px solid var(--ink);background:#fff;color:var(--ink);padding:5px 11px;border-radius:7px;cursor:pointer;transition:background .15s;}
+.copy:hover{background:var(--ink);color:#fff;}
+.copy.ok{background:var(--blue);color:#fff;border-color:var(--blue);}
+.prompt pre{border:none;border-radius:0;margin:0;box-shadow:none;}
+.prompt-why{padding:14px 16px;border-top:2px dashed var(--line2);background:#fafafb;font-size:14.5px;color:var(--ink2);}
+.prompt-why strong{color:var(--ink);}
+
+/* TABLE */
+.tbl{width:100%;border-collapse:collapse;margin-bottom:18px;font-size:14.5px;border:2px solid var(--ink);}
+.tbl th{background:var(--ink);color:#fff;font-family:'Space Grotesk',sans-serif;font-size:13px;text-transform:uppercase;letter-spacing:.04em;text-align:left;padding:10px 12px;}
+.tbl td{border-top:1px solid var(--line);padding:11px 12px;vertical-align:top;}
+.tbl tr:nth-child(even) td{background:#fafafb;}
+.scroll{overflow-x:auto;margin-bottom:18px;}
+
+/* CARDS */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin-bottom:20px;}
+.card{border:3px solid var(--ink);border-radius:12px;padding:18px;box-shadow:5px 5px 0 var(--ink);background:#fff;}
+.card h3{margin:0 0 8px;font-size:17px;}
+.card p{font-size:14.5px;color:var(--ink2);margin:0;}
+.card .k{font-family:'JetBrains Mono',monospace;font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--blue-ink);display:block;margin-bottom:6px;}
+
+/* GLOSSARY */
+.gl{border:3px solid var(--ink);border-radius:12px;overflow:hidden;box-shadow:5px 5px 0 var(--ink);margin-bottom:20px;}
+.gl-row{display:grid;grid-template-columns:190px 1fr;gap:0;border-bottom:1px solid var(--line);}
+.gl-row:last-child{border-bottom:none;}
+.gl-t{padding:14px 16px;background:var(--blue-soft);font-family:'JetBrains Mono',monospace;font-weight:700;font-size:13.5px;color:var(--blue-ink);border-right:2px solid var(--ink);}
+.gl-d{padding:14px 16px;font-size:14.5px;color:var(--ink2);}
+.gl-d strong{color:var(--ink);}
+@media(max-width:640px){.gl-row{grid-template-columns:1fr;}.gl-t{border-right:none;border-bottom:1px solid var(--line);}}
+
+/* RULE */
+.rule{border:3px solid var(--ink);border-left-width:12px;border-radius:10px;padding:18px 20px;margin-bottom:16px;background:#fff;box-shadow:5px 5px 0 var(--ink);}
+.rule h3{margin:0 0 8px;font-size:18px;}
+.rule p{margin:0;font-size:15px;color:var(--ink2);}
+.rule pre{margin:12px 0 0;}
+
+/* CALLOUT */
+.note{border-left:5px solid var(--blue);background:var(--blue-soft);padding:14px 18px;border-radius:0 10px 10px 0;margin-bottom:18px;font-size:15px;}
+.note strong{color:var(--blue-ink);}
+.warn{border-left:5px solid var(--ink);background:var(--pop);padding:14px 18px;border-radius:0 10px 10px 0;margin-bottom:18px;font-size:15px;}
+
+/* DOWNLOADS */
+.dl{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;}
+.dlc{border:3px solid var(--ink);border-radius:12px;padding:20px;box-shadow:5px 5px 0 var(--ink);background:#fff;display:flex;flex-direction:column;transition:transform .12s,box-shadow .12s;border-bottom:3px solid var(--ink);}
+.dlc:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--ink);border-bottom-color:var(--ink);}
+.dlc h3{margin:0 0 8px;font-size:17px;}
+.dlc p{font-size:14.5px;color:var(--ink2);margin:0 0 16px;flex-grow:1;}
+.dlc .go{font-family:'JetBrains Mono',monospace;font-size:12.5px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--blue-ink);}
+
+/* FOOTER */
+.foot{border-top:3px solid var(--ink);background:var(--dark);color:#c9cbd3;padding:34px 0;font-size:14.5px;}
+.foot a{color:var(--pop);border-bottom-color:rgba(255,212,0,.35);}
+.foot strong{color:#fff;}
+</style>
+</head>
+<body>
+
+<div class="marq" aria-hidden="true">
+  <div class="marq-track">
+    <span>· sesión 1 · pon un coding agent a trabajar</span><span>· gather → act → verify</span><span>· lunes 17 de agosto · 6:00 pm</span><span>· rama nueva, sin auto-accept</span>
+    <span>· sesión 1 · pon un coding agent a trabajar</span><span>· gather → act → verify</span><span>· lunes 17 de agosto · 6:00 pm</span><span>· rama nueva, sin auto-accept</span>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="tag">// coding agents 101 · sesión 1 de 4</div>
+    <h1>Pon un coding agent<br>a trabajar.</h1>
+    <p>Todo lo de esta noche en una página: los comandos, los prompts para copiar, y el glosario. Déjala abierta en otra pestaña.</p>
+    <div class="meta">
+      <span class="chip">Lun 17 ago · 6:00 PM (GMT-4)</span>
+      <span class="chip">2 horas</span>
+      <a class="chip b" href="https://meet.google.com/qxk-zffm-ojo">Entrar por Meet →</a>
+    </div>
+  </div>
+</header>
+
+<nav class="toc">
+  <div class="wrap toc-in">
+    <a href="#instalar">Instalar</a>
+    <a href="#loop">El loop</a>
+    <a href="#capas">Las capas</a>
+    <a href="#glosario">Glosario</a>
+    <a href="#reglas">Las 2 reglas</a>
+    <a href="#prompts">Los prompts</a>
+    <a href="#repo">Repo de ejemplo</a>
+    <a href="#descargas">Descargas</a>
+  </div>
+</nav>
+
+<main>
+
+<!-- INSTALAR -->
+<section class="sec" id="instalar">
+  <div class="wrap">
+    <div class="eyebrow">// paso cero</div>
+    <h2>Instala uno solo.</h2>
+    <p class="lead">Esta noche vemos cinco herramientas por dentro, pero tú trabajas con una. Escoge por lo que ya tienes. El loop que aprendes hoy funciona igual en todas.</p>
+
+    <div class="scroll">
+    <table class="tbl">
+      <thead><tr><th>Carril</th><th>Herramienta</th><th>Instalar</th><th>Entrar</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>1</strong><br>si pagas Claude</td>
+          <td><strong>Claude Code</strong><br><code>claude</code></td>
+          <td>Instalador oficial</td>
+          <td>Sign-in incluido</td>
+        </tr>
+        <tr>
+          <td><strong>2</strong><br>sin tarjeta</td>
+          <td><strong>Antigravity CLI</strong><br><code>agy</code></td>
+          <td><code>curl -fsSL https://antigravity.google/cli/install.sh | bash</code></td>
+          <td>Cuenta de Google<br>en el browser</td>
+        </tr>
+        <tr>
+          <td><strong>3</strong><br>si pagas ChatGPT</td>
+          <td><strong>Codex CLI</strong><br><code>codex</code></td>
+          <td><code>npm i -g @openai/codex</code></td>
+          <td>Sign in with ChatGPT</td>
+        </tr>
+        <tr>
+          <td><strong>3</strong><br>si ya tienes API keys</td>
+          <td><strong>opencode</strong><br><code>opencode</code></td>
+          <td><code>curl -fsSL https://opencode.ai/install | bash</code></td>
+          <td><code>/connect</code> <strong>dentro</strong> del TUI</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="warn"><strong>Si tenías Gemini CLI:</strong> Google lo apagó el 18 de junio de 2026. Lo reemplazó Antigravity CLI, que es otro binario (<code>agy</code>), otro instalador y otra configuración. El comando viejo ya no responde.</div>
+
+    <h3>La prueba de humo</h3>
+    <p>Abre tu agent dentro de la carpeta de un proyecto y pídele que te explique un archivo. Si te contesta, estás listo.</p>
+  </div>
+</section>
+
+<!-- LOOP -->
+<section class="sec" id="loop">
+  <div class="wrap">
+    <div class="eyebrow">// la idea de la noche</div>
+    <h2>Autocomplete predice. Un agent corre un loop.</h2>
+    <p class="lead">Esa es la diferencia completa, y es la razón de que se trabaje distinto. Todo lo demás de estas cuatro sesiones cuelga de aquí.</p>
+
+    <div class="grid">
+      <div class="card">
+        <span class="k">01 · gather</span>
+        <h3>Junta contexto</h3>
+        <p>Lee archivos, busca, corre comandos para entender dónde está parado. Lo que <em>no</em> lee es lo que después te va a costar caro.</p>
+      </div>
+      <div class="card">
+        <span class="k">02 · act</span>
+        <h3>Actúa</h3>
+        <p>Escribe, edita, ejecuta. Aquí es donde te pide permiso, y donde tú decides qué tanto lo dejas hacer solo.</p>
+      </div>
+      <div class="card">
+        <span class="k">03 · verify</span>
+        <h3>Verifica</h3>
+        <p>Corre lo que escribió y revisa si funcionó. <strong>Este paso es el que se salta</strong> — el suyo y el tuyo.</p>
+      </div>
+    </div>
+
+    <div class="note"><strong>Cuando algo sale mal, el diagnóstico empieza aquí:</strong> ¿falló el gather (no leyó lo que necesitaba), el act (leyó bien pero hizo mal), o el verify (hizo mal y no se dio cuenta)? Casi siempre es el gather. Eso es la sesión 2.</div>
+  </div>
+</section>
+
+<!-- CAPAS -->
+<section class="sec" id="capas">
+  <div class="wrap">
+    <div class="eyebrow">// por qué hay tantas herramientas</div>
+    <h2>Cuatro capas que se pueden mezclar.</h2>
+    <p class="lead">La confusión con los nombres se acaba cuando ves que son capas distintas, no competidores. Casi todo lo que parece una decisión enorme es solo escoger en una capa.</p>
+
+<pre><code>lab        →   Anthropic · OpenAI · Google
+model      →   Opus · GPT · Gemini
+agent      →   el loop + las tools
+interface  →   terminal · GUI · IDE</code></pre>
+
+    <p>Un mismo <strong>model</strong> corre dentro de <strong>agents</strong> distintos. Un mismo <strong>agent</strong> se usa desde <strong>interfaces</strong> distintas. <code>opencode</code> es el ejemplo más claro: es un agent que corre models de varios labs, así que cambiar de model no te obliga a cambiar de herramienta.</p>
+
+    <p><strong>Lo que aprendes hoy vive en la capa del agent</strong>, que es la que no cambia cuando cambias de proveedor. Por eso vale la pena aprenderla bien una vez.</p>
+
+    <h3>Las cinco preguntas para cualquier herramienta nueva</h3>
+    <p>Cuando te sientes frente a un agent que no conoces, esto te ubica en dos minutos:</p>
+    <ol>
+      <li>¿Dónde escribo?</li>
+      <li>¿Dónde veo lo que está haciendo?</li>
+      <li>¿Dónde me pide permiso?</li>
+      <li>¿Dónde veo el diff?</li>
+      <li>¿Cómo lo reseteo?</li>
+    </ol>
+  </div>
+</section>
+
+<!-- GLOSARIO -->
+<section class="sec" id="glosario">
+  <div class="wrap">
+    <div class="eyebrow">// vocabulario</div>
+    <h2>Siete palabras, y ya.</h2>
+    <p class="lead">Son las que cambian lo que escribes. El resto del vocabulario lo vamos agregando cuando haga falta.</p>
+
+    <div class="gl">
+      <div class="gl-row"><div class="gl-t">agent</div><div class="gl-d">Un programa que corre el loop <strong>gather → act → verify</strong> con herramientas de verdad. No es un chat que escribe código: lee tus archivos y corre comandos.</div></div>
+      <div class="gl-row"><div class="gl-t">context</div><div class="gl-d"><strong>Lo que el agent puede ver en este momento.</strong> No es lo que hay en tu repo: es lo que leyó. La distancia entre esas dos cosas explica casi todas las respuestas malas.</div></div>
+      <div class="gl-row"><div class="gl-t">model</div><div class="gl-d">El cerebro. Se puede cambiar. Hoy el que viene por defecto está bien; no gastes la sesión escogiendo.</div></div>
+      <div class="gl-row"><div class="gl-t">tools</div><div class="gl-d">Lo que el agent puede hacer además de escribir texto: <strong>Read, Edit, Bash, Search</strong>. Por eso te pide permiso — algunas tocan tu disco.</div></div>
+      <div class="gl-row"><div class="gl-t">permission mode</div><div class="gl-d">Qué puede hacer sin preguntarte. Va desde preguntar todo hasta no preguntar nada. <strong>Hoy: se pregunta todo.</strong></div></div>
+      <div class="gl-row"><div class="gl-t">session</div><div class="gl-d">La conversación en curso, con todo lo que lleva acumulado. Cuando se enreda, no discutas con él: <strong>resetea y empieza de nuevo</strong> diciéndole qué leer.</div></div>
+      <div class="gl-row"><div class="gl-t">plan mode</div><div class="gl-d">Un modo donde solo lee y propone, sin tocar nada. Si te da nervios soltarlo en un repo que importa, empieza aquí.</div></div>
+    </div>
+
+    <div class="note"><strong>Parking lot.</strong> <code>context window</code>, <code>tokens</code>, <code>MCP</code>, <code>subagents</code> y <code>hooks</code> son reales y sirven — pero hoy no cambian nada de lo que vas a escribir. Context window y tokens los vemos <strong>mañana</strong>, cuando ya los hayas sentido. MCP y subagents, en la <strong>sesión 4</strong>.</div>
+  </div>
+</section>
+
+<!-- REGLAS -->
+<section class="sec" id="reglas">
+  <div class="wrap">
+    <div class="eyebrow">// antes de tocar tu repo</div>
+    <h2>Dos reglas, esta noche sin excepción.</h2>
+
+    <div class="rule">
+      <h3>1 · Rama nueva</h3>
+      <p>Convierte cualquier desastre posible en un no-evento. Si algo sale mal: <code>git checkout .</code> y no perdiste nada.</p>
+<pre><code>git checkout -b agente-sesion-1</code></pre>
+    </div>
+
+    <div class="rule">
+      <h3>2 · Nada de auto-accept</h3>
+      <p>Lee cada permission prompt antes de aprobarlo, aunque te dé lentitud. El punto de hoy es <em>ver</em> el loop, y auto-accept es exactamente lo que lo esconde. A partir de mañana decides tú.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROMPTS -->
+<section class="sec" id="prompts">
+  <div class="wrap">
+    <div class="eyebrow">// hora 2 · copia y pega</div>
+    <h2>Tres prompts, no uno.</h2>
+    <p class="lead">Un prompt grande te devuelve una caja negra. Tres te dejan ver el loop y revisar cada paso por separado. Córrelos en orden, en tu repo, en la rama nueva.</p>
+
+    <div class="prompt">
+      <div class="prompt-head">
+        <span class="prompt-n">P1</span>
+        <span class="prompt-t">Gather — que lea antes de tocar</span>
+        <button class="copy" type="button">Copiar</button>
+      </div>
+<pre><code>Explora este repositorio sin modificar nada.
+
+Explícame:
+1. Qué hace este proyecto, en 3 frases.
+2. Cuál es el punto de entrada y cómo se ejecuta localmente.
+3. Los 5 archivos o carpetas más importantes, y para qué sirve cada uno.
+4. Una cosa que te parezca confusa, inconsistente o mal documentada.
+
+No escribas ni modifiques ningún archivo todavía.
+Al final, dime exactamente qué archivos leíste para responder esto.</code></pre>
+      <div class="prompt-why"><strong>La última línea es la mitad del valor.</strong> Te muestra qué entró al context y, sobre todo, qué <em>no</em> leyó. Si contestó sin abrir los archivos que importan, ya sabes por qué la respuesta suena genérica.</div>
+    </div>
+
+    <div class="prompt">
+      <div class="prompt-head">
+        <span class="prompt-n">P2</span>
+        <span class="prompt-t">Act — que escriba, con la duda a la vista</span>
+        <button class="copy" type="button">Copiar</button>
+      </div>
+<pre><code>Ahora escribe un archivo nuevo llamado ONBOARDING.md en la raíz del repo.
+
+Audiencia: una persona senior que entra al equipo el lunes y nunca vio
+este código.
+Incluye: qué hace el proyecto, cómo levantarlo paso a paso, la estructura
+de carpetas, y las 3 cosas que más confunden a alguien nuevo aquí.
+
+Reglas:
+- Solo afirma cosas que puedas verificar leyendo el repo.
+- Si no estás seguro de algo, ponlo bajo una sección "## Sin confirmar"
+  en vez de inventarlo.
+- No modifiques ningún otro archivo.</code></pre>
+      <div class="prompt-why"><strong>La sección <code>## Sin confirmar</code> no evita que invente: hace visible lo que inventó.</strong> Es la diferencia entre un error que encuentras hoy y uno que encuentras en producción.</div>
+    </div>
+
+    <div class="prompt">
+      <div class="prompt-head">
+        <span class="prompt-n">P3</span>
+        <span class="prompt-t">Verify — que se revise como si no fuera suyo</span>
+        <button class="copy" type="button">Copiar</button>
+      </div>
+<pre><code>Revisa el ONBOARDING.md que acabas de escribir como si fueras un reviewer
+hostil. Para cada afirmación, busca en el repo la evidencia que la respalda
+y cítame archivo y línea. Lístame todo lo que NO puedas respaldar con
+evidencia.</code></pre>
+      <div class="prompt-why"><strong>Y después la parte que te toca a ti.</strong> Corre <code>git status</code> y <code>git diff --stat</code>, lee la sección <code>## Sin confirmar</code>, y <strong>ejecuta un comando del setup que escribió</strong>. Si el comando no corre, ahí está tu primer error.</div>
+    </div>
+
+    <div class="warn"><strong>Lo que reportas al final:</strong> una cosa que el agent afirmó y que está mal. Una sola. Todo el mundo encuentra una — y eso es exactamente lo que queremos ver.</div>
+  </div>
+</section>
+
+<!-- REPO -->
+<section class="sec" id="repo">
+  <div class="wrap">
+    <div class="eyebrow">// si no traes repo</div>
+    <h2>Usa este.</h2>
+    <p class="lead">Si tu código es de tu empresa y no quieres mandarlo a un tercero, o no quieres compartir pantalla con él, trabaja aquí. Es una decisión profesional correcta, no una excusa.</p>
+
+<pre><code>git clone https://github.com/eonoe/coding-agents-101
+cd coding-agents-101/example
+git checkout -b agente-sesion-1</code></pre>
+
+    <div class="warn"><strong>Abre el agent dentro de <code>example/</code>, no en la raíz del repo.</strong> Si lo abres afuera va a leer los materiales del workshop en vez del proyecto, y el ejercicio pierde la gracia.</div>
+
+    <p>Es un CLI chiquito que divide los gastos de un viaje entre varias personas. Corre con <code>node index.js</code>, no necesita instalar nada, y tiene los problemas que tiene cualquier proyecto real al que nadie le ha dado cariño en un tiempo.</p>
+  </div>
+</section>
+
+<!-- DESCARGAS -->
+<section class="sec" id="descargas">
+  <div class="wrap">
+    <div class="eyebrow">// te los llevas</div>
+    <h2>Los archivos que sí vas a reutilizar.</h2>
+    <p class="lead">No son slides. Son los que abres en el próximo proyecto. Tuyos, vengas o no a las otras tres sesiones.</p>
+
+    <div class="dl">
+      <a class="dlc" href="files/AGENTS.md">
+        <h3>AGENTS.md — plantilla</h3>
+        <p>La llenas para tu proyecto y el agent empieza cada sesión sabiendo tus reglas. La trabajamos a fondo mañana.</p>
+        <span class="go">Abrir →</span>
+      </a>
+      <a class="dlc" href="files/revision.md">
+        <h3>Checklist de revisión</h3>
+        <p>Qué buscar cuando lees lo que escribió un agent. Seis pases, en orden, y los tres primeros atrapan casi todo.</p>
+        <span class="go">Abrir →</span>
+      </a>
+      <a class="dlc" href="files/prompts.md">
+        <h3>Prompts que se guardan</h3>
+        <p>Los pocos que usas todas las semanas, no una librería de doscientos que nunca vuelves a abrir.</p>
+        <span class="go">Abrir →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- TAREA -->
+<section class="sec" id="tarea">
+  <div class="wrap">
+    <div class="eyebrow">// para mañana</div>
+    <h2>Una sola cosa.</h2>
+    <p class="lead">Corre el <strong>P1</strong> en un repo distinto al de hoy — ojalá uno más grande y más feo. Fíjate en la lista de archivos que dice que leyó.</p>
+    <p>Llega mañana con esa lista. La sesión 2 es sobre por qué esa lista casi nunca es la que tú esperabas, y qué hacer al respecto.</p>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p><strong>Coding Agents 101</strong> — sesión 1 de 4 · lunes 17 de agosto, 6:00 PM (GMT-4)</p>
+    <p>Meet: <a href="https://meet.google.com/qxk-zffm-ojo">meet.google.com/qxk-zffm-ojo</a> — el mismo link sirve para las cuatro. Conéctate 5 minutos antes.</p>
+    <p style="margin-top:14px;">Grabamos todo. Si te pierdes una, te llega igual. · <a href="https://eonoe.github.io/">Volver al workshop</a></p>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.copy').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    var pre = btn.closest('.prompt').querySelector('pre');
+    var texto = pre.innerText;
+    function ok(){
+      btn.textContent = 'Copiado';
+      btn.classList.add('ok');
+      setTimeout(function(){ btn.textContent = 'Copiar'; btn.classList.remove('ok'); }, 1600);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(texto).then(ok, fallback);
+    } else {
+      fallback();
+    }
+    // Safari y navegadores sin permiso de portapapeles: seleccionamos el texto
+    // para que un Cmd-C manual funcione igual.
+    function fallback(){
+      var rango = document.createRange();
+      rango.selectNodeContents(pre);
+      var sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(rango);
+      btn.textContent = 'Cmd-C';
+      setTimeout(function(){ btn.textContent = 'Copiar'; }, 2400);
+    }
+  });
+});
+</script>
+
+</body>
+</html>
