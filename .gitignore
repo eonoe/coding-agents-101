@@ -1,0 +1,5 @@
+# Notas de facilitación. No son para los asistentes.
+facilitator/
+
+.DS_Store
+node_modules/

@@ -1,0 +1,40 @@
+{
+  "viaje": "Cabarete, fin de semana largo",
+  "gastos": [
+    {
+      "concepto": "Airbnb dos noches",
+      "monto": 14400,
+      "moneda": "DOP",
+      "pagadoPor": "Ana",
+      "entre": ["Ana", "Luis", "Marta"]
+    },
+    {
+      "concepto": "Gasolina ida y vuelta",
+      "monto": 3500,
+      "moneda": "DOP",
+      "pagadoPor": "Luis",
+      "entre": ["Ana", "Luis", "Marta"]
+    },
+    {
+      "concepto": "Supermercado",
+      "monto": 4200,
+      "moneda": "DOP",
+      "pagadoPor": "Marta",
+      "entre": ["Ana", "Luis", "Marta"]
+    },
+    {
+      "concepto": "Clase de kitesurf",
+      "monto": 60,
+      "moneda": "EUR",
+      "pagadoPor": "Ana",
+      "entre": ["Ana", "Marta"]
+    },
+    {
+      "concepto": "Cena del sabado",
+      "monto": 95,
+      "moneda": "USD",
+      "pagadoPor": "Luis",
+      "entre": ["Ana", "Luis", "Marta"]
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "name": "gastos-viaje",
+  "version": "0.3.1",
+  "description": "Divide los gastos de un viaje y dice quien le paga a quien",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "license": "MIT"
+}
