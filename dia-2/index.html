@@ -33,15 +33,181 @@
 </header>
 
 <main>
-<section class="sec">
+<!-- LA IDEA -->
+<section class="sec" id="idea">
   <div class="wrap">
-    <div class="eyebrow">// todavía no</div>
-    <h2>Esta página se llena el mar 18 ago.</h2>
-    <p class="lead">Los prompts de esta noche se publican aquí el mismo día, antes de la sesión. Guarda el link.</p>
+    <div class="eyebrow">// la idea de la noche</div>
+    <h2>El agent no lee tu repo. Lee lo que cupo.</h2>
+    <p class="lead">Anoche casi todos los fallos que encontramos fueron del <strong>gather</strong>: el agent afirmó cosas falsas con seguridad porque nunca abrió el archivo que lo hubiera desmentido. Esta noche vemos por qué pasa y cómo se arregla.</p>
 
-    <div class="note"><strong>Sales con:</strong> un AGENTS.md que el agent obedece a la vista.</div>
+    <div class="note"><strong>Saca la lista de anoche.</strong> El homework era correr el P1 en otro repo y guardar la lista de archivos que dijo haber leído. Esa lista es el material de trabajo de hoy. Si no la tienes, la sacas en los primeros minutos.</div>
 
-    <p>Mientras tanto, todo lo que no cambia de un día a otro ya está listo en <a href="../kit/">el kit</a>: cómo instalar tu agent, el glosario, el camino sin terminal y los archivos que te llevas.</p>
+    <p><strong>Context</strong> es lo que el agent puede ver en este momento. No es tu repo, no es tu carpeta, y casi nunca es lo que tú te imaginas. Se llena de tres fuentes, y solo una la controlas del todo:</p>
+
+    <div class="grid">
+      <div class="card">
+        <span class="k">01 · tú</span>
+        <h3>Lo que escribes</h3>
+        <p>El prompt, y los archivos que le pasas a la fuerza. Es la única parte que controlas al 100%, y la que casi nadie usa a propósito.</p>
+      </div>
+      <div class="card">
+        <span class="k">02 · él</span>
+        <h3>Lo que decide leer</h3>
+        <p>Busca por nombre, abre unos cuantos archivos y decide que ya entendió. Aquí es donde se pierde, y no te avisa cuando pasa.</p>
+      </div>
+      <div class="card">
+        <span class="k">03 · el repo</span>
+        <h3>Lo que le dejaste escrito</h3>
+        <p>El <code>AGENTS.md</code>, que lee solo al arrancar. Es la única fuente que sigue trabajando cuando tú no estás delante.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- POR QUE FALLA -->
+<section class="sec" id="por-que">
+  <div class="wrap">
+    <div class="eyebrow">// la parte que te cuesta caro</div>
+    <h2>Por qué no leyó lo que tú creías.</h2>
+    <p class="lead">No es que sea flojo ni que esté roto. Es que <strong>busca antes de leer</strong>, y la búsqueda falla de maneras muy predecibles. Reconocerlas es la mitad del trabajo.</p>
+
+    <ol>
+      <li><strong>Buscó por el nombre equivocado.</strong> Tú piensas "autenticación", el archivo se llama <code>middleware/guard.js</code>, y no se cruzan por ningún lado.</li>
+      <li><strong>Encontró el duplicado.</strong> Había dos implementaciones, una muerta. Abrió la muerta, que suele tener el nombre más obvio.</li>
+      <li><strong>Leyó el archivo pero no la convención.</strong> Ve el código; no ve que en tu equipo eso no se hace así desde hace dos años.</li>
+      <li><strong>Se conformó.</strong> Leyó tres archivos, le alcanzó para una respuesta que suena bien, y paró. Nada le exige seguir buscando.</li>
+    </ol>
+
+    <div class="note"><strong>Ninguna de las cuatro se ve en la respuesta.</strong> Salen todas igual de seguras y bien escritas. Por eso el paso de pedirle la lista de lo que leyó no es un detalle: es el único momento en que la falla se hace visible antes de que te cueste tiempo.</div>
+  </div>
+</section>
+
+<!-- AGENTS.MD -->
+<section class="sec" id="agents-md">
+  <div class="wrap">
+    <div class="eyebrow">// lo que te llevas hoy</div>
+    <h2>AGENTS.md: lo que el repo no dice de sí mismo.</h2>
+    <p class="lead">Un archivo en la raíz del proyecto que casi todos los coding agents leen solos al arrancar. Es como le dejas escrito lo que no puede deducir mirando el código.</p>
+
+    <p>Si usas Claude Code, además lee <code>CLAUDE.md</code>. Un <code>CLAUDE.md</code> de una línea que diga <em>Lee AGENTS.md</em> te evita mantener dos archivos.</p>
+
+    <h3>Las tres reglas que separan el que sirve del que se ignora</h3>
+    <div class="rule">
+      <h3>1 · Solo lo que no puede deducir</h3>
+      <p>Que usas React ya lo ve en el <code>package.json</code>. Que los componentes nuevos van en <code>src/features/</code> y no en <code>src/components/</code> no lo ve en ningún lado. Eso segundo es lo que va aquí.</p>
+    </div>
+    <div class="rule">
+      <h3>2 · Cada línea tiene que cambiar algo</h3>
+      <p>Bórrala mentalmente. Si el agent haría exactamente lo mismo sin ella, sobra. Este es el filtro que mantiene el archivo corto sin que tengas que pensarlo.</p>
+    </div>
+    <div class="rule">
+      <h3>3 · Empieza corto</h3>
+      <p>Quince líneas hoy, y una regla más cada vez que el agent haga algo que te dé rabia. Cada regla nace de un problema real, que es la única forma de que ninguna sobre.</p>
+    </div>
+
+    <div class="note"><strong>El peligro es el archivo largo y viejo.</strong> Un AGENTS.md de 200 líneas que nadie mantiene hace más daño que uno de 20 al día, porque el agent se lo cree completo y no tiene forma de saber qué quedó desactualizado.</div>
+
+    <p><a class="btn btn-sm" href="../files/AGENTS.md" download>Bajar la plantilla</a></p>
+  </div>
+</section>
+
+<!-- REGLA -->
+<section class="sec" id="regla">
+  <div class="wrap">
+    <div class="eyebrow">// antes de la hora 2</div>
+    <h2>Una regla, y es la que la gente se salta.</h2>
+
+    <div class="rule">
+      <h3>Prueba el AGENTS.md en una sesión nueva</h3>
+      <p>Si lo pruebas en la misma sesión donde lo escribiste, el agent ya tiene todo eso en context y va a obedecer aunque el archivo esté vacío. No probaste nada. <strong>Cierra la sesión, abre una limpia, y ahí sí.</strong></p>
+      <p style="margin-top:12px;font-size:14.5px;">Es el mismo error que hacer <code>git commit</code> sin mirar el diff: parece que funcionó porque nadie miró.</p>
+    </div>
+
+    <p>El branch de anoche sigue sirviendo. Si empezaste uno nuevo, la regla no cambia: <code>git checkout -b agente-sesion-2</code>.</p>
+  </div>
+</section>
+
+<!-- PROMPTS -->
+<section class="sec" id="prompts">
+  <div class="wrap">
+    <div class="eyebrow">// hora 2 · copia y pega</div>
+    <h2>Tres prompts: auditar, escribir, probar.</h2>
+    <p class="lead">Mismo patrón de anoche. Primero haces visible el problema, después escribes la solución, y al final la pruebas de verdad en vez de asumir que funcionó.</p>
+
+    <div class="prompt">
+      <div class="prompt-head">
+        <span class="prompt-n">P1</span>
+        <span class="prompt-t">Auditar - qué NO leíste</span>
+        <button class="copy" type="button">Copiar</button>
+      </div>
+<pre><code>Sin modificar nada, contéstame sobre este repositorio:
+
+1. Los 5 archivos que un dev nuevo tiene que entender antes de tocar
+   cualquier cosa, y por qué cada uno.
+2. Las convenciones de este proyecto que NO se pueden deducir leyendo
+   un archivo suelto.
+3. Qué partes del repo no abriste, y qué te estás perdiendo por no
+   haberlas abierto.
+
+Para cada afirmación, cita el archivo y la línea de donde la sacaste.
+Si algo lo estás infiriendo y no lo verificaste, dilo con esas palabras.</code></pre>
+      <div class="prompt-why"><strong>La 3 es la pregunta nueva.</strong> Anoche le pediste qué leyó; hoy le pides qué <em>no</em> leyó. Compara su respuesta con lo que tú sabes de tu repo: ese hueco es exactamente lo que va a terminar en el AGENTS.md.</div>
+    </div>
+
+    <div class="prompt">
+      <div class="prompt-head">
+        <span class="prompt-n">P2</span>
+        <span class="prompt-t">Escribir - el archivo, corto</span>
+        <button class="copy" type="button">Copiar</button>
+      </div>
+<pre><code>Escribe un AGENTS.md en la raíz del repo, de máximo 20 líneas.
+
+Incluye solo cosas que NO se puedan deducir leyendo el código:
+convenciones del equipo, dónde va cada tipo de archivo, qué comandos
+se corren de verdad, y qué cosas están prohibidas aquí y por qué.
+
+Reglas:
+- Nada de "usa buenas prácticas" ni consejos genéricos.
+- Cada línea tiene que cambiar algo que harías distinto sin ella.
+- Si no estás seguro de una convención, no la inventes: hazme la
+  pregunta al final, fuera del archivo.</code></pre>
+      <div class="prompt-why"><strong>El límite de 20 líneas hace el trabajo.</strong> Sin él sale un documento de 150 líneas lleno de obviedades que nadie va a mantener. Las preguntas del final suelen ser mejores que el archivo: son justo lo que el repo no dice de sí mismo.</div>
+    </div>
+
+    <div class="prompt">
+      <div class="prompt-head">
+        <span class="prompt-n">P3</span>
+        <span class="prompt-t">Probar - en sesión limpia</span>
+        <button class="copy" type="button">Copiar</button>
+      </div>
+<pre><code>[Cierra la sesión anterior y abre una nueva antes de pegar esto.]
+
+Sin leer nada más que lo que necesites: agrega un archivo nuevo del
+tipo que más se crea en este proyecto (un componente, un endpoint, un
+test - lo que aplique aquí), con el nombre que tú creas correcto y en
+el lugar que tú creas correcto.
+
+Antes de escribirlo, dime dónde lo vas a poner, cómo lo vas a nombrar,
+y de dónde sacaste esas dos decisiones.</code></pre>
+      <div class="prompt-why"><strong>Aquí se ve si el archivo sirve.</strong> Si dice "según el AGENTS.md, va en <code>src/features/</code>", funcionó. Si escoge bien pero no menciona el archivo, probablemente lo adivinó del código y esa línea sobra. Si escoge mal, ya sabes cuál es la primera regla que te falta.</div>
+    </div>
+  </div>
+</section>
+
+<!-- TAREA -->
+<section class="sec" id="tarea">
+  <div class="wrap">
+    <div class="eyebrow">// para mañana</div>
+    <h2>Una sola cosa.</h2>
+    <p class="lead">Deja que el AGENTS.md se gane cada línea. Mañana trabajamos sobre lo que el agent escribió, así que trae algo que no sea perfecto.</p>
+
+    <ol>
+      <li>Corre el <strong>P3</strong> dos veces más en sesiones limpias, con tareas distintas.</li>
+      <li>Cada vez que haga algo que te dé rabia, <strong>agrega una línea</strong> al AGENTS.md. Una, no un párrafo.</li>
+      <li>Trae mañana un <strong>diff que no te guste</strong>: algo que el agent escribió y que tú no aceptarías en un pull request.</li>
+    </ol>
+
+    <div class="note"><strong>Sesión 3:</strong> leer lo que escribió y empujar de vuelta. El diff feo que traigas es el material de la clase, así que no lo arregles antes.</div>
 
     <div class="daynav">
       <a href="../dia-1/">← Día 1</a>
@@ -60,6 +226,35 @@
     <p style="margin-top:14px;">Grabamos todo. Si te pierdes una, te llega igual. · <a href="../">Todos los días</a> · <a href="../kit/">El kit</a> · <a href="https://eonoe.github.io/">El workshop</a></p>
   </div>
 </footer>
+
+<script>
+document.querySelectorAll('.copy').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    var pre = btn.closest('.prompt').querySelector('pre');
+    function ok(){
+      btn.textContent = 'Copiado';
+      btn.classList.add('ok');
+      setTimeout(function(){ btn.textContent = 'Copiar'; btn.classList.remove('ok'); }, 1600);
+    }
+    // Safari y navegadores sin permiso de portapapeles: seleccionamos el texto
+    // para que un Cmd-C manual funcione igual.
+    function fallback(){
+      var rango = document.createRange();
+      rango.selectNodeContents(pre);
+      var sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(rango);
+      btn.textContent = 'Cmd-C';
+      setTimeout(function(){ btn.textContent = 'Copiar'; }, 2400);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(pre.innerText).then(ok, fallback);
+    } else {
+      fallback();
+    }
+  });
+});
+</script>
 
 </body>
 </html>
