@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coding Agents 101 - Sesión 2 · slides</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23ffd400'/%3E%3Ctext x='16' y='21' font-family='monospace' font-size='14' font-weight='700' text-anchor='middle' fill='%230b0b10'%3ETL%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/slides.css">
+</head>
+<body>
+
+<!-- 1 · pre -->
+<section class="slide on pop" data-t="pre">
+  <div class="eyebrow">// coding agents 101 · sesión 2 de 4</div>
+  <h1>Context.</h1>
+  <p class="sub wide">El agent no lee tu repo. Lee lo que cupo. Esta noche decides tú qué cabe.</p>
+</section>
+
+<!-- 2 · T+0 · el poll, más corto que anoche -->
+<section class="slide" data-t="T+0">
+  <div class="eyebrow">// una letra en el chat</div>
+  <h2>¿Traes la lista<br>de anoche?</h2>
+  <div class="poll">
+    <div class="opt"><span class="k">A</span><span>Hice el homework y tengo la lista de archivos.</span></div>
+    <div class="opt"><span class="k">B</span><span>Corrí el P1 pero no guardé la lista.</span></div>
+    <div class="opt"><span class="k">C</span><span>No pude, no me dio tiempo.</span></div>
+    <div class="opt"><span class="k">D</span><span>No estuve anoche.</span></div>
+  </div>
+  <p class="sub" style="max-width:52ch;">Si eres B o C, en cuatro minutos la sacamos. Si eres D, no te hace falta nada de anoche para seguir hoy.</p>
+</section>
+
+<!-- 3 · T+6 -->
+<section class="slide" data-t="T+6">
+  <div class="eyebrow">// la idea de la noche</div>
+  <h2>Context son<br><span class="hl">tres fuentes</span>.</h2>
+  <div class="loop">
+    <div class="step"><span class="n">01 · tú</span><h3>Lo que escribes</h3><p>El prompt, y los archivos que le pasas a la fuerza. Lo único que controlas del todo.</p></div>
+    <div class="step"><span class="n">02 · él</span><h3>Lo que decide leer</h3><p>Busca, abre unos archivos, decide que ya entendió. Aquí es donde se pierde.</p></div>
+    <div class="step"><span class="n">03 · el repo</span><h3>Lo que le dejaste escrito</h3><p>El AGENTS.md. La única que sigue trabajando cuando tú no estás delante.</p></div>
+  </div>
+</section>
+
+<!-- 4 · T+18 -->
+<section class="slide dark" data-t="T+18">
+  <div class="eyebrow">// por qué no leyó lo que creías</div>
+  <h2>La búsqueda falla<br>de cuatro maneras.</h2>
+  <ol class="big">
+    <li><strong>Nombre equivocado.</strong> Tú piensas "autenticación"; el archivo es <code>guard.js</code>.</li>
+    <li><strong>Duplicado muerto.</strong> Abrió la implementación vieja, que tiene el nombre más obvio.</li>
+    <li><strong>Convención no escrita.</strong> Ve el código; no ve que aquí eso no se hace así.</li>
+    <li><strong>Se conformó.</strong> Tres archivos le alcanzaron para sonar bien, y paró.</li>
+  </ol>
+  <p class="sub wide">Ninguna se ve en la respuesta. Salen todas igual de seguras.</p>
+</section>
+
+<!-- 5 · T+25 -->
+<section class="slide pop" data-t="T+25">
+  <div class="eyebrow">// lo que te llevas hoy</div>
+  <h2>AGENTS.md se gana<br>cada línea.</h2>
+  <div class="rules">
+    <div class="rl"><h3>1 · Solo lo que no puede deducir</h3><p>Que usas React lo ve en el <code>package.json</code>. Que los componentes van en <code>src/features/</code> no lo ve en ningún lado.</p></div>
+    <div class="rl"><h3>2 · Cada línea cambia algo</h3><p>Bórrala mentalmente. Si haría lo mismo sin ella, sobra.</p></div>
+    <div class="rl"><h3>3 · Empieza corto</h3><p>Quince líneas hoy. Una regla más cada vez que te dé rabia.</p></div>
+  </div>
+</section>
+
+<!-- 6 · T+35 · la regla que la gente se salta -->
+<section class="slide blue" data-t="T+35">
+  <div class="eyebrow">// la regla de esta noche</div>
+  <h2>El P3 va en una<br>sesión nueva.</h2>
+  <p class="sub wide">Si lo pruebas en la misma sesión donde lo escribiste, el agent ya tiene todo eso en context y obedece aunque el archivo esté vacío. <strong>No probaste nada.</strong></p>
+  <p class="sub wide" style="margin-top:2.5vh;">Cierra la sesión. Sí, en serio. Abre una limpia, y ahí sí.</p>
+</section>
+
+<!-- 7 · T+35 -->
+<section class="slide" data-t="T+35">
+  <div class="eyebrow">// los prompts están aquí · no los escribas a mano</div>
+  <h2>La página<br>de hoy.</h2>
+  <div class="url">eonoe.github.io/<wbr>coding-agents-101/dia-2</div>
+  <p class="sub wide">Los tres prompts con botón de copiar, y la plantilla de AGENTS.md para bajar.</p>
+</section>
+
+<!-- 8 · T+40 -->
+<section class="slide blue" data-t="T+40">
+  <div class="eyebrow">// cinco minutos</div>
+  <h2>Break.<br>Volvemos 6:45.</h2>
+  <p class="sub wide">Párate de la silla. La hora que viene la trabajas tú.</p>
+</section>
+
+<!-- 9 · T+45 -->
+<section class="slide" data-t="T+45">
+  <div class="eyebrow">// hora 2 · copia y pega</div>
+  <h2>Auditar, escribir,<br>probar.</h2>
+  <div class="loop">
+    <div class="step"><span class="n">p1 · auditar</span><h3>Qué NO leíste</h3><p>Anoche le pediste qué leyó. Hoy, qué <em>no</em> leyó, y qué convenciones no puede deducir.</p></div>
+    <div class="step"><span class="n">p2 · escribir</span><h3>Máximo 20 líneas</h3><p>Sin el límite salen 150 líneas de obviedades que nadie va a mantener.</p></div>
+    <div class="step"><span class="n">p3 · probar</span><h3>En sesión limpia</h3><p>Una tarea chiquita. ¿Escoge bien, y dice de dónde lo sacó?</p></div>
+  </div>
+</section>
+
+<!-- 10 · T+80 · los tres son buenos resultados, y hay que decirlo antes -->
+<section class="slide dark" data-t="T+80">
+  <div class="eyebrow">// cuando corras el p3, te va a pasar una de estas</div>
+  <h2>Las tres son<br>buenas noticias.</h2>
+  <ol class="big">
+    <li><strong>Citó el AGENTS.md.</strong> Funcionó. Dilo en el chat.</li>
+    <li><strong>Acertó pero no lo mencionó.</strong> Lo dedujo del código: esa línea sobra. <span class="hl">La más interesante.</span></li>
+    <li><strong>Se equivocó.</strong> Ya sabes cuál es la primera regla que te falta.</li>
+  </ol>
+</section>
+
+<!-- 11 · T+92 -->
+<section class="slide blue" data-t="T+92">
+  <div class="eyebrow">// todos a la vez</div>
+  <h2>Una línea que<br>se ganó su lugar.</h2>
+  <div class="tpl"><span class="y">[nombre]</span> | ¿citó el AGENTS.md? sí / no / se equivocó | <span class="y">UNA línea de tu archivo</span></div>
+  <p class="sub wide">La línea concreta de alguien más enseña más que la regla abstracta.</p>
+</section>
+
+<!-- 12 · T+95 -->
+<section class="slide pop" data-t="T+95">
+  <div class="eyebrow">// cuatro minutos cada uno · te corto y no es personal</div>
+  <h2>Contesta estas tres.</h2>
+  <ol class="big">
+    <li>¿Qué línea escribiste?</li>
+    <li>¿La citó, o la adivinó?</li>
+    <li>¿Qué NO pusiste, y ahora crees que debiste?</li>
+  </ol>
+</section>
+
+<!-- 13 · T+112 -->
+<section class="slide dark" data-t="T+112">
+  <div class="eyebrow">// para mañana</div>
+  <h2>Trae un diff<br>que <span class="hl">no te guste</span>.</h2>
+  <ul class="big">
+    <li>Corre el P3 dos veces más, en sesiones limpias.</li>
+    <li>Cada vez que te dé rabia, <strong>una línea</strong> al AGENTS.md. Una.</li>
+    <li>Trae algo que el agent escribió y que <strong>no aceptarías en un pull request</strong>.</li>
+  </ul>
+  <p class="sub wide">Y no lo arregles. Ese diff es la clase de mañana.</p>
+</section>
+
+<!-- 14 · T+112 -->
+<section class="slide pop" data-t="T+112">
+  <div class="eyebrow">// mañana, misma hora, mismo link</div>
+  <h2>Hoy le dijiste<br>qué saber.</h2>
+  <p class="sub" style="max-width:44ch;">Mañana revisamos lo que escribe, y aprendes a empujarle de vuelta.</p>
+  <div class="url">eonoe.github.io/<wbr>coding-agents-101</div>
+</section>
+
+<div class="bar" id="bar"></div>
+<div class="num" id="num"></div>
+<div class="tmark" id="tmark"></div>
+<div class="hint">← → espacio · f pantalla completa · o índice</div>
+
+<div id="ov"><h3>Índice - clic para saltar (o / esc para cerrar)</h3><ol id="ovl"></ol></div>
+
+<script src="assets/slides.js"></script>
+
+</body>
+</html>
