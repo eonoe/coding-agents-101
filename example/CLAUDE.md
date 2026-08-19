@@ -1,0 +1,1 @@
+Usa siempre el archivo AGENTS.md y respétalo a rajatabla.

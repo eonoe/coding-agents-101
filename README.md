@@ -22,7 +22,9 @@ decir en voz alta durante una llamada que `/dia-2/`.
 | [`kit/`](kit/) | La referencia que sirve para las cuatro sesiones |
 | [`dia-1/`](dia-1/) … `dia-4/` | Una página por sesión |
 | [`assets/kit.css`](assets/kit.css) | Los estilos, compartidos por todas las páginas |
-| [`slides.html`](slides.html) | Las láminas de los segmentos de concepto |
+| [`slides.html`](slides.html) | Las láminas del día 1 |
+| [`slides-dia-2.html`](slides-dia-2.html) | Las láminas del día 2 |
+| [`assets/slides.css`](assets/slides.css) · [`assets/slides.js`](assets/slides.js) | Estilos y navegación, compartidos por los decks |
 | [`files/AGENTS.md`](files/AGENTS.md) | Plantilla de `AGENTS.md` para tu proyecto |
 | [`files/revision.md`](files/revision.md) | Checklist para revisar lo que escribió un agent |
 | [`files/prompts.md`](files/prompts.md) | Los prompts que vale la pena guardar |
