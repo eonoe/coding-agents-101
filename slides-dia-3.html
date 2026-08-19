@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coding Agents 101 - Sesión 3 · slides</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23ffd400'/%3E%3Ctext x='16' y='21' font-family='monospace' font-size='14' font-weight='700' text-anchor='middle' fill='%230b0b10'%3ETL%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/slides.css">
+</head>
+<body>
+
+<!-- 1 · pre -->
+<section class="slide on pop" data-t="pre">
+  <div class="eyebrow">// coding agents 101 · sesión 3 de 4</div>
+  <h1>Revisar<br>de verdad.</h1>
+  <p class="sub wide">Leer lo que escribió, encontrar dónde se cayó, y empujarle de vuelta hasta que sirva.</p>
+</section>
+
+<!-- 2 · T+0 -->
+<section class="slide" data-t="T+0">
+  <div class="eyebrow">// una letra en el chat</div>
+  <h2>¿Trajiste<br>el diff?</h2>
+  <div class="poll">
+    <div class="opt"><span class="k">A</span><span>Sí, y no me gusta nada. Perfecto.</span></div>
+    <div class="opt"><span class="k">B</span><span>Tengo cambios, pero se ven bien.</span></div>
+    <div class="opt"><span class="k">C</span><span>No corrí nada desde ayer.</span></div>
+    <div class="opt"><span class="k">D</span><span>No estuve en las anteriores.</span></div>
+  </div>
+  <p class="sub" style="max-width:54ch;">Si eres B, hoy vas a descubrir que no se ven tan bien. Esa es la sesión.</p>
+</section>
+
+<!-- 3 · T+6 · la tesis de la noche -->
+<section class="slide dark" data-t="T+6">
+  <div class="eyebrow">// la idea de la noche</div>
+  <h2>Se ve terminado.<br>No es lo mismo<br>que <span class="hl">estar</span> terminado.</h2>
+  <p class="sub wide">Un humano junior escribe código que se ve inseguro cuando lo está. El agent escribe código que se ve seguro siempre: nombres correctos, formato limpio, comentarios en su sitio, tests que pasan.</p>
+  <p class="sub wide" style="margin-top:2.4vh;"><strong>Todas las señales que usabas para calibrar confianza dejaron de funcionar.</strong> Hay que revisar distinto.</p>
+</section>
+
+<!-- 4 · T+12 · DIAGRAMA: donde entras tu -->
+<section class="slide" data-t="T+12">
+  <div class="eyebrow">// dónde entras tú</div>
+  <h2>Él cierra su loop.<br>Tú cierras el tuyo.</h2>
+  <div class="fig">
+    <svg viewBox="0 0 900 300" role="img" aria-label="El loop del agent - gather, act, verify - y encima el loop humano: leer el diff, empujar de vuelta.">
+      <!-- loop del agent -->
+      <rect x="20" y="150" width="200" height="72" rx="12" fill="#ffffff" stroke="#0b0b10" stroke-width="3"/>
+      <text class="t-h" x="120" y="181" text-anchor="middle" font-size="20" fill="#0b0b10">gather</text>
+      <text x="120" y="204" text-anchor="middle" font-size="14" fill="#6b7280">lee</text>
+
+      <rect x="250" y="150" width="200" height="72" rx="12" fill="#ffffff" stroke="#0b0b10" stroke-width="3"/>
+      <text class="t-h" x="350" y="181" text-anchor="middle" font-size="20" fill="#0b0b10">act</text>
+      <text x="350" y="204" text-anchor="middle" font-size="14" fill="#6b7280">escribe</text>
+
+      <rect x="480" y="150" width="200" height="72" rx="12" fill="#ffffff" stroke="#0b0b10" stroke-width="3"/>
+      <text class="t-h" x="580" y="181" text-anchor="middle" font-size="20" fill="#0b0b10">verify</text>
+      <text x="580" y="204" text-anchor="middle" font-size="14" fill="#6b7280">se revisa solo</text>
+
+      <path d="M220 186 H250" stroke="#0b0b10" stroke-width="3" marker-end="url(#a3)"/>
+      <path d="M450 186 H480" stroke="#0b0b10" stroke-width="3" marker-end="url(#a3)"/>
+      <!-- vuelta del agent -->
+      <path d="M580 222 V262 H120 V222" fill="none" stroke="#0b0b10" stroke-width="3"
+            stroke-dasharray="7 6" marker-end="url(#a3)"/>
+      <text class="t-mono" x="350" y="283" text-anchor="middle" font-size="14" fill="#6b7280">su loop se cierra solo, cuando él cree que ya está</text>
+
+      <!-- el loop humano, encima y en azul -->
+      <rect x="710" y="150" width="170" height="72" rx="12" fill="#3531ff" stroke="#0b0b10" stroke-width="3"/>
+      <text class="t-h" x="795" y="181" text-anchor="middle" font-size="20" fill="#ffffff">TÚ</text>
+      <text x="795" y="204" text-anchor="middle" font-size="14" fill="#dcdbff">lees el diff</text>
+      <path d="M680 186 H710" stroke="#0b0b10" stroke-width="3" marker-end="url(#a3)"/>
+
+      <path d="M795 150 V96 H350 V150" fill="none" stroke="#3531ff" stroke-width="4" marker-end="url(#a3b)"/>
+      <rect x="300" y="42" width="420" height="46" rx="10" fill="#ffd400" stroke="#0b0b10" stroke-width="3"/>
+      <text class="t-h" x="510" y="72" text-anchor="middle" font-size="18" fill="#0b0b10">empujar de vuelta ← la sesión de hoy</text>
+
+      <defs>
+        <marker id="a3" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+          <path d="M0 0 L9 4.5 L0 9 z" fill="#0b0b10"/>
+        </marker>
+        <marker id="a3b" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+          <path d="M0 0 L9 4.5 L0 9 z" fill="#3531ff"/>
+        </marker>
+      </defs>
+    </svg>
+    <div class="fig-cap">// su verify dice "listo". el tuyo decide si de verdad lo está.</div>
+  </div>
+</section>
+
+<!-- 5 · T+18 -->
+<section class="slide" data-t="T+18">
+  <div class="eyebrow">// qué buscar, en este orden</div>
+  <h2>Cinco cosas,<br>y las cinco aparecen.</h2>
+  <div class="terms">
+    <div class="term"><span class="t">1 · inventó</span><span class="d">afirmó algo que el repo no dice en ningún lado</span></div>
+    <div class="term"><span class="t">2 · tests verdes</span><span class="d">pasan, pero no prueban lo que importa</span></div>
+    <div class="term"><span class="t">3 · de más</span><span class="d">cambió cosas que nadie le pidió</span></div>
+    <div class="term"><span class="t">4 · de menos</span><span class="d">borró algo y no lo dijo</span></div>
+    <div class="term"><span class="t">5 · no lo entiendes</span><span class="d">funciona, pero no lo puedes mantener</span></div>
+  </div>
+  <p class="sub wide">La 5 es la que la gente se perdona. No te la perdones: es la que te cuesta en tres meses.</p>
+</section>
+
+<!-- 6 · T+25 · DIAGRAMA: la ilusion de los tests verdes -->
+<section class="slide pop" data-t="T+25">
+  <div class="eyebrow">// la trampa número 2, en dibujo</div>
+  <h2>Verde no es<br>lo mismo que cubierto.</h2>
+  <div class="fig">
+    <svg viewBox="0 0 900 290" role="img" aria-label="Diagrama: el conjunto de lo que el código hace es mucho mayor que el de lo que los tests comprueban; el hueco entre ambos es lo que se rompe en producción.">
+      <rect x="40" y="30" width="500" height="220" rx="16" fill="#ffffff" stroke="#0b0b10" stroke-width="4"/>
+      <text class="t-h" x="60" y="62" font-size="19" fill="#0b0b10">todo lo que el código hace</text>
+
+      <rect x="70" y="90" width="200" height="130" rx="12" fill="#3531ff" stroke="#0b0b10" stroke-width="3"/>
+      <text class="t-h" x="170" y="145" text-anchor="middle" font-size="17" fill="#ffffff">lo que los</text>
+      <text class="t-h" x="170" y="168" text-anchor="middle" font-size="17" fill="#ffffff">tests prueban</text>
+
+      <text class="t-mono" x="310" y="140" font-size="15" fill="#6b7280">este hueco</text>
+      <text class="t-mono t-h" x="310" y="164" font-size="15" fill="#0b0b10">es lo que se rompe</text>
+
+      <path d="M560 140 H620" stroke="#0b0b10" stroke-width="3" marker-end="url(#a3c)"/>
+
+      <rect x="640" y="60" width="230" height="160" rx="14" fill="#0b0b10"/>
+      <text class="t-mono" x="755" y="100" text-anchor="middle" font-size="15" fill="#8a8a99">el lunes, en example/</text>
+      <text class="t-h" x="755" y="146" text-anchor="middle" font-size="42" fill="#ffd400">12/12</text>
+      <text class="t-mono" x="755" y="176" text-anchor="middle" font-size="15" fill="#ffffff">tests pasando</text>
+      <text class="t-mono" x="755" y="200" text-anchor="middle" font-size="14" fill="#8a8a99">escritos por el agent</text>
+
+      <defs>
+        <marker id="a3c" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+          <path d="M0 0 L9 4.5 L0 9 z" fill="#0b0b10"/>
+        </marker>
+      </defs>
+    </svg>
+    <div class="fig-cap">// la pregunta no es si pasan. es qué no cubren.</div>
+  </div>
+</section>
+
+<!-- 7 · T+30 -->
+<section class="slide dark" data-t="T+30">
+  <div class="eyebrow">// dónde se revisa</div>
+  <h2>Lee el <span class="hl">diff</span>,<br>no el chat.</h2>
+  <p class="sub wide">Lo que te contó en el chat es su versión de lo que hizo. El diff es lo que de verdad pasó, y casi nunca son idénticos.</p>
+  <p class="sub wide" style="margin-top:2.2vh;">Tres comandos y ya tienes la noche resuelta:</p>
+  <div class="tpl">git status<br>git diff --stat<br>git diff</div>
+</section>
+
+<!-- 8 · T+35 · DIAGRAMA: el orden de revision -->
+<section class="slide" data-t="T+35">
+  <div class="eyebrow">// el orden importa</div>
+  <h2>Cuatro preguntas,<br>siempre en este orden.</h2>
+  <div class="fig">
+    <svg viewBox="0 0 900 260" role="img" aria-label="Cuatro pasos en cadena: ¿corre?, ¿hace lo que pediste?, ¿rompió algo?, ¿lo entiendes? La mayoría de la gente para en el primero.">
+      <rect x="10" y="60" width="196" height="96" rx="12" fill="#ffffff" stroke="#0b0b10" stroke-width="3"/>
+      <text class="t-mono" x="28" y="88" font-size="13" fill="#3531ff">01</text>
+      <text class="t-h" x="28" y="118" font-size="19" fill="#0b0b10">¿Corre?</text>
+      <text x="28" y="142" font-size="13.5" fill="#6b7280">lo más fácil de todo</text>
+
+      <rect x="234" y="60" width="196" height="96" rx="12" fill="#ffffff" stroke="#0b0b10" stroke-width="3"/>
+      <text class="t-mono" x="252" y="88" font-size="13" fill="#3531ff">02</text>
+      <text class="t-h" x="252" y="118" font-size="19" fill="#0b0b10">¿Hace lo</text>
+      <text class="t-h" x="252" y="140" font-size="19" fill="#0b0b10">que pediste?</text>
+
+      <rect x="458" y="60" width="196" height="96" rx="12" fill="#ffffff" stroke="#0b0b10" stroke-width="3"/>
+      <text class="t-mono" x="476" y="88" font-size="13" fill="#3531ff">03</text>
+      <text class="t-h" x="476" y="118" font-size="19" fill="#0b0b10">¿Rompió</text>
+      <text class="t-h" x="476" y="140" font-size="19" fill="#0b0b10">otra cosa?</text>
+
+      <rect x="682" y="60" width="208" height="96" rx="12" fill="#ffd400" stroke="#0b0b10" stroke-width="4"/>
+      <text class="t-mono" x="700" y="88" font-size="13" fill="#0b0b10">04</text>
+      <text class="t-h" x="700" y="118" font-size="19" fill="#0b0b10">¿Lo entiendes</text>
+      <text class="t-h" x="700" y="140" font-size="19" fill="#0b0b10">y lo mantienes?</text>
+
+      <path d="M206 108 H234" stroke="#0b0b10" stroke-width="3" marker-end="url(#a3d)"/>
+      <path d="M430 108 H458" stroke="#0b0b10" stroke-width="3" marker-end="url(#a3d)"/>
+      <path d="M654 108 H682" stroke="#0b0b10" stroke-width="3" marker-end="url(#a3d)"/>
+
+      <path d="M108 156 V196" stroke="#b45309" stroke-width="3" stroke-dasharray="6 5" marker-end="url(#a3e)"/>
+      <text class="t-mono t-h" x="128" y="214" font-size="15" fill="#b45309">aquí para casi todo el mundo</text>
+
+      <path d="M786 56 V34 H700" stroke="#0b0b10" stroke-width="3" fill="none"/>
+      <text class="t-mono t-h" x="694" y="39" text-anchor="end" font-size="14" fill="#0b0b10">la que importa en 3 meses</text>
+
+      <defs>
+        <marker id="a3d" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+          <path d="M0 0 L9 4.5 L0 9 z" fill="#0b0b10"/>
+        </marker>
+        <marker id="a3e" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+          <path d="M0 0 L9 4.5 L0 9 z" fill="#b45309"/>
+        </marker>
+      </defs>
+    </svg>
+  </div>
+</section>
+
+<!-- 9 · T+40 -->
+<section class="slide blue" data-t="T+40">
+  <div class="eyebrow">// cinco minutos</div>
+  <h2>Break.<br>Volvemos 6:45.</h2>
+  <p class="sub wide">Ten tu diff feo abierto cuando vuelvas. La hora que viene se trabaja sobre él.</p>
+</section>
+
+<!-- 10 · T+45 · el corazon de la sesion -->
+<section class="slide" data-t="T+45">
+  <div class="eyebrow">// cómo se empuja de vuelta</div>
+  <h2>Cuatro movidas,<br>de suave a fuerte.</h2>
+  <div class="rules g2">
+    <div class="rl"><h3>1 · Pídele la fuente</h3><p><em>"¿De dónde sacaste esto? Cita archivo y línea."</em> La mitad de las invenciones se caen aquí solas.</p></div>
+    <div class="rl"><h3>2 · Pídele que lo rompa</h3><p><em>"Escribe un test que falle con este código."</em> Si no puede, o el código está bien o el test no sirve. Las dos respuestas te dicen algo.</p></div>
+    <div class="rl"><h3>3 · Recorta el alcance</h3><p><em>"Deshaz todo menos X."</em> Contra el que cambió de más. Más rápido que discutir.</p></div>
+    <div class="rl"><h3>4 · Sesión limpia y pídelo distinto</h3><p>Si ya se enredó, no lo convenzas. Empieza de cero con mejor prompt. Ayer aprendiste por qué.</p></div>
+  </div>
+</section>
+
+<!-- 11 · T+45 -->
+<section class="slide dark" data-t="T+45">
+  <div class="eyebrow">// la frase que no funciona</div>
+  <h2>"Está mal,<br>arréglalo."</h2>
+  <p class="sub wide">Te devuelve otra cosa igual de segura y distinta, y ahora tienes dos versiones que no entiendes. <strong>Sin decirle qué está mal, adivina - y adivina rápido.</strong></p>
+  <p class="sub wide" style="margin-top:2.4vh;">Revisar es señalar <em>qué</em> y <em>dónde</em>. Eso es todo el trabajo.</p>
+</section>
+
+<!-- 12 · T+50 -->
+<section class="slide" data-t="T+50">
+  <div class="eyebrow">// hora 2 · copia y pega</div>
+  <h2>Revisar, empujar,<br>quedarte con lo bueno.</h2>
+  <div class="loop">
+    <div class="step"><span class="n">p1 · revisar</span><h3>El reviewer hostil</h3><p>Que audite su propio diff citando archivo y línea, y que separe lo verificado de lo asumido.</p></div>
+    <div class="step"><span class="n">p2 · empujar</span><h3>Una cosa concreta</h3><p>Escoges UN problema del diff y usas la movida que toque. No los cinco a la vez.</p></div>
+    <div class="step"><span class="n">p3 · cerrar</span><h3>¿Lo firmas?</h3><p>Las cuatro preguntas, en orden. Lo que no pase la 4 se queda fuera.</p></div>
+  </div>
+</section>
+
+<!-- 13 · T+80 -->
+<section class="slide pop" data-t="T+80">
+  <div class="eyebrow">// la vara de esta noche</div>
+  <h2>¿Lo firmarías<br>con tu nombre?</h2>
+  <p class="sub wide">No "¿está bien?". No "¿corre?". <strong>¿Lo mandas a review de tu equipo con tu nombre encima?</strong></p>
+  <p class="sub wide" style="margin-top:2.4vh;">Si la respuesta es no, todavía no terminaste - y ya sabes cuál de las cuatro preguntas falló.</p>
+</section>
+
+<!-- 14 · T+92 -->
+<section class="slide blue" data-t="T+92">
+  <div class="eyebrow">// todos a la vez</div>
+  <h2>Qué encontraste,<br>y qué hiciste.</h2>
+  <div class="tpl"><span class="y">[nombre]</span> | cuál de las 5 te tocó | qué movida usaste | <span class="y">¿lo firmas ahora?</span></div>
+</section>
+
+<!-- 15 · T+95 -->
+<section class="slide pop" data-t="T+95">
+  <div class="eyebrow">// cuatro minutos cada uno</div>
+  <h2>Contesta estas tres.</h2>
+  <ol class="big">
+    <li>¿Qué te pareció mal al leer el diff?</li>
+    <li>¿Qué le dijiste, exactamente?</li>
+    <li>¿Quedó mejor, o solo distinto?</li>
+  </ol>
+</section>
+
+<!-- 16 · T+112 -->
+<section class="slide dark" data-t="T+112">
+  <div class="eyebrow">// para mañana · la última</div>
+  <h2>Trae algo que<br>hiciste <span class="hl">dos veces</span>.</h2>
+  <ul class="big">
+    <li>Revisa un diff más con las cuatro preguntas, en orden.</li>
+    <li>Fíjate en qué le repetiste al agent hoy que ya le habías dicho ayer.</li>
+    <li>Eso que repites es lo que mañana se vuelve <strong>workflow</strong>.</li>
+  </ul>
+</section>
+
+<!-- 17 · T+112 -->
+<section class="slide pop" data-t="T+112">
+  <div class="eyebrow">// mañana cerramos · misma hora, mismo link</div>
+  <h2>Ya sabes pedirlo,<br>darle context<br>y revisarlo.</h2>
+  <p class="sub" style="max-width:46ch;">Mañana: que no se te olvide entre un proyecto y otro.</p>
+  <div class="url">eonoe.github.io/<wbr>coding-agents-101</div>
+</section>
+
+<div class="bar" id="bar"></div>
+<div class="num" id="num"></div>
+<div class="tmark" id="tmark"></div>
+<div class="hint">← → espacio · f pantalla completa · o índice</div>
+
+<div id="ov"><h3>Índice - clic para saltar (o / esc para cerrar)</h3><ol id="ovl"></ol></div>
+
+<script src="assets/slides.js"></script>
+
+</body>
+</html>
