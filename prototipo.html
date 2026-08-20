@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cerrar en Verde - prototipo del día 3</title>
+<meta name="description" content="El prototipo que salió de la sesión 3 de Coding Agents 101: siete pantallas de una app para cuadrar los gastos de un viaje.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23ffd400'/%3E%3Ctext x='16' y='21' font-family='monospace' font-size='14' font-weight='700' text-anchor='middle' fill='%230b0b10'%3ETL%3C/text%3E%3C/svg%3E">
+<!-- Esto salio como artifact en la sesion del dia 3. El artifact es privado, y
+     la gente del workshop no puede abrirlo, asi que la copia vive aqui y la
+     sirve GitHub Pages como cualquier otra pagina del repo. Es el HTML tal
+     cual, sin el envoltorio de claude.ai. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500&display=swap">
+
+<style>
+  /* ── Stage: se adapta al tema del lector ──────────────────────── */
+  :root {
+    --stage-bg: #EDEEEC;
+    --stage-panel: #FFFFFF;
+    --stage-ink: #14170F;
+    --stage-muted: #6E7468;
+    --stage-line: #D7DAD2;
+    --stage-accent: #0B7A34;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --stage-bg: #0C0E0B;
+      --stage-panel: #161A14;
+      --stage-ink: #EDEFE9;
+      --stage-muted: #8A9182;
+      --stage-line: #262B23;
+      --stage-accent: #00D54B;
+    }
+  }
+  :root[data-theme="dark"] {
+    --stage-bg: #0C0E0B;
+    --stage-panel: #161A14;
+    --stage-ink: #EDEFE9;
+    --stage-muted: #8A9182;
+    --stage-line: #262B23;
+    --stage-accent: #00D54B;
+  }
+
+  /* ── Teléfono: negro y verde, siempre ─────────────────────────── */
+  .device {
+    --ground: #000000;
+    --surface: #131513;
+    --surface-2: #1E211E;
+    --line: #2A2E29;
+    --ink: #FFFFFF;
+    --muted: #878E84;
+    --accent: #00D54B;
+    --accent-ink: #00300F;
+    --neg: #FF5F57;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--stage-bg);
+    color: var(--stage-ink);
+    font-family: "Archivo", system-ui, -apple-system, "Segoe UI", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .stage { min-height: 100vh; display: flex; flex-direction: column; align-items: center; gap: 20px; padding: 28px 20px 48px; }
+
+  .pitch { max-width: 40rem; text-align: center; display: flex; flex-direction: column; gap: 8px; }
+  .pitch .eyebrow { font-size: .68rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--stage-accent); }
+  .pitch h1 { margin: 0; font-size: clamp(1.6rem, 6vw, 2.3rem); font-weight: 900; letter-spacing: -.03em; text-wrap: balance; }
+  .pitch p { margin: 0; color: var(--stage-muted); font-size: .95rem; line-height: 1.5; text-wrap: balance; }
+
+  .switcher { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; background: var(--stage-panel); border: 1px solid var(--stage-line); border-radius: 999px; padding: 5px; }
+  .switcher button { font: inherit; font-size: .78rem; font-weight: 600; border: 0; background: transparent; color: var(--stage-muted); padding: 7px 13px; border-radius: 999px; cursor: pointer; transition: background .15s ease, color .15s ease; }
+  .switcher button:hover { color: var(--stage-ink); }
+  .switcher button[aria-selected="true"] { background: var(--stage-accent); color: #fff; }
+  .switcher button:focus-visible { outline: 2px solid var(--stage-accent); outline-offset: 2px; }
+
+  .device {
+    width: 375px; height: 812px; background: var(--ground); color: var(--ink);
+    border-radius: 44px; padding: 10px; border: 1px solid #2E322D;
+    box-shadow: 0 30px 70px -25px rgba(0,0,0,.6), 0 0 0 8px rgba(0,0,0,.35);
+    flex: none;
+  }
+  .viewport { position: relative; width: 100%; height: 100%; border-radius: 35px; overflow: hidden; background: var(--ground); }
+  .screen { position: absolute; inset: 0; display: none; flex-direction: column; }
+  .screen[data-active] { display: flex; }
+
+  .statusbar { display: flex; justify-content: space-between; align-items: center; padding: 14px 24px 4px; font-size: .74rem; font-weight: 600; flex: none; }
+  .statusbar .dots { display: flex; gap: 4px; align-items: center; }
+  .statusbar .dots i { width: 5px; height: 5px; border-radius: 50%; background: var(--ink); display: block; opacity: .85; }
+  .statusbar .dots i:last-child { width: 18px; height: 9px; border-radius: 3px; opacity: .6; }
+
+  .scroll { flex: 1; min-height: 0; overflow-y: auto; -webkit-overflow-scrolling: touch; }
+
+  .avatar { width: 36px; height: 36px; border-radius: 50%; flex: none; display: grid; place-items: center; font-size: .84rem; font-weight: 800; letter-spacing: -.01em; }
+  .av-ana   { background: #00D54B; color: #00300F; }
+  .av-luis  { background: #2F6BFF; color: #E7EEFF; }
+  .av-marta { background: #FF9F1C; color: #3A1F00; }
+
+  /* ── Cabecera ── */
+  .head { padding: 8px 22px 16px; display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; flex: none; }
+  .head .kicker { font-size: .68rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; color: var(--muted); }
+  .head h1 { margin: 4px 0 0; font-size: 1.55rem; font-weight: 900; letter-spacing: -.035em; line-height: 1.1; }
+  .head .avatar { width: 34px; height: 34px; font-size: .8rem; }
+
+  /* ── P1 · Hero de liquidación ── */
+  .hero { padding: 4px 24px 22px; display: flex; flex-direction: column; gap: 7px; flex: none; }
+  .hero .label { font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+  .hero .val { font-size: 3.7rem; font-weight: 900; letter-spacing: -.055em; line-height: 1; color: var(--accent); font-variant-numeric: tabular-nums; }
+  .hero .hint { font-size: .88rem; color: var(--muted); font-weight: 500; }
+
+  .facts { display: flex; gap: 8px; padding: 0 20px 22px; flex: none; }
+  .fact { flex: 1; background: var(--surface); border-radius: 18px; padding: 13px 14px; display: flex; flex-direction: column; gap: 4px; }
+  .fact span { font-size: .64rem; font-weight: 700; letter-spacing: .11em; text-transform: uppercase; color: var(--muted); }
+  .fact b { font-size: 1.05rem; font-weight: 800; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+
+  .sec-label { padding: 0 24px 11px; font-size: .7rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; color: var(--muted); }
+
+  /* ── Tarjeta de deuda ── */
+  .debt {
+    margin: 0 20px 12px; background: var(--surface); border-radius: 24px; padding: 18px;
+    display: flex; flex-direction: column; gap: 15px;
+  }
+  .debt .who {
+    display: flex; align-items: center; gap: 11px; width: 100%;
+    font: inherit; color: inherit; text-align: left; cursor: pointer;
+    background: transparent; border: 0; padding: 0; border-radius: 14px;
+  }
+  .debt .who:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; }
+  .debt .who .arw { color: var(--muted); font-size: 1.05rem; font-weight: 700; }
+  .debt .who .t { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+  .debt .who .t b { font-size: .97rem; font-weight: 700; letter-spacing: -.01em; }
+  .debt .who .t span { font-size: .76rem; color: var(--muted); font-weight: 500; }
+  .debt .who .chev { color: var(--muted); font-size: 1rem; }
+  .debt .amount { font-size: 2.2rem; font-weight: 900; letter-spacing: -.05em; line-height: 1; color: var(--accent); font-variant-numeric: tabular-nums; }
+  .debt .amount em { font-style: normal; font-family: "DM Mono", ui-monospace, monospace; font-size: .78rem; font-weight: 400; color: var(--muted); letter-spacing: 0; margin-left: 7px; }
+  .debt.tiny .amount { font-size: 1.5rem; color: var(--ink); }
+  .debt .acts { display: flex; gap: 8px; }
+  .debt .acts button { flex: 1; font: inherit; font-size: .84rem; font-weight: 700; border: 0; padding: 13px; border-radius: 999px; cursor: pointer; }
+  .debt .acts .go { background: var(--accent); color: var(--accent-ink); }
+  .debt .acts .mark { background: var(--surface-2); color: var(--ink); }
+  .debt .acts button:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+
+  .cleared {
+    margin: 4px 20px 0; padding: 15px 17px; border-radius: 18px;
+    background: rgba(0,213,75,.09); border: 1px solid rgba(0,213,75,.24);
+    display: flex; align-items: center; gap: 11px; font-size: .85rem; color: var(--accent); font-weight: 700;
+  }
+  .cleared .tick { width: 24px; height: 24px; border-radius: 50%; background: var(--accent); color: var(--accent-ink); display: grid; place-items: center; font-size: .78rem; font-weight: 800; flex: none; }
+
+  .foot-note { margin: 16px 24px 22px; font-size: .78rem; color: var(--muted); line-height: 1.6; }
+  .foot-note b { color: var(--ink); font-weight: 700; }
+  .foot-note code { font-family: "DM Mono", ui-monospace, monospace; font-size: .74rem; color: var(--ink); }
+
+  .tabbar { display: flex; border-top: 1px solid var(--line); background: var(--ground); padding: 10px 10px 20px; gap: 4px; flex: none; }
+  .tabbar button { flex: 1; font: inherit; font-size: .66rem; font-weight: 700; letter-spacing: .04em; background: transparent; border: 0; color: var(--muted); cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 5px; padding: 6px 0; }
+  .tabbar button[aria-current="page"] { color: var(--accent); }
+  .tabbar .glyph { font-size: 1.05rem; line-height: 1; font-weight: 800; }
+  .tabbar .fab { background: var(--accent); color: var(--accent-ink); width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; font-size: 1.5rem; font-weight: 700; margin-top: -12px; }
+
+  /* ── P2 · Detalle de persona ── */
+  .nav-back { display: flex; align-items: center; padding: 6px 20px 10px; flex: none; }
+  .nav-back button { font: inherit; background: transparent; border: 0; color: var(--accent); font-size: .9rem; font-weight: 700; cursor: pointer; padding: 6px 0; }
+  .nav-back button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .person-hero { padding: 4px 22px 22px; display: flex; align-items: center; gap: 14px; flex: none; }
+  .person-hero .avatar { width: 54px; height: 54px; font-size: 1.25rem; }
+  .person-hero .t { display: flex; flex-direction: column; gap: 3px; }
+  .person-hero .t h2 { margin: 0; font-size: 1.5rem; font-weight: 900; letter-spacing: -.035em; }
+  .person-hero .t .owes { font-size: .86rem; color: var(--muted); font-weight: 500; }
+  .person-hero .t .owes b { color: var(--accent); font-weight: 800; font-variant-numeric: tabular-nums; }
+
+  .panel { margin: 0 20px 12px; background: var(--surface); border-radius: 22px; overflow: hidden; }
+  .panel .ph { padding: 14px 18px 11px; font-size: .7rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; color: var(--muted); }
+  .line { display: flex; align-items: center; gap: 12px; padding: 12px 18px; border-top: 1px solid var(--line); }
+  .line .t { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+  .line .t b { font-size: .9rem; font-weight: 600; letter-spacing: -.01em; }
+  .line .t span { font-size: .73rem; color: var(--muted); }
+  .line .v { font-size: .92rem; font-weight: 700; font-variant-numeric: tabular-nums; letter-spacing: -.01em; }
+  .line .v.neg { color: var(--neg); }
+  .line .v.pos { color: var(--accent); }
+  .line.total { background: var(--surface-2); }
+  .line.total .v { font-size: 1.2rem; font-weight: 900; letter-spacing: -.035em; }
+
+  .wide-cta { margin: 6px 20px 20px; display: flex; gap: 8px; flex: none; }
+  .wide-cta button { flex: 1; font: inherit; font-size: .92rem; font-weight: 800; border: 0; padding: 16px; border-radius: 999px; cursor: pointer; }
+  .wide-cta .go { background: var(--accent); color: var(--accent-ink); }
+  .wide-cta .mark { background: var(--surface-2); color: var(--ink); }
+
+  /* ── P3 · Gastos ── */
+  .tot-strip { display: flex; justify-content: space-between; align-items: baseline; padding: 0 24px 14px; flex: none; }
+  .tot-strip .l { font-size: .7rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; color: var(--muted); }
+  .tot-strip .v { font-size: 1.45rem; font-weight: 900; letter-spacing: -.04em; font-variant-numeric: tabular-nums; }
+
+  .grow { display: flex; align-items: center; gap: 13px; padding: 12px 24px; border-top: 1px solid var(--line); }
+  .grow .avatar { width: 32px; height: 32px; font-size: .76rem; }
+  .grow .t { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+  .grow .t b { font-size: .92rem; font-weight: 600; letter-spacing: -.01em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .grow .t span { font-size: .76rem; color: var(--muted); }
+  .grow .r { text-align: right; display: flex; flex-direction: column; gap: 2px; }
+  .grow .r b { font-size: .95rem; font-weight: 700; font-variant-numeric: tabular-nums; letter-spacing: -.01em; }
+  .grow .r span { font-family: "DM Mono", ui-monospace, monospace; font-size: .68rem; color: var(--muted); }
+
+  /* ── P4 · Agregar rápido ── */
+  .quick { padding: 4px 22px 22px; display: flex; flex-direction: column; gap: 18px; }
+  .quick h2 { margin: 0; font-size: 1.5rem; font-weight: 900; letter-spacing: -.035em; }
+  .qf { display: flex; flex-direction: column; gap: 9px; }
+  .qf > label { font-size: .69rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; color: var(--muted); }
+  .qbox { background: var(--surface); border-radius: 16px; padding: 14px 16px; font-size: .95rem; font-weight: 500; }
+  .qbox.big { font-size: 2.1rem; font-weight: 900; letter-spacing: -.05em; padding: 14px 16px; font-variant-numeric: tabular-nums; }
+  .qrow { display: flex; gap: 8px; align-items: stretch; }
+  .qrow .qbox.big { flex: 1; }
+  .curcol { display: flex; flex-direction: column; gap: 4px; justify-content: center; }
+  .curcol button { font: inherit; font-size: .72rem; font-weight: 700; letter-spacing: .04em; border: 0; background: var(--surface-2); color: var(--muted); padding: 7px 13px; border-radius: 999px; cursor: pointer; }
+  .curcol button[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); }
+  .chips { display: flex; gap: 7px; }
+  .chips button { flex: 1; font: inherit; font-size: .82rem; font-weight: 700; border: 1.5px solid var(--line); background: transparent; color: var(--muted); padding: 12px 4px; border-radius: 999px; cursor: pointer; }
+  .chips button[aria-pressed="true"] { background: rgba(0,213,75,.11); border-color: var(--accent); color: var(--ink); }
+  .impact { background: var(--surface-2); border-radius: 16px; padding: 14px 17px; display: flex; justify-content: space-between; align-items: center; font-size: .86rem; }
+  .impact span { color: var(--muted); font-weight: 500; }
+  .impact b { font-size: 1.15rem; font-weight: 900; letter-spacing: -.035em; color: var(--accent); font-variant-numeric: tabular-nums; }
+  .qsubmit { font: inherit; font-size: 1.02rem; font-weight: 800; background: var(--accent); color: var(--accent-ink); border: 0; padding: 17px; border-radius: 999px; cursor: pointer; }
+  .qsubmit:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+
+  /* ── Entrar (signup social) ── */
+  .auth { flex: 1; display: flex; flex-direction: column; padding: 0 24px 26px; }
+  .auth .brandzone { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 18px; }
+  .mark {
+    width: 60px; height: 60px; border-radius: 20px; background: var(--accent); color: var(--accent-ink);
+    display: grid; place-items: center; font-size: 1.9rem; font-weight: 900; letter-spacing: -.05em;
+  }
+  .auth h2 { margin: 0; font-size: 2.35rem; font-weight: 900; letter-spacing: -.05em; line-height: 1.03; text-wrap: balance; }
+  .auth h2 em { font-style: normal; color: var(--accent); }
+  .auth .sell { margin: 0; font-size: .96rem; color: var(--muted); font-weight: 500; line-height: 1.5; max-width: 17rem; }
+
+  .sso { display: flex; flex-direction: column; gap: 9px; }
+  .sso button {
+    display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%;
+    font: inherit; font-size: .97rem; font-weight: 700; letter-spacing: -.01em;
+    border: 0; padding: 16px; border-radius: 999px; cursor: pointer;
+  }
+  .sso .apple { background: #FFFFFF; color: #000000; }
+  .sso .google { background: var(--surface-2); color: var(--ink); }
+  .sso .phone { background: transparent; color: var(--muted); border: 1.5px solid var(--line); }
+  .sso button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .sso svg { width: 18px; height: 18px; flex: none; }
+
+  .legal { margin: 16px 0 0; font-size: .72rem; color: var(--muted); text-align: center; line-height: 1.55; }
+  .legal u { text-decoration: none; color: var(--ink); border-bottom: 1px solid var(--line); }
+
+  /* ── Onboarding ── */
+  .steps { display: flex; gap: 6px; padding: 10px 24px 4px; flex: none; }
+  .steps i { height: 3px; flex: 1; border-radius: 2px; background: var(--line); display: block; }
+  .steps i.on { background: var(--accent); }
+
+  .ob { padding: 18px 22px 22px; display: flex; flex-direction: column; gap: 20px; }
+  .ob .ask { display: flex; flex-direction: column; gap: 7px; }
+  .ob .ask h2 { margin: 0; font-size: 1.75rem; font-weight: 900; letter-spacing: -.04em; line-height: 1.1; text-wrap: balance; }
+  .ob .ask p { margin: 0; font-size: .88rem; color: var(--muted); line-height: 1.5; }
+
+  .typed { background: var(--surface); border-radius: 16px; padding: 16px; font-size: 1.05rem; font-weight: 600; letter-spacing: -.015em; display: flex; align-items: center; gap: 2px; }
+  .typed .caret { width: 2px; height: 1.15rem; background: var(--accent); border-radius: 1px; animation: blink 1.1s steps(1) infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
+  @media (prefers-reduced-motion: reduce) { .typed .caret { animation: none; } }
+
+  .cur-grid { display: flex; gap: 7px; }
+  .cur-grid button {
+    flex: 1; font: inherit; font-size: .85rem; font-weight: 700; letter-spacing: .02em;
+    border: 1.5px solid var(--line); background: transparent; color: var(--muted);
+    padding: 14px 4px; border-radius: 16px; cursor: pointer;
+    display: flex; flex-direction: column; align-items: center; gap: 3px;
+  }
+  .cur-grid button small { font-family: "DM Mono", ui-monospace, monospace; font-size: .64rem; font-weight: 400; }
+  .cur-grid button[aria-pressed="true"] { background: rgba(0,213,75,.11); border-color: var(--accent); color: var(--ink); }
+
+  .roster { display: flex; flex-direction: column; gap: 8px; }
+  .mate { display: flex; align-items: center; gap: 12px; background: var(--surface); border-radius: 16px; padding: 12px 15px; }
+  .mate .avatar { width: 34px; height: 34px; font-size: .8rem; }
+  .mate .t { flex: 1; display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+  .mate .t b { font-size: .93rem; font-weight: 700; letter-spacing: -.01em; }
+  .mate .t span { font-size: .74rem; color: var(--muted); }
+  .mate .badge { font-size: .66rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--accent-ink); background: var(--accent); padding: 4px 9px; border-radius: 999px; }
+  .mate .x { font: inherit; background: transparent; border: 0; color: var(--muted); font-size: 1.15rem; cursor: pointer; padding: 0 2px; }
+  .mate.add { border: 1.5px dashed var(--line); background: transparent; color: var(--muted); cursor: pointer; font: inherit; font-size: .9rem; font-weight: 600; text-align: left; }
+  .mate.add .plus { width: 34px; height: 34px; border-radius: 50%; background: var(--surface-2); color: var(--ink); display: grid; place-items: center; font-size: 1.15rem; font-weight: 700; flex: none; }
+
+  .share {
+    display: flex; align-items: center; gap: 11px; background: var(--surface-2); border-radius: 16px; padding: 13px 15px;
+    font-size: .82rem; color: var(--muted); line-height: 1.45;
+  }
+  .share code { font-family: "DM Mono", ui-monospace, monospace; font-size: .74rem; color: var(--ink); }
+  .share .go { margin-left: auto; font: inherit; font-size: .78rem; font-weight: 700; background: var(--accent); color: var(--accent-ink); border: 0; padding: 9px 14px; border-radius: 999px; cursor: pointer; flex: none; }
+
+  .ob-cta { padding: 0 22px 24px; display: flex; flex-direction: column; gap: 10px; flex: none; }
+  .ob-cta .next { font: inherit; font-size: 1.02rem; font-weight: 800; background: var(--accent); color: var(--accent-ink); border: 0; padding: 17px; border-radius: 999px; cursor: pointer; }
+  .ob-cta .skip { font: inherit; font-size: .85rem; font-weight: 600; background: transparent; color: var(--muted); border: 0; padding: 6px; cursor: pointer; }
+  .ob-cta button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+  @media (max-width: 560px) {
+    .stage { padding: 0; gap: 0; min-height: 100dvh; }
+    .pitch { order: 3; padding: 20px 18px 26px; background: var(--stage-panel); border-top: 1px solid var(--stage-line); max-width: none; width: 100%; }
+    .pitch h1 { font-size: 1.35rem; }
+    .switcher { order: 2; width: 100%; border-radius: 0; border-left: 0; border-right: 0; border-bottom: 0; padding: 8px; }
+    .device { order: 1; width: 100%; height: 78dvh; min-height: 560px; border-radius: 0; padding: 0; border: 0; box-shadow: none; }
+    .viewport { border-radius: 0; }
+    .statusbar { display: none; }
+  }
+</style>
+
+<div class="stage">
+  <header class="pitch">
+    <div class="eyebrow">Propuesta elegida · C con la piel de A</div>
+    <h1>Cerrar en Verde</h1>
+    <p>El flujo de <em>Cerrar Cuentas</em> —abre en quién le paga a quién, con tarjetas accionables— vestido con el negro y verde de <em>Teclado Verde</em>. Con entrada social y onboarding de dos pasos.</p>
+  </header>
+
+  <nav class="switcher" aria-label="Pantallas">
+    <button data-goto="entrar" aria-selected="true">1 · Entrar</button>
+    <button data-goto="viaje" aria-selected="false">2 · Viaje</button>
+    <button data-goto="gente" aria-selected="false">3 · Gente</button>
+    <button data-goto="liq" aria-selected="false">4 · Liquidar</button>
+    <button data-goto="per" aria-selected="false">5 · Persona</button>
+    <button data-goto="gas" aria-selected="false">6 · Gastos</button>
+    <button data-goto="add" aria-selected="false">7 · Agregar</button>
+  </nav>
+
+  <div class="device">
+    <div class="viewport">
+
+      <!-- ── Entrar · signup social ── -->
+      <section class="screen" data-screen="entrar" data-active>
+        <div class="statusbar"><span>9:41</span><span class="dots"><i></i><i></i><i></i></span></div>
+        <div class="auth">
+          <div class="brandzone">
+            <div class="mark">÷</div>
+            <h2>Vuelvan del viaje <em>sin deudas</em>.</h2>
+            <p class="sell">Apunta lo que gasta cada quien, en la moneda que sea. Nosotros decimos quién le paga a quién.</p>
+          </div>
+          <div class="sso">
+            <button class="apple" data-goto="viaje">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.8c0-2.4 2-3.6 2.1-3.6-1.1-1.7-2.9-1.9-3.6-1.9-1.5-.2-3 .9-3.7.9-.8 0-2-.9-3.3-.8-1.7 0-3.2 1-4.1 2.5-1.7 3-.4 7.5 1.3 9.9.8 1.2 1.8 2.6 3.1 2.5 1.2 0 1.7-.8 3.2-.8s1.9.8 3.2.8c1.3 0 2.2-1.2 3-2.4.9-1.4 1.3-2.7 1.3-2.8-.1 0-2.5-1-2.5-3.8zM14 5.6c.7-.8 1.1-2 1-3.1-1 0-2.2.7-2.9 1.5-.6.7-1.2 1.9-1 3 1.1.1 2.2-.6 2.9-1.4z"/></svg>
+              Continuar con Apple
+            </button>
+            <button class="google" data-goto="viaje">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M23 12.3c0-.8-.1-1.6-.2-2.3H12v4.5h6.2c-.3 1.4-1.1 2.6-2.3 3.4v2.9h3.7C21.8 18.7 23 15.8 23 12.3z"/><path fill="#34A853" d="M12 23.5c3.1 0 5.7-1 7.6-2.8l-3.7-2.9c-1 .7-2.3 1.1-3.9 1.1-3 0-5.5-2-6.4-4.8H1.8v3C3.7 20.9 7.6 23.5 12 23.5z"/><path fill="#FBBC05" d="M5.6 14.1c-.2-.7-.4-1.4-.4-2.1s.1-1.4.4-2.1v-3H1.8C1.1 8.4.7 10.1.7 12s.4 3.6 1.1 5.1l3.8-3z"/><path fill="#EA4335" d="M12 4.9c1.7 0 3.2.6 4.4 1.7l3.3-3.3C17.7 1.5 15.1.5 12 .5 7.6.5 3.7 3.1 1.8 6.9l3.8 3C6.5 7.1 9 4.9 12 4.9z"/></svg>
+              Continuar con Google
+            </button>
+            <button class="phone" data-goto="viaje">Usar mi número</button>
+          </div>
+          <p class="legal">Al continuar aceptas los <u>Términos</u> y la <u>Política de privacidad</u>.</p>
+        </div>
+      </section>
+
+      <!-- ── Onboarding 1 · el viaje ── -->
+      <section class="screen" data-screen="viaje">
+        <div class="statusbar"><span>9:41</span><span class="dots"><i></i><i></i><i></i></span></div>
+        <div class="nav-back"><button data-goto="entrar">← Atrás</button></div>
+        <div class="steps"><i class="on"></i><i></i></div>
+        <div class="scroll">
+          <div class="ob">
+            <div class="ask">
+              <h2>¿Cómo se llama el viaje?</h2>
+              <p>Este nombre agrupa todos los gastos que registren juntos.</p>
+            </div>
+            <div class="typed">Cabarete, fin de semana largo<span class="caret"></span></div>
+            <div class="qf">
+              <label>Moneda para cuadrar</label>
+              <div class="cur-grid">
+                <button aria-pressed="true">USD<small>base</small></button>
+                <button aria-pressed="false">DOP<small>0.017</small></button>
+                <button aria-pressed="false">EUR<small>1.08</small></button>
+              </div>
+            </div>
+            <p class="foot-note" style="margin:0">Pueden apuntar gastos en cualquier moneda. Todo se convierte a la moneda base solo para decidir quién le paga a quién.</p>
+          </div>
+        </div>
+        <div class="ob-cta"><button class="next" data-goto="gente">Siguiente</button></div>
+      </section>
+
+      <!-- ── Onboarding 2 · la gente ── -->
+      <section class="screen" data-screen="gente">
+        <div class="statusbar"><span>9:41</span><span class="dots"><i></i><i></i><i></i></span></div>
+        <div class="nav-back"><button data-goto="viaje">← Atrás</button></div>
+        <div class="steps"><i class="on"></i><i class="on"></i></div>
+        <div class="scroll">
+          <div class="ob">
+            <div class="ask">
+              <h2>¿Quién viene?</h2>
+              <p>No hace falta que se registren para entrar en el reparto. Puedes invitarlos después.</p>
+            </div>
+            <div class="roster">
+              <div class="mate">
+                <span class="avatar av-ana">A</span>
+                <span class="t"><b>Ana</b><span>ana@correo.com</span></span>
+                <span class="badge">Tú</span>
+              </div>
+              <div class="mate">
+                <span class="avatar av-luis">L</span>
+                <span class="t"><b>Luis</b><span>Sin cuenta · lo agregaste tú</span></span>
+                <button class="x" aria-label="Quitar a Luis">×</button>
+              </div>
+              <div class="mate">
+                <span class="avatar av-marta">M</span>
+                <span class="t"><b>Marta</b><span>Sin cuenta · la agregaste tú</span></span>
+                <button class="x" aria-label="Quitar a Marta">×</button>
+              </div>
+              <button class="mate add"><span class="plus">+</span>Agregar a alguien más</button>
+            </div>
+            <div class="share">
+              <span>Link de invitación<br><code>gastos.app/v/cabarete</code></span>
+              <button class="go">Compartir</button>
+            </div>
+          </div>
+        </div>
+        <div class="ob-cta">
+          <button class="next" data-goto="liq">Crear viaje</button>
+          <button class="skip" data-goto="liq">Lo hago después</button>
+        </div>
+      </section>
+
+      <!-- ── 1 · Liquidar ── -->
+      <section class="screen" data-screen="liq">
+        <div class="statusbar"><span>9:41</span><span class="dots"><i></i><i></i><i></i></span></div>
+        <div class="head">
+          <div>
+            <div class="kicker">Cabarete</div>
+            <h1>Falta cobrar</h1>
+          </div>
+          <div class="avatar av-ana">A</div>
+        </div>
+        <div class="scroll">
+          <div class="hero">
+            <div class="label">Te deben en total</div>
+            <div class="val">$120.30</div>
+            <div class="hint">Ana, dos personas por cobrar.</div>
+          </div>
+          <div class="facts">
+            <div class="fact"><span>Pagos</span><b>2</b></div>
+            <div class="fact"><span>Gastado</span><b>$535.50</b></div>
+            <div class="fact"><span>Personas</span><b>3</b></div>
+          </div>
+
+          <div class="sec-label">Quién te paga</div>
+
+          <div class="debt">
+            <button class="who" data-goto="per">
+              <span class="avatar av-marta">M</span>
+              <span class="arw">→</span>
+              <span class="avatar av-ana">A</span>
+              <span class="t"><b>Marta</b><span>Entró en los 5 gastos</span></span>
+              <span class="chev">›</span>
+            </button>
+            <div class="amount">$117.90<em>USD</em></div>
+            <div class="acts">
+              <button class="go">Recordarle</button>
+              <button class="mark">Marcar pagado</button>
+            </div>
+          </div>
+
+          <div class="debt tiny">
+            <button class="who" data-goto="per">
+              <span class="avatar av-luis">L</span>
+              <span class="arw">→</span>
+              <span class="avatar av-ana">A</span>
+              <span class="t"><b>Luis</b><span>Casi a mano: puso $154.50</span></span>
+              <span class="chev">›</span>
+            </button>
+            <div class="amount">$2.40<em>USD</em></div>
+            <div class="acts">
+              <button class="go">Recordarle</button>
+              <button class="mark">Marcar pagado</button>
+            </div>
+          </div>
+
+          <div class="cleared"><span class="tick">✓</span>Con estos 2 pagos, nadie debe nada.</div>
+
+          <p class="foot-note">El cálculo busca el <b>mínimo de transferencias</b>: con 3 personas nunca hacen falta más de 2. Todo convertido a USD — <code>DOP 0.017 · EUR 1.08</code>.</p>
+        </div>
+        <nav class="tabbar">
+          <button aria-current="page"><span class="glyph">⇄</span>Liquidar</button>
+          <button data-goto="add"><span class="glyph fab">+</span></button>
+          <button data-goto="gas"><span class="glyph">≡</span>Gastos</button>
+        </nav>
+      </section>
+
+      <!-- ── 2 · Detalle de persona ── -->
+      <section class="screen" data-screen="per">
+        <div class="statusbar"><span>9:41</span><span class="dots"><i></i><i></i><i></i></span></div>
+        <div class="nav-back"><button data-goto="liq">← Liquidar</button></div>
+        <div class="person-hero">
+          <span class="avatar av-marta">M</span>
+          <span class="t">
+            <h2>Marta</h2>
+            <span class="owes">Te debe <b>$117.90</b></span>
+          </span>
+        </div>
+        <div class="scroll">
+          <div class="panel">
+            <div class="ph">De dónde sale</div>
+            <div class="line"><span class="t"><b>Airbnb dos noches</b><span>entre 3 · pagó Ana</span></span><span class="v neg">−81.60</span></div>
+            <div class="line"><span class="t"><b>Gasolina ida y vuelta</b><span>entre 3 · pagó Luis</span></span><span class="v neg">−19.83</span></div>
+            <div class="line"><span class="t"><b>Supermercado</b><span>entre 3 · pagó Marta</span></span><span class="v pos">+47.60</span></div>
+            <div class="line"><span class="t"><b>Clase de kitesurf</b><span>entre 2 · pagó Ana</span></span><span class="v neg">−32.40</span></div>
+            <div class="line"><span class="t"><b>Cena del sábado</b><span>entre 3 · pagó Luis</span></span><span class="v neg">−31.67</span></div>
+            <div class="line total"><span class="t"><b>Balance de Marta</b></span><span class="v neg">−117.90</span></div>
+          </div>
+          <p class="foot-note">Marta solo puso el supermercado (<b>$71.40</b>) y le tocaba <b>$189.30</b>. La diferencia es exactamente lo que debe.</p>
+        </div>
+        <div class="wide-cta">
+          <button class="go">Recordarle</button>
+          <button class="mark">Marcar pagado</button>
+        </div>
+      </section>
+
+      <!-- ── 3 · Gastos ── -->
+      <section class="screen" data-screen="gas">
+        <div class="statusbar"><span>9:41</span><span class="dots"><i></i><i></i><i></i></span></div>
+        <div class="head">
+          <div>
+            <div class="kicker">Cabarete</div>
+            <h1>Gastos</h1>
+          </div>
+          <div class="avatar av-ana">A</div>
+        </div>
+        <div class="tot-strip"><span class="l">5 gastos · total</span><span class="v">$535.50</span></div>
+        <div class="scroll">
+          <div class="grow"><span class="avatar av-ana">A</span><span class="t"><b>Airbnb dos noches</b><span>Ana · entre los 3</span></span><span class="r"><b>$244.80</b><span>14 400 DOP</span></span></div>
+          <div class="grow"><span class="avatar av-luis">L</span><span class="t"><b>Gasolina ida y vuelta</b><span>Luis · entre los 3</span></span><span class="r"><b>$59.50</b><span>3 500 DOP</span></span></div>
+          <div class="grow"><span class="avatar av-marta">M</span><span class="t"><b>Supermercado</b><span>Marta · entre los 3</span></span><span class="r"><b>$71.40</b><span>4 200 DOP</span></span></div>
+          <div class="grow"><span class="avatar av-ana">A</span><span class="t"><b>Clase de kitesurf</b><span>Ana · Ana y Marta</span></span><span class="r"><b>$64.80</b><span>60 EUR</span></span></div>
+          <div class="grow"><span class="avatar av-luis">L</span><span class="t"><b>Cena del sábado</b><span>Luis · entre los 3</span></span><span class="r"><b>$95.00</b><span>95 USD</span></span></div>
+          <p class="foot-note">Arriba, el monto en USD. Debajo, lo que se pagó de verdad en la moneda original.</p>
+        </div>
+        <nav class="tabbar">
+          <button data-goto="liq"><span class="glyph">⇄</span>Liquidar</button>
+          <button data-goto="add"><span class="glyph fab">+</span></button>
+          <button aria-current="page"><span class="glyph">≡</span>Gastos</button>
+        </nav>
+      </section>
+
+      <!-- ── 4 · Agregar rápido ── -->
+      <section class="screen" data-screen="add">
+        <div class="statusbar"><span>9:41</span><span class="dots"><i></i><i></i><i></i></span></div>
+        <div class="nav-back"><button data-goto="liq">← Cancelar</button></div>
+        <div class="scroll">
+          <div class="quick">
+            <h2>Agregar gasto</h2>
+            <div class="qf">
+              <label>Monto</label>
+              <div class="qrow">
+                <div class="qbox big">$95.00</div>
+                <div class="curcol">
+                  <button aria-pressed="true">USD</button>
+                  <button aria-pressed="false">DOP</button>
+                  <button aria-pressed="false">EUR</button>
+                </div>
+              </div>
+            </div>
+            <div class="qf">
+              <label>Concepto</label>
+              <div class="qbox">Cena del sábado</div>
+            </div>
+            <div class="qf">
+              <label>Pagó</label>
+              <div class="chips">
+                <button aria-pressed="false">Ana</button>
+                <button aria-pressed="true">Luis</button>
+                <button aria-pressed="false">Marta</button>
+              </div>
+            </div>
+            <div class="qf">
+              <label>Entre</label>
+              <div class="chips">
+                <button aria-pressed="true">Ana</button>
+                <button aria-pressed="true">Luis</button>
+                <button aria-pressed="true">Marta</button>
+              </div>
+            </div>
+            <div class="impact"><span>Cambia tu balance a</span><b>+$120.30</b></div>
+            <button class="qsubmit" data-goto="liq">Guardar y liquidar</button>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  (function () {
+    var screens = Array.prototype.slice.call(document.querySelectorAll('[data-screen]'));
+    var tabs = Array.prototype.slice.call(document.querySelectorAll('.switcher button'));
+
+    function show(id) {
+      screens.forEach(function (s) {
+        if (s.dataset.screen === id) { s.setAttribute('data-active', ''); }
+        else { s.removeAttribute('data-active'); }
+      });
+      tabs.forEach(function (t) {
+        t.setAttribute('aria-selected', t.dataset.goto === id ? 'true' : 'false');
+      });
+    }
+
+    // Deep link por hash: prototipo.html#liq abre directo esa pantalla. Se
+    // agrego al traer el artifact al repo, para poder enlazar una pantalla
+    // suelta desde la pagina del dia 3.
+    function fromHash() {
+      var id = (location.hash || '').slice(1);
+      if (id && screens.some(function (s) { return s.dataset.screen === id; })) show(id);
+    }
+    fromHash();
+    window.addEventListener('hashchange', fromHash);
+
+    document.addEventListener('click', function (e) {
+      var trigger = e.target.closest('[data-goto]');
+      if (!trigger) return;
+      show(trigger.dataset.goto);
+      if (window.innerWidth <= 560) {
+        document.querySelector('.device').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  })();
+</script>
+
+</body>
+</html>

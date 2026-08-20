@@ -51,6 +51,50 @@
   </div>
 </section>
 
+<!-- LO QUE SALIO EN VIVO - el prototipo salio como artifact de Claude, que es
+     privado y la gente del workshop no lo puede abrir. La copia vive en
+     prototipo.html, servida por Pages como el resto del sitio. -->
+<section class="sec" id="prototipo">
+  <div class="wrap">
+    <div class="eyebrow">// lo que salió en vivo</div>
+    <p class="lead"><strong>Cerrar en Verde</strong>: el prototipo que salió de la sesión, siete pantallas de una app para cuadrar los gastos de un viaje - el mismo problema que resuelve el <a href="https://github.com/eonoe/coding-agents-101/tree/main/example">proyecto de práctica</a>, pero con cara de app.</p>
+
+    <div class="shot">
+      <div>
+        <p><strong>Esta es la pantalla que abre la app.</strong> No una lista de gastos: la deuda. Quién te paga, cuánto, y los dos botones que sirven - recordarle o marcarlo pagado.</p>
+        <p>El número de arriba sale de cinco gastos en dos monedas, repartidos entre tres personas, y el reparto busca el mínimo de transferencias: entre 3 nunca hacen falta más de 2.</p>
+        <p>En tres noches: el lunes pusiste un agent a correr, el martes le diste context, y el miércoles revisaste lo que te devolvió hasta que quedó algo que firmarías.</p>
+        <p><a class="btn btn-pop btn-sm" href="../prototipo.html">Abrir el prototipo →</a></p>
+      </div>
+      <figure class="shot-img">
+        <a href="../prototipo.html#liq"><img src="../assets/prototipo-liquidar.png" alt="Pantalla Liquidar del prototipo: el título Falta cobrar, un total de 120.30 dólares por cobrar, tres datos del viaje - 2 pagos, 535.50 gastado, 3 personas - y las tarjetas de Marta y Luis con sus botones de recordarle y marcar pagado." width="706" height="1580" loading="lazy"></a>
+        <figcaption>// pantalla 4 de 7 · clic para abrirla completa</figcaption>
+      </figure>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <span class="k">el flujo</span>
+        <h3>Entrar, viaje, gente</h3>
+        <p>Signup social, el nombre del viaje con su moneda base, y quién viene - sin obligar a nadie a registrarse para entrar en el reparto.</p>
+      </div>
+      <div class="card">
+        <span class="k">la pantalla que importa</span>
+        <h3>Quién le paga a quién</h3>
+        <p>No abre en una lista de gastos, abre en la deuda. Con el mínimo de transferencias: entre 3 personas nunca hacen falta más de 2.</p>
+      </div>
+      <div class="card">
+        <span class="k">el detalle</span>
+        <h3>De dónde sale ese número</h3>
+        <p>Cada deuda se abre gasto por gasto. Puedes auditar la cifra sin creerle a la app, que es exactamente lo que hicimos con el diff.</p>
+      </div>
+    </div>
+
+    <div class="note"><strong>Por qué está aquí:</strong> no salió de un solo prompt. Salieron varias propuestas y esta es <em>la C con la piel de la A</em> - quedarse con lo bueno de una y lo bueno de otra. Es la <a href="#movidas">misma movida</a> que usaste con tu diff, aplicada a un diseño.</div>
+
+  </div>
+</section>
+
 <!-- LA IDEA -->
 <section class="sec" id="idea">
   <div class="wrap">
