@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coding Agents 101 - Sesión 4 · slides</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23ffd400'/%3E%3Ctext x='16' y='21' font-family='monospace' font-size='14' font-weight='700' text-anchor='middle' fill='%230b0b10'%3ETL%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/slides.css">
+</head>
+<body>
+
+<!-- Este deck se amplio despues de la sesion del 18. La mecanica de context
+     (laminas 4, 6, 7, 10 y 11) se dio en vivo la noche del 19 y se mudo aqui,
+     que es donde toca; el deck del dia 3 se quedo con un recap corto. O sea que
+     los T+ de la hora 1 ya no cuadran con la grabacion de esa noche. -->
+
+<!-- 1 · pre -->
+<section class="slide on pop" data-t="pre">
+  <div class="eyebrow">// coding agents 101 · sesión 4 de 4</div>
+  <h1>Que quede.</h1>
+  <p class="sub wide">Lo que repites se guarda, y el agent alcanza lo que está fuera del repo. Última noche.</p>
+</section>
+
+<!-- 2 · T+0 · el poll de siempre, ahora sobre el homework -->
+<section class="slide" data-t="T+0">
+  <div class="eyebrow">// una letra en el chat</div>
+  <h2>¿Trajiste algo que<br>hiciste <span class="hl">dos veces</span>?</h2>
+  <div class="poll">
+    <div class="opt"><span class="k">A</span><span>Sí, y sé exactamente cuál es.</span></div>
+    <div class="opt"><span class="k">B</span><span>Repetí cosas pero no las apunté.</span></div>
+    <div class="opt"><span class="k">C</span><span>No usé el agent desde anoche.</span></div>
+    <div class="opt"><span class="k">D</span><span>Es mi primera noche aquí.</span></div>
+  </div>
+  <p class="sub" style="max-width:52ch;">Si eres B, lo sacamos en cinco minutos con el P1. Si eres D, hoy no necesitas nada de las noches anteriores.</p>
+</section>
+
+<!-- 3 · T+5 · recap de la semana, en una lamina -->
+<section class="slide" data-t="T+5">
+  <div class="eyebrow">// cuatro noches, en treinta segundos</div>
+  <h2>Dónde estamos.</h2>
+  <div class="loop">
+    <div class="step"><span class="n">lun · el loop</span><h3>Qué es un agent</h3><p>No predice: corre un loop. <strong>gather → act → verify</strong>, con tools de verdad.</p></div>
+    <div class="step"><span class="n">mar · context</span><h3>Qué puede ver</h3><p>Lee lo que cupo, no tu repo. El AGENTS.md es el context que no depende de ti.</p></div>
+    <div class="step"><span class="n">mié · revisión</span><h3>Qué te entregó</h3><p>Se ve terminado siempre. Las cuatro preguntas, en orden, antes de firmar.</p></div>
+  </div>
+  <p class="sub wide">Todo eso vive en tu cabeza y en una sesión que se borra. <strong>Hoy lo sacamos de ahí.</strong></p>
+</section>
+
+<!-- 4 · T+9 · la tesis: tres cosas quedan, y cada una guarda algo distinto -->
+<section class="slide pop" data-t="T+9">
+  <div class="eyebrow">// la idea de la noche</div>
+  <h2>Tres cosas quedan<br>cuando cierras la sesión.</h2>
+  <div class="loop">
+    <div class="step"><span class="n">lo que sabe</span><h3>AGENTS.md</h3><p>Las convenciones. Entra completo, siempre, en cada sesión nueva.</p></div>
+    <div class="step"><span class="n">lo que hace</span><h3>Una skill</h3><p>El workflow escrito una vez. Entra cuando la tarea encaja.</p></div>
+    <div class="step"><span class="n">lo que alcanza</span><h3>MCP</h3><p>Tools que no vienen de fábrica: correo, calendario, base de datos.</p></div>
+  </div>
+</section>
+
+<!-- 5 · T+14 -->
+<section class="slide" data-t="T+14">
+  <div class="eyebrow">// primero · skills</div>
+  <h2>Una skill es un workflow<br>que dejaste <span class="hl">escrito</span>.</h2>
+  <p class="sub wide">No es un plugin ni código. Es texto con tres partes.</p>
+  <div class="rules">
+    <div class="rl"><h3>1 · Cómo se llama</h3><p>Una línea. "Revisar un PR de este repo".</p></div>
+    <div class="rl"><h3>2 · Cuándo se usa</h3><p>Una frase. Es lo que hace que la cargue solo, sin que la pegues.</p></div>
+    <div class="rl"><h3>3 · Los pasos</h3><p>En orden, y qué verificar en cada uno.</p></div>
+  </div>
+</section>
+
+<!-- 6 · T+20 · la distincion que la gente confunde toda la noche si no se dice -->
+<section class="slide dark" data-t="T+20">
+  <div class="eyebrow">// no compiten</div>
+  <h2>AGENTS.md entra siempre.<br>La skill, <span class="hl">cuando toca</span>.</h2>
+  <ol class="big">
+    <li>El <strong>AGENTS.md</strong> se manda completo en cada sesión. Por eso cada línea te cuesta context, y por eso es corto.</li>
+    <li>La <strong>skill</strong> solo entra cuando la tarea encaja. Por eso puede tener los pasos completos sin estorbar.</li>
+  </ol>
+  <p class="sub wide">Una <em>regla</em> va al AGENTS.md. Unos <em>pasos</em> son una skill.</p>
+</section>
+
+<!-- 7 · T+25 -->
+<section class="slide" data-t="T+25">
+  <div class="eyebrow">// cuándo algo merece ser skill</div>
+  <h2>La regla de<br>las dos veces.</h2>
+  <ol class="big">
+    <li><strong>Lo hiciste dos veces.</strong> Los mismos pasos, en el mismo orden.</li>
+    <li><strong>Lo explicaste dos veces.</strong> El mismo prompt largo, en dos sesiones.</li>
+    <li><strong>Te corrigió lo mismo dos veces.</strong> Cuidado: eso suele ser una línea del AGENTS.md, no una skill.</li>
+  </ol>
+  <p class="sub wide">El homework de anoche era justo esto. Lo que trajiste es el material de la hora 2.</p>
+</section>
+
+<!-- 8 · T+30 -->
+<section class="slide" data-t="T+30">
+  <div class="eyebrow">// segundo · MCP</div>
+  <h2>MCP es cómo alcanza<br>lo que está afuera.</h2>
+  <p class="sub wide">Sus tools eran las de fábrica - leer, editar, correr comandos - y todas dentro de tu repo. MCP le conecta otras sin que nadie programe una integración por cada agent.</p>
+  <div class="loop">
+    <div class="step"><span class="n">01 · el server</span><h3>Quién ofrece</h3><p>Un programa que dice "yo sé hacer estas cosas". Local o en la nube.</p></div>
+    <div class="step"><span class="n">02 · las tools</span><h3>Qué puede hacer</h3><p>Una lista con nombre y parámetros. El agent escoge, como con las de siempre.</p></div>
+    <div class="step"><span class="n">03 · el permiso</span><h3>Quién aprueba</h3><p>Tú. Y con tools que mandan correos, eso deja de ser un detalle.</p></div>
+  </div>
+</section>
+
+<!-- 9 · T+36 · el costo, que engancha con la mecanica del dia 2 -->
+<section class="slide dark" data-t="T+36">
+  <div class="eyebrow">// lo que nadie te dice al conectarlos</div>
+  <h2>Cada MCP conectado<br>te cuesta <span class="hl">context</span>.</h2>
+  <p class="sub wide">La lista de tools viaja en cada llamada: nombre, descripción y parámetros de cada una. Lo mismo del martes, por cada server que conectes.</p>
+  <ol class="big" style="margin-top:1.4vh;">
+    <li>Veinte servers = menos sitio para tu código.</li>
+    <li>Y escoge peor: cien tools donde le bastaban seis.</li>
+    <li><strong>Conecta lo que vas a usar hoy.</strong> No todo lo que existe.</li>
+  </ol>
+</section>
+
+<!-- 10 · T+42 · la demo. La corro yo: veinte OAuth en vivo se comen la sesion -->
+<section class="slide pop" data-t="T+42">
+  <div class="eyebrow">// el caso de la noche · lo corro yo, ustedes miran</div>
+  <h2>Mi correo y mi calendario,<br>leídos por el agent.</h2>
+  <ol class="big">
+    <li><strong>Conectar</strong> y mirar qué tools aparecieron.</li>
+    <li><strong>Preguntar</strong> qué hay esta semana y qué quedó sin contestar.</li>
+    <li><strong>Hacer algo</strong> con eso: un borrador, un resumen, un evento. Propuesto, no enviado.</li>
+    <li><strong>Revisarlo</strong> con las cuatro preguntas de anoche.</li>
+  </ol>
+</section>
+
+<!-- 11 · T+50 -->
+<section class="slide dark" data-t="T+50">
+  <div class="eyebrow">// esto no se negocia</div>
+  <h2>Dos reglas antes de<br>conectarle tu correo.</h2>
+  <ol class="big">
+    <li><strong>Lo que lee, entra al context.</strong> No conectes la cuenta que tiene cosas que no le enseñarías a una herramienta.</li>
+    <li><strong>Nada se manda sin que tú lo leas.</strong> Un agent que escribe correos y ejecuta sin permiso es la peor combinación de la semana.</li>
+  </ol>
+</section>
+
+<!-- 12 · T+55 -->
+<section class="slide blue" data-t="T+55">
+  <div class="eyebrow">// cinco minutos</div>
+  <h2>Break.<br>Volvemos 7:00.</h2>
+  <p class="sub wide">Ten a mano eso que hiciste dos veces. La hora que viene se trabaja sobre ello.</p>
+</section>
+
+<!-- 13 · T+60 -->
+<section class="slide" data-t="T+60">
+  <div class="eyebrow">// hora 2 · copia y pega</div>
+  <h2>Encontrar, escribir,<br>conectar.</h2>
+  <div class="loop">
+    <div class="step"><span class="n">p1 · encontrar</span><h3>Qué repetiste</h3><p>Le describes la semana y él separa lo que es workflow de lo que fue una sola vez.</p></div>
+    <div class="step"><span class="n">p2 · escribir</span><h3>Máximo 25 líneas</h3><p>Título, cuándo, pasos. Lo que no sepa va como pregunta al final, fuera del archivo.</p></div>
+    <div class="step"><span class="n">p3 · conectar</span><h3>Tools nuevas</h3><p>Que liste lo que puede hacer y separe lo que lee de lo que escribe, antes de usarlo.</p></div>
+  </div>
+  <p class="sub wide">Los tres están en la página, con botón de copiar.</p>
+</section>
+
+<!-- 14 · T+68 -->
+<section class="slide" data-t="T+68">
+  <div class="eyebrow">// los prompts están aquí · no los escribas a mano</div>
+  <h2>La página<br>de hoy.</h2>
+  <div class="url">eonoe.github.io/<wbr>coding-agents-101/dia-4</div>
+  <p class="sub wide">Los tres prompts, la forma de la skill, y los dos caminos del MCP.</p>
+</section>
+
+<!-- 15 · T+85 · el callback al martes: la skill tambien se prueba en limpio -->
+<section class="slide pop" data-t="T+85">
+  <div class="eyebrow">// igual que el AGENTS.md el martes</div>
+  <h2>La skill se prueba<br>en sesión <span class="hl">limpia</span>.</h2>
+  <p class="sub wide">Si la pruebas en la misma sesión donde la escribiste, el agent ya tiene los pasos en context y los sigue aunque el archivo esté vacío. <strong>No probaste nada.</strong></p>
+  <p class="sub wide" style="margin-top:2.5vh;">Cierra. Abre otra. Pídele la tarea sin explicarle nada, y mira si la carga sola.</p>
+</section>
+
+<!-- 16 · T+92 -->
+<section class="slide blue" data-t="T+92">
+  <div class="eyebrow">// todos a la vez</div>
+  <h2>Qué guardaste,<br>y si lo cargó solo.</h2>
+  <div class="tpl"><span class="y">[nombre]</span> | qué skill escribiste | ¿la cargó sola en sesión limpia? sí / no | <span class="y">un MCP que vas a conectar</span></div>
+  <p class="sub wide">El "no" enseña más que el "sí": casi siempre es que el <em>cuándo</em> está mal escrito.</p>
+</section>
+
+<!-- 17 · T+95 -->
+<section class="slide pop" data-t="T+95">
+  <div class="eyebrow">// cuatro minutos cada uno · te corto y no es personal</div>
+  <h2>Contesta estas tres.</h2>
+  <ol class="big">
+    <li>¿Qué workflow escribiste?</li>
+    <li>¿La cargó sola, o tuviste que pedírsela?</li>
+    <li>¿Qué le vas a conectar la semana que viene?</li>
+  </ol>
+</section>
+
+<!-- 18 · T+103 · la parte del curso que no es "sacale mas trabajo" -->
+<section class="slide dark" data-t="T+103">
+  <div class="eyebrow">// dónde no</div>
+  <h2>Dónde un agent es la<br>herramienta <span class="hl">equivocada</span>.</h2>
+  <ol class="big">
+    <li><strong>No puedes verificar el resultado.</strong> Da igual lo rápido que salga.</li>
+    <li><strong>El error no tiene vuelta atrás.</strong> Migraciones, producción sin revisión, lo que se manda a un cliente.</li>
+    <li><strong>El problema es decidir, no ejecutar.</strong> Te da una respuesta segura a algo que nadie ha decidido.</li>
+    <li><strong>El trabajo es aprender.</strong> Que lo escriba él es lo contrario de lo que necesitas.</li>
+  </ol>
+</section>
+
+<!-- 19 · T+110 -->
+<section class="slide" data-t="T+110">
+  <div class="eyebrow">// la semana que viene</div>
+  <h2>Tres cosas chiquitas.</h2>
+  <ol class="big">
+    <li><strong>Una línea más al AGENTS.md</strong> cada vez que algo te dé rabia.</li>
+    <li><strong>Una skill más</strong> la segunda vez que escribas el mismo prompt largo.</li>
+    <li><strong>Un MCP</strong>, el que uses de verdad. Uno. Después piensas en el segundo.</li>
+  </ol>
+</section>
+
+<!-- 20 · T+115 -->
+<section class="slide pop" data-t="T+115">
+  <div class="eyebrow">// hasta aquí · gracias por las cuatro noches</div>
+  <h2>Ya sabes pedirlo, darle context,<br>revisarlo y dejarlo escrito.</h2>
+  <p class="sub" style="max-width:46ch;">Las cuatro páginas se quedan arriba, con los prompts y los archivos. Sin fecha de vencimiento.</p>
+  <div class="url">eonoe.github.io/<wbr>coding-agents-101</div>
+</section>
+
+<div class="bar" id="bar"></div>
+<div class="num" id="num"></div>
+<div class="tmark" id="tmark"></div>
+<div class="hint">← → espacio · f pantalla completa · o índice</div>
+
+<div id="ov"><h3>Índice - clic para saltar (o / esc para cerrar)</h3><ol id="ovl"></ol></div>
+
+<script src="assets/slides.js"></script>
+
+</body>
+</html>
