@@ -37,10 +37,13 @@ Cada `dia-N/index.html` arranca como una página de "todavía no". El día que t
 1. Le pones el contenido de esa sesión. La estructura de `dia-1/` sirve de molde:
    hero, secciones, y la barra `daynav` al final.
 2. **En `index.html`, le agregas `data-ready="si"` a la tarjeta de ese día.**
-3. **Al día siguiente, publicas la grabación.** El video de Meet cae solo en Drive: lo
+3. **El deck de esa sesión se linkea desde su página**, con un `chip` más en el `.meta`
+   del hero: `<a class="chip" href="../slides-dia-2.html">Las láminas →</a>`.
+4. **Al día siguiente, publicas la grabación.** El video de Meet cae solo en Drive: lo
    compartes como *anyone with the link, viewer*, le agregas una sección `#recap` a la
-   página de ese día (el molde está en `dia-2/index.html`) y le sumas el link al note de
-   grabaciones del hub. El chat transcript se queda privado, trae los nombres de la gente.
+   página de ese día (el molde está en `dia-2/index.html`) y sumas láminas y grabación al
+   note de materiales del hub. El chat transcript se queda privado, trae los nombres de
+   la gente.
 
 El segundo paso es fácil de olvidar y es el que cambia el badge en el hub:
 
