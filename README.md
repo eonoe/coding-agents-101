@@ -24,6 +24,7 @@ decir en voz alta durante una llamada que `/dia-2/`.
 | [`assets/kit.css`](assets/kit.css) | Los estilos, compartidos por todas las páginas |
 | [`slides.html`](slides.html) | Los slides del día 1 |
 | [`slides-dia-2.html`](slides-dia-2.html) | Los slides del día 2 |
+| [`prototipo.html`](prototipo.html) | El prototipo que salió en el día 3 |
 | [`assets/slides.css`](assets/slides.css) · [`assets/slides.js`](assets/slides.js) | Estilos y navegación, compartidos por los decks |
 | [`files/AGENTS.md`](files/AGENTS.md) | Plantilla de `AGENTS.md` para tu proyecto |
 | [`files/revision.md`](files/revision.md) | Checklist para revisar lo que escribió un agent |
