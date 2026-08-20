@@ -172,3 +172,12 @@ pre code{background:none;color:inherit;padding:0;font-size:inherit;}
    suficiente para guiar a quien no sabe cuál escoger, sin gritarle a quien sí. */
 .tbl tr.rec-row td{background:#f6f5ff;}
 .rec{display:inline-block;margin-top:5px;background:var(--blue);color:#fff;font-family:'JetBrains Mono',monospace;font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:3px 8px;border-radius:20px;}
+
+/* La captura del prototipo del día 3. La imagen es un teléfono: estrecha y muy
+   alta, así que va al lado del texto en pantalla ancha y encima en móvil, en vez
+   de partir la lectura por la mitad. */
+.shot{display:grid;grid-template-columns:1fr minmax(220px,300px);gap:26px;align-items:start;margin:18px 0 22px;}
+.shot img{display:block;width:100%;height:auto;border-radius:16px;border:3px solid var(--ink);box-shadow:6px 6px 0 var(--ink);}
+.shot figure{margin:0;}
+.shot figcaption{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted);margin-top:10px;line-height:1.5;}
+@media(max-width:760px){.shot{grid-template-columns:1fr;}.shot .shot-img{max-width:300px;margin:0 auto;}}

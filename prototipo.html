@@ -605,6 +605,16 @@
       });
     }
 
+    // Deep link por hash: prototipo.html#liq abre directo esa pantalla. Se
+    // agrego al traer el artifact al repo, para poder enlazar una pantalla
+    // suelta desde la pagina del dia 3.
+    function fromHash() {
+      var id = (location.hash || '').slice(1);
+      if (id && screens.some(function (s) { return s.dataset.screen === id; })) show(id);
+    }
+    fromHash();
+    window.addEventListener('hashchange', fromHash);
+
     document.addEventListener('click', function (e) {
       var trigger = e.target.closest('[data-goto]');
       if (!trigger) return;
