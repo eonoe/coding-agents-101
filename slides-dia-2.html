@@ -12,6 +12,11 @@
 </head>
 <body>
 
+<!-- Este deck se amplio despues de la sesion del 18. La mecanica de context
+     (laminas 4, 6, 7, 10 y 11) se dio en vivo la noche del 19 y se mudo aqui,
+     que es donde toca; el deck del dia 3 se quedo con un recap corto. O sea que
+     los T+ de la hora 1 ya no cuadran con la grabacion de esa noche. -->
+
 <!-- 1 · pre -->
 <section class="slide on pop" data-t="pre">
   <div class="eyebrow">// coding agents 101 · sesión 2 de 4</div>
@@ -32,8 +37,65 @@
   <p class="sub" style="max-width:52ch;">Si eres B o C, en cuatro minutos la sacamos. Si eres D, no te hace falta nada de anoche para seguir hoy.</p>
 </section>
 
-<!-- 3 · T+6 -->
-<section class="slide" data-t="T+6">
+<!-- 3 · T+2 · recap del lunes. Se agrego despues de la sesion: la noche en
+     vivo empezaba en el poll y daba el loop por sabido. -->
+<section class="slide" data-t="T+2">
+  <div class="eyebrow">// el lunes, en treinta segundos</div>
+  <h2>Un agent no predice.<br>Corre un <span class="hl">loop</span>.</h2>
+  <div class="loop">
+    <div class="step"><span class="n">01 · gather</span><h3>Junta contexto</h3><p>Lee archivos, busca, corre comandos para entender dónde está parado.</p></div>
+    <div class="step"><span class="n">02 · act</span><h3>Actúa</h3><p>Escribe, edita, ejecuta. Aquí te pide permiso.</p></div>
+    <div class="step"><span class="n">03 · verify</span><h3>Verifica</h3><p>Corre lo que escribió y revisa si sirvió. El paso que todos se saltan.</p></div>
+  </div>
+  <p class="sub wide">Autocomplete predice la línea que sigue; esto corre el loop hasta terminar. Anoche vimos que casi todos los fallos son del <strong>gather</strong> - y el gather es context.</p>
+</section>
+
+<!-- 4 · T+4 · DIAGRAMA: anatomia de un agent · recap del lunes -->
+<section class="slide" data-t="T+4">
+  <div class="eyebrow">// de qué está hecho · recap del lunes</div>
+  <h2>Un agent son<br>cuatro piezas.</h2>
+  <div class="fig">
+    <svg viewBox="0 0 900 320" role="img" aria-label="Anatomía de un coding agent: la interface envuelve al harness; dentro del harness están el LLM, que solo predice texto, y las tools, que son las que tocan el disco. El LLM nunca toca el repo directamente.">
+      <rect x="12" y="14" width="600" height="292" rx="16" fill="#f6f5ff" stroke="#0b0b10" stroke-width="3" stroke-dasharray="8 6"/>
+      <text class="t-mono t-h" x="30" y="42" font-size="15" fill="#3531ff">interface</text>
+      <text class="t-mono" x="128" y="42" font-size="14" fill="#6b7280">terminal · GUI · IDE - por dónde le hablas</text>
+
+      <rect x="34" y="62" width="556" height="222" rx="14" fill="#ffffff" stroke="#0b0b10" stroke-width="4"/>
+      <text class="t-mono t-h" x="52" y="90" font-size="15" fill="#0b0b10">harness</text>
+      <text class="t-mono" x="128" y="90" font-size="13" fill="#6b7280">corre el loop, pide permiso, guarda la sesión</text>
+
+      <rect x="60" y="112" width="238" height="146" rx="12" fill="#0b0b10"/>
+      <text class="t-h" x="179" y="150" text-anchor="middle" font-size="21" fill="#ffd400">LLM</text>
+      <text x="179" y="180" text-anchor="middle" font-size="15" fill="#ffffff">solo predice texto</text>
+      <text x="179" y="206" text-anchor="middle" font-size="15" fill="#8a8a99">no abre archivos</text>
+      <text x="179" y="230" text-anchor="middle" font-size="15" fill="#8a8a99">no corre comandos</text>
+
+      <rect x="326" y="112" width="238" height="146" rx="12" fill="#3531ff"/>
+      <text class="t-h" x="445" y="150" text-anchor="middle" font-size="21" fill="#ffffff">tools</text>
+      <text x="445" y="180" text-anchor="middle" font-size="15" fill="#dcdbff">Read · Edit · Bash</text>
+      <text x="445" y="206" text-anchor="middle" font-size="15" fill="#dcdbff">Search · Git</text>
+      <text x="445" y="230" text-anchor="middle" font-size="15" fill="#ffd400">estas sí tocan disco</text>
+
+      <path d="M298 185 H326" stroke="#ffffff" stroke-width="3" marker-end="url(#ax1)"/>
+
+      <path d="M612 160 H688" stroke="#0b0b10" stroke-width="4" marker-end="url(#ax2)"/>
+      <rect x="700" y="112" width="188" height="146" rx="12" fill="#ffd400" stroke="#0b0b10" stroke-width="4"/>
+      <text class="t-h" x="794" y="176" text-anchor="middle" font-size="22" fill="#0b0b10">tu repo</text>
+      <text class="t-mono" x="794" y="206" text-anchor="middle" font-size="14" fill="#0b0b10">tus archivos</text>
+
+      <text class="t-mono t-h" x="622" y="142" text-anchor="start" font-size="13" fill="#6b7280">vía tools</text>
+
+      <defs>
+        <marker id="ax1" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 z" fill="#ffffff"/></marker>
+        <marker id="ax2" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 z" fill="#0b0b10"/></marker>
+      </defs>
+    </svg>
+    <div class="fig-cap">// el LLM nunca toca tu repo. lo pide, y el harness lo hace.</div>
+  </div>
+</section>
+
+<!-- 5 · T+7 -->
+<section class="slide" data-t="T+7">
   <div class="eyebrow">// la idea de la noche</div>
   <h2>Context son<br><span class="hl">tres fuentes</span>.</h2>
   <div class="loop">
@@ -43,10 +105,73 @@
   </div>
 </section>
 
-<!-- 4 · T+6 · el dia 1 prometio context window y tokens para hoy. Aqui se paga
-     esa promesa, y en este orden: primero que tiene fondo, despues que la
-     sesion es la memoria, y al final el vocabulario ya sentido. -->
-<section class="slide dark" data-t="T+6">
+<!-- 6 · T+10 · DIAGRAMA: que hay dentro del context window -->
+<section class="slide" data-t="T+10">
+  <div class="eyebrow">// lo que de verdad se manda, cada turno</div>
+  <h2>Dentro del<br>context window.</h2>
+  <div class="fig">
+    <svg viewBox="0 0 900 300" role="img" aria-label="La ventana de context como una barra apilada: system prompt, definiciones de las tools, AGENTS.md, historia de la conversación que es la que crece, tu mensaje, y el espacio libre que se va acabando.">
+      <rect x="14" y="52" width="872" height="120" rx="10" fill="#ffffff" stroke="#0b0b10" stroke-width="4"/>
+
+      <rect x="18" y="56" width="104" height="112" fill="#0b0b10"/>
+      <text class="t-mono" x="70" y="118" text-anchor="middle" font-size="12" fill="#ffd400">system</text>
+      <text class="t-mono" x="70" y="136" text-anchor="middle" font-size="12" fill="#ffd400">prompt</text>
+
+      <rect x="122" y="56" width="132" height="112" fill="#3531ff"/>
+      <text class="t-mono t-h" x="188" y="112" text-anchor="middle" font-size="13" fill="#ffffff">las TOOLS</text>
+      <text class="t-mono" x="188" y="132" text-anchor="middle" font-size="12" fill="#dcdbff">van aquí, como</text>
+      <text class="t-mono" x="188" y="149" text-anchor="middle" font-size="12" fill="#dcdbff">texto</text>
+
+      <rect x="254" y="56" width="104" height="112" fill="#ffd400"/>
+      <text class="t-mono t-h" x="306" y="118" text-anchor="middle" font-size="12" fill="#0b0b10">AGENTS.md</text>
+      <text class="t-mono" x="306" y="136" text-anchor="middle" font-size="11" fill="#0b0b10">lo de ayer</text>
+
+      <rect x="358" y="56" width="330" height="112" fill="#c9c8ff"/>
+      <text class="t-mono t-h" x="523" y="104" text-anchor="middle" font-size="14" fill="#0b0b10">la conversación</text>
+      <text class="t-mono" x="523" y="126" text-anchor="middle" font-size="12" fill="#41444d">cada archivo leído, cada comando,</text>
+      <text class="t-mono" x="523" y="144" text-anchor="middle" font-size="12" fill="#41444d">cada salida, cada error</text>
+
+      <rect x="688" y="56" width="74" height="112" fill="#6b7280"/>
+      <text class="t-mono" x="725" y="118" text-anchor="middle" font-size="11" fill="#ffffff">tu</text>
+      <text class="t-mono" x="725" y="134" text-anchor="middle" font-size="11" fill="#ffffff">mensaje</text>
+
+      <rect x="762" y="56" width="120" height="112" fill="#f4f4f6"/>
+      <text class="t-mono" x="822" y="118" text-anchor="middle" font-size="12" fill="#6b7280">libre</text>
+
+      <path d="M358 190 H688" stroke="#0b0b10" stroke-width="3" marker-end="url(#az)" marker-start="url(#azs)"/>
+      <text class="t-mono t-h" x="523" y="214" text-anchor="middle" font-size="15" fill="#0b0b10">esto es lo único que crece</text>
+      <path d="M822 190 V212" stroke="#b45309" stroke-width="3" marker-end="url(#azw)"/>
+      <text class="t-mono t-h" x="822" y="234" text-anchor="middle" font-size="14" fill="#b45309">y esto se acaba</text>
+
+      <text class="t-mono" x="14" y="34" font-size="14" fill="#6b7280">el ancho total lo fija el model, no tú.</text>
+      <text class="t-mono" x="14" y="274" font-size="13" fill="#6b7280">// esquemático: las proporciones cambian con cada model y cada herramienta</text>
+
+      <defs>
+        <marker id="az" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 z" fill="#0b0b10"/></marker>
+        <marker id="azs" markerWidth="9" markerHeight="9" refX="1" refY="4.5" orient="auto-start-reverse"><path d="M0 0 L9 4.5 L0 9 z" fill="#0b0b10"/></marker>
+        <marker id="azw" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 z" fill="#b45309"/></marker>
+      </defs>
+    </svg>
+  </div>
+</section>
+
+<!-- 7 · T+13 · las tools ocupan sitio -->
+<section class="slide dark" data-t="T+13">
+  <div class="eyebrow">// dónde viven las tools</div>
+  <h2>Las tools son<br><span class="hl">texto</span> en el context.</h2>
+  <p class="sub wide">El model no "tiene" tools. Le llega una lista escrita - nombre, para qué sirve, qué parámetros lleva - y él contesta con un mensaje que dice <em>quiero usar esta, con estos argumentos</em>.</p>
+  <ol class="big" style="margin-top:1.4vh;">
+    <li>Esa lista va <strong>en cada llamada</strong>, gastando espacio siempre.</li>
+    <li>Más tools conectadas = menos sitio para tu código.</li>
+    <li>El <strong>resultado</strong> de cada tool también se queda: leer un archivo de 800 líneas lo mete entero en la conversación, y ahí se queda.</li>
+  </ol>
+  <p class="sub wide">Por eso una sesión larga se pone lenta y tonta: no es que se canse, es que ya casi no le cabe nada nuevo.</p>
+</section>
+
+<!-- 8 · T+16 · el dia 1 prometio context window y tokens para hoy. El diagrama
+     de la 6 dice como es por dentro; esta dice como se siente cuando se acaba,
+     que es lo que la gente ya vivio. -->
+<section class="slide dark" data-t="T+16">
   <div class="eyebrow">// y cuando se llena, no te avisa</div>
   <h2>El context<br>tiene <span class="hl">fondo</span>.</h2>
   <p class="sub wide">Cada archivo que lee ocupa espacio. Cuando se acaba, lo viejo se cae - y el agent sigue contestando igual de seguro, sin decirte que se le olvidó.</p>
@@ -58,8 +183,8 @@
   <p class="sub wide">Eso es la pared. La cura no es un prompt mejor.</p>
 </section>
 
-<!-- 5 · T+6 -->
-<section class="slide" data-t="T+6">
+<!-- 9 · T+19 -->
+<section class="slide" data-t="T+19">
   <div class="eyebrow">// la unidad de trabajo</div>
   <h2>Una <span class="hl">session</span> es<br>todo lo que recuerda.</h2>
   <div class="loop">
@@ -70,8 +195,54 @@
   <p class="sub wide">Por eso el P3 va en sesión limpia. Es la única forma de probar el <em>archivo</em> y no la conversación.</p>
 </section>
 
-<!-- 6 · T+6 -->
-<section class="slide" data-t="T+6">
+<!-- 10 · T+22 · DIAGRAMA: context vs session vs window -->
+<section class="slide" data-t="T+22">
+  <div class="eyebrow">// tres palabras que no son sinónimos</div>
+  <h2>Session, window,<br>context.</h2>
+  <div class="fig">
+    <svg viewBox="0 0 900 300" role="img" aria-label="La session es toda la conversación guardada en disco y puede ser más larga que la ventana. La ventana solo abarca lo último. Cuando no cabe, el harness resume lo viejo y ese resumen ocupa el lugar de los turnos originales.">
+      <text class="t-mono t-h" x="14" y="34" font-size="15" fill="#3531ff">session</text>
+      <text class="t-mono" x="106" y="34" font-size="14" fill="#6b7280">todo lo que ha pasado, guardado en disco por el harness</text>
+
+      <rect x="14" y="48" width="140" height="58" rx="8" fill="#e7e8ec" stroke="#0b0b10" stroke-width="2"/>
+      <text class="t-mono" x="84" y="83" text-anchor="middle" font-size="13" fill="#6b7280">turnos 1-20</text>
+      <rect x="158" y="48" width="140" height="58" rx="8" fill="#e7e8ec" stroke="#0b0b10" stroke-width="2"/>
+      <text class="t-mono" x="228" y="83" text-anchor="middle" font-size="13" fill="#6b7280">21-40</text>
+      <rect x="302" y="48" width="580" height="58" rx="8" fill="#c9c8ff" stroke="#0b0b10" stroke-width="2"/>
+      <text class="t-mono" x="592" y="83" text-anchor="middle" font-size="13" fill="#0b0b10">41-70 · lo reciente</text>
+
+      <path d="M302 118 V138 H882 V118" fill="none" stroke="#3531ff" stroke-width="4"/>
+      <text class="t-mono t-h" x="592" y="160" text-anchor="middle" font-size="15" fill="#3531ff">context window: solo hasta aquí llega</text>
+
+      <text class="t-mono t-h" x="14" y="206" font-size="15" fill="#0b0b10">cuando ya no cabe:</text>
+      <rect x="14" y="220" width="284" height="56" rx="8" fill="#ffd400" stroke="#0b0b10" stroke-width="3"/>
+      <text class="t-mono t-h" x="156" y="244" text-anchor="middle" font-size="14" fill="#0b0b10">un resumen de 1-40</text>
+      <text class="t-mono" x="156" y="264" text-anchor="middle" font-size="12" fill="#0b0b10">o directo a la basura</text>
+      <path d="M302 248 H340" stroke="#0b0b10" stroke-width="3" marker-end="url(#aw)"/>
+      <rect x="348" y="220" width="534" height="56" rx="8" fill="#c9c8ff" stroke="#0b0b10" stroke-width="2"/>
+      <text class="t-mono t-h" x="615" y="252" text-anchor="middle" font-size="14" fill="#0b0b10">context = esto es lo que ve ahora mismo</text>
+
+      <defs>
+        <marker id="aw" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 z" fill="#0b0b10"/></marker>
+      </defs>
+    </svg>
+    <div class="fig-cap">// la session la guarda el harness · la window la fija el model · el context es lo que quedó dentro</div>
+  </div>
+</section>
+
+<!-- 11 · T+25 · consecuencias practicas -->
+<section class="slide pop" data-t="T+25">
+  <div class="eyebrow">// y por eso, en la práctica</div>
+  <h2>Tres cosas que<br>ahora tienen sentido.</h2>
+  <ol class="big">
+    <li><strong>La sesión limpia funciona</strong> porque bota el ruido, no porque el agent "descanse".</li>
+    <li><strong>El resumen te miente un poco.</strong> Lo que se resumió se comprimió, y lo comprimido pierde detalle sin avisar.</li>
+    <li><strong>Lo que pusiste temprano pesa menos</strong> con el tiempo. Si algo importa, vuélveselo a decir - o ponlo en el AGENTS.md, que entra completo cada vez.</li>
+  </ol>
+</section>
+
+<!-- 12 · T+28 -->
+<section class="slide" data-t="T+28">
   <div class="eyebrow">// vocabulario · las de hoy</div>
   <h2>Seis palabras<br>que ya sentiste.</h2>
   <div class="terms">
@@ -84,8 +255,8 @@
   </div>
 </section>
 
-<!-- 7 · T+18 -->
-<section class="slide dark" data-t="T+18">
+<!-- 13 · T+31 -->
+<section class="slide dark" data-t="T+31">
   <div class="eyebrow">// por qué no leyó lo que creías</div>
   <h2>La búsqueda falla<br>de cuatro maneras.</h2>
   <ol class="big">
@@ -97,8 +268,8 @@
   <p class="sub wide">Ninguna se ve en la respuesta. Salen todas igual de seguras.</p>
 </section>
 
-<!-- 8 · T+25 -->
-<section class="slide pop" data-t="T+25">
+<!-- 14 · T+35 -->
+<section class="slide pop" data-t="T+35">
   <div class="eyebrow">// lo que te llevas hoy</div>
   <h2>AGENTS.md se gana<br>cada línea.</h2>
   <div class="rules">
@@ -108,30 +279,30 @@
   </div>
 </section>
 
-<!-- 9 · T+35 · la regla que la gente se salta -->
-<section class="slide blue" data-t="T+35">
+<!-- 15 · T+37 · la regla que la gente se salta -->
+<section class="slide blue" data-t="T+37">
   <div class="eyebrow">// la regla de esta noche</div>
   <h2>El P3 va en una<br>sesión nueva.</h2>
   <p class="sub wide">Si lo pruebas en la misma sesión donde lo escribiste, el agent ya tiene todo eso en context y obedece aunque el archivo esté vacío. <strong>No probaste nada.</strong></p>
   <p class="sub wide" style="margin-top:2.5vh;">Cierra la sesión. Sí, en serio. Abre una limpia, y ahí sí.</p>
 </section>
 
-<!-- 10 · T+35 -->
-<section class="slide" data-t="T+35">
+<!-- 16 · T+38 -->
+<section class="slide" data-t="T+38">
   <div class="eyebrow">// los prompts están aquí · no los escribas a mano</div>
   <h2>La página<br>de hoy.</h2>
   <div class="url">eonoe.github.io/<wbr>coding-agents-101/dia-2</div>
   <p class="sub wide">Los tres prompts con botón de copiar, y la plantilla de AGENTS.md para bajar.</p>
 </section>
 
-<!-- 11 · T+40 -->
+<!-- 17 · T+40 -->
 <section class="slide blue" data-t="T+40">
   <div class="eyebrow">// cinco minutos</div>
   <h2>Break.<br>Volvemos 6:45.</h2>
   <p class="sub wide">Párate de la silla. La hora que viene la trabajas tú.</p>
 </section>
 
-<!-- 12 · T+45 -->
+<!-- 18 · T+45 -->
 <section class="slide" data-t="T+45">
   <div class="eyebrow">// hora 2 · copia y pega</div>
   <h2>Auditar, escribir,<br>probar.</h2>
@@ -142,7 +313,7 @@
   </div>
 </section>
 
-<!-- 13 · T+80 · los tres son buenos resultados, y hay que decirlo antes -->
+<!-- 19 · T+80 · los tres son buenos resultados, y hay que decirlo antes -->
 <section class="slide dark" data-t="T+80">
   <div class="eyebrow">// cuando corras el p3, te va a pasar una de estas</div>
   <h2>Las tres son<br>buenas noticias.</h2>
@@ -153,7 +324,7 @@
   </ol>
 </section>
 
-<!-- 14 · T+92 -->
+<!-- 20 · T+92 -->
 <section class="slide blue" data-t="T+92">
   <div class="eyebrow">// todos a la vez</div>
   <h2>Una línea que<br>se ganó su lugar.</h2>
@@ -161,7 +332,7 @@
   <p class="sub wide">La línea concreta de alguien más enseña más que la regla abstracta.</p>
 </section>
 
-<!-- 15 · T+95 -->
+<!-- 21 · T+95 -->
 <section class="slide pop" data-t="T+95">
   <div class="eyebrow">// cuatro minutos cada uno · te corto y no es personal</div>
   <h2>Contesta estas tres.</h2>
@@ -172,7 +343,7 @@
   </ol>
 </section>
 
-<!-- 16 · T+112 -->
+<!-- 22 · T+112 -->
 <section class="slide dark" data-t="T+112">
   <div class="eyebrow">// para mañana</div>
   <h2>Trae un diff<br>que <span class="hl">no te guste</span>.</h2>
@@ -184,7 +355,7 @@
   <p class="sub wide">Y no lo arregles. Ese diff es la clase de mañana.</p>
 </section>
 
-<!-- 17 · T+112 -->
+<!-- 23 · T+112 -->
 <section class="slide pop" data-t="T+112">
   <div class="eyebrow">// mañana, misma hora, mismo link</div>
   <h2>Hoy le dijiste<br>qué saber.</h2>
