@@ -22,8 +22,8 @@ decir en voz alta durante una llamada que `/dia-2/`.
 | [`kit/`](kit/) | La referencia que sirve para las cuatro sesiones |
 | [`dia-1/`](dia-1/) … `dia-4/` | Una página por sesión |
 | [`assets/kit.css`](assets/kit.css) | Los estilos, compartidos por todas las páginas |
-| [`slides.html`](slides.html) | Las láminas del día 1 |
-| [`slides-dia-2.html`](slides-dia-2.html) | Las láminas del día 2 |
+| [`slides.html`](slides.html) | Los slides del día 1 |
+| [`slides-dia-2.html`](slides-dia-2.html) | Los slides del día 2 |
 | [`assets/slides.css`](assets/slides.css) · [`assets/slides.js`](assets/slides.js) | Estilos y navegación, compartidos por los decks |
 | [`files/AGENTS.md`](files/AGENTS.md) | Plantilla de `AGENTS.md` para tu proyecto |
 | [`files/revision.md`](files/revision.md) | Checklist para revisar lo que escribió un agent |
@@ -38,10 +38,10 @@ Cada `dia-N/index.html` arranca como una página de "todavía no". El día que t
    hero, secciones, y la barra `daynav` al final.
 2. **En `index.html`, le agregas `data-ready="si"` a la tarjeta de ese día.**
 3. **El deck de esa sesión se linkea desde su página**, con un `chip` más en el `.meta`
-   del hero: `<a class="chip" href="../slides-dia-2.html">Las láminas →</a>`.
+   del hero: `<a class="chip" href="../slides-dia-2.html">Los slides →</a>`.
 4. **Al día siguiente, publicas la grabación.** El video de Meet cae solo en Drive: lo
    compartes como *anyone with the link, viewer*, le agregas una sección `#recap` a la
-   página de ese día (el molde está en `dia-2/index.html`) y sumas láminas y grabación al
+   página de ese día (el molde está en `dia-2/index.html`) y sumas slides y grabación al
    note de materiales del hub. El chat transcript se queda privado, trae los nombres de
    la gente.
 
