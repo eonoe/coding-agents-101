@@ -23,30 +23,254 @@
   <div class="wrap">
     <div class="tag">// día 4 de 4 · jue 20 ago</div>
     <h1>Que quede</h1>
-    <p>Conviertes lo de la semana en algo reutilizable, y ves dónde un agent es la herramienta equivocada.</p>
+    <p>Lo que repites se vuelve una skill, y con MCP el agent alcanza lo que está fuera del repo. Al final, dónde no usarlo.</p>
     <div class="meta">
       <span class="chip">6:00 PM (GMT-4) · 2 horas</span>
       <a class="chip b" href="https://meet.google.com/qxk-zffm-ojo">Entrar por Meet →</a>
       <a class="chip" href="../kit/">El kit</a>
+      <a class="chip" href="../slides-dia-4.html">Los slides →</a>
     </div>
   </div>
 </header>
 
 <main>
-<section class="sec">
+<!-- LA IDEA -->
+<section class="sec" id="idea">
   <div class="wrap">
-    <div class="eyebrow">// todavía no</div>
-    <h2>Esta página se llena el jue 20 ago.</h2>
-    <p class="lead">Los prompts de esta noche se publican aquí el mismo día, antes de la sesión. Guarda el link.</p>
+    <div class="eyebrow">// la idea de la noche</div>
+    <h2>Lo que repites, se guarda.</h2>
+    <p class="lead">Esta semana le enseñaste a trabajar: a correr el loop, a saber de tu repo, a que lo revises antes de firmar. Todo eso vive en tu cabeza y en una sesión que se borra al cerrarla. Esta noche lo sacas de ahí.</p>
 
-    <div class="note"><strong>Sales con:</strong> un workflow tuyo, y una idea clara de los límites.</div>
+    <div class="grid">
+      <div class="card">
+        <span class="k">lo que sabe</span>
+        <h3>AGENTS.md</h3>
+        <p>Lo del martes. Las convenciones que no puede deducir. Entra completo en cada sesión, sin que tú hagas nada.</p>
+      </div>
+      <div class="card">
+        <span class="k">lo que hace</span>
+        <h3>Una skill</h3>
+        <p>El workflow que ya hiciste dos veces, escrito una vez. El agent lo carga cuando la tarea encaja.</p>
+      </div>
+      <div class="card">
+        <span class="k">lo que alcanza</span>
+        <h3>MCP</h3>
+        <p>Las tools que no vienen de fábrica: tu correo, tu calendario, una base de datos. Fuera del repo.</p>
+      </div>
+    </div>
 
-    <p>Mientras tanto, todo lo que no cambia de un día a otro ya está listo en <a href="../kit/">el kit</a>: cómo instalar tu agent, el glosario, el camino sin terminal y los archivos que te llevas.</p>
+    <div class="note"><strong>Sales con:</strong> un workflow tuyo escrito como archivo, un MCP conectado, y una idea clara de dónde esto no sirve.</div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="sec" id="skills">
+  <div class="wrap">
+    <div class="eyebrow">// primero · skills</div>
+    <h2>Una skill es un workflow que dejaste escrito.</h2>
+    <p class="lead">No es una función ni un plugin. Es un archivo de texto con tres cosas: cómo se llama, cuándo se usa, y los pasos. El agent lo lee cuando la tarea encaja, y hace lo de siempre sin que tú se lo expliques otra vez.</p>
+
+    <pre><code># Revisar un PR de este repo
+
+Cuándo: me pidan revisar un cambio, un diff o un PR de este proyecto.
+
+Pasos:
+1. `git diff --stat` primero. Si tocó archivos que nadie pidió, para y dilo.
+2. Las cuatro preguntas, en orden: ¿corre? ¿hace lo que se pidió?
+   ¿rompe algo? ¿lo puedo mantener?
+3. Cada afirmación con archivo y línea. Lo que no puedas citar, va
+   aparte bajo "sin confirmar".
+4. No arregles nada. Reporta.</code></pre>
+
+    <p>Eso es todo. Si lo lees y sabes qué haría el agent, está bien escrito.</p>
+
+    <div class="note"><strong>Skill y AGENTS.md no compiten.</strong> El AGENTS.md entra <em>siempre</em>, así que cada línea te cuesta context en cada sesión - por eso es corto. La skill entra <em>cuando toca</em>, así que puede tener los pasos completos sin estorbarle al resto del trabajo.</div>
+
+    <h3 style="margin-top:26px;">Dónde vive, según lo que uses</h3>
+    <p>El nombre cambia, la idea no: un archivo que el agent encuentra solo, en vez de un prompt que pegas a mano.</p>
+
+    <table class="tbl">
+      <thead><tr><th>Lo que usas</th><th>Cómo se guarda</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Claude Code</strong></td><td>Un <code>SKILL.md</code> dentro de <code>.claude/skills/</code>. Lo carga cuando la descripción encaja con lo que pediste.</td></tr>
+        <tr><td><strong>Otro agent de terminal</strong></td><td>Un archivo en el repo - <code>docs/workflows/revisar-pr.md</code> sirve - y una línea en el AGENTS.md que diga cuándo leerlo.</td></tr>
+        <tr><td><strong>Sin terminal</strong></td><td>El mismo texto, guardado donde lo tengas a mano para pegarlo. Menos automático, mismo resultado.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- CUANDO -->
+<section class="sec" id="cuando">
+  <div class="wrap">
+    <div class="eyebrow">// cuándo algo merece ser skill</div>
+    <h2>La regla de las dos veces.</h2>
+    <p class="lead">El homework de anoche era traer algo que hiciste dos veces. Esa es la señal, y no hay que buscarle más:</p>
+
+    <ol class="big">
+      <li><strong>Lo hiciste dos veces.</strong> Los mismos pasos, en el mismo orden, con dos días de diferencia.</li>
+      <li><strong>Se lo explicaste dos veces.</strong> Escribiste el mismo prompt largo en dos sesiones distintas.</li>
+      <li><strong>Te corrigió lo mismo dos veces.</strong> Ahí puede que no sea una skill: puede ser una línea del AGENTS.md.</li>
+    </ol>
+
+    <div class="note"><strong>Cómo escoger entre los dos:</strong> si es <em>una regla</em>, va al AGENTS.md. Si son <em>pasos</em>, es una skill. "Los componentes van en <code>src/features/</code>" es regla. "Así reviso un PR aquí" son pasos.</div>
+  </div>
+</section>
+
+<!-- MCP -->
+<section class="sec" id="mcp">
+  <div class="wrap">
+    <div class="eyebrow">// segundo · MCP</div>
+    <h2>MCP es cómo el agent alcanza lo de afuera.</h2>
+    <p class="lead">Hasta hoy, sus tools eran las de fábrica: leer archivos, editar, correr comandos. Todas dentro de tu repo. <strong>MCP</strong> es el estándar que le conecta otras - tu correo, tu calendario, una base de datos, lo que tenga un server - sin que nadie tenga que programar una integración a medida para cada agent.</p>
+
+    <div class="grid">
+      <div class="card">
+        <span class="k">01 · el server</span>
+        <h3>Quién ofrece</h3>
+        <p>Un programa que dice "yo sé hacer estas cosas". Puede correr en tu máquina o estar en la nube.</p>
+      </div>
+      <div class="card">
+        <span class="k">02 · las tools</span>
+        <h3>Qué puede hacer</h3>
+        <p>Cada server expone una lista: <code>buscar_correo</code>, <code>crear_evento</code>. El agent escoge cuál usar, igual que con las de fábrica.</p>
+      </div>
+      <div class="card">
+        <span class="k">03 · el permiso</span>
+        <h3>Quién aprueba</h3>
+        <p>Sigue siendo tuyo. El agent pide, tú apruebas. Con tools que mandan correos, eso deja de ser un detalle.</p>
+      </div>
+    </div>
+
+    <div class="warn"><strong>Cada MCP que conectas te cuesta context.</strong> La lista de tools viaja en <em>cada</em> llamada, con nombre, descripción y parámetros. Conecta lo que vas a usar hoy, no todo lo que existe: veinte servers conectados es menos sitio para tu código, y un agent que escoge peor porque tiene cien tools donde le bastaban seis.</div>
+  </div>
+</section>
+
+<!-- LA DEMO -->
+<section class="sec" id="demo">
+  <div class="wrap">
+    <div class="eyebrow">// el caso de la noche</div>
+    <h2>Tu correo y tu calendario, leídos por el agent.</h2>
+    <p class="lead">Esto lo corro yo en vivo, con mi cuenta - conectar Google en veinte máquinas a la vez se come la sesión, y a algunos su cuenta del trabajo se lo bloquea. Tú miras el flujo completo, y en la hora 2 haces lo mismo con un MCP local que no pide OAuth.</p>
+
+    <ol class="big">
+      <li><strong>Conectar.</strong> El server de correo y el de calendario, y ver la lista de tools que aparecen.</li>
+      <li><strong>Preguntar.</strong> Qué hay esta semana, qué quedó sin contestar, qué se repite.</li>
+      <li><strong>Hacer algo con eso.</strong> Un borrador, un resumen, un evento propuesto. Nunca enviado: propuesto.</li>
+      <li><strong>Revisarlo.</strong> Con las cuatro preguntas de anoche, antes de que salga de tu pantalla.</li>
+    </ol>
+
+    <div class="warn"><strong>Dos cosas que no se negocian.</strong> Lo que el agent lee de tu correo <em>entra al context</em>, así que no conectes la cuenta con cosas que no le enseñarías a una herramienta. Y nada se manda sin que tú lo leas: un agent que puede escribir correos y ejecutar sin permiso es la peor combinación de la semana.</div>
+  </div>
+</section>
+
+<!-- PROMPTS -->
+<section class="sec" id="prompts">
+  <div class="wrap">
+    <div class="eyebrow">// hora 2 · copia y pega</div>
+    <h2>Tres prompts: encontrar, escribir, conectar.</h2>
+    <p class="lead">El primero busca lo que repetiste esta semana, el segundo lo convierte en archivo, y el tercero le da al agent una tool que no tenía.</p>
+
+    <div class="prompt">
+      <div class="prompt-head">
+        <span class="prompt-n">P1</span>
+        <span class="prompt-t">Encontrar - qué repetiste</span>
+        <button class="copy" type="button">Copiar</button>
+      </div>
+<pre><code>Te voy a describir lo que hice contigo esta semana. Dime qué partes
+son un workflow que se repite y cuáles fueron de una sola vez.
+
+[pega aquí, en dos o tres líneas, lo que le pediste más de una vez]
+
+Para cada workflow que encuentres:
+1. Ponle un nombre corto.
+2. Dime en qué situación se debería usar, en una frase.
+3. Lista los pasos, en orden, como se los darías a alguien que
+   nunca lo ha hecho.
+
+No inventes workflows para llenar la lista. Si solo hay uno, dime uno.</code></pre>
+      <div class="prompt-why"><strong>El "no inventes" hace el trabajo.</strong> Sin esa línea te devuelve cinco workflows genéricos que suenan bien y no son tuyos. Con ella suele devolver uno o dos, y son los que de verdad repetiste.</div>
+    </div>
+
+    <div class="prompt">
+      <div class="prompt-head">
+        <span class="prompt-n">P2</span>
+        <span class="prompt-t">Escribir - la skill, corta</span>
+        <button class="copy" type="button">Copiar</button>
+      </div>
+<pre><code>Escribe ese workflow como un archivo de instrucciones para ti mismo,
+de máximo 25 líneas, con esta forma:
+
+- Un título de una línea.
+- "Cuándo:" una frase que diga en qué situación se usa.
+- "Pasos:" la lista, en orden, con lo que hay que verificar en cada uno.
+
+Reglas:
+- Nada de consejos genéricos. Solo lo que aplica a este proyecto.
+- Si un paso depende de algo que no sabes, no lo adivines: déjalo
+  como pregunta al final, fuera del archivo.
+- Escríbelo para que sirva dentro de seis meses, cuando ninguno de
+  los dos se acuerde de esta conversación.</code></pre>
+      <div class="prompt-why"><strong>Las preguntas del final valen más que el archivo.</strong> Son exactamente lo que tú sabías y nunca escribiste en ningún lado. Contéstalas dentro del archivo y ya tienes la segunda versión.</div>
+    </div>
+
+    <div class="prompt">
+      <div class="prompt-head">
+        <span class="prompt-n">P3</span>
+        <span class="prompt-t">Conectar - que use una tool nueva</span>
+        <button class="copy" type="button">Copiar</button>
+      </div>
+<pre><code>Ya tienes conectado un MCP nuevo. Antes de que te pida nada con él:
+
+1. Lístame las tools que te dio, con lo que hace cada una en una línea.
+2. Dime cuáles de ellas pueden cambiar o borrar algo, y cuáles solo leen.
+3. Escoge la tarea más chica que puedas hacer con las de solo lectura,
+   hazla, y muéstrame el resultado.
+
+Después de eso, y no antes, seguimos con lo demás.</code></pre>
+      <div class="prompt-why"><strong>El paso 2 es el que importa.</strong> Saber cuáles tools escriben - antes de darle una tarea - es la diferencia entre aprobar permisos leyendo y aprobar permisos por cansancio. Es lo mismo que hiciste con el diff anoche, aplicado a las herramientas.</div>
+    </div>
+  </div>
+</section>
+
+<!-- LIMITES -->
+<section class="sec" id="limites">
+  <div class="wrap">
+    <div class="eyebrow">// dónde no</div>
+    <h2>Dónde un agent es la herramienta equivocada.</h2>
+    <p class="lead">Cuatro noches diciendo cómo sacarle trabajo. Esta parte también es del curso:</p>
+
+    <ol class="big">
+      <li><strong>Cuando no puedes verificar el resultado.</strong> Si no sabes cómo comprobar que está bien, no importa lo rápido que salga.</li>
+      <li><strong>Cuando el error no tiene vuelta atrás.</strong> Migraciones de datos, cosas que salen a producción sin revisión, todo lo que se manda a un cliente. El loop del agent no sabe de consecuencias.</li>
+      <li><strong>Cuando el problema es decidir, no ejecutar.</strong> Te va a dar una respuesta segura para una pregunta que todavía no está decidida. Eso no es ayuda, es ruido con formato.</li>
+      <li><strong>Cuando el trabajo es aprender.</strong> Si lo que necesitas es entender esa parte del sistema, que lo escriba él es exactamente lo contrario de lo que te hace falta.</li>
+    </ol>
+
+    <div class="note"><strong>La señal más barata:</strong> si no sabrías decir por qué el resultado está bien, todavía no terminaste - da igual quién lo escribió.</div>
+  </div>
+</section>
+
+<!-- CIERRE -->
+<section class="sec" id="cierre">
+  <div class="wrap">
+    <div class="eyebrow">// después de esta semana</div>
+    <h2>Que quede.</h2>
+    <p class="lead">Ya sabes las cuatro: correr el loop, darle context, revisar lo que devuelve, y dejarlo escrito. Lo que sigue no es otro curso, son tres cosas chiquitas:</p>
+
+    <ol>
+      <li><strong>Una línea más al AGENTS.md</strong> cada vez que el agent haga algo que te dé rabia.</li>
+      <li><strong>Una skill más</strong> cuando te veas escribiendo el mismo prompt largo por segunda vez.</li>
+      <li><strong>Un MCP</strong>, el que uses de verdad. Uno. Cuando ese te sirva, piensa en el segundo.</li>
+    </ol>
+
+    <div class="note"><strong>Las cuatro páginas se quedan aquí</strong>, con los prompts y los archivos, sin fecha de vencimiento. <a href="../kit/">El kit</a> es el que vas a abrir más veces.</div>
 
     <div class="daynav">
       <a href="../dia-3/">← Día 3</a>
       <a href="../">Todos los días</a>
       <span class="sep"></span>
+      <a href="../kit/">El kit →</a>
     </div>
   </div>
 </section>
@@ -59,6 +283,35 @@
     <p style="margin-top:14px;">Grabamos todo. Si te pierdes una, te llega igual. · <a href="../">Todos los días</a> · <a href="../kit/">El kit</a> · <a href="https://eonoe.github.io/">El workshop</a></p>
   </div>
 </footer>
+
+<script>
+document.querySelectorAll('.copy').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    var pre = btn.closest('.prompt').querySelector('pre');
+    function ok(){
+      btn.textContent = 'Copiado';
+      btn.classList.add('ok');
+      setTimeout(function(){ btn.textContent = 'Copiar'; btn.classList.remove('ok'); }, 1600);
+    }
+    // Safari y navegadores sin permiso de portapapeles: seleccionamos el texto
+    // para que un Cmd-C manual funcione igual.
+    function fallback(){
+      var rango = document.createRange();
+      rango.selectNodeContents(pre);
+      var sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(rango);
+      btn.textContent = 'Cmd-C';
+      setTimeout(function(){ btn.textContent = 'Copiar'; }, 2400);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(pre.innerText).then(ok, fallback);
+    } else {
+      fallback();
+    }
+  });
+});
+</script>
 
 </body>
 </html>
