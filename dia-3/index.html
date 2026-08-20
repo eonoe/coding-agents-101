@@ -34,11 +34,9 @@
 </header>
 
 <main>
-<!-- RECAP - se agrego despues de la sesion. La pagina nunca se lleno con el
-     contenido de la noche, asi que la seccion de "todavia no" ya no aplicaba:
-     la sesion pasó.
-     PENDIENTE de Noe: los prompts del dia 3 y las secciones de la sesion. Por
-     ahora la pagina solo tiene el video, el deck y el kit. -->
+<!-- RECAP - se agrego despues de la sesion, igual que en el dia 1 y el dia 2.
+     Lo que sigue sale del deck de esa noche (slides-dia-3.html) y de
+     files/revision.md, que es la sesion escrita completa. -->
 <section class="sec" id="recap">
   <div class="wrap">
     <div class="eyebrow">// esta sesión ya pasó</div>
@@ -47,9 +45,188 @@
 
     <p><a class="btn btn-pop btn-sm" href="https://drive.google.com/file/d/1ig6rrP2Y2C8ew9OmKOpjUVClYRQc8CuW/view">Ver la grabación del día 3 →</a></p>
 
-    <div class="note"><strong>Sales con:</strong> tu primer cambio hecho por un agent, revisado y mergeado.</div>
+    <div class="note"><strong>El homework, por si entraste tarde:</strong> revisa un diff con <a href="#orden">las cuatro preguntas</a>, en orden, y fíjate en qué le repetiste al agent hoy que ya le habías dicho ayer. Eso que repites es el material del día 4.</div>
 
     <p>Todo lo que no cambia de un día a otro está en <a href="../kit/">el kit</a>: cómo instalar tu agent, el glosario, el camino sin terminal y los archivos que te llevas.</p>
+  </div>
+</section>
+
+<!-- LA IDEA -->
+<section class="sec" id="idea">
+  <div class="wrap">
+    <div class="eyebrow">// la idea de la noche</div>
+    <h2>Se ve terminado. No es lo mismo que estar terminado.</h2>
+    <p class="lead">El agent cierra su loop cuando se le acaban las cosas que hacer, no cuando el cambio está bien. Sale igual de seguro las dos veces, y esa seguridad es justo lo que se cuela en una revisión rápida.</p>
+
+    <div class="note"><strong>Sales con:</strong> tu primer cambio hecho por un agent, revisado y mergeado.</div>
+
+    <p>Revisar código de un agent no es como revisar el de un compañero. Con un compañero asumes intención: si hizo algo raro, por algo fue. Esa suposición aquí te sale cara.</p>
+  </div>
+</section>
+
+<!-- QUE BUSCAR -->
+<section class="sec" id="cinco">
+  <div class="wrap">
+    <div class="eyebrow">// qué buscar, en este orden</div>
+    <h2>Cinco cosas, y las cinco aparecen.</h2>
+
+    <div class="grid">
+      <div class="card">
+        <span class="k">01 · inventó</span>
+        <h3>Afirmó algo que el repo no dice</h3>
+        <p>Una función que no existe, un flag que nadie usa, una convención que se sacó de otro proyecto.</p>
+      </div>
+      <div class="card">
+        <span class="k">02 · tests verdes</span>
+        <h3>Pasan, pero no prueban</h3>
+        <p>Verde no es lo mismo que cubierto. Mira qué caso prueba cada test, no cuántos hay.</p>
+      </div>
+      <div class="card">
+        <span class="k">03 · de más</span>
+        <h3>Cambió lo que nadie pidió</h3>
+        <p>Empieza por <code>git diff --stat</code>: un archivo que no esperabas ver es la alarma más barata que existe.</p>
+      </div>
+      <div class="card">
+        <span class="k">04 · de menos</span>
+        <h3>Borró algo y no lo dijo</h3>
+        <p>Lo que quitó no aparece en su resumen. Solo aparece en el diff.</p>
+      </div>
+      <div class="card">
+        <span class="k">05 · no lo entiendes</span>
+        <h3>Funciona, pero no lo mantienes</h3>
+        <p>La que todo el mundo se perdona. No te la perdones: es la que te cuesta en tres meses.</p>
+      </div>
+    </div>
+
+    <div class="note"><strong>Si tocó más archivos de los que pediste, para ahí.</strong> No sigas revisando: acota la tarea y pídesela otra vez más chica.</div>
+  </div>
+</section>
+
+<!-- EL ORDEN -->
+<section class="sec" id="orden">
+  <div class="wrap">
+    <div class="eyebrow">// el orden importa</div>
+    <h2>Cuatro preguntas, siempre en este orden.</h2>
+    <p class="lead">De lo más barato a lo más caro. Si falla la 1, no gastes tiempo en la 4.</p>
+
+    <ol class="big">
+      <li><strong>¿Corre?</strong> Lo más fácil de todo, y aun así el paso que se salta.</li>
+      <li><strong>¿Hace lo que pediste?</strong> Ni más ni menos.</li>
+      <li><strong>¿Rompió otra cosa?</strong> Pregúntale por los casos, no le aceptes un "no se rompe nada".</li>
+      <li><strong>¿Lo entiendes y lo mantienes?</strong> Aquí se cae casi todo el mundo, y es la que importa en tres meses.</li>
+    </ol>
+
+    <div class="note"><strong>La vara de la noche:</strong> ¿lo firmarías con tu nombre? No "¿está bien?", no "¿corre?" - ¿lo mandas a review de tu equipo con tu nombre encima? Si la respuesta es no, todavía no terminaste, y ya sabes cuál de las cuatro falló.</div>
+  </div>
+</section>
+
+<!-- COMO SE EMPUJA -->
+<section class="sec" id="movidas">
+  <div class="wrap">
+    <div class="eyebrow">// cómo se empuja de vuelta</div>
+    <h2>Cuatro movidas, de suave a fuerte.</h2>
+
+    <div class="grid">
+      <div class="card">
+        <span class="k">01 · pídele la fuente</span>
+        <h3>¿De dónde sacaste esto?</h3>
+        <p>"Cita archivo y línea." La mitad de las invenciones se caen aquí solas.</p>
+      </div>
+      <div class="card">
+        <span class="k">02 · pídele que lo rompa</span>
+        <h3>Escribe un test que falle</h3>
+        <p>Si no puede, o el código está bien o el test no sirve. Las dos respuestas te dicen algo.</p>
+      </div>
+      <div class="card">
+        <span class="k">03 · recorta el alcance</span>
+        <h3>Deshaz todo menos X</h3>
+        <p>Contra el que cambió de más. Más rápido que discutirle cada archivo.</p>
+      </div>
+      <div class="card">
+        <span class="k">04 · empieza de cero</span>
+        <h3><code>git checkout .</code></h3>
+        <p>Cuando el enfoque está mal desde la raíz. No lo negocies parche por parche.</p>
+      </div>
+    </div>
+
+    <div class="note"><strong>La frase que no funciona:</strong> "está mal, arréglalo". Sin decirle qué está mal, adivina - y adivina rápido. Te devuelve otra cosa igual de segura y distinta, y ahora tienes dos versiones que no entiendes. Revisar es señalar <em>qué</em> y <em>dónde</em>.</div>
+  </div>
+</section>
+
+<!-- PROMPTS -->
+<section class="sec" id="prompts">
+  <div class="wrap">
+    <div class="eyebrow">// hora 2 · copia y pega</div>
+    <h2>Tres prompts: revisar, empujar, cerrar.</h2>
+    <p class="lead">Se corren sobre tu diff feo, el que trajiste sin arreglar. Uno hace visible lo que no te dijo, otro empuja una sola cosa, y el último decide si lo firmas.</p>
+
+    <div class="prompt">
+      <div class="prompt-head">
+        <span class="prompt-n">P1</span>
+        <span class="prompt-t">Revisar - el reviewer hostil</span>
+        <button class="copy" type="button">Copiar</button>
+      </div>
+<pre><code>Revisa el diff que acabas de escribir como si fueras un reviewer hostil
+que no confía en ti.
+
+Para cada afirmación que hagas, cítame el archivo y la línea que la
+respalde. Lístame aparte:
+
+1. Lo que no puedas respaldar con una cita.
+2. Lo que asumiste al hacer esto y yo no te dije explícitamente.
+3. Lo que borraste o cambiaste sin que te lo pidiera.
+
+No arregles nada todavía.</code></pre>
+      <div class="prompt-why"><strong>Lo que no puede citar es donde está el problema.</strong> El "no arregles nada todavía" es la mitad del prompt: sin eso se pone a corregir y pierdes la lista, que es lo que viniste a buscar.</div>
+    </div>
+
+    <div class="prompt">
+      <div class="prompt-head">
+        <span class="prompt-n">P2</span>
+        <span class="prompt-t">Empujar - una sola cosa</span>
+        <button class="copy" type="button">Copiar</button>
+      </div>
+<pre><code>[pega aquí la línea o el bloque que te pareció mal]
+
+¿De dónde sacaste esto? Cítame el archivo y la línea.
+Si no lo puedes respaldar, dilo con esas palabras y no lo defiendas.</code></pre>
+      <div class="prompt-why"><strong>Un problema, no cinco.</strong> Escoge el que más te molesta y usa la movida que toque. Si le mandas la lista completa te devuelve un cambio grande que tienes que volver a revisar entero.</div>
+    </div>
+
+    <div class="prompt">
+      <div class="prompt-head">
+        <span class="prompt-n">P3</span>
+        <span class="prompt-t">Cerrar - ¿lo firmas?</span>
+        <button class="copy" type="button">Copiar</button>
+      </div>
+<pre><code>Antes de que yo firme esto, contéstame en este orden y por separado:
+
+1. ¿Corre? Dime con qué comando lo comprobaste.
+2. ¿Hace lo que te pedí, ni más ni menos?
+3. ¿Qué se rompe con este cambio? Dime los casos concretos, no me
+   digas que no se rompe nada.
+4. ¿Qué parte de esto no podría mantener yo sin ti, y por qué?</code></pre>
+      <div class="prompt-why"><strong>La 4 es la que decide.</strong> Lo que no pase la cuarta pregunta se queda fuera del merge, aunque los tests estén verdes. El código que no entiendes lo vas a mantener tú igual.</div>
+    </div>
+
+    <p><a class="btn btn-sm" href="../files/revision.md">Bajar el checklist de revisión →</a></p>
+  </div>
+</section>
+
+<!-- TAREA -->
+<section class="sec" id="tarea">
+  <div class="wrap">
+    <div class="eyebrow">// para mañana · la última</div>
+    <h2>Trae algo que hiciste dos veces.</h2>
+    <p class="lead">Mañana cerramos: ya sabes pedirlo, darle context y revisarlo. Falta que no se te olvide entre un proyecto y otro.</p>
+
+    <ol>
+      <li>Revisa <strong>un diff más</strong> con las cuatro preguntas, en orden.</li>
+      <li>Fíjate en <strong>qué le repetiste hoy</strong> que ya le habías dicho ayer.</li>
+      <li>Trae eso. Lo que repites es lo que mañana se vuelve <strong>workflow</strong>.</li>
+    </ol>
+
+    <div class="note"><strong>Sesión 4:</strong> convertir lo de esta semana en algo reutilizable, y ver dónde un coding agent es la herramienta equivocada.</div>
 
     <div class="daynav">
       <a href="../dia-2/">← Día 2</a>
@@ -68,6 +245,35 @@
     <p style="margin-top:14px;">Grabamos todo. Si te pierdes una, te llega igual. · <a href="../">Todos los días</a> · <a href="../kit/">El kit</a> · <a href="https://eonoe.github.io/">El workshop</a></p>
   </div>
 </footer>
+
+<script>
+document.querySelectorAll('.copy').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    var pre = btn.closest('.prompt').querySelector('pre');
+    function ok(){
+      btn.textContent = 'Copiado';
+      btn.classList.add('ok');
+      setTimeout(function(){ btn.textContent = 'Copiar'; btn.classList.remove('ok'); }, 1600);
+    }
+    // Safari y navegadores sin permiso de portapapeles: seleccionamos el texto
+    // para que un Cmd-C manual funcione igual.
+    function fallback(){
+      var rango = document.createRange();
+      rango.selectNodeContents(pre);
+      var sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(rango);
+      btn.textContent = 'Cmd-C';
+      setTimeout(function(){ btn.textContent = 'Copiar'; }, 2400);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(pre.innerText).then(ok, fallback);
+    } else {
+      fallback();
+    }
+  });
+});
+</script>
 
 </body>
 </html>
