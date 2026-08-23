@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Día 4 - Que quede</title>
+<title>Día 4 - Skills y MCP</title>
 <meta name="description" content="Sesión 4 de Coding Agents 101: Conviertes lo de la semana en algo reutilizable, y ves dónde un agent es la herramienta equivocada.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23ffd400'/%3E%3Ctext x='16' y='21' font-family='monospace' font-size='14' font-weight='700' text-anchor='middle' fill='%230b0b10'%3ETL%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,14 +15,14 @@
 
 <div class="marq" aria-hidden="true">
   <div class="marq-track">
-    <span>· día 4 · que quede · jue 20 ago · 6:00 pm </span><span>· día 4 · que quede · jue 20 ago · 6:00 pm </span>
+    <span>· día 4 · skills y mcp · jue 20 ago · 6:00 pm </span><span>· día 4 · skills y mcp · jue 20 ago · 6:00 pm </span>
   </div>
 </div>
 
 <header class="hero">
   <div class="wrap">
     <div class="tag">// día 4 de 4 · jue 20 ago</div>
-    <h1>Que quede</h1>
+    <h1>Skills y MCP</h1>
     <p>Lo que repites se vuelve una skill, y con MCP el agent alcanza lo que está fuera del repo. Al final, dónde no usarlo.</p>
     <div class="meta">
       <span class="chip">6:00 PM (GMT-4) · 2 horas</span>
@@ -34,6 +34,23 @@
 </header>
 
 <main>
+<!-- RECAP - el dia 4 es el unico sin grabacion: el Meet no grabo esa noche. Por eso
+     esta pagina carga el peso que en los otros dias carga el video, y por eso la
+     seccion del companion trae el walkthrough completo en vez de cuatro bullets. -->
+<section class="sec" id="recap">
+  <div class="wrap">
+    <div class="eyebrow">// esta sesión ya pasó</div>
+    <h2>De esta noche no quedó grabación.</h2>
+    <p class="lead">Las otras tres se grabaron. Esta no, y no hay video que subir. Así que esta página no es el resumen de la sesión: <strong>es la sesión</strong>, escrita completa, con lo que se dio en vivo y lo que se enseñó en pantalla.</p>
+
+    <p><a class="btn btn-pop btn-sm" href="../slides-dia-4.html">Ver los slides del día 4 →</a></p>
+
+    <div class="note"><strong>Lo que salió en vivo y no estaba escrito:</strong> de dónde se roban <a href="#robar">skills que ya existen</a>, qué son los <a href="#plugins">plugins</a>, <a href="#mcp-populares">qué MCPs conecta la gente de verdad</a>, y sobre todo <a href="#companion">el companion diario</a> - tu correo y tu calendario leídos por el agent, con el walkthrough completo para Claude Code y para Antigravity.</div>
+
+    <p>Lo que no cambia de un día a otro sigue en <a href="../kit/">el kit</a>: instalación, glosario, el camino sin terminal y los archivos que te llevas.</p>
+  </div>
+</section>
+
 <!-- LA IDEA -->
 <section class="sec" id="idea">
   <div class="wrap">
@@ -87,16 +104,21 @@ Pasos:
     <div class="note"><strong>Skill y AGENTS.md no compiten.</strong> El AGENTS.md entra <em>siempre</em>, así que cada línea te cuesta context en cada sesión - por eso es corto. La skill entra <em>cuando toca</em>, así que puede tener los pasos completos sin estorbarle al resto del trabajo.</div>
 
     <h3 style="margin-top:26px;">Dónde vive, según lo que uses</h3>
-    <p>El nombre cambia, la idea no: un archivo que el agent encuentra solo, en vez de un prompt que pegas a mano.</p>
+    <p>Aquí está la parte que a mucha gente le sorprendió en vivo: <strong>skills es un estándar abierto</strong> (<a href="https://agentskills.io">agentskills.io</a>). El mismo <code>SKILL.md</code> corre en Claude Code y en Antigravity <em>sin cambiarle una línea</em>. Lo único que cambia es en qué carpeta lo pones.</p>
 
+    <div class="scroll">
     <table class="tbl">
-      <thead><tr><th>Lo que usas</th><th>Cómo se guarda</th></tr></thead>
+      <thead><tr><th>Lo que usas</th><th>Dónde lo guardas</th></tr></thead>
       <tbody>
-        <tr><td><strong>Claude Code</strong></td><td>Un <code>SKILL.md</code> dentro de <code>.claude/skills/</code>. Lo carga cuando la descripción encaja con lo que pediste.</td></tr>
-        <tr><td><strong>Otro agent de terminal</strong></td><td>Un archivo en el repo - <code>docs/workflows/revisar-pr.md</code> sirve - y una línea en el AGENTS.md que diga cuándo leerlo.</td></tr>
+        <tr><td><strong>Claude Code</strong></td><td><code>~/.claude/skills/&lt;nombre&gt;/SKILL.md</code> para todos tus proyectos<br><code>.claude/skills/&lt;nombre&gt;/SKILL.md</code> para uno solo</td></tr>
+        <tr><td><strong>Antigravity</strong><br>IDE y CLI</td><td><code>~/.gemini/config/skills/&lt;nombre&gt;/SKILL.md</code> global<br><code>.agents/skills/&lt;nombre&gt;/SKILL.md</code> en el proyecto</td></tr>
+        <tr><td><strong>Otro agent de terminal</strong></td><td>Casi todos ya leen el estándar. Si el tuyo no, déjalo en el repo - <code>docs/workflows/revisar-pr.md</code> sirve - y pon una línea en el AGENTS.md que diga cuándo leerlo.</td></tr>
         <tr><td><strong>Sin terminal</strong></td><td>El mismo texto, guardado donde lo tengas a mano para pegarlo. Menos automático, mismo resultado.</td></tr>
       </tbody>
     </table>
+    </div>
+
+    <div class="note"><strong>Del frontmatter, solo dos cosas importan:</strong> <code>name</code> (opcional, si no lo pones agarra el nombre de la carpeta) y <code>description</code>. <strong>El <code>description</code> es el que decide si la carga sola o no</strong> - es lo único que el agent ve antes de abrir el archivo. Escríbelo como la situación en que se usa, no como el título de lo que hace.</div>
   </div>
 </section>
 
@@ -114,6 +136,86 @@ Pasos:
     </ol>
 
     <div class="note"><strong>Cómo escoger entre los dos:</strong> si es <em>una regla</em>, va al AGENTS.md. Si son <em>pasos</em>, es una skill. "Los componentes van en <code>src/features/</code>" es regla. "Así reviso un PR aquí" son pasos.</div>
+  </div>
+</section>
+
+<!-- ROBAR - esto se dio en vivo y no estaba en el material. Los tres repos son los
+     que se nombraron esa noche. Los comandos salen del README de cada uno, no de
+     memoria: si cambian alla, hay que cambiarlos aqui. -->
+<section class="sec" id="robar">
+  <div class="wrap">
+    <div class="eyebrow">// no todas las escribes tú</div>
+    <h2>Las que ya están escritas.</h2>
+    <p class="lead">La regla de las dos veces sirve para lo tuyo, que es lo que nadie más puede escribir. Pero mucho de lo que ibas a escribir ya existe - y algunas ya las tienes instaladas sin saberlo.</p>
+
+    <h3>1 · Las que ya vienen puestas</h3>
+    <p>Claude Code trae varias de fábrica. El error más común de la primera semana es escribir una skill para algo que ya venía resuelto:</p>
+
+    <div class="scroll">
+    <table class="tbl">
+      <thead><tr><th>La escribes</th><th>Y hace</th></tr></thead>
+      <tbody>
+        <tr><td><code>/code-review</code></td><td>Revisa lo que cambió buscando bugs y cosas que se pueden simplificar. Es la noche del miércoles, empaquetada.</td></tr>
+        <tr><td><code>/security-review</code></td><td>Lo mismo, pero mirando seguridad.</td></tr>
+        <tr><td><code>/run</code></td><td>Levanta tu app y la maneja para ver el cambio funcionando de verdad, no solo los tests en verde.</td></tr>
+        <tr><td><code>/loop</code></td><td>Repite algo cada cierto tiempo, sin que tú lo estés pidiendo.</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <p><strong>Escribe <code>/</code> y mira la lista antes de escribir la tuya.</strong> Toma diez segundos y te ahorra la tarde.</p>
+
+    <h3 style="margin-top:26px;">2 · Las de otra gente</h3>
+    <p>La que se nombró en vivo es la colección de <a href="https://github.com/mattpocock/skills">Matt Pocock</a>. No son de "vibe coding": son de trabajo aburrido y real - <code>tdd</code>, <code>code-review</code>, <code>diagnosing-bugs</code>, <code>handoff</code>, <code>research</code>.</p>
+
+    <p>La que vale la pena mirar primero es <strong><code>grill-me</code></strong>: te entrevista sobre tu plan hasta que no quede nada sin decidir, <em>antes</em> de dejar que se escriba código. Es lo contrario de lo que hace la gente con un agent, y por eso funciona.</p>
+
+    <p>Dos formas de instalarlas, y son dos filosofías distintas:</p>
+
+    <div class="scroll">
+    <table class="tbl">
+      <thead><tr><th>Cómo</th><th>Qué te da</th><th>El comando</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Como plugin</strong><br>solo Claude Code</td><td>Un paquete que no editas y que se actualiza cuando él publica. Te suscribes.</td><td><code>/plugin install mattpocock-skills</code></td></tr>
+        <tr><td><strong>Como archivos</strong><br>cualquier agent</td><td>Te copia los archivos al proyecto y son tuyos. Los editas, y nada cambia por detrás.</td><td><code>npx skills@latest add mattpocock/skills</code></td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="warn"><strong>Escoge una, no las dos.</strong> Si instalas por los dos caminos terminas con cada skill duplicada, y el agent escogiendo entre dos copias de lo mismo. Lo dice el propio README y es fácil de hacer sin darte cuenta.</div>
+
+    <h3 style="margin-top:26px;">3 · El repo que enseña la diferencia</h3>
+    <p>El otro que salió es <a href="https://github.com/multica-ai/andrej-karpathy-skills">andrej-karpathy-skills</a>: cuatro reglas sacadas de lo que Karpathy ha dicho sobre cómo fallan los LLM escribiendo código. <em>Think Before Coding</em>, <em>Simplicity First</em>, <em>Surgical Changes</em>, <em>Goal-Driven Execution</em>.</p>
+
+    <p>Lo interesante no son las reglas. Es que <strong>el repo trae el mismo contenido empaquetado de las dos maneras</strong>, y te deja escoger:</p>
+
+    <ol class="big">
+      <li>Un <code>CLAUDE.md</code> que bajas con <code>curl</code> y <strong>entra siempre</strong>, en cada sesión de ese proyecto.</li>
+      <li>Un <code>skills/karpathy-guidelines/SKILL.md</code> que se instala como plugin y <strong>entra cuando toca</strong>.</li>
+    </ol>
+
+    <div class="note"><strong>Eso es exactamente <a href="#cuando">lo de arriba</a>, en un repo real.</strong> El mismo texto cuesta context distinto según dónde lo pongas. Si quieres que esas cuatro reglas apliquen a todo lo que escribas, va al archivo que entra siempre. Si solo aplican cuando estás refactorizando, va a la skill. La decisión es tuya, y el repo no la toma por ti.</div>
+
+    <p>Ojo con el nombre, que confunde: se llama <em>skills</em> y arrancó siendo un <code>CLAUDE.md</code>. El install del README apunta a <code>forrestchang/andrej-karpathy-skills</code>, que es de donde salió.</p>
+  </div>
+</section>
+
+<!-- PLUGINS - en vivo esto se paso por encima, y aqui tambien: dos parrafos.
+     La idea es que sepan que existe la palabra y que no la confundan con skill. -->
+<section class="sec" id="plugins">
+  <div class="wrap">
+    <div class="eyebrow">// la palabra que faltaba</div>
+    <h2>Y entonces, ¿qué es un plugin?</h2>
+    <p class="lead">Una skill es <em>un archivo</em>. Un plugin es <em>la caja</em> en la que alguien te manda varias, más los MCP que hacen falta y la configuración que las hace funcionar. Es cómo la gente comparte su setup completo en vez de mandarte instrucciones.</p>
+
+    <p>Y no hay una tienda oficial de nadie: <strong>un marketplace es un repo de git</strong> con un archivo <code>.claude-plugin/marketplace.json</code>. Cualquiera publica el suyo, y tú lo agregas:</p>
+
+<pre><code>/plugin marketplace add &lt;usuario&gt;/&lt;repo&gt;
+/plugin install &lt;nombre&gt;@&lt;marketplace&gt;</code></pre>
+
+    <p>El caso que se mencionó es <strong><a href="https://github.com/garrytan/gstack">gstack</a></strong>, de Garry Tan - el presidente de Y Combinator. Publicó su setup exacto de Claude Code: veintitrés comandos que hacen de CEO, de eng manager, de diseñador, de QA y de release manager. Se instala pegándole una línea al agent y él hace el resto.</p>
+
+    <div class="warn"><strong>Lo mismo que con los MCP:</strong> instalar el setup de otro no te da su criterio. Veintitrés comandos nuevos son veintitrés descripciones que tu agent tiene que leer para escoger, y tú no sabes qué hace ninguno. <strong>Instala uno, úsalo una semana, y después mira el segundo.</strong> Es el mismo consejo de <a href="#mcp">la sección de MCP</a>, por la misma razón.</div>
   </div>
 </section>
 
@@ -146,21 +248,239 @@ Pasos:
   </div>
 </section>
 
-<!-- LA DEMO -->
-<section class="sec" id="demo">
+<!-- MCP POPULARES - lo que se pregunto en vivo fue "ok, ¿y cual conecto?". La
+     respuesta util no es una lista de los mas descargados: es la division entre
+     los que leen y los que escriben, que es la que cambia como los apruebas. -->
+<section class="sec" id="mcp-populares">
   <div class="wrap">
-    <div class="eyebrow">// el caso de la noche</div>
-    <h2>Tu correo y tu calendario, leídos por el agent.</h2>
-    <p class="lead">Esto lo corro yo en vivo, con mi cuenta - conectar Google en veinte máquinas a la vez se come la sesión, y a algunos su cuenta del trabajo se lo bloquea. Tú miras el flujo completo, y en la hora 2 haces lo mismo con un MCP local que no pide OAuth.</p>
+    <div class="eyebrow">// la pregunta de la noche</div>
+    <h2>¿Y cuál conecto?</h2>
+    <p class="lead">La pregunta que salió apenas se entendió qué era MCP. La respuesta útil no es una lista de los más descargados - es esta división, porque cambia cómo los apruebas y cuánto te puede doler un error.</p>
 
-    <ol class="big">
-      <li><strong>Conectar.</strong> El server de correo y el de calendario, y ver la lista de tools que aparecen.</li>
-      <li><strong>Preguntar.</strong> Qué hay esta semana, qué quedó sin contestar, qué se repite.</li>
-      <li><strong>Hacer algo con eso.</strong> Un borrador, un resumen, un evento propuesto. Nunca enviado: propuesto.</li>
-      <li><strong>Revisarlo.</strong> Con las cuatro preguntas de anoche, antes de que salga de tu pantalla.</li>
-    </ol>
+    <div class="grid">
+      <div class="card">
+        <span class="k">los que leen</span>
+        <h3>Traen contexto que tú pegabas a mano</h3>
+        <p>El issue tracker, la base de datos, los logs y errores de producción, los diseños, tu correo y tu calendario. Lo peor que pasa es que lea algo que no debía.</p>
+      </div>
+      <div class="card">
+        <span class="k">los que escriben</span>
+        <h3>Hacen cosas que se ven afuera</h3>
+        <p>Abrir un PR, mandar un mensaje, crear un evento, tocar la base de datos. Aquí un error no se queda en tu pantalla: lo ve otra gente.</p>
+      </div>
+      <div class="card">
+        <span class="k">el que casi todos quieren</span>
+        <h3>El browser</h3>
+        <p>Que abra la página y compruebe que el cambio se ve bien. Es el que más rápido convence, y el que más context se come.</p>
+      </div>
+    </div>
 
-    <div class="warn"><strong>Dos cosas que no se negocian.</strong> Lo que el agent lee de tu correo <em>entra al context</em>, así que no conectes la cuenta con cosas que no le enseñarías a una herramienta. Y nada se manda sin que tú lo leas: un agent que puede escribir correos y ejecutar sin permiso es la peor combinación de la semana.</div>
+    <div class="note"><strong>Casi todos los servers son las dos cosas a la vez.</strong> El mismo server de correo tiene <code>search_threads</code>, que solo lee, y <code>create_draft</code>, que escribe. Por eso el <a href="#prompts">P3</a> te hace listarlas y separarlas <em>antes</em> de darle una tarea: no se aprueba un server, se aprueban tools.</div>
+
+    <p><strong>La señal para conectar uno:</strong> te viste copiando y pegando datos de esa herramienta al chat, más de una vez. Esa es la misma regla de las dos veces, aplicada a las tools en vez de a los workflows. Si no lo has pegado nunca, no lo conectes todavía.</p>
+  </div>
+</section>
+
+<!-- EL COMPANION - esto reemplazo la seccion "LA DEMO", que eran cuatro bullets
+     escritos antes de la sesion. En vivo la demo se convirtio en el caso completo
+     y es lo que la gente se lleva, asi que aqui va el walkthrough entero.
+     Los comandos y las rutas salen de los docs de cada herramienta; el ejemplo
+     del brief es inventado, no es correo de nadie. -->
+<section class="sec" id="companion">
+  <div class="wrap">
+    <div class="eyebrow">// el caso de la noche · lo que te llevas</div>
+    <h2>Un companion diario.</h2>
+    <p class="lead">Junta las dos mitades de la noche. El <strong>MCP</strong> le da acceso a tu correo y a tu calendario; la <strong>skill</strong> le dice qué hacer con eso. El resultado es una pregunta que le haces cada mañana - <em>"¿qué tengo hoy?"</em> - y un brief de veinte líneas en vez de veinte minutos revisando el inbox.</p>
+
+    <p>Así se ve la salida. Los nombres son inventados:</p>
+
+<pre><code>HOY
+  8:00   Long run
+  10:30  Revisión de diseño - con Marta y Luis
+  14:00  1:1 con Ana  ← llega preparado, ver abajo
+  17:00  Plan de la semana
+
+ESPERAN POR TI
+  Ana - "presupuesto Q4, ¿lo cerramos hoy?"  ·  hace 2 días
+  Luis - responde con el mockup nuevo         ·  hace 1 día
+  Carmen - pregunta si vas el jueves          ·  hace 6 horas
+
+OJO
+  El correo de Ana es de lo mismo que tienes a las 2:00.
+  Lo del presupuesto lleva 2 días parado y es el más viejo sin contestar.</code></pre>
+
+    <div class="note"><strong>El valor está en el bloque de abajo</strong>, no en la agenda. La agenda ya la tienes. Lo que no tienes es el cruce: <em>que el correo sin contestar de Ana es justo el tema de la reunión de las 2:00.</em> Eso es lo que un agent hace bien y tú no, porque tú no ibas a leer las dos listas a la vez.</div>
+
+    <h3 style="margin-top:30px;">Paso 1 · Conectarle Gmail y Calendar</h3>
+    <p>Hay dos caminos. El corto es de una vez; el completo pide más trabajo pero es el único que sirve igual en las dos herramientas.</p>
+
+    <p><strong>El camino corto - Claude Code:</strong> ya viene con los connectors de Google puestos, no hay que instalar nada.</p>
+
+<pre><code>/mcp</code></pre>
+
+    <p>Sale la lista, escoges Gmail y Google Calendar, se abre el browser, entras con tu cuenta y ya. <strong>Sin proyecto de Google Cloud, sin claves.</strong> Es lo que se hizo en pantalla esa noche.</p>
+
+    <p><strong>El camino completo - los servers oficiales de Google:</strong> los mismos que usa todo el mundo, conectados con tu propia credencial. Es el camino de Antigravity, y también el tuyo si tu cuenta del trabajo bloquea lo demás.</p>
+
+    <div class="scroll">
+    <table class="tbl">
+      <thead><tr><th>Server</th><th>La URL que le pegas</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Gmail</strong></td><td><code>https://gmailmcp.googleapis.com/mcp/v1</code></td></tr>
+        <tr><td><strong>Calendar</strong></td><td><code>https://calendarmcp.googleapis.com/mcp/v1</code></td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <p>Antes de pegar nada, en <a href="https://console.cloud.google.com">Google Cloud Console</a>: creas un proyecto, prendes la <em>Gmail API</em> y la <em>Gmail MCP API</em> (lo mismo con las dos de Calendar), configuras la pantalla de consentimiento con los scopes que pide cada una, y creas un <strong>OAuth client</strong>. De ahí salen el <code>clientId</code> y el <code>clientSecret</code>.</p>
+
+    <p><strong>Los scopes son de lectura</strong>, salvo uno: Gmail pide <code>gmail.readonly</code> y <code>gmail.compose</code> - el segundo es el que le deja <em>escribir borradores</em>. Calendar pide tres, y las tres son <code>readonly</code>. Léelos: es la única vez que vas a ver en una pantalla, sin adornos, exactamente qué puede tocar.</p>
+
+    <p>Después, en <strong>Claude Code</strong>:</p>
+
+<pre><code>claude mcp add --transport http gmail https://gmailmcp.googleapis.com/mcp/v1
+claude mcp add --transport http calendar https://calendarmcp.googleapis.com/mcp/v1</code></pre>
+
+    <p>Y en <strong>Antigravity</strong>, escribes <code>/mcp</code> y usas el manager, o editas el archivo a mano:</p>
+
+<pre><code>{
+  "mcpServers": {
+    "gmail": {
+      "serverUrl": "https://gmailmcp.googleapis.com/mcp/v1",
+      "oauth": { "clientId": "TU_CLIENT_ID", "clientSecret": "TU_SECRET" }
+    },
+    "calendar": {
+      "serverUrl": "https://calendarmcp.googleapis.com/mcp/v1",
+      "oauth": { "clientId": "TU_CLIENT_ID", "clientSecret": "TU_SECRET" }
+    }
+  }
+}</code></pre>
+
+    <div class="scroll">
+    <table class="tbl">
+      <thead><tr><th>Dónde va ese archivo</th><th>Ruta</th></tr></thead>
+      <tbody>
+        <tr><td>Para todo lo que hagas</td><td><code>~/.gemini/config/mcp_config.json</code></td></tr>
+        <tr><td>Solo para este proyecto</td><td><code>.agents/mcp_config.json</code></td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <p>En el IDE lo abres sin buscarlo: el menú <strong>…</strong> arriba del panel del agent → <strong>MCP Servers</strong> → <strong>Manage MCP Servers</strong> → <strong>View raw config</strong>. Guardas y recarga solo.</p>
+
+    <div class="warn"><strong>Ese archivo termina con tu <code>clientSecret</code> dentro.</strong> Si lo pusiste en <code>.agents/</code>, que es carpeta del proyecto, revisa que no se te vaya en un commit. Antigravity acepta <code>${VARIABLE}</code> para no escribir el secreto ahí; úsalo si el repo lo comparte alguien más.</div>
+
+    <h3 style="margin-top:30px;">Paso 2 · La skill</h3>
+    <p>Con los MCP conectados, el agent <em>puede</em> leer tu correo. Todavía no sabe qué te importa. Eso es la skill, y es el archivo que te llevas de esta semana:</p>
+
+    <div class="prompt">
+      <div class="prompt-head">
+        <span class="prompt-n">SKILL</span>
+        <span class="prompt-t">brief-diario - el companion completo</span>
+        <button class="copy" type="button">Copiar</button>
+      </div>
+<pre><code>---
+name: brief-diario
+description: Arma el brief de la mañana cruzando el calendario de hoy con el
+  correo sin contestar. Úsala cuando pregunte qué tengo hoy, qué se me quedó
+  sin responder, qué se me está acumulando, o cuando pida el brief.
+---
+
+# Brief diario
+
+Solo lees. No mandas correos, no creas eventos, no marcas nada.
+
+## Pasos
+
+1. Calendario de hoy. Lista los eventos de ahora hasta que termine el día.
+   Guarda hora, título y quién más está invitado. Si dos se pisan, anótalo.
+2. Las cadenas de correos de las últimas 48 horas. Filtra desde la búsqueda:
+   in:inbox newer_than:2d category:primary -from:noreply -list:*
+   Después, a mano: fuera los avisos del banco, los recibos y los bots.
+   Fuera también la cadena donde el último mensaje es tuyo.
+3. Cruza las dos listas. Un correo de alguien con quien tienes reunión hoy
+   sube al tope: eso es lo que te va a caer encima en la reunión.
+4. Escribe el brief, en este orden y nada más:
+   - HOY: los eventos con su hora. Marca al que hay que llegar preparado.
+   - ESPERAN POR TI: máximo 5 cadenas. De quién, de qué, hace cuánto.
+   - OJO: lo que se pisa, lo que lleva días parado, lo que se repite.
+5. Lo que no puedas verificar va aparte, bajo "Sin confirmar". No adivines
+   qué se decidió en una cadena: si hace falta abrirla para saberlo, dilo.
+
+## Reglas
+
+- Máximo 20 líneas. Esto se lee de pie, con el café en la otra mano.
+- Nombres y asuntos tal como están, sin resumirlos hasta que no se entiendan.
+- Si te pido actuar sobre algo del brief, lo dejas en draft. Mandar lo hago yo.
+- Si no queda nada después de filtrar, dilo. "Hoy nadie espera por ti" es un
+  brief correcto. Rellenar con newsletters para que se vea lleno, no.</code></pre>
+      <div class="prompt-why"><strong>El <code>description</code> es la mitad del archivo.</strong> Fíjate que no dice qué hace la skill, dice <em>en qué situación estás tú</em> cuando hace falta - "qué tengo hoy", "qué se me quedó sin responder". Eso es lo único que el agent lee para decidir si abrirla. Un <code>description</code> escrito como título ("Genera un resumen diario") no dispara nunca.</div>
+    </div>
+
+    <p>Lo guardas donde lo busque tu agent, según <a href="#skills">la tabla de arriba</a>. Para que sirva en todos tus proyectos y no solo en uno:</p>
+
+<pre><code># Claude Code
+mkdir -p ~/.claude/skills/brief-diario
+# y pegas el archivo como SKILL.md ahí dentro
+
+# Antigravity
+mkdir -p ~/.gemini/config/skills/brief-diario</code></pre>
+
+    <p><a class="btn btn-sm" href="../files/brief-diario/SKILL.md">Bajar el SKILL.md →</a></p>
+
+    <h3 style="margin-top:30px;">Paso 3 · Probarla en sesión limpia</h3>
+    <p>Lo mismo que el martes con el AGENTS.md, y por la misma razón. Si la pruebas en la sesión donde la escribiste, el agent ya tiene los pasos en context y los sigue aunque el archivo esté vacío. <strong>No probaste nada.</strong></p>
+
+    <p>Cierra. Abre otra. Escribe <strong><em>"¿qué tengo hoy?"</em></strong> y no menciones la skill. Si la carga sola, quedó. Si no, el <code>description</code> está escrito como título y hay que reescribirlo - que fue lo que le pasó a media sala.</p>
+
+    <div class="warn"><strong>Lo que pasó cuando se corrió en vivo, y vale más que el ejemplo bonito de arriba.</strong> La primera versión del paso 2 buscaba "el correo de los últimos dos días" sin filtrar: <strong>201 cadenas de correos</strong>, de las cuales <em>ni una</em> era una persona esperando respuesta. Eran avisos del banco, recibos de Uber, newsletters y bots de GitHub comentando un PR. Con el filtro que está arriba, los mismos dos días bajan a <strong>2</strong>. La skill no sirvió hasta la segunda versión, y esa segunda versión salió de mirar el output malo. <strong>Esto no es el paso raro: es el paso.</strong></div>
+
+    <h3 style="margin-top:30px;">Paso 4 · Que corra solo (opcional)</h3>
+    <p>Pedírselo tú cada mañana ya sirve, y es como empieza todo el mundo. Cuando lleves varios días leyéndolo de verdad, entonces sí:</p>
+
+    <div class="scroll">
+    <table class="tbl">
+      <thead><tr><th>Herramienta</th><th>Cómo se programa</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Claude Code</strong></td><td>Se lo pides con palabras en cualquier sesión: <em>"prográmame esto todos los días a las 7am"</em>. La tarea que guarda es - otra vez - un <code>SKILL.md</code>, en <code>~/.claude/scheduled-tasks/</code>. Corre en tu máquina: necesita la app abierta y la computadora despierta.</td></tr>
+        <tr><td><strong>Antigravity</strong></td><td>Scheduled Tasks: le pones horario, prompt y proyecto, y el agent arranca solo en el fondo. La conversación te aparece después en el sidebar.</td></tr>
+        <tr><td><strong>Cualquier otro</strong></td><td>Si corre desde el terminal, un <code>cron</code> que lo llame y te mande la salida hace lo mismo.</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <p><strong>Ojo con la hora.</strong> Una tarea de las 7am puede correr a las 11pm si la máquina estuvo dormida. La guardia va dentro de la skill, no en el horario: <em>"si ya pasaron las 10am, dilo en la primera línea"</em>.</p>
+
+    <div class="warn"><strong>Automatizarlo sube la apuesta.</strong> Un brief que sale solo lo lees en diagonal a los tres días. Y un agent que corre sin que tú estés mirando es exactamente donde <em>"nada se manda sin que tú lo leas"</em> deja de ser un consejo y pasa a ser lo único que te protege. <strong>Empieza pidiéndolo a mano.</strong> Automatiza cuando ya sepas que el brief te sirve.</div>
+
+    <div class="warn"><strong>Y las dos que no se negocian, otra vez.</strong> Lo que el agent lee de tu correo <em>entra al context</em>: no conectes la cuenta que tiene cosas que no le enseñarías a una herramienta - y si esa es tu cuenta del trabajo, esa es la respuesta. Y nada se manda sin que tú lo leas: por eso la skill dice <em>draft</em> y no <em>enviar</em>. Un agent que puede escribir correos y ejecutar sin permiso es la peor combinación de la semana.</div>
+
+    <h3 style="margin-top:34px;">Y ahora el tuyo</h3>
+    <p>El <code>brief-diario</code> es <strong>mi</strong> companion. Sirve si tu día se parece al mío, y si no, lo vas a abrir tres veces y nunca más. Lo que de verdad te llevas de esta noche no es ese archivo: es saber armar el tuyo.</p>
+
+    <p>La guía completa está escrita, paso por paso, para que la sigas sin volver a esta página. Media hora la primera vez, y sirve para cualquier pregunta que te hagas todos los días - no solo para el correo:</p>
+
+    <div class="grid">
+      <div class="card">
+        <span class="k">antes de nada</span>
+        <h3>La pregunta</h3>
+        <p>Cuál te haces todos los días y contestas a mano. Con tres pruebas para saber si la tuya sirve, antes de que gastes la tarde.</p>
+      </div>
+      <div class="card">
+        <span class="k">el paso que se salta</span>
+        <h3>La respuesta, a mano</h3>
+        <p>Escribes el output que quieres <em>antes</em> de conectar nada. Sin eso no tienes con qué comparar lo que te devuelva.</p>
+      </div>
+      <div class="card">
+        <span class="k">la plantilla</span>
+        <h3>El SKILL.md en blanco</h3>
+        <p>Con los huecos marcados, la tabla de qué MCP pide cada tipo de respuesta, y los tres síntomas del output malo con su arreglo.</p>
+      </div>
+    </div>
+
+    <p><a class="btn btn-pop btn-sm" href="../files/tu-companion.md">Bajar la guía: tu propio companion →</a></p>
+
+    <div class="note"><strong>Seis ejemplos para arrancar</strong>, por si tu pregunta no es la del correo: qué PR está esperando por ti, qué se rompió anoche, qué le prometiste a alguien y no has hecho, en qué se fue la plata, qué cambió en el repo mientras estabas de vacaciones. Todos salen de la misma receta.</div>
   </div>
 </section>
 
@@ -255,7 +575,7 @@ Después de eso, y no antes, seguimos con lo demás.</code></pre>
 <section class="sec" id="cierre">
   <div class="wrap">
     <div class="eyebrow">// después de esta semana</div>
-    <h2>Que quede.</h2>
+    <h2>Que no se te olvide.</h2>
     <p class="lead">Ya sabes las cuatro: correr el loop, darle context, revisar lo que devuelve, y dejarlo escrito. Lo que sigue no es otro curso, son tres cosas chiquitas:</p>
 
     <ol>

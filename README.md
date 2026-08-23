@@ -31,6 +31,8 @@ decir en voz alta durante una llamada que `/dia-2/`.
 | [`files/AGENTS.md`](files/AGENTS.md) | Plantilla de `AGENTS.md` para tu proyecto |
 | [`files/revision.md`](files/revision.md) | Checklist para revisar lo que escribió un agent |
 | [`files/prompts.md`](files/prompts.md) | Los prompts que vale la pena guardar |
+| [`files/brief-diario/SKILL.md`](files/brief-diario/SKILL.md) | La skill del companion diario - correo + calendario. Sirve en Claude Code y en Antigravity sin editarla |
+| [`files/tu-companion.md`](files/tu-companion.md) | La guía para armar tu propio companion, paso por paso. El `brief-diario` es el ejemplo; esta es la receta |
 | [`example/`](example/) | Un proyecto de práctica, por si no traes repo propio |
 
 ## Publicar el día siguiente
@@ -100,6 +102,6 @@ Pages sirve esto bajo `/coding-agents-101/`, así que no uses rutas que empiecen
 1. **Pon un coding agent a trabajar** - el loop `gather → act → verify`, y ponerlo a hacer algo real
 2. **Context** - por qué no leyó lo que creías, y tu primer `AGENTS.md`
 3. **Revisión** - leer lo que escribió y empujar de vuelta
-4. **Que quede** - workflows reutilizables, los límites, y preguntas abiertas
+4. **Skills y MCP** - workflows reutilizables, tools de afuera, y los límites
 
 El workshop completo: <https://eonoe.github.io/>
