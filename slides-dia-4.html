@@ -12,15 +12,23 @@
 </head>
 <body>
 
-<!-- Este deck se amplio despues de la sesion del 18. La mecanica de context
-     (laminas 4, 6, 7, 10 y 11) se dio en vivo la noche del 19 y se mudo aqui,
-     que es donde toca; el deck del dia 3 se quedo con un recap corto. O sea que
-     los T+ de la hora 1 ya no cuadran con la grabacion de esa noche. -->
+<!-- Este comentario decia otra cosa: era el del deck del dia 2, pegado aqui por
+     error. Lo que si aplica a este deck es esto.
+
+     La sesion del 20 no quedo grabada, asi que este deck y la pagina del dia 4
+     son lo unico que queda de esa noche. Despues de la sesion se le agregaron
+     ocho laminas con lo que se dio en vivo y no estaba escrito: de donde se roban
+     skills, los plugins, que MCP conecta la gente, y las tres del companion.
+
+     Las laminas nuevas van SIN data-t a proposito. Los T+ eran el run of show de
+     una sesion que ya paso; ponerle una hora inventada a algo que se agrego
+     despues seria fingir una precision que no existe. La barra del reloj se queda
+     vacia en esas, y esta bien asi. -->
 
 <!-- 1 · pre -->
 <section class="slide on pop" data-t="pre">
   <div class="eyebrow">// coding agents 101 · sesión 4 de 4</div>
-  <h1>Que quede.</h1>
+  <h1>Skills y MCP.</h1>
   <p class="sub wide">Lo que repites se guarda, y el agent alcanza lo que está fuera del repo. Última noche.</p>
 </section>
 
@@ -95,6 +103,55 @@
   <p class="sub wide">El homework de anoche era justo esto. Lo que trajiste es el material de la hora 2.</p>
 </section>
 
+<!-- + · las skills que ya existen -->
+<section class="slide">
+  <div class="eyebrow">// antes de escribir la tuya</div>
+  <h2>Escribe <code>/</code> y<br>mira la <span class="hl">lista</span>.</h2>
+  <p class="sub wide">El error más común de la primera semana: escribir una skill para algo que ya venía puesto.</p>
+  <div class="terms">
+    <div class="term"><span class="t">/code-review</span><span class="d">la noche del miércoles, empaquetada</span></div>
+    <div class="term"><span class="t">/security-review</span><span class="d">lo mismo, mirando seguridad</span></div>
+    <div class="term"><span class="t">/run</span><span class="d">levanta tu app y la maneja de verdad</span></div>
+    <div class="term"><span class="t">/loop</span><span class="d">repite algo cada cierto tiempo, solo</span></div>
+  </div>
+</section>
+
+<!-- + · las de otra gente -->
+<section class="slide">
+  <div class="eyebrow">// las de otra gente · github.com/mattpocock/skills</div>
+  <h2>Y las que ya escribió<br>alguien más.</h2>
+  <p class="sub wide"><strong>grill-me</strong> es la que hay que mirar primero: te entrevista sobre el plan hasta que no quede nada sin decidir, <em>antes</em> de dejar que se escriba código.</p>
+  <div class="rules g2">
+    <div class="rl"><h3>Como plugin</h3><p><code>/plugin install mattpocock-skills</code><br>No lo editas, se actualiza solo. Te suscribes.</p></div>
+    <div class="rl"><h3>Como archivos</h3><p><code>npx skills@latest add mattpocock/skills</code><br>Son tuyos, los editas. Corre en cualquier agent.</p></div>
+  </div>
+  <p class="sub wide"><strong>Una, no las dos.</strong> Si instalas por los dos caminos terminas con cada skill duplicada.</p>
+</section>
+
+<!-- + · karpathy: el mismo texto, dos vehiculos. Es la lamina 6 otra vez,
+     pero con un repo real en vez de una regla abstracta. -->
+<section class="slide dark">
+  <div class="eyebrow">// andrej-karpathy-skills · el repo que enseña la diferencia</div>
+  <h2>El mismo texto,<br>empaquetado <span class="hl">dos veces</span>.</h2>
+  <ol class="big">
+    <li>Un <strong>CLAUDE.md</strong> que bajas con <code>curl</code> y entra <em>siempre</em>.</li>
+    <li>Un <strong>SKILL.md</strong> que se instala como plugin y entra <em>cuando toca</em>.</li>
+  </ol>
+  <p class="sub wide">Cuatro reglas sobre cómo fallan los LLM escribiendo código, y el repo te deja escoger el vehículo. Eso es la lámina de hace un rato, en producción.</p>
+</section>
+
+<!-- + · plugins. En vivo esto se paso por encima; aqui igual, una lamina. -->
+<section class="slide">
+  <div class="eyebrow">// la palabra que faltaba</div>
+  <h2>Una skill es un archivo.<br>Un plugin es <span class="hl">la caja</span>.</h2>
+  <p class="sub wide">Varias skills, más los MCP que hacen falta. Y no hay tienda de nadie: <strong>un marketplace es un repo de git</strong>.</p>
+  <div class="stack">
+    <span class="lbl">gstack</span><span class="val">el setup entero de Garry Tan, de YC</span><br>
+    <span class="lbl">23 skills</span><span class="val">CEO, eng manager, diseñador, QA</span>
+  </div>
+  <p class="sub wide"><strong>Instalar el setup de otro no te da su criterio.</strong></p>
+</section>
+
 <!-- 8 · T+30 -->
 <section class="slide" data-t="T+30">
   <div class="eyebrow">// segundo · MCP</div>
@@ -119,16 +176,58 @@
   </ol>
 </section>
 
-<!-- 10 · T+42 · la demo. La corro yo: veinte OAuth en vivo se comen la sesion -->
+<!-- + · la pregunta que sale sola apenas se entiende que es MCP -->
+<section class="slide">
+  <div class="eyebrow">// la pregunta de la noche</div>
+  <h2>¿Y cuál conecto?</h2>
+  <p class="sub wide">La respuesta útil no es una lista de los más descargados. Es esta división, porque cambia cómo los apruebas.</p>
+  <div class="loop">
+    <div class="step"><span class="n">los que leen</span><h3>Contexto que pegabas a mano</h3><p>Issues, base de datos, errores de producción, diseños, tu correo. Lo peor que pasa se queda en tu pantalla.</p></div>
+    <div class="step"><span class="n">los que escriben</span><h3>Cosas que se ven afuera</h3><p>Abrir un PR, mandar un mensaje, tocar la base de datos. Aquí el error lo ve otra gente.</p></div>
+    <div class="step"><span class="n">casi todos</span><h3>Son las dos cosas</h3><p>El mismo server de correo tiene <code>search_threads</code> y <code>create_draft</code>. No apruebas servers: apruebas tools.</p></div>
+  </div>
+</section>
+
+<!-- 10 · T+42 · la demo. La corri yo: veinte OAuth en vivo se comen la sesion.
+     De aqui salieron las tres laminas del companion, que es lo que la gente
+     se lleva escrito a su maquina. -->
 <section class="slide pop" data-t="T+42">
   <div class="eyebrow">// el caso de la noche · lo corro yo, ustedes miran</div>
   <h2>Mi correo y mi calendario,<br>leídos por el agent.</h2>
-  <ol class="big">
-    <li><strong>Conectar</strong> y mirar qué tools aparecieron.</li>
-    <li><strong>Preguntar</strong> qué hay esta semana y qué quedó sin contestar.</li>
-    <li><strong>Hacer algo</strong> con eso: un borrador, un resumen, un evento. Propuesto, no enviado.</li>
-    <li><strong>Revisarlo</strong> con las cuatro preguntas de anoche.</li>
-  </ol>
+  <div class="stack">
+    <span class="lbl">hoy</span><span class="val">los eventos, y a cuál llegar listo</span><br>
+    <span class="lbl">esperan</span><span class="val">5 cadenas: de quién, hace cuánto</span><br>
+    <span class="lbl">ojo</span><span class="val">lo que se pisa, lo que lleva días</span>
+  </div>
+  <p class="sub wide">La agenda ya la tienes. Lo que no tienes es el <strong>cruce</strong>.</p>
+</section>
+
+<!-- + · conectar. Dos caminos, y el completo es el unico que sirve en las dos. -->
+<section class="slide">
+  <div class="eyebrow">// paso 1 · conectarlo</div>
+  <h2>Dos caminos.</h2>
+  <div class="rules g2">
+    <div class="rl"><h3>El corto · Claude Code</h3><p>Escribes <code>/mcp</code>, escoges Gmail y Calendar, entras con tu cuenta. <strong>Sin Google Cloud, sin claves.</strong></p></div>
+    <div class="rl"><h3>El completo · las dos</h3><p>Los servers oficiales de Google con tu propio OAuth client. Más trabajo, y el único camino en Antigravity.</p></div>
+  </div>
+  <div class="stack">
+    <span class="lbl">gmail</span><span class="val">gmailmcp.googleapis.com/mcp/v1</span><br>
+    <span class="lbl">calendar</span><span class="val">calendarmcp.googleapis.com/mcp/v1</span>
+  </div>
+  <p class="sub wide"><strong>Lee los scopes.</strong> Calendar pide tres, las tres de lectura. Gmail pide <code>readonly</code> y <code>compose</code> - el segundo es el que lo deja escribir borradores.</p>
+</section>
+
+<!-- + · la leccion del filtro. Esto paso de verdad al correrlo: los numeros
+     son los que salieron, no un ejemplo inventado. -->
+<section class="slide dark">
+  <div class="eyebrow">// paso 2 · la primera versión no sirvió</div>
+  <h2>201 cadenas de correos.<br>Ninguna era <span class="hl">una persona</span>.</h2>
+  <p class="sub wide">Sin filtrar: avisos del banco, recibos de Uber, newsletters y bots comentando un PR.</p>
+  <div class="stack">
+    <span class="lbl">v1</span><span class="val">201 · ninguna esperaba por mí</span><br>
+    <span class="lbl">v2</span><span class="val">2 · con el filtro dentro de la skill</span>
+  </div>
+  <p class="sub wide">La v2 salió de mirar el output malo. <strong>Ese no es el paso raro: ese es el paso.</strong></p>
 </section>
 
 <!-- 11 · T+50 -->
@@ -165,7 +264,7 @@
   <div class="eyebrow">// los prompts están aquí · no los escribas a mano</div>
   <h2>La página<br>de hoy.</h2>
   <div class="url">eonoe.github.io/<wbr>coding-agents-101/dia-4</div>
-  <p class="sub wide">Los tres prompts, la forma de la skill, y los dos caminos del MCP.</p>
+  <p class="sub wide">Los tres prompts, los dos caminos del MCP, la skill del companion - y la guía para armar <strong>el tuyo</strong>, que es la que de verdad te llevas.</p>
 </section>
 
 <!-- 15 · T+85 · el callback al martes: la skill tambien se prueba en limpio -->
