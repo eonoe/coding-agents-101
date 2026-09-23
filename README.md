@@ -53,7 +53,7 @@ Cada `dia-N/index.html` arranca como una página de "todavía no". El día que t
 El segundo paso es fácil de olvidar y es el que cambia el badge en el hub:
 
 ```html
-<a class="day" href="dia-2/" data-fecha="2026-10-13" data-ready="si">
+<a class="day" href="dia-2/" data-fecha="2026-10-22" data-ready="si">
 ```
 
 Las tarjetas señalan dos cosas distintas y por eso hacen falta los dos atributos:
