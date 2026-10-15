@@ -192,7 +192,7 @@
   <div class="eyebrow">// de qué está hecho · recap del martes</div>
   <h2>Un agent son<br>cuatro piezas.</h2>
   <div class="fig">
-    <svg viewBox="0 0 900 320" role="img" aria-label="Anatomía de un coding agent: la interface envuelve al harness; dentro del harness están el LLM, que solo predice texto, y las tools, que son las que tocan el disco. El LLM nunca toca el repo directamente.">
+    <svg style="max-height:34vh;" viewBox="0 0 900 320" role="img" aria-label="Anatomía de un coding agent: la interface envuelve al harness; dentro del harness están el LLM, que solo predice texto, y las tools, que son las que tocan el disco. El LLM nunca toca el repo directamente.">
       <rect x="12" y="14" width="600" height="292" rx="16" fill="#f6f5ff" stroke="#0b0b10" stroke-width="3" stroke-dasharray="8 6"/>
       <text class="t-mono t-h" x="30" y="42" font-size="15" fill="#3531ff">interface</text>
       <text class="t-mono" x="128" y="42" font-size="14" fill="#6b7280">terminal · GUI · IDE - por dónde le hablas</text>
@@ -229,6 +229,12 @@
     </svg>
     <div class="fig-cap">// el LLM nunca toca tu repo. lo pide, y el harness lo hace.</div>
   </div>
+  <ol style="list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:1.4vw;margin:2vh 0 0;padding:0;font-size:clamp(11px,1.25vw,20px);line-height:1.35;">
+    <li><strong>1 · interface</strong><br>por dónde le hablas</li>
+    <li><strong>2 · harness</strong><br>corre el loop y pide permiso</li>
+    <li><strong>3 · LLM</strong><br>piensa: solo predice texto</li>
+    <li><strong>4 · tools</strong><br>las manos: leen, editan, corren</li>
+  </ol>
 </section>
 
 <!-- 5 · T+7 -->
