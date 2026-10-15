@@ -12,8 +12,8 @@
 </head>
 <body>
 
-<!-- Este deck se amplio despues de la sesion del 18. La mecanica de context
-     (laminas 4, 6, 7, 10 y 11) se dio en vivo la noche del 19 y se mudo aqui,
+<!-- Este deck se amplio despues de la cohorte de agosto. La mecanica de context
+     (laminas 4, 6, 7, 10 y 11) se dio en vivo en esa sesion 2 y se mudo aqui,
      que es donde toca; el deck del dia 3 se quedo con un recap corto. O sea que
      los T+ de la hora 1 ya no cuadran con la grabacion de esa noche. -->
 
@@ -24,38 +24,175 @@
   <p class="sub wide">El agent no lee tu repo. Lee lo que cupo. Esta noche decides tú qué cabe.</p>
 </section>
 
-<!-- 2 · T+0 · el poll, más corto que anoche -->
+<!-- 2 · T+0 · el poll, corto -->
 <section class="slide" data-t="T+0">
   <div class="eyebrow">// una letra en el chat</div>
-  <h2>¿Traes la lista<br>de anoche?</h2>
+  <h2>¿Traes la lista<br>del martes?</h2>
   <div class="poll">
     <div class="opt"><span class="k">A</span><span>Hice el homework y tengo la lista de archivos.</span></div>
     <div class="opt"><span class="k">B</span><span>Corrí el P1 pero no guardé la lista.</span></div>
     <div class="opt"><span class="k">C</span><span>No pude, no me dio tiempo.</span></div>
-    <div class="opt"><span class="k">D</span><span>No estuve anoche.</span></div>
+    <div class="opt"><span class="k">D</span><span>No estuve el martes.</span></div>
   </div>
-  <p class="sub" style="max-width:52ch;">Si eres B o C, en cuatro minutos la sacamos. Si eres D, no te hace falta nada de anoche para seguir hoy.</p>
+  <p class="sub" style="max-width:52ch;">Si eres B o C, en cuatro minutos la sacamos. Si eres D, no te hace falta nada del martes para seguir hoy.</p>
 </section>
 
-<!-- 3 · T+2 · recap del lunes. Se agrego despues de la sesion: la noche en
+<!-- 2b · T+1 · el objetivo de la noche, antes del recap -->
+<section class="slide dark" data-t="T+1">
+  <div class="eyebrow">// lo único que importa esta noche</div>
+  <h2>Que salgas con un<br><span class="hl">AGENTS.md</span> que viste<br>funcionar.</h2>
+  <p class="sub wide">Que cada persona salga con un AGENTS.md que ella misma vio funcionar en una sesión limpia. No que el archivo exista: que lo hayas visto obedecer.</p>
+</section>
+
+<!-- 2c · T+1 · para qué sirve el AGENTS.md, con una analogía, antes del recap -->
+<section class="slide" data-t="T+1">
+  <div class="eyebrow">// para qué sirve el AGENTS.md</div>
+  <h2>Es la nota que le dejas<br>pegada en la <span class="hl">nevera</span>.</h2>
+  <p class="sub wide">Cada sesión, el agent llega como alguien nuevo en tu casa: no te conoce, no sabe dónde va cada cosa. Antes de tocar nada, lee la nota.</p>
+  <p class="sub wide" style="margin-top:2.5vh;"><strong>Sin nota</strong> adivina. <strong>Con nota</strong> sabe dónde va cada cosa y qué no se toca, aunque tú no estés delante.</p>
+</section>
+
+<!-- 2d · T+1 · ejemplos reales de lo que va en la nota (del proyecto de practica) -->
+<section class="slide" data-t="T+1">
+  <div class="eyebrow">// qué le dejas en la nota · ejemplos de gastos-viaje</div>
+  <h2>Lo que el código<br>no te dice.</h2>
+  <div class="loop">
+    <div class="step"><span class="n">cómo correrlo</span><h3>El comando real</h3><p><code>node --test</code> para los tests. No hay <code>npm install</code>: cero dependencias.</p></div>
+    <div class="step"><span class="n">lo que miente</span><h3>El README está mal</h3><p>Dice <code>app.js</code>. La entrada es <code>index.js</code>.</p></div>
+    <div class="step"><span class="n">una trampa</span><h3>Lo que parece un bug</h3><p><code>validarGastos</code> muta el arreglo que recibe. No devuelve una copia.</p></div>
+  </div>
+  <p class="sub wide">Nada de esto se deduce leyendo un archivo suelto. Lo que sí se ve en el código, como el árbol de carpetas, no va.</p>
+</section>
+
+<!-- R1 · recap del martes · chatbot vs agent. Visual: una vuelta contra un loop con salida -->
+<section class="slide" data-t="T+2">
+  <div class="eyebrow">// recap del martes · 1 de 3</div>
+  <h2>Un chatbot contesta.<br>Un agent <span class="hl">completa un objetivo</span>.</h2>
+  <div class="fig">
+    <svg viewBox="0 0 900 320" role="img" aria-label="Izquierda: un chatbot, tú mandas un prompt y recibes una respuesta, una sola vuelta. Derecha: un agent repite gather, act y verify hasta cumplir el objetivo o llegar al máximo de intentos.">
+      <text class="t-mono t-h" x="30" y="36" font-size="15" fill="#6b7280">chatbot</text>
+      <rect x="30" y="90" width="120" height="90" rx="12" fill="#ffd400" stroke="#0b0b10" stroke-width="4"/>
+      <text class="t-h" x="90" y="142" text-anchor="middle" font-size="22" fill="#0b0b10">tú</text>
+      <rect x="290" y="90" width="130" height="90" rx="12" fill="#0b0b10"/>
+      <text class="t-h" x="355" y="142" text-anchor="middle" font-size="22" fill="#ffd400">LLM</text>
+      <path d="M150 118 H290" stroke="#0b0b10" stroke-width="4" marker-end="url(#r1a)"/>
+      <path d="M290 156 H150" stroke="#3531ff" stroke-width="4" marker-end="url(#r1b)"/>
+      <text class="t-mono" x="220" y="108" text-anchor="middle" font-size="13" fill="#6b7280">prompt</text>
+      <text class="t-mono" x="220" y="182" text-anchor="middle" font-size="13" fill="#3531ff">respuesta</text>
+      <text class="t-mono" x="225" y="285" text-anchor="middle" font-size="14" fill="#0b0b10">una vuelta. tú manejas cada paso.</text>
+
+      <line x1="445" y1="20" x2="445" y2="300" stroke="#0b0b10" stroke-width="2" stroke-dasharray="6 6"/>
+
+      <text class="t-mono t-h" x="475" y="36" font-size="15" fill="#6b7280">agent</text>
+      <rect x="475" y="90" width="115" height="90" rx="12" fill="#ffffff" stroke="#0b0b10" stroke-width="4"/>
+      <text class="t-h" x="532" y="130" text-anchor="middle" font-size="19" fill="#0b0b10">gather</text>
+      <text class="t-mono" x="532" y="156" text-anchor="middle" font-size="12" fill="#6b7280">lee, busca</text>
+      <rect x="615" y="90" width="115" height="90" rx="12" fill="#ffffff" stroke="#0b0b10" stroke-width="4"/>
+      <text class="t-h" x="672" y="130" text-anchor="middle" font-size="19" fill="#0b0b10">act</text>
+      <text class="t-mono" x="672" y="156" text-anchor="middle" font-size="12" fill="#6b7280">escribe, corre</text>
+      <rect x="755" y="90" width="115" height="90" rx="12" fill="#3531ff"/>
+      <text class="t-h" x="812" y="130" text-anchor="middle" font-size="19" fill="#ffffff">verify</text>
+      <text class="t-mono" x="812" y="156" text-anchor="middle" font-size="12" fill="#dcdbff">¿sirvió?</text>
+      <path d="M590 135 H615" stroke="#0b0b10" stroke-width="4" marker-end="url(#r1a)"/>
+      <path d="M730 135 H755" stroke="#0b0b10" stroke-width="4" marker-end="url(#r1a)"/>
+      <path d="M812 180 V225 H532 V180" fill="none" stroke="#0b0b10" stroke-width="4" marker-end="url(#r1a)"/>
+      <text class="t-mono t-h" x="672" y="216" text-anchor="middle" font-size="13" fill="#0b0b10">si no, repite</text>
+      <text class="t-mono" x="672" y="285" text-anchor="middle" font-size="13" fill="#0b0b10">sale al cumplir el objetivo o al tope de intentos.</text>
+
+      <defs>
+        <marker id="r1a" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 z" fill="#0b0b10"/></marker>
+        <marker id="r1b" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 z" fill="#3531ff"/></marker>
+      </defs>
+    </svg>
+    <div class="fig-cap">// el chatbot responde. el agent persigue un objetivo, y por eso necesita saber cuándo parar.</div>
+  </div>
+</section>
+
+<!-- R2 · recap del martes · AI agent vs AI coding agent. Misma cabeza, otras manos -->
+<section class="slide" data-t="T+2">
+  <div class="eyebrow">// recap del martes · 2 de 3</div>
+  <h2>Un coding agent es un agent<br>que trabaja en <span class="hl">tu repo</span>.</h2>
+  <div class="fig">
+    <svg viewBox="0 0 900 320" role="img" aria-label="Un mismo LLM con un loop alimenta dos tipos de agent. El AI agent general usa tools como calendario, correo y buscador. El AI coding agent usa tools que leen y editan archivos, corren comandos y tests, y el trabajo se ve en un diff.">
+      <rect x="20" y="95" width="220" height="130" rx="14" fill="#0b0b10"/>
+      <text class="t-h" x="130" y="148" text-anchor="middle" font-size="26" fill="#ffd400">LLM + loop</text>
+      <text class="t-mono" x="130" y="182" text-anchor="middle" font-size="13" fill="#ffffff">razona y decide</text>
+      <text class="t-mono" x="130" y="204" text-anchor="middle" font-size="13" fill="#8a8a99">el mismo en los dos</text>
+
+      <path d="M240 140 C290 140 285 80 330 80" fill="none" stroke="#0b0b10" stroke-width="4" marker-end="url(#r2a)"/>
+      <path d="M240 180 C290 180 285 240 330 240" fill="none" stroke="#0b0b10" stroke-width="4" marker-end="url(#r2a)"/>
+
+      <rect x="340" y="20" width="540" height="120" rx="14" fill="#ffffff" stroke="#0b0b10" stroke-width="4"/>
+      <text class="t-h" x="362" y="56" font-size="20" fill="#0b0b10">AI agent</text>
+      <text class="t-mono" x="470" y="56" font-size="13" fill="#6b7280">tools para el mundo</text>
+      <text x="362" y="88" font-size="16" fill="#0b0b10">calendario · correo · buscador · APIs</text>
+      <text class="t-mono" x="362" y="118" font-size="13" fill="#6b7280">ej: reservar un salón, atender soporte</text>
+
+      <rect x="340" y="180" width="540" height="120" rx="14" fill="#3531ff"/>
+      <text class="t-h" x="362" y="216" font-size="20" fill="#ffffff">AI coding agent</text>
+      <text class="t-mono" x="552" y="216" font-size="13" fill="#dcdbff">tools para tu repo</text>
+      <text x="362" y="248" font-size="16" fill="#ffffff">leer y editar archivos · correr comandos · tests · git</text>
+      <text class="t-mono" x="362" y="278" font-size="13" fill="#ffd400">el resultado se ve en un diff</text>
+
+      <defs>
+        <marker id="r2a" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 z" fill="#0b0b10"/></marker>
+      </defs>
+    </svg>
+    <div class="fig-cap">// misma cabeza, otras manos. Claude Code, Codex, Antigravity y opencode son este.</div>
+  </div>
+</section>
+
+<!-- R3 · recap del martes · las cuatro capas. Lo que aprendes vive en la capa del agent -->
+<section class="slide" data-t="T+2">
+  <div class="eyebrow">// recap del martes · 3 de 3</div>
+  <h2>Cuatro capas<br>que se combinan.</h2>
+  <div class="fig">
+    <svg viewBox="0 0 900 320" role="img" aria-label="Cuatro capas apiladas: lab, que entrena el modelo; model, el cerebro; agent, el loop con las tools, donde vive lo que aprendes; e interface, por donde le hablas.">
+      <rect x="20" y="14" width="150" height="62" rx="10" fill="#ffffff" stroke="#0b0b10" stroke-width="3"/>
+      <text class="t-mono t-h" x="95" y="52" text-anchor="middle" font-size="17" fill="#0b0b10">lab</text>
+      <text x="196" y="40" font-size="19" fill="#0b0b10">Anthropic · OpenAI · Google</text>
+      <text class="t-mono" x="196" y="64" font-size="13" fill="#6b7280">quien entrena el modelo</text>
+
+      <rect x="20" y="90" width="150" height="62" rx="10" fill="#ffffff" stroke="#0b0b10" stroke-width="3"/>
+      <text class="t-mono t-h" x="95" y="128" text-anchor="middle" font-size="17" fill="#0b0b10">model</text>
+      <text x="196" y="116" font-size="19" fill="#0b0b10">Claude · GPT · Gemini</text>
+      <text class="t-mono" x="196" y="140" font-size="13" fill="#6b7280">el cerebro</text>
+
+      <rect x="10" y="164" width="880" height="76" rx="12" fill="#ffd400" stroke="#0b0b10" stroke-width="4"/>
+      <rect x="20" y="172" width="150" height="62" rx="10" fill="#0b0b10"/>
+      <text class="t-mono t-h" x="95" y="210" text-anchor="middle" font-size="17" fill="#ffd400">agent</text>
+      <text x="196" y="198" font-size="19" font-weight="700" fill="#0b0b10">Claude Code · Codex · Antigravity · opencode</text>
+      <text class="t-mono" x="196" y="224" font-size="13" fill="#0b0b10">el loop y las tools · aquí vive lo que aprendes</text>
+
+      <rect x="20" y="254" width="150" height="62" rx="10" fill="#ffffff" stroke="#0b0b10" stroke-width="3"/>
+      <text class="t-mono t-h" x="95" y="292" text-anchor="middle" font-size="17" fill="#0b0b10">interface</text>
+      <text x="196" y="280" font-size="19" fill="#0b0b10">terminal · app · IDE</text>
+      <text class="t-mono" x="196" y="304" font-size="13" fill="#6b7280">por dónde le hablas</text>
+    </svg>
+    <div class="fig-cap">// cambias de modelo o de interface y lo que aprendiste del agent sigue sirviendo.</div>
+  </div>
+</section>
+
+<!-- 3 · T+2 · recap del martes. Se agrego despues de la sesion: la sesion en
      vivo empezaba en el poll y daba el loop por sabido. -->
 <section class="slide" data-t="T+2">
-  <div class="eyebrow">// el lunes, en treinta segundos</div>
+  <div class="eyebrow">// el martes, en treinta segundos</div>
   <h2>Un agent no predice.<br>Corre un <span class="hl">loop</span>.</h2>
   <div class="loop">
     <div class="step"><span class="n">01 · gather</span><h3>Junta contexto</h3><p>Lee archivos, busca, corre comandos para entender dónde está parado.</p></div>
     <div class="step"><span class="n">02 · act</span><h3>Actúa</h3><p>Escribe, edita, ejecuta. Aquí te pide permiso.</p></div>
     <div class="step"><span class="n">03 · verify</span><h3>Verifica</h3><p>Corre lo que escribió y revisa si sirvió. El paso que todos se saltan.</p></div>
   </div>
-  <p class="sub wide">Autocomplete predice la línea que sigue; esto corre el loop hasta terminar. Anoche vimos que casi todos los fallos son del <strong>gather</strong> - y el gather es context.</p>
+  <p class="sub wide">Autocomplete predice la línea que sigue; esto corre el loop hasta terminar. El martes vimos el loop: gather, act, verify. Cuando algo sale mal, casi siempre es el <strong>gather</strong> - y el gather es context.</p>
+  <p class="sub wide" style="margin-top:14px;"><strong>Una duda del martes:</strong> ¿cuesta más en español? Un poco, porque el español se parte en más tokens. No es traducción, y no vale cambiar de idioma solo por eso.</p>
 </section>
 
-<!-- 4 · T+4 · DIAGRAMA: anatomia de un agent · recap del lunes -->
+<!-- 4 · T+4 · DIAGRAMA: anatomia de un agent · recap del martes -->
 <section class="slide" data-t="T+4">
-  <div class="eyebrow">// de qué está hecho · recap del lunes</div>
+  <div class="eyebrow">// de qué está hecho · recap del martes</div>
   <h2>Un agent son<br>cuatro piezas.</h2>
   <div class="fig">
-    <svg viewBox="0 0 900 320" role="img" aria-label="Anatomía de un coding agent: la interface envuelve al harness; dentro del harness están el LLM, que solo predice texto, y las tools, que son las que tocan el disco. El LLM nunca toca el repo directamente.">
+    <svg style="max-height:34vh;" viewBox="0 0 900 320" role="img" aria-label="Anatomía de un coding agent: la interface envuelve al harness; dentro del harness están el LLM, que solo predice texto, y las tools, que son las que tocan el disco. El LLM nunca toca el repo directamente.">
       <rect x="12" y="14" width="600" height="292" rx="16" fill="#f6f5ff" stroke="#0b0b10" stroke-width="3" stroke-dasharray="8 6"/>
       <text class="t-mono t-h" x="30" y="42" font-size="15" fill="#3531ff">interface</text>
       <text class="t-mono" x="128" y="42" font-size="14" fill="#6b7280">terminal · GUI · IDE - por dónde le hablas</text>
@@ -92,6 +229,12 @@
     </svg>
     <div class="fig-cap">// el LLM nunca toca tu repo. lo pide, y el harness lo hace.</div>
   </div>
+  <ol style="list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:1.4vw;margin:2vh 0 0;padding:0;font-size:clamp(11px,1.25vw,20px);line-height:1.35;">
+    <li><strong>1 · interface</strong><br>por dónde le hablas</li>
+    <li><strong>2 · harness</strong><br>corre el loop y pide permiso</li>
+    <li><strong>3 · LLM</strong><br>piensa: solo predice texto</li>
+    <li><strong>4 · tools</strong><br>las manos: leen, editan, corren</li>
+  </ol>
 </section>
 
 <!-- 5 · T+7 -->
@@ -124,7 +267,7 @@
 
       <rect x="254" y="56" width="104" height="112" fill="#ffd400"/>
       <text class="t-mono t-h" x="306" y="118" text-anchor="middle" font-size="12" fill="#0b0b10">AGENTS.md</text>
-      <text class="t-mono" x="306" y="136" text-anchor="middle" font-size="11" fill="#0b0b10">lo de ayer</text>
+      <text class="t-mono" x="306" y="136" text-anchor="middle" font-size="11" fill="#0b0b10">lo del martes</text>
 
       <rect x="358" y="56" width="330" height="112" fill="#c9c8ff"/>
       <text class="t-mono t-h" x="523" y="104" text-anchor="middle" font-size="14" fill="#0b0b10">la conversación</text>
@@ -188,7 +331,7 @@
   <div class="eyebrow">// la unidad de trabajo</div>
   <h2>Una <span class="hl">session</span> es<br>todo lo que recuerda.</h2>
   <div class="loop">
-    <div class="step"><span class="n">abrir</span><h3>Empieza en cero</h3><p>No sabe nada de tu conversación de ayer. Solo ve lo que le des y lo que lea.</p></div>
+    <div class="step"><span class="n">abrir</span><h3>Empieza en cero</h3><p>No sabe nada de la conversación anterior: las sesiones no se heredan. Solo ve lo que le des y lo que lea.</p></div>
     <div class="step"><span class="n">durante</span><h3>Todo se queda</h3><p>Lo que leyó, lo que escribiste, y también los errores y los caminos falsos.</p></div>
     <div class="step"><span class="n">cerrar</span><h3>Se borra</h3><p>Suena a pérdida. Es tu mejor herramienta: los errores se borran también.</p></div>
   </div>
@@ -268,7 +411,11 @@
   <p class="sub wide">Ninguna se ve en la respuesta. Salen todas igual de seguras.</p>
 </section>
 
-<!-- 14 · T+35 -->
+<!-- 14 · T+35 · nota para decir en voz alta: alguien comento en el chat de la
+     sesion 1 que las reglas escritas como negacion ("no hagas X") no son la mejor
+     forma de guiar a un model; mejor escribirlas como lo que SI hacer ("usa X").
+     Presentalo como algo para probar, no como hecho: reescribe una regla en
+     positivo y compara los dos resultados en la sesion limpia del P3. -->
 <section class="slide pop" data-t="T+35">
   <div class="eyebrow">// lo que te llevas hoy</div>
   <h2>AGENTS.md se gana<br>cada línea.</h2>
@@ -279,12 +426,18 @@
   </div>
 </section>
 
-<!-- 15 · T+37 · la regla que la gente se salta -->
+<!-- 15 · T+37 · la regla que la gente se salta, y el P3 en pantalla para no ir a buscarlo -->
 <section class="slide blue" data-t="T+37">
   <div class="eyebrow">// la regla de esta noche</div>
-  <h2>El P3 va en una<br>sesión nueva.</h2>
-  <p class="sub wide">Si lo pruebas en la misma sesión donde lo escribiste, el agent ya tiene todo eso en context y obedece aunque el archivo esté vacío. <strong>No probaste nada.</strong></p>
-  <p class="sub wide" style="margin-top:2.5vh;">Cierra la sesión. Sí, en serio. Abre una limpia, y ahí sí.</p>
+  <h2 style="font-size:clamp(28px,4.4vw,72px);">El P3 va en una sesión nueva.</h2>
+  <p class="sub wide" style="margin-top:1.5vh;">Si lo pruebas donde lo escribiste, el agent ya lo tiene en context y obedece aunque el archivo esté vacío. <strong>No probaste nada.</strong> Cierra la sesión, abre una limpia y pega esto:</p>
+  <div class="tpl" style="white-space:pre-wrap;overflow:visible;font-size:clamp(11px,1.3vw,22px);line-height:1.5;margin-top:1.5vh;">Sin leer nada más que lo que necesites: agrega un archivo nuevo del
+tipo que más se crea en este proyecto (un componente, un endpoint, un
+test - lo que aplique aquí), con el nombre que tú creas correcto y en
+el lugar que tú creas correcto.
+
+<span class="y">Antes de escribirlo, dime dónde lo vas a poner, cómo lo vas a nombrar,
+y de dónde sacaste esas dos decisiones.</span></div>
 </section>
 
 <!-- 16 · T+38 -->
@@ -307,7 +460,7 @@
   <div class="eyebrow">// hora 2 · copia y pega</div>
   <h2>Auditar, escribir,<br>probar.</h2>
   <div class="loop">
-    <div class="step"><span class="n">p1 · auditar</span><h3>Qué NO leíste</h3><p>Anoche le pediste qué leyó. Hoy, qué <em>no</em> leyó, y qué convenciones no puede deducir.</p></div>
+    <div class="step"><span class="n">p1 · auditar</span><h3>Qué NO leíste</h3><p>El martes le pediste qué leyó. Hoy, qué <em>no</em> leyó, y qué convenciones no puede deducir.</p></div>
     <div class="step"><span class="n">p2 · escribir</span><h3>Máximo 20 líneas</h3><p>Sin el límite salen 150 líneas de obviedades que nadie va a mantener.</p></div>
     <div class="step"><span class="n">p3 · probar</span><h3>En sesión limpia</h3><p>Una tarea chiquita. ¿Escoge bien, y dice de dónde lo sacó?</p></div>
   </div>
@@ -345,21 +498,21 @@
 
 <!-- 22 · T+112 -->
 <section class="slide dark" data-t="T+112">
-  <div class="eyebrow">// para mañana</div>
+  <div class="eyebrow">// para el martes 20</div>
   <h2>Trae un diff<br>que <span class="hl">no te guste</span>.</h2>
   <ul class="big">
     <li>Corre el P3 dos veces más, en sesiones limpias.</li>
     <li>Cada vez que te dé rabia, <strong>una línea</strong> al AGENTS.md. Una.</li>
     <li>Trae algo que el agent escribió y que <strong>no aceptarías en un pull request</strong>.</li>
   </ul>
-  <p class="sub wide">Y no lo arregles. Ese diff es la clase de mañana.</p>
+  <p class="sub wide">Y no lo arregles. Ese diff es la clase del martes 20.</p>
 </section>
 
 <!-- 23 · T+112 -->
 <section class="slide pop" data-t="T+112">
-  <div class="eyebrow">// mañana, misma hora, mismo link</div>
+  <div class="eyebrow">// martes 20, misma hora, mismo link</div>
   <h2>Hoy le dijiste<br>qué saber.</h2>
-  <p class="sub" style="max-width:44ch;">Mañana revisamos lo que escribe, y aprendes a empujarle de vuelta.</p>
+  <p class="sub" style="max-width:44ch;">El martes 20 revisamos lo que escribe, y aprendes a empujarle de vuelta.</p>
   <div class="url">eonoe.github.io/<wbr>coding-agents-101</div>
 </section>
 
