@@ -148,6 +148,66 @@
   </div>
 </section>
 
+<!-- WALKTHROUGH -->
+<section class="sec" id="walkthrough">
+  <div class="wrap">
+    <div class="eyebrow">// paso a paso · de cero al AGENTS.md</div>
+    <h2>Tu AGENTS.md, en siete pasos.</h2>
+    <p class="lead">Unos veinte minutos, en tu repo, con el agent que ya tienes. Los prompts están más abajo con botón de copiar. Si te pierdes, vuelve a este paso a paso.</p>
+
+    <ol style="margin:0;padding:0;max-width:none;">
+      <li class="card" style="list-style:none;margin-bottom:14px;">
+        <h3>0 · Baja el repo (si no tienes uno tuyo)</h3>
+        <p><strong>Haz:</strong> <code>git clone https://github.com/eonoe/coding-agents-101</code> y abre el agent dentro de <code>example/</code>, no en la raíz del repo.</p>
+        <p><strong>Debes ver:</strong> una carpeta <code>example/</code> con <code>index.js</code>, <code>src/</code> y <code>tests/</code>.</p>
+        <p style="color:var(--ink2);"><strong>Si no:</strong> sin terminal, <a href="https://github.com/eonoe/coding-agents-101/archive/refs/heads/main.zip">baja el ZIP</a>, descomprímelo y abre la carpeta <code>example/</code>.</p>
+      </li>
+      <li class="card" style="list-style:none;margin-bottom:14px;">
+        <h3>1 · Prepara</h3>
+        <p><strong>Haz:</strong> Abre el agent en la raíz de tu repo y crea un branch: <code>git checkout -b agents-md</code>.</p>
+        <p><strong>Debes ver:</strong> Un branch nuevo y <code>git status</code> limpio.</p>
+        <p style="color:var(--ink2);"><strong>Si no:</strong> Sin terminal, pídele al agent: <em>crea un branch nuevo llamado agents-md antes de tocar nada</em>.</p>
+      </li>
+      <li class="card" style="list-style:none;margin-bottom:14px;">
+        <h3>2 · Audita (P1)</h3>
+        <p><strong>Haz:</strong> Pega el <a href="#prompts">P1</a> y deja que conteste.</p>
+        <p><strong>Debes ver:</strong> Archivos con línea citada, y una sección de lo que <em>no</em> abrió.</p>
+        <p style="color:var(--ink2);"><strong>Si no:</strong> Si no cita archivo y línea, pídele: <em>cita archivo y línea de cada afirmación</em>.</p>
+      </li>
+      <li class="card" style="list-style:none;margin-bottom:14px;">
+        <h3>3 · Escoge qué se queda</h3>
+        <p><strong>Haz:</strong> De lo que no se puede deducir del código, elige entre 5 y 10 cosas que de verdad te dan rabia cuando salen mal.</p>
+        <p><strong>Debes ver:</strong> Una lista corta, tuya.</p>
+        <p style="color:var(--ink2);"><strong>Si no:</strong> Si todo parece importante, nada lo es. Empieza por lo que el agent ya te falló.</p>
+      </li>
+      <li class="card" style="list-style:none;margin-bottom:14px;">
+        <h3>4 · Escribe (P2)</h3>
+        <p><strong>Haz:</strong> Pega el <a href="#prompts">P2</a>, pasándole tu lista corta como punto de partida.</p>
+        <p><strong>Debes ver:</strong> Un <code>AGENTS.md</code> de máximo 20 líneas, y preguntas al final, fuera del archivo.</p>
+        <p style="color:var(--ink2);"><strong>Si no:</strong> Si salen 150 líneas, pídele <em>bórrale 130</em>. Esa es la demo del problema.</p>
+      </li>
+      <li class="card" style="list-style:none;margin-bottom:14px;">
+        <h3>5 · Poda</h3>
+        <p><strong>Haz:</strong> Lee línea por línea. Bórrala si el agent haría lo mismo sin ella. Prueba reescribir cada regla como lo que sí hay que hacer (<em>usa X</em>) en vez de lo que hay que evitar.</p>
+        <p><strong>Debes ver:</strong> Menos de 20 líneas, y cada una cambia algo.</p>
+        <p style="color:var(--ink2);"><strong>Si no:</strong> Cuenta las que sobreviven. Pocas y concretas ganan a muchas y vagas.</p>
+      </li>
+      <li class="card" style="list-style:none;margin-bottom:14px;">
+        <h3>6 · Prueba (P3) en sesión nueva</h3>
+        <p><strong>Haz:</strong> Cierra la sesión. Abre una limpia y pega el <a href="#prompts">P3</a>.</p>
+        <p><strong>Debes ver:</strong> Te dice dónde pondrá el archivo, cómo lo nombrará, y de dónde sacó esas decisiones.</p>
+        <p style="color:var(--ink2);"><strong>Si no:</strong> Si acierta pero no menciona el <code>AGENTS.md</code>, probablemente lo dedujo del código y esa línea sobra. Si falla, ya sabes cuál es tu primera regla nueva.</p>
+      </li>
+      <li class="card" style="list-style:none;margin-bottom:14px;">
+        <h3>7 · Reporta</h3>
+        <p><strong>Haz:</strong> Una línea en el chat: <code>[nombre] | ¿citó el AGENTS.md? sí / no / se equivocó | UNA línea que se ganó su lugar</code>.</p>
+        <p><strong>Debes ver:</strong> Tu línea junto a las de los demás.</p>
+        <p style="color:var(--ink2);"><strong>Si no:</strong> La línea concreta de alguien más enseña más que cualquier regla abstracta.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
 <!-- PROMPTS -->
 <section class="sec" id="prompts">
   <div class="wrap">
