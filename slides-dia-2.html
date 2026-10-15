@@ -64,6 +64,115 @@
   <p class="sub wide">Nada de esto se deduce leyendo un archivo suelto. Lo que sí se ve en el código, como el árbol de carpetas, no va.</p>
 </section>
 
+<!-- R1 · recap del martes · chatbot vs agent. Visual: una vuelta contra un loop con salida -->
+<section class="slide" data-t="T+2">
+  <div class="eyebrow">// recap del martes · 1 de 3</div>
+  <h2>Un chatbot contesta.<br>Un agent <span class="hl">termina</span>.</h2>
+  <div class="fig">
+    <svg viewBox="0 0 900 320" role="img" aria-label="Izquierda: un chatbot, tú mandas un prompt y recibes una respuesta, una sola vuelta. Derecha: un agent repite gather, act y verify hasta cumplir el objetivo o llegar al máximo de intentos.">
+      <text class="t-mono t-h" x="30" y="36" font-size="15" fill="#6b7280">chatbot</text>
+      <rect x="30" y="90" width="120" height="90" rx="12" fill="#ffd400" stroke="#0b0b10" stroke-width="4"/>
+      <text class="t-h" x="90" y="142" text-anchor="middle" font-size="22" fill="#0b0b10">tú</text>
+      <rect x="290" y="90" width="130" height="90" rx="12" fill="#0b0b10"/>
+      <text class="t-h" x="355" y="142" text-anchor="middle" font-size="22" fill="#ffd400">LLM</text>
+      <path d="M150 118 H290" stroke="#0b0b10" stroke-width="4" marker-end="url(#r1a)"/>
+      <path d="M290 156 H150" stroke="#3531ff" stroke-width="4" marker-end="url(#r1b)"/>
+      <text class="t-mono" x="220" y="108" text-anchor="middle" font-size="13" fill="#6b7280">prompt</text>
+      <text class="t-mono" x="220" y="182" text-anchor="middle" font-size="13" fill="#3531ff">respuesta</text>
+      <text class="t-mono" x="225" y="285" text-anchor="middle" font-size="14" fill="#0b0b10">una vuelta. tú manejas cada paso.</text>
+
+      <line x1="445" y1="20" x2="445" y2="300" stroke="#0b0b10" stroke-width="2" stroke-dasharray="6 6"/>
+
+      <text class="t-mono t-h" x="475" y="36" font-size="15" fill="#6b7280">agent</text>
+      <rect x="475" y="90" width="115" height="90" rx="12" fill="#ffffff" stroke="#0b0b10" stroke-width="4"/>
+      <text class="t-h" x="532" y="130" text-anchor="middle" font-size="19" fill="#0b0b10">gather</text>
+      <text class="t-mono" x="532" y="156" text-anchor="middle" font-size="12" fill="#6b7280">lee, busca</text>
+      <rect x="615" y="90" width="115" height="90" rx="12" fill="#ffffff" stroke="#0b0b10" stroke-width="4"/>
+      <text class="t-h" x="672" y="130" text-anchor="middle" font-size="19" fill="#0b0b10">act</text>
+      <text class="t-mono" x="672" y="156" text-anchor="middle" font-size="12" fill="#6b7280">escribe, corre</text>
+      <rect x="755" y="90" width="115" height="90" rx="12" fill="#3531ff"/>
+      <text class="t-h" x="812" y="130" text-anchor="middle" font-size="19" fill="#ffffff">verify</text>
+      <text class="t-mono" x="812" y="156" text-anchor="middle" font-size="12" fill="#dcdbff">¿sirvió?</text>
+      <path d="M590 135 H615" stroke="#0b0b10" stroke-width="4" marker-end="url(#r1a)"/>
+      <path d="M730 135 H755" stroke="#0b0b10" stroke-width="4" marker-end="url(#r1a)"/>
+      <path d="M812 180 V225 H532 V180" fill="none" stroke="#0b0b10" stroke-width="4" marker-end="url(#r1a)"/>
+      <text class="t-mono t-h" x="672" y="216" text-anchor="middle" font-size="13" fill="#0b0b10">si no, repite</text>
+      <text class="t-mono" x="672" y="285" text-anchor="middle" font-size="13" fill="#0b0b10">sale al cumplir el objetivo o al tope de intentos.</text>
+
+      <defs>
+        <marker id="r1a" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 z" fill="#0b0b10"/></marker>
+        <marker id="r1b" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 z" fill="#3531ff"/></marker>
+      </defs>
+    </svg>
+    <div class="fig-cap">// el chatbot responde. el agent persigue un objetivo, y por eso necesita saber cuándo parar.</div>
+  </div>
+</section>
+
+<!-- R2 · recap del martes · AI agent vs AI coding agent. Misma cabeza, otras manos -->
+<section class="slide" data-t="T+2">
+  <div class="eyebrow">// recap del martes · 2 de 3</div>
+  <h2>Un coding agent es un agent<br>que trabaja en <span class="hl">tu repo</span>.</h2>
+  <div class="fig">
+    <svg viewBox="0 0 900 320" role="img" aria-label="Un mismo LLM con un loop alimenta dos tipos de agent. El AI agent general usa tools como calendario, correo y buscador. El AI coding agent usa tools que leen y editan archivos, corren comandos y tests, y el trabajo se ve en un diff.">
+      <rect x="20" y="95" width="220" height="130" rx="14" fill="#0b0b10"/>
+      <text class="t-h" x="130" y="148" text-anchor="middle" font-size="26" fill="#ffd400">LLM + loop</text>
+      <text class="t-mono" x="130" y="182" text-anchor="middle" font-size="13" fill="#ffffff">razona y decide</text>
+      <text class="t-mono" x="130" y="204" text-anchor="middle" font-size="13" fill="#8a8a99">el mismo en los dos</text>
+
+      <path d="M240 140 C290 140 285 80 330 80" fill="none" stroke="#0b0b10" stroke-width="4" marker-end="url(#r2a)"/>
+      <path d="M240 180 C290 180 285 240 330 240" fill="none" stroke="#0b0b10" stroke-width="4" marker-end="url(#r2a)"/>
+
+      <rect x="340" y="20" width="540" height="120" rx="14" fill="#ffffff" stroke="#0b0b10" stroke-width="4"/>
+      <text class="t-h" x="362" y="56" font-size="20" fill="#0b0b10">AI agent</text>
+      <text class="t-mono" x="470" y="56" font-size="13" fill="#6b7280">tools para el mundo</text>
+      <text x="362" y="88" font-size="16" fill="#0b0b10">calendario · correo · buscador · APIs</text>
+      <text class="t-mono" x="362" y="118" font-size="13" fill="#6b7280">ej: reservar un salón, atender soporte</text>
+
+      <rect x="340" y="180" width="540" height="120" rx="14" fill="#3531ff"/>
+      <text class="t-h" x="362" y="216" font-size="20" fill="#ffffff">AI coding agent</text>
+      <text class="t-mono" x="552" y="216" font-size="13" fill="#dcdbff">tools para tu repo</text>
+      <text x="362" y="248" font-size="16" fill="#ffffff">leer y editar archivos · correr comandos · tests · git</text>
+      <text class="t-mono" x="362" y="278" font-size="13" fill="#ffd400">el resultado se ve en un diff</text>
+
+      <defs>
+        <marker id="r2a" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 z" fill="#0b0b10"/></marker>
+      </defs>
+    </svg>
+    <div class="fig-cap">// misma cabeza, otras manos. Claude Code, Codex, Antigravity y opencode son este.</div>
+  </div>
+</section>
+
+<!-- R3 · recap del martes · las cuatro capas. Lo que aprendes vive en la capa del agent -->
+<section class="slide" data-t="T+2">
+  <div class="eyebrow">// recap del martes · 3 de 3</div>
+  <h2>Cuatro capas,<br>no cuatro competidores.</h2>
+  <div class="fig">
+    <svg viewBox="0 0 900 320" role="img" aria-label="Cuatro capas apiladas: lab, que entrena el modelo; model, el cerebro; agent, el loop con las tools, donde vive lo que aprendes; e interface, por donde le hablas.">
+      <rect x="20" y="14" width="150" height="62" rx="10" fill="#ffffff" stroke="#0b0b10" stroke-width="3"/>
+      <text class="t-mono t-h" x="95" y="52" text-anchor="middle" font-size="17" fill="#0b0b10">lab</text>
+      <text x="196" y="40" font-size="19" fill="#0b0b10">Anthropic · OpenAI · Google</text>
+      <text class="t-mono" x="196" y="64" font-size="13" fill="#6b7280">quien entrena el modelo</text>
+
+      <rect x="20" y="90" width="150" height="62" rx="10" fill="#ffffff" stroke="#0b0b10" stroke-width="3"/>
+      <text class="t-mono t-h" x="95" y="128" text-anchor="middle" font-size="17" fill="#0b0b10">model</text>
+      <text x="196" y="116" font-size="19" fill="#0b0b10">Claude · GPT · Gemini</text>
+      <text class="t-mono" x="196" y="140" font-size="13" fill="#6b7280">el cerebro</text>
+
+      <rect x="10" y="164" width="880" height="76" rx="12" fill="#ffd400" stroke="#0b0b10" stroke-width="4"/>
+      <rect x="20" y="172" width="150" height="62" rx="10" fill="#0b0b10"/>
+      <text class="t-mono t-h" x="95" y="210" text-anchor="middle" font-size="17" fill="#ffd400">agent</text>
+      <text x="196" y="198" font-size="19" font-weight="700" fill="#0b0b10">Claude Code · Codex · Antigravity · opencode</text>
+      <text class="t-mono" x="196" y="224" font-size="13" fill="#0b0b10">el loop y las tools · aquí vive lo que aprendes</text>
+
+      <rect x="20" y="254" width="150" height="62" rx="10" fill="#ffffff" stroke="#0b0b10" stroke-width="3"/>
+      <text class="t-mono t-h" x="95" y="292" text-anchor="middle" font-size="17" fill="#0b0b10">interface</text>
+      <text x="196" y="280" font-size="19" fill="#0b0b10">terminal · app · IDE</text>
+      <text class="t-mono" x="196" y="304" font-size="13" fill="#6b7280">por dónde le hablas</text>
+    </svg>
+    <div class="fig-cap">// cambias de modelo o de interface y lo que aprendiste del agent sigue sirviendo.</div>
+  </div>
+</section>
+
 <!-- 3 · T+2 · recap del martes. Se agrego despues de la sesion: la sesion en
      vivo empezaba en el poll y daba el loop por sabido. -->
 <section class="slide" data-t="T+2">
