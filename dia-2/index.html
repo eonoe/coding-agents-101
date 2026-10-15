@@ -37,13 +37,14 @@
 <!-- RECAP - se agrego despues de la sesion. -->
 <section class="sec" id="recap">
   <div class="wrap">
-    <div class="eyebrow">// esta sesión ya pasó</div>
-    <h2>¿Te la perdiste, o llegaste tarde?</h2>
-    <p class="lead">La grabación completa está aquí abajo, y <a href="../slides-dia-2.html">los slides</a> también. Todo lo demás de esta página sigue sirviendo igual: los prompts se corren hoy exactamente como anoche, y no hace falta haber estado para hacerlos.</p>
+    <div class="eyebrow">// si te la pierdes</div>
+    <h2>¿No pudiste conectarte, o llegaste tarde?</h2>
+    <!-- Noe: reemplaza el link de abajo con la grabacion de HOY (jue 15 oct) cuando Meet la entregue, y ajusta el texto del boton. -->
+    <p class="lead">La grabación de esta sesión la dejamos aquí después de que termine, junto con <a href="../slides-dia-2.html">los slides</a>. Mientras tanto, tienes la grabación del día 2 de la primera edición, que cubre el mismo contenido. Todo lo demás de esta página sirve igual: los prompts se corren exactamente como en la sesión, y no hace falta haber estado para hacerlos.</p>
 
-    <p><a class="btn btn-pop btn-sm" href="https://drive.google.com/file/d/1j5SbRDGzh2YKznDj_xxpFjc3nqnqHyOy/view">Ver la grabación del día 2 →</a></p>
+    <p><a class="btn btn-pop btn-sm" href="https://drive.google.com/file/d/1j5SbRDGzh2YKznDj_xxpFjc3nqnqHyOy/view">Ver la grabación del día 2 (primera edición) →</a></p>
 
-    <div class="note"><strong>El homework, por si entraste tarde:</strong> corre el <a href="#prompts">P3</a> dos veces más en sesiones limpias, agrégale una línea al <a href="#agents-md">AGENTS.md</a> cada vez que el agent haga algo que te dé rabia, y trae un diff que no te guste. Ese diff es el material del día 3.</div>
+    <div class="note"><strong>El homework:</strong> corre el <a href="#prompts">P3</a> dos veces más en sesiones limpias, agrégale una línea al <a href="#agents-md">AGENTS.md</a> cada vez que el agent haga algo que te dé rabia, y trae un diff que no te guste al martes 20 de octubre. Ese diff es el material del día 3.</div>
 
     <p><a class="btn btn-sm" href="../dia-3/">Ir al día 3: Revisar de verdad →</a></p>
   </div>
@@ -54,7 +55,7 @@
   <div class="wrap">
     <div class="eyebrow">// la idea de la noche</div>
     <h2>El agent no lee tu repo. Lee lo que cupo.</h2>
-    <p class="lead">En la sesión 1 casi todos los fallos que encontramos fueron del <strong>gather</strong>: el agent afirmó cosas falsas con seguridad porque nunca abrió el archivo que lo hubiera desmentido. Esta noche vemos por qué pasa y cómo se arregla.</p>
+    <p class="lead">En la sesión 1 viste el loop: <strong>gather</strong>, act, verify. Cuando algo sale mal, el diagnóstico casi siempre empieza en el gather: el agent afirma cosas falsas con seguridad porque nunca abrió el archivo que lo hubiera desmentido. Esta noche vemos por qué pasa y cómo se arregla.</p>
 
     <div class="note"><strong>Saca la lista de la sesión 1.</strong> El homework era correr el P1 en otro repo y guardar la lista de archivos que dijo haber leído. Esa lista es el material de trabajo de hoy. Si no la tienes, la sacas en los primeros minutos.</div>
 
@@ -122,6 +123,8 @@
     </div>
 
     <div class="note"><strong>El peligro es el archivo largo y viejo.</strong> Un AGENTS.md de 200 líneas que nadie mantiene hace más daño que uno de 20 al día, porque el agent se lo cree completo y no tiene forma de saber qué quedó desactualizado.</div>
+
+    <div class="note"><strong>Algo para probar en el P3:</strong> en la sesión 1 alguien comentó en el chat que las instrucciones en negativo ("no hagas X") no son la mejor forma de guiar a un modelo. No lo tomes como hecho, pruébalo: escribe cada regla como lo que hay que hacer ("usa X") en vez de lo que hay que evitar, y compara el resultado en una sesión limpia.</div>
 
     <p><a class="btn btn-sm" href="../files/AGENTS.md" download>Bajar la plantilla</a></p>
   </div>
@@ -213,17 +216,17 @@ y de dónde sacaste esas dos decisiones.</code></pre>
 <!-- TAREA -->
 <section class="sec" id="tarea">
   <div class="wrap">
-    <div class="eyebrow">// para el martes</div>
+    <div class="eyebrow">// para el martes 20</div>
     <h2>Una sola cosa.</h2>
-    <p class="lead">Deja que el AGENTS.md se gane cada línea. El martes trabajamos sobre lo que el agent escribió, así que trae algo que no sea perfecto.</p>
+    <p class="lead">Deja que el AGENTS.md se gane cada línea. El martes 20 trabajamos sobre lo que el agent escribió, así que trae algo que no sea perfecto.</p>
 
     <ol>
       <li>Corre el <strong>P3</strong> dos veces más en sesiones limpias, con tareas distintas.</li>
       <li>Cada vez que haga algo que te dé rabia, <strong>agrega una línea</strong> al AGENTS.md. Una, no un párrafo.</li>
-      <li>Trae el martes un <strong>diff que no te guste</strong>: algo que el agent escribió y que tú no aceptarías en un pull request.</li>
+      <li>Trae el martes 20 un <strong>diff que no te guste</strong>: algo que el agent escribió y que tú no aceptarías en un pull request.</li>
     </ol>
 
-    <div class="note"><strong>Sesión 3:</strong> leer lo que escribió y empujar de vuelta. El diff feo que traigas es el material de la clase, así que no lo arregles antes.</div>
+    <div class="note"><strong>Sesión 3 (martes 20):</strong> leer lo que escribió y empujar de vuelta. El diff feo que traigas es el material de la clase, así que no lo arregles antes.</div>
 
     <div class="daynav">
       <a href="../dia-1/">← Día 1</a>
