@@ -26,137 +26,41 @@
   <div class="poll">
     <div class="opt"><span class="k">A</span><span>Sí, y no me gusta nada. Perfecto.</span></div>
     <div class="opt"><span class="k">B</span><span>Tengo cambios, pero se ven bien.</span></div>
-    <div class="opt"><span class="k">C</span><span>No corrí nada desde ayer.</span></div>
+    <div class="opt"><span class="k">C</span><span>No corrí nada desde el jueves.</span></div>
     <div class="opt"><span class="k">D</span><span>No estuve en las anteriores.</span></div>
   </div>
   <p class="sub" style="max-width:54ch;">Si eres B, hoy vas a descubrir que no se ven tan bien. Esa es la sesión.</p>
 </section>
 
-<!-- 3 · T+5 · recap de las tres noches, en una sola lamina -->
+<!-- 3 · T+5 · recap de las dos sesiones anteriores, en una sola lamina -->
 <section class="slide" data-t="T+5">
-  <div class="eyebrow">// tres noches, en treinta segundos</div>
+  <div class="eyebrow">// dos sesiones, en treinta segundos</div>
   <h2>Dónde estamos.</h2>
   <div class="loop">
-    <div class="step"><span class="n">lunes · el loop</span><h3>Qué es un agent</h3><p>No predice: corre un loop. <strong>gather → act → verify</strong>, con tools de verdad.</p></div>
-    <div class="step"><span class="n">martes · context</span><h3>Qué puede ver</h3><p>No lee tu repo, lee lo que cupo. El AGENTS.md es el context que no depende de ti.</p></div>
+    <div class="step"><span class="n">martes 13 · el loop</span><h3>Qué es un agent</h3><p>No predice: corre un loop. <strong>gather → act → verify</strong>, con tools de verdad.</p></div>
+    <div class="step"><span class="n">jueves 15 · context</span><h3>Qué puede ver</h3><p>No lee tu repo, lee lo que cupo. El AGENTS.md es el context que no depende de ti.</p></div>
     <div class="step"><span class="n">hoy · revisión</span><h3>Qué te entregó</h3><p>Se ve terminado siempre. Hoy aprendes a leerlo y a empujarle de vuelta.</p></div>
   </div>
-  <p class="sub wide">Antes de revisar, unos minutos de por dentro: <strong>de qué está hecho y cómo corre el loop.</strong> Todo lo de hoy sale de ahí.</p>
-</section>
-
-<!-- 4 · T+8 · DIAGRAMA: anatomia de un agent -->
-<section class="slide" data-t="T+8">
-  <div class="eyebrow">// de qué está hecho · recap</div>
-  <h2>Un agent son<br>cuatro piezas.</h2>
-  <div class="fig">
-    <svg viewBox="0 0 900 320" role="img" aria-label="Anatomía de un coding agent: la interface envuelve al harness; dentro del harness están el LLM, que solo predice texto, y las tools, que son las que tocan el disco. El LLM nunca toca el repo directamente.">
-      <rect x="12" y="14" width="600" height="292" rx="16" fill="#f6f5ff" stroke="#0b0b10" stroke-width="3" stroke-dasharray="8 6"/>
-      <text class="t-mono t-h" x="30" y="42" font-size="15" fill="#3531ff">interface</text>
-      <text class="t-mono" x="128" y="42" font-size="14" fill="#6b7280">terminal · GUI · IDE - por dónde le hablas</text>
-
-      <rect x="34" y="62" width="556" height="222" rx="14" fill="#ffffff" stroke="#0b0b10" stroke-width="4"/>
-      <text class="t-mono t-h" x="52" y="90" font-size="15" fill="#0b0b10">harness</text>
-      <text class="t-mono" x="128" y="90" font-size="13" fill="#6b7280">corre el loop, pide permiso, guarda la sesión</text>
-
-      <rect x="60" y="112" width="238" height="146" rx="12" fill="#0b0b10"/>
-      <text class="t-h" x="179" y="150" text-anchor="middle" font-size="21" fill="#ffd400">LLM</text>
-      <text x="179" y="180" text-anchor="middle" font-size="15" fill="#ffffff">solo predice texto</text>
-      <text x="179" y="206" text-anchor="middle" font-size="15" fill="#8a8a99">no abre archivos</text>
-      <text x="179" y="230" text-anchor="middle" font-size="15" fill="#8a8a99">no corre comandos</text>
-
-      <rect x="326" y="112" width="238" height="146" rx="12" fill="#3531ff"/>
-      <text class="t-h" x="445" y="150" text-anchor="middle" font-size="21" fill="#ffffff">tools</text>
-      <text x="445" y="180" text-anchor="middle" font-size="15" fill="#dcdbff">Read · Edit · Bash</text>
-      <text x="445" y="206" text-anchor="middle" font-size="15" fill="#dcdbff">Search · Git</text>
-      <text x="445" y="230" text-anchor="middle" font-size="15" fill="#ffd400">estas sí tocan disco</text>
-
-      <path d="M298 185 H326" stroke="#ffffff" stroke-width="3" marker-end="url(#ax1)"/>
-
-      <path d="M612 160 H688" stroke="#0b0b10" stroke-width="4" marker-end="url(#ax2)"/>
-      <rect x="700" y="112" width="188" height="146" rx="12" fill="#ffd400" stroke="#0b0b10" stroke-width="4"/>
-      <text class="t-h" x="794" y="176" text-anchor="middle" font-size="22" fill="#0b0b10">tu repo</text>
-      <text class="t-mono" x="794" y="206" text-anchor="middle" font-size="14" fill="#0b0b10">tus archivos</text>
-
-      <text class="t-mono t-h" x="622" y="142" text-anchor="start" font-size="13" fill="#6b7280">vía tools</text>
-
-      <defs>
-        <marker id="ax1" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 z" fill="#ffffff"/></marker>
-        <marker id="ax2" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 z" fill="#0b0b10"/></marker>
-      </defs>
-    </svg>
-    <div class="fig-cap">// el LLM nunca toca tu repo. lo pide, y el harness lo hace.</div>
-  </div>
-</section>
-
-<!-- 5 · T+13 · DIAGRAMA: el loop por dentro -->
-<section class="slide pop" data-t="T+13">
-  <div class="eyebrow">// el loop del lunes, visto por dentro</div>
-  <h2>Seis pasos,<br>y se repiten.</h2>
-  <div class="fig">
-    <svg viewBox="0 0 900 300" role="img" aria-label="El ciclo mecánico: el harness arma el context, lo manda al modelo, el modelo pide una tool, tú das permiso, el harness ejecuta y el resultado entra al context. Vuelve a empezar reenviando todo.">
-      <rect x="14" y="40" width="176" height="84" rx="12" fill="#ffffff" stroke="#0b0b10" stroke-width="3"/>
-      <text class="t-mono" x="30" y="66" font-size="13" fill="#3531ff">01</text>
-      <text class="t-h" x="30" y="92" font-size="16" fill="#0b0b10">arma el context</text>
-      <text x="30" y="112" font-size="13" fill="#6b7280">todo, otra vez</text>
-
-      <rect x="216" y="40" width="176" height="84" rx="12" fill="#0b0b10"/>
-      <text class="t-mono" x="232" y="66" font-size="13" fill="#ffd400">02</text>
-      <text class="t-h" x="232" y="92" font-size="16" fill="#ffffff">lo manda al LLM</text>
-      <text x="232" y="112" font-size="13" fill="#8a8a99">una sola llamada</text>
-
-      <rect x="418" y="40" width="176" height="84" rx="12" fill="#ffffff" stroke="#0b0b10" stroke-width="3"/>
-      <text class="t-mono" x="434" y="66" font-size="13" fill="#3531ff">03</text>
-      <text class="t-h" x="434" y="92" font-size="16" fill="#0b0b10">pide una tool</text>
-      <text x="434" y="112" font-size="13" fill="#6b7280">"lee este archivo"</text>
-
-      <rect x="620" y="40" width="176" height="84" rx="12" fill="#3531ff"/>
-      <text class="t-mono" x="636" y="66" font-size="13" fill="#ffd400">04</text>
-      <text class="t-h" x="636" y="92" font-size="16" fill="#ffffff">tú das permiso</text>
-      <text x="636" y="112" font-size="13" fill="#dcdbff">aquí decides tú</text>
-
-      <rect x="418" y="176" width="176" height="84" rx="12" fill="#ffffff" stroke="#0b0b10" stroke-width="3"/>
-      <text class="t-mono" x="434" y="202" font-size="13" fill="#3531ff">05</text>
-      <text class="t-h" x="434" y="228" font-size="16" fill="#0b0b10">el harness corre</text>
-      <text x="434" y="248" font-size="13" fill="#6b7280">la tool de verdad</text>
-
-      <rect x="216" y="176" width="176" height="84" rx="12" fill="#ffffff" stroke="#0b0b10" stroke-width="4"/>
-      <text class="t-mono" x="232" y="202" font-size="13" fill="#3531ff">06</text>
-      <text class="t-h" x="232" y="228" font-size="16" fill="#0b0b10">el resultado</text>
-      <text class="t-h" x="232" y="248" font-size="16" fill="#0b0b10">entra al context</text>
-
-      <path d="M190 82 H216" stroke="#0b0b10" stroke-width="3" marker-end="url(#ay)"/>
-      <path d="M392 82 H418" stroke="#0b0b10" stroke-width="3" marker-end="url(#ay)"/>
-      <path d="M594 82 H620" stroke="#0b0b10" stroke-width="3" marker-end="url(#ay)"/>
-      <path d="M708 124 V150 H506 V176" fill="none" stroke="#0b0b10" stroke-width="3" marker-end="url(#ay)"/>
-      <path d="M418 218 H392" stroke="#0b0b10" stroke-width="3" marker-end="url(#ay)"/>
-      <path d="M216 218 H102 V124" fill="none" stroke="#0b0b10" stroke-width="4" stroke-dasharray="8 6" marker-end="url(#ay)"/>
-
-      <text class="t-mono t-h" x="14" y="288" font-size="15" fill="#0b0b10">el LLM no recuerda nada entre el 02 y el siguiente 02. el harness reenvía todo, siempre.</text>
-
-      <defs>
-        <marker id="ay" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 z" fill="#0b0b10"/></marker>
-      </defs>
-    </svg>
-  </div>
+  <p class="sub wide">Todo lo de hoy sale de ahí: si el agent no vio el archivo, lo que te entregó se ve igual de terminado.</p>
 </section>
 
 <!-- 6 · T+18 · recap de context, corto a proposito. La mecanica completa
      - el diagrama del context window, las tools como texto, session vs window -
      vive en el deck del dia 2, que es la noche que le toca. Los T+ de aqui en
      adelante son los de la sesion en vivo, cuando este bloque era mas largo. -->
-<section class="slide dark" data-t="T+18">
-  <div class="eyebrow">// anoche, en treinta segundos</div>
+<section class="slide dark" data-t="T+8">
+  <div class="eyebrow">// el jueves, en treinta segundos</div>
   <h2>El context tiene<br><span class="hl">fondo</span>, y no avisa.</h2>
   <ol class="big">
     <li><strong>No lee tu repo.</strong> Lee lo que cupo: lo que le escribiste, lo que decidió abrir, y el AGENTS.md.</li>
     <li><strong>Se llena.</strong> Cada archivo leído y cada tool conectada ocupan sitio, y lo viejo se cae sin decírtelo.</li>
     <li><strong>La sesión limpia es la cura.</strong> No porque el agent descanse, sino porque bota el ruido.</li>
   </ol>
-  <p class="sub wide">Lo de hoy sale de ahí: si no vio el archivo, lo que te entregó se ve igual de terminado.</p>
+  <p class="sub wide">Por eso hoy revisamos: el agent siempre entrega algo que se ve terminado.</p>
 </section>
 
 <!-- 7 · T+6 · la tesis de la noche -->
-<section class="slide dark" data-t="T+34">
+<section class="slide dark" data-t="T+14">
   <div class="eyebrow">// la idea de la noche</div>
   <h2>Se ve terminado.<br>No es lo mismo<br>que <span class="hl">estar</span> terminado.</h2>
   <p class="sub wide">Un humano junior escribe código que se ve inseguro cuando lo está. El agent escribe código que se ve seguro siempre: nombres correctos, formato limpio, comentarios en su sitio, tests que pasan.</p>
@@ -245,10 +149,10 @@
       <path d="M560 140 H620" stroke="#0b0b10" stroke-width="3" marker-end="url(#a3c)"/>
 
       <rect x="640" y="60" width="230" height="160" rx="14" fill="#0b0b10"/>
-      <text class="t-mono" x="755" y="100" text-anchor="middle" font-size="15" fill="#8a8a99">el lunes, en example/</text>
-      <text class="t-h" x="755" y="146" text-anchor="middle" font-size="42" fill="#ffd400">12/12</text>
+      <text class="t-mono" x="755" y="100" text-anchor="middle" font-size="15" fill="#8a8a99">en example/, hoy</text>
+      <text class="t-h" x="755" y="146" text-anchor="middle" font-size="42" fill="#ffd400">30</text>
       <text class="t-mono" x="755" y="176" text-anchor="middle" font-size="15" fill="#ffffff">tests pasando</text>
-      <text class="t-mono" x="755" y="200" text-anchor="middle" font-size="14" fill="#8a8a99">escritos por el agent</text>
+      <text class="t-mono" x="755" y="200" text-anchor="middle" font-size="14" fill="#8a8a99">y 7 en todo, pendientes</text>
 
       <defs>
         <marker id="a3c" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
@@ -332,7 +236,7 @@
     <div class="rl"><h3>1 · Pídele la fuente</h3><p><em>"¿De dónde sacaste esto? Cita archivo y línea."</em> La mitad de las invenciones se caen aquí solas.</p></div>
     <div class="rl"><h3>2 · Pídele que lo rompa</h3><p><em>"Escribe un test que falle con este código."</em> Si no puede, o el código está bien o el test no sirve. Las dos respuestas te dicen algo.</p></div>
     <div class="rl"><h3>3 · Recorta el alcance</h3><p><em>"Deshaz todo menos X."</em> Contra el que cambió de más. Más rápido que discutir.</p></div>
-    <div class="rl"><h3>4 · Sesión limpia y pídelo distinto</h3><p>Si ya se enredó, no lo convenzas. Empieza de cero con mejor prompt. Ayer aprendiste por qué.</p></div>
+    <div class="rl"><h3>4 · Sesión limpia y pídelo distinto</h3><p>Si ya se enredó, no lo convenzas. Empieza de cero con mejor prompt. El jueves aprendiste por qué.</p></div>
   </div>
 </section>
 
@@ -383,20 +287,20 @@
 
 <!-- 20 · T+112 -->
 <section class="slide dark" data-t="T+112">
-  <div class="eyebrow">// para mañana · la última</div>
+  <div class="eyebrow">// para el jueves 22 · la última</div>
   <h2>Trae algo que<br>hiciste <span class="hl">dos veces</span>.</h2>
   <ul class="big">
     <li>Revisa un diff más con las cuatro preguntas, en orden.</li>
-    <li>Fíjate en qué le repetiste al agent hoy que ya le habías dicho ayer.</li>
-    <li>Eso que repites es lo que mañana se vuelve <strong>workflow</strong>.</li>
+    <li>Fíjate en qué le repetiste al agent hoy que ya le habías dicho antes.</li>
+    <li>Eso que repites es lo que el jueves se vuelve <strong>workflow</strong>.</li>
   </ul>
 </section>
 
 <!-- 21 · T+112 -->
 <section class="slide pop" data-t="T+112">
-  <div class="eyebrow">// mañana cerramos · misma hora, mismo link</div>
+  <div class="eyebrow">// jueves 22 cerramos · misma hora, mismo link</div>
   <h2>Ya sabes pedirlo,<br>darle context<br>y revisarlo.</h2>
-  <p class="sub" style="max-width:46ch;">Mañana: que no se te olvide entre un proyecto y otro.</p>
+  <p class="sub" style="max-width:46ch;">El jueves: que no se te olvide entre un proyecto y otro.</p>
   <div class="url">eonoe.github.io/<wbr>coding-agents-101</div>
 </section>
 
