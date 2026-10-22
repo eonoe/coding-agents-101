@@ -35,14 +35,15 @@
 </header>
 
 <main>
-<!-- RECAP - el dia 4 es el unico sin grabacion: el Meet no grabo esa noche. Por eso
-     esta pagina carga el peso que en los otros dias carga el video, y por eso la
+<!-- RECAP - espejo del recap del dia 3. La edicion de agosto no tiene video del dia 4,
+     asi que esta pagina carga el peso que en los otros dias carga el video, y la
      seccion del companion trae el walkthrough completo en vez de cuatro bullets. -->
 <section class="sec" id="recap">
   <div class="wrap">
-    <div class="eyebrow">// esta sesión ya pasó</div>
-    <h2>De esta noche no quedó grabación.</h2>
-    <p class="lead">Las otras tres se grabaron. Esta no, y no hay video que subir. Así que esta página no es el resumen de la sesión: <strong>es la sesión</strong>, escrita completa, con lo que se dio en vivo y lo que se enseñó en pantalla.</p>
+    <div class="eyebrow">// si te la pierdes</div>
+    <h2>¿No pudiste conectarte, o llegaste tarde?</h2>
+    <!-- Noe: la grabacion de HOY (jue 22 oct) se linkea despues de la sesion, cuando Meet la entregue. Agrega un boton con el link aqui y ajusta este parrafo. La primera edicion NO tiene video del dia 4, por eso por ahora se apunta a esta pagina. -->
+    <p class="lead">La grabación de esta sesión la dejamos aquí después de que termine, junto con <a href="../slides-dia-4.html">los slides</a>. Mientras tanto, esta página es la sesión completa, escrita: <strong>no es un resumen</strong>, trae lo que se da en vivo y lo que se enseña en pantalla. Los prompts se corren exactamente como en la sesión, y no hace falta haber estado para hacerlos.</p>
 
     <h3 style="margin-top:28px;">Crea tu companion diario</h3>
     <p class="lead" style="margin-bottom:16px;"><strong>Si solo vas a leer una parte de esta página, lee esa.</strong> Tu correo y tu calendario leídos por el agent, y un brief de veinte líneas cada mañana en vez de veinte minutos en el inbox. Está escrito como walkthrough completo - los dos caminos para conectar Google, por las dos herramientas - con la skill lista para copiar y la guía para armar el tuyo.</p>
@@ -52,7 +53,7 @@
       <a class="btn btn-pop btn-sm" href="../slides-dia-4.html">Ver los slides →</a>
     </div>
 
-    <div class="note"><strong>Lo demás que salió en vivo y no estaba escrito:</strong> de dónde se roban <a href="#robar">skills que ya existen</a>, qué son los <a href="#plugins">plugins</a>, y <a href="#mcp-populares">qué MCPs conecta la gente de verdad</a>.</div>
+    <div class="note"><strong>Lo demás que se da en vivo y no estaba escrito:</strong> de dónde se roban <a href="#robar">skills que ya existen</a>, qué son los <a href="#plugins">plugins</a>, y <a href="#mcp-populares">qué MCPs conecta la gente de verdad</a>.</div>
 
     <p>Lo que no cambia de un día a otro sigue en <a href="../kit/">el kit</a>: instalación, glosario, el camino sin terminal y los archivos que te llevas.</p>
   </div>
@@ -69,7 +70,7 @@
       <div class="card">
         <span class="k">lo que sabe</span>
         <h3>AGENTS.md</h3>
-        <p>Lo del martes. Las convenciones que no puede deducir. Entra completo en cada sesión, sin que tú hagas nada.</p>
+        <p>Lo de la sesión 2. Las convenciones que no puede deducir. Entra completo en cada sesión, sin que tú hagas nada.</p>
       </div>
       <div class="card">
         <span class="k">lo que hace</span>
@@ -134,10 +135,10 @@ Pasos:
   <div class="wrap">
     <div class="eyebrow">// cuándo algo merece ser skill</div>
     <h2>La regla de las dos veces.</h2>
-    <p class="lead">El homework de la sesión pasada era traer algo que hiciste dos veces. Esa es la señal, y no hay que buscarle más:</p>
+    <p class="lead">El homework de esta noche, durante el break, es anotar algo que le repetiste al agent. Esa es la señal, y no hay que buscarle más:</p>
 
     <ol class="big">
-      <li><strong>Lo hiciste dos veces.</strong> Los mismos pasos, en el mismo orden, con dos días de diferencia.</li>
+      <li><strong>Lo hiciste dos veces.</strong> Los mismos pasos, en el mismo orden, con tiempo de por medio.</li>
       <li><strong>Se lo explicaste dos veces.</strong> Escribiste el mismo prompt largo en dos sesiones distintas.</li>
       <li><strong>Te corrigió lo mismo dos veces.</strong> Ahí puede que no sea una skill: puede ser una línea del AGENTS.md.</li>
     </ol>
@@ -162,7 +163,7 @@ Pasos:
     <table class="tbl">
       <thead><tr><th>La escribes</th><th>Y hace</th></tr></thead>
       <tbody>
-        <tr><td><code>/code-review</code></td><td>Revisa lo que cambió buscando bugs y cosas que se pueden simplificar. Es la noche del miércoles, empaquetada.</td></tr>
+        <tr><td><code>/code-review</code></td><td>Revisa lo que cambió buscando bugs y cosas que se pueden simplificar. Es la revisión de la sesión 3, empaquetada.</td></tr>
         <tr><td><code>/security-review</code></td><td>Lo mismo, pero mirando seguridad.</td></tr>
         <tr><td><code>/run</code></td><td>Levanta tu app y la maneja para ver el cambio funcionando de verdad, no solo los tests en verde.</td></tr>
         <tr><td><code>/loop</code></td><td>Repite algo cada cierto tiempo, sin que tú lo estés pidiendo.</td></tr>
@@ -325,7 +326,7 @@ OJO
 
 <pre><code>/mcp</code></pre>
 
-    <p>Sale la lista, escoges Gmail y Google Calendar, se abre el browser, entras con tu cuenta y ya. <strong>Sin proyecto de Google Cloud, sin claves.</strong> Es lo que se hizo en pantalla esa noche.</p>
+    <p>Sale la lista, escoges Gmail y Google Calendar, se abre el browser, entras con tu cuenta y ya. <strong>Sin proyecto de Google Cloud, sin claves.</strong> Es lo que se hace en pantalla en la sesión.</p>
 
     <p><strong>El camino completo - los servers oficiales de Google:</strong> los mismos que usa todo el mundo, conectados con tu propia credencial. Es el camino de Antigravity, y también el tuyo si tu cuenta del trabajo bloquea lo demás.</p>
 
@@ -436,7 +437,7 @@ mkdir -p ~/.gemini/config/skills/brief-diario</code></pre>
     <p><a class="btn btn-sm" href="../files/brief-diario/SKILL.md">Bajar el SKILL.md →</a></p>
 
     <h3 style="margin-top:30px;">Paso 3 · Probarla en sesión limpia</h3>
-    <p>Lo mismo que el martes con el AGENTS.md, y por la misma razón. Si la pruebas en la sesión donde la escribiste, el agent ya tiene los pasos en context y los sigue aunque el archivo esté vacío. <strong>No probaste nada.</strong></p>
+    <p>Lo mismo que en la sesión 2 con el AGENTS.md, y por la misma razón. Si la pruebas en la sesión donde la escribiste, el agent ya tiene los pasos en context y los sigue aunque el archivo esté vacío. <strong>No probaste nada.</strong></p>
 
     <p>Cierra. Abre otra. Escribe <strong><em>"¿qué tengo hoy?"</em></strong> y no menciones la skill. Si la carga sola, quedó. Si no, el <code>description</code> está escrito como título y hay que reescribirlo - que fue lo que le pasó a media sala.</p>
 
@@ -555,7 +556,7 @@ Reglas:
    hazla, y muéstrame el resultado.
 
 Después de eso, y no antes, seguimos con lo demás.</code></pre>
-      <div class="prompt-why"><strong>El paso 2 es el que importa.</strong> Saber cuáles tools escriben - antes de darle una tarea - es la diferencia entre aprobar permisos leyendo y aprobar permisos por cansancio. Es lo mismo que hiciste con el diff anoche, aplicado a las herramientas.</div>
+      <div class="prompt-why"><strong>El paso 2 es el que importa.</strong> Saber cuáles tools escriben - antes de darle una tarea - es la diferencia entre aprobar permisos leyendo y aprobar permisos por cansancio. Es lo mismo que hiciste con el diff en la sesión 3, aplicado a las herramientas.</div>
     </div>
   </div>
 </section>
@@ -565,7 +566,7 @@ Después de eso, y no antes, seguimos con lo demás.</code></pre>
   <div class="wrap">
     <div class="eyebrow">// dónde no</div>
     <h2>Dónde un agent es la herramienta equivocada.</h2>
-    <p class="lead">Cuatro noches diciendo cómo sacarle trabajo. Esta parte también es del curso:</p>
+    <p class="lead">Cuatro sesiones diciendo cómo sacarle trabajo. Esta parte también es del curso:</p>
 
     <ol class="big">
       <li><strong>Cuando no puedes verificar el resultado.</strong> Si no sabes cómo comprobar que está bien, no importa lo rápido que salga.</li>
@@ -581,7 +582,7 @@ Después de eso, y no antes, seguimos con lo demás.</code></pre>
 <!-- CIERRE -->
 <section class="sec" id="cierre">
   <div class="wrap">
-    <div class="eyebrow">// después de esta semana</div>
+    <div class="eyebrow">// después del curso</div>
     <h2>Que no se te olvide.</h2>
     <p class="lead">Ya sabes las cuatro: correr el loop, darle context, revisar lo que devuelve, y dejarlo escrito. Lo que sigue no es otro curso, son tres cosas chiquitas:</p>
 
